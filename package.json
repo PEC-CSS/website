@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/swc-darwin-x64": "^11.1.2",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.16",
     "@portabletext/react": "^2.0.0",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
