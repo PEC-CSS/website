@@ -23,3 +23,6 @@ Target is to build a whole new brand of the computer scienec society and beat th
 ## Primary Intitiators
 - Harsh Johar
 - Abhinav Rawal
+
+## CMS 
+CMS is deployed at [sanity](https://acm-rebrand.sanity.studio/)
