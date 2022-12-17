@@ -2,6 +2,7 @@ import Head from "next/head";
 import { ReactNode } from "react";
 import Footer from "../common/Footer/Footer";
 import Header from "../common/Header/Header";
+import styles from "../../styles/components/PageLayout.module.scss";
 
 type Props = {
     title: string;
@@ -11,7 +12,7 @@ type Props = {
 
 function PageLayout({ title, children, description }: Props) {
     return (
-        <div>
+        <div className={styles.page}>
             <Head>
                 <title>{title} | ACM at PEC</title>
                 <meta name="description" content={description} />
