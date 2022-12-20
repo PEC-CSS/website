@@ -1,6 +1,99 @@
+@import "../variables";
+
 .navbar {
     background: white;
-    box-shadow: 0 0 4px #e2e2e2;
     padding: 10px 20px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo_wrapper {
+        padding: 10px 20px;
+
+        img {
+            height: 30px;
+            object-fit: cover;
+        }
+    }
+
+    .list_items_wrapper {
+        .ham {
+            display: none; // will be flex in when nav breakpoint and less
+            cursor: pointer;
+            transition: transform 400ms;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            .line {
+                fill: none;
+                transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+                stroke: #000;
+                stroke-width: 5.5;
+                stroke-linecap: round;
+            }
+
+            .top {
+                stroke-dasharray: 40 121;
+            }
+
+            .bottom {
+                stroke-dasharray: 40 121;
+            }
+
+            &.active {
+                transform: rotate(45deg);
+                .top {
+                    stroke-dashoffset: -68px;
+                }
+                .bottom {
+                    stroke-dashoffset: -68px;
+                }
+            }
+        }
+
+        .nav_items {
+            align-items: center;
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                padding: 0px 20px;
+
+                .nav_link {
+                    font-weight: 600;
+                    transition: 0.2s;
+
+                    &:hover {
+                        color: orange;
+                    }
+                }
+
+                button {
+                    background: none;
+                    border: 2px solid orange;
+                    padding: 15px 25px;
+                    color: orange;
+                    font-weight: 700;
+                    border-radius: 1rem;
+                    cursor: pointer;
+                    outline: none;
+                    font-size: 18px;
+                    transition: 0.5s;
+                    &:hover {
+                        background-color: orange;
+                        color: white;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: $navbar-breakpoint) {
+            .ham {
+                display: flex;
+            }
+        }
+    }
 }
