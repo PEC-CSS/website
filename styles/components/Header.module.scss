@@ -64,7 +64,7 @@
             padding: 0;
 
             li {
-                padding: 0px 20px;
+                padding: 0 20px;
 
                 .nav_link {
                     font-weight: 600;
@@ -108,7 +108,7 @@
                 transform: translate(-50%, -150%);
                 transition: transform 0.35s cubic-bezier(0.05, 1.04, 0.72, 0.98);
                 width: 100vw;
-                z-index: 11;
+                z-index: -1;
 
                 .nav_items {
                     display: none;
