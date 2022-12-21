@@ -6,10 +6,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // height: 70px;
+    overflow: hidden;
+    z-index: 10;
 
     .logo_wrapper {
         padding: 10px 20px;
-
+        z-index: 12;
         img {
             height: 30px;
             object-fit: cover;
@@ -17,14 +20,14 @@
     }
 
     .list_items_wrapper {
+        .hamburger_wrapper {
+            z-index: 12;
+        }
         .ham {
             display: none; // will be flex in when nav breakpoint and less
             cursor: pointer;
             transition: transform 400ms;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+            z-index: 12;
 
             .line {
                 fill: none;
@@ -93,6 +96,46 @@
         @media screen and (max-width: $navbar-breakpoint) {
             .ham {
                 display: flex;
+            }
+
+            .menu_modal {
+                background: rgba(244, 255, 255, 0.95);
+                height: 100vh;
+                left: 50vw;
+                overflow-y: scroll;
+                position: absolute;
+                top: 50vh;
+                transform: translate(-50%, -150%);
+                transition: transform 0.35s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+                width: 100vw;
+                z-index: 11;
+
+                .nav_items {
+                    display: none;
+                    font-size: 1.8em;
+                    font-weight: 600;
+                    left: 50vw;
+                    margin: 10px 0;
+                    position: absolute;
+                    top: 50vh;
+                    transform: translate(-50%, -50%);
+
+                    li {
+                        margin: 5px 0;
+                    }
+
+                    &.active {
+                        align-items: center;
+                        flex-direction: column;
+                        display: flex;
+                    }
+                }
+
+                &.active {
+                    transform: translate(-50%, -50%);
+                    transition: transform 0.35s
+                        cubic-bezier(0.05, 1.04, 0.72, 0.98);
+                }
             }
         }
     }
