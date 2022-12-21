@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import PageLayout from "../components/layout/PageLayout";
 
 function about() {
-  return (
-    <div>about</div>
-  )
+    return <PageLayout title="About  | ACM at PEC"></PageLayout>;
 }
 
-export default about
+export default about;

@@ -14,7 +14,7 @@ function PageLayout({ title, children, description }: Props) {
     return (
         <div className={styles.page}>
             <Head>
-                <title>{title} | ACM at PEC</title>
+                <title>{title}</title>
                 <meta name="description" content={description} />
             </Head>
             <Header />

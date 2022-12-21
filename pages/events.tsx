@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import PageLayout from "../components/layout/PageLayout";
 
 function events() {
-  return (
-    <div>events</div>
-  )
+    return <PageLayout title="Events | ACM at PEC"></PageLayout>;
 }
 
-export default events
+export default events;
