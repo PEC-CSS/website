@@ -71,15 +71,15 @@
                     transition: 0.2s;
 
                     &:hover {
-                        color: orange;
+                        color: $acm-primary;
                     }
                 }
 
                 button {
                     background: none;
-                    border: 2px solid orange;
+                    border: 2px solid $acm-primary;
                     padding: 15px 25px;
-                    color: orange;
+                    color: $acm-primary;
                     font-weight: 700;
                     border-radius: 1rem;
                     cursor: pointer;
@@ -87,7 +87,7 @@
                     font-size: 18px;
                     transition: 0.5s;
                     &:hover {
-                        background-color: orange;
+                        background-color: $acm-primary;
                         color: white;
                     }
                 }

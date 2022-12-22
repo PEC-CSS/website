@@ -1,0 +1,104 @@
+@import '../variables.scss';
+
+.footer {
+    background-color: rgb(11, 11, 11);
+    width: 100vw;
+    display: flex;
+    color: white;
+    padding: 20px 10px;
+
+    .left {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        button {
+            padding: 10px 20px;
+            background-color: $acm-primary;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            margin: 10px 0;
+            transition: 0.5s;
+
+            &:hover {
+                background-color: rgb(11, 11, 11);
+            }
+        }
+
+        .reach_us_at {
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: underline;
+            text-decoration-color: $acm-primary;
+            margin: 10px 0;
+        }
+        ul {
+            display: flex;
+            list-style: none;
+            li {
+                margin: 10px;
+                font-size: 34px;
+                cursor: pointer;
+
+                &:hover {
+                    color: $acm-primary;
+                }
+            }
+        }
+    }
+    .middle {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        li {
+            text-align: center;
+            margin: 2px 0;
+            a {
+                text-decoration: underline;
+                text-decoration-color: $acm-primary;
+            }
+        }
+    }
+    .right {
+        flex: 2;
+
+        ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            li {
+                img {
+                    height: 30px;
+                    margin: 10px 0;
+                }
+            }
+        }
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 12px;
+        text-align: center;
+        font-weight: 800;
+        margin-bottom: 15px;
+    }
+}
