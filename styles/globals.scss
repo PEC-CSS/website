@@ -1,3 +1,4 @@
+@import './variables.scss';
 html,
 body {
     padding: 0;
@@ -16,4 +17,12 @@ a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+p {
+    font-family: $font-display;
+}
+
+h1, h2, h3 {
+    font-family: $font-header;
 }
