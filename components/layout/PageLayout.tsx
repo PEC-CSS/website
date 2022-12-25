@@ -18,7 +18,7 @@ function PageLayout({ title, children, description }: Props) {
                 <meta name="description" content={description} />
             </Head>
             <Header />
-            {children}
+            <div className={styles.children}>{children}</div>
             <Footer />
         </div>
     );

@@ -6,11 +6,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // height: 70px;
-    overflow: hidden;
+    height: 70px;
     z-index: 10;
     position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;
+    font-weight: 600;
+    font-family: $font-display;
+    box-shadow: 0 0 4px #E2E2E2;
+    color: $font-primary-color;
 
     .logo_wrapper {
         padding: 10px 20px;
@@ -22,9 +27,6 @@
     }
 
     .list_items_wrapper {
-        .hamburger_wrapper {
-            z-index: 12;
-        }
         .ham {
             display: none; // will be flex in when nav breakpoint and less
             cursor: pointer;
@@ -49,11 +51,18 @@
 
             &.active {
                 transform: rotate(45deg);
+                z-index: 12;
                 .top {
                     stroke-dashoffset: -68px;
                 }
                 .bottom {
                     stroke-dashoffset: -68px;
+                }
+            }
+
+            &:hover {
+                .line {
+                    stroke: $acm-primary;
                 }
             }
         }
@@ -99,9 +108,8 @@
             .ham {
                 display: flex;
             }
-
             .menu_modal {
-                background: rgba(244, 255, 255, 0.95);
+                background: rgba(255, 255, 255, 0.95);
                 height: 100vh;
                 left: 50vw;
                 overflow-y: scroll;
@@ -110,7 +118,7 @@
                 transform: translate(-50%, -150%);
                 transition: transform 0.35s cubic-bezier(0.05, 1.04, 0.72, 0.98);
                 width: 100vw;
-                z-index: -1;
+                z-index: 11;
 
                 .nav_items {
                     display: none;
@@ -134,7 +142,7 @@
                 }
 
                 &.active {
-                    transform: translate(-50%, -50%);
+                    transform: translate(-50%, calc(-50% + 70px));
                     transition: transform 0.35s
                         cubic-bezier(0.05, 1.04, 0.72, 0.98);
                 }

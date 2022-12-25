@@ -125,7 +125,10 @@
     }
 
     @media screen  and (max-width: $tablet-breakpoint) {
-        .leadershipGrid, .heading, .card {
+        .leadershipGrid {
+            max-width: 100%;
+        }
+        .heading, .card {
             max-width: 90%;
         }
     }
