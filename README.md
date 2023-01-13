@@ -18,11 +18,7 @@ We ll start with the website and rebrand everything that comes in the way.
 - Git
 
 ## Target
-Target is to build a whole new brand of the computer scienec society and beat the fuck out of acm socials.
-
-## Primary Intitiators
-- Harsh Johar
-- Abhinav Rawal
+Target is to build a whole new brand of the computer science society.
 
 ## CMS 
 CMS is deployed at [sanity](https://acm-rebrand.sanity.studio/)
