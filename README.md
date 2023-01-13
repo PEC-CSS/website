@@ -1,4 +1,6 @@
-# ACM Rebrand
+<h1 align="center">
+  <b>ACM Rebrand</b>
+</h1>
 
 A social event to rebrand the pec acm css as the whole.
 
