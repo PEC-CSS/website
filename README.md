@@ -19,6 +19,3 @@ We ll start with the website and rebrand everything that comes in the way.
 
 ## Target
 Target is to build a whole new brand of the computer science society.
-
-## CMS 
-CMS is deployed at [sanity](https://acm-rebrand.sanity.studio/)
