@@ -1,0 +1,17 @@
+@import "../variables";
+
+.hero {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  p {
+    max-width: 60%;
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 300;
+    color: $font-secondary-color;
+  }
+}

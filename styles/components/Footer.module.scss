@@ -1,115 +1,115 @@
 @import "../variables.scss";
 
 .footer {
-    background-color: rgb(11, 11, 11);
-    width: 100vw;
+  background-color: $acm-primary;
+  width: 100vw;
+  display: flex;
+  color: white;
+  padding: 100px 10px 200px 10px;
+
+  .left {
+    flex: 2;
     display: flex;
-    color: white;
-    padding: 20px 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 
-    .left {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        button {
-            padding: 10px 20px;
-            background-color: $acm-primary;
-            outline: none;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            color: white;
-            font-size: 14px;
-            margin: 10px 0;
-            transition: 0.5s;
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      list-style: none;
+      font-size: 16px;
 
-            &:hover {
-                background-color: rgb(11, 11, 11);
-            }
+      li {
+        margin: 2px 0;
+        cursor: pointer;
+        font-size: 14px;
+
+        &:hover {
+          color: black;
+          transition: color 1s;
         }
+      }
+    }
+  }
 
-        .reach_us_at {
-            text-transform: uppercase;
-            font-size: 12px;
-            margin-top: 10px;
-        }
+  .middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    li {
+      text-align: center;
+      margin: 2px 0;
+      font-size: 14px;
+
+      &:hover {
+        color: black;
+        transition: color 1s;
+      }
+    }
+  }
+
+  .right {
+    flex: 2;
+    display: grid;
+    place-items: center;
+
+    ul {
+      display: grid;
+      list-style: none;
+      grid-template-columns: repeat(3, auto);
+
+      li {
+        border: 1px solid white;
+        font-size: 36px;
+        height: 66px;
+        width: 66px;
+        display: grid;
+        place-items: center;
+        color: $acm-primary;
+        background: white;
+        margin: 5px;
+        border-radius: 20px;
+        cursor: pointer;
 
         a {
-            text-decoration: underline;
-            text-decoration-color: $acm-primary;
-            margin: 10px 0;
+          height: 36px;
         }
-        ul {
-            display: flex;
-            list-style: none;
-            li {
-                margin: 10px;
-                font-size: 34px;
-                cursor: pointer;
 
-                &:hover {
-                    color: $acm-primary;
-                }
-            }
+        &:hover {
+          color: white;
+          background-color: $acm-primary;
+          transition: color, background-color 1s;
         }
+      }
     }
-    .middle {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
 
-        ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+  }
 
-        li {
-            text-align: center;
-            margin: 2px 0;
-            a {
-                text-decoration: underline;
-                text-decoration-color: $acm-primary;
-            }
-        }
+  h2 {
+    font-size: 28px;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: $navbar-breakpoint) {
+    flex-direction: column;
+
+    .left {
+      margin-bottom: 20px;
     }
     .right {
-        flex: 2;
-
-        ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-
-            li {
-                img {
-                    height: 30px;
-                    margin: 10px 0;
-                }
-            }
-        }
+      margin-top: 20px;
     }
-
-    h2 {
-        text-transform: uppercase;
-        font-size: 12px;
-        text-align: center;
-        font-weight: 800;
-        margin-bottom: 15px;
-    }
-
-    @media screen and (max-width: $navbar-breakpoint) {
-        flex-direction: column;
-
-        .left {
-            margin-bottom: 20px;
-        }
-        .right {
-            margin-top: 20px;
-        }
-    }
+  }
 }
