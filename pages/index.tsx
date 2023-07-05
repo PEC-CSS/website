@@ -23,5 +23,11 @@ export default function Home() {
                 together.
             </p>
         </div>
+
+        <div className={styles.branches}></div>
+
+        <div className={styles.reach_us}></div>
+
+        <div className={styles.trending}></div>
     </PageLayout>;
 }
