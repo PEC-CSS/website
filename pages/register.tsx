@@ -7,9 +7,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Link from "next/link";
-import { Tooltip, makeStyles } from '@mui/material';
 
-function register() {
+function Register() {
 
     // TODO: Refactor branch name array
     const branchNames = [
@@ -27,6 +26,7 @@ function register() {
     const [branch, setBranch] = useState(branchNames.length === 0 ? "" : branchNames[0]);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [sid, setSid] = useState('');
 
 
     const handleBranchChange = (event: SelectChangeEvent) => {
@@ -41,13 +41,29 @@ function register() {
         setConfirmPassword(event.target.value);
     }
 
+    const handleSidChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setSid(event.target.value);
+    }
+
     const arePasswordsMatching = () => {
-        console.log(confirmPassword)
         if (confirmPassword.length === 0) {
             return false;
         }
 
         return password !== confirmPassword;
+    }
+
+    const isSidCorrect = () => {
+        try {   
+            parseInt(sid);
+            return sid.length === 8;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    const handleSubmit = () => {
+
     }
 
     return (
@@ -56,13 +72,13 @@ function register() {
             <form className={styles.parent}>
 
                 <div className={styles.intro}>
-                    <h1>Create Your PEC-ACM ID</h1>
+                    <h1>Code Your Future: Register Today!</h1>
                     <div className={styles.introLine}>
-                        One ACM ID is all you need.
+                        One PEC ACM ID is all you need.
                     </div>
                     <div className={styles.introLine}>
-                        Already have an ACM ID?
-                        <Link href="/login" className={styles.link}> Log in Here {">"}</Link>
+                        Already have an ID?
+                        <Link href="/login" className={styles.link}> Log in </Link>
                     </div>
                 </div>
 
@@ -71,10 +87,10 @@ function register() {
                     <div className={styles.flowSection}>
                         <div className={styles.name}>
                             <div className={styles.fName}>
-                                <TextField label="First Name" variant="filled" fullWidth />
+                                <TextField label="First Name" variant="filled" fullWidth required />
                             </div>
                             <div className={styles.lName}>
-                                <TextField label="Last Name" variant="filled" fullWidth />
+                                <TextField label="Last Name" variant="filled" fullWidth required />
                             </div>
                         </div>
 
@@ -93,7 +109,13 @@ function register() {
                             </FormControl>
 
                             <div>
-                                <TextField label="SID" variant="filled" fullWidth />
+                                <TextField label="SID" 
+                                           variant="filled" 
+                                           error={!isSidCorrect()}
+                                           onChange={handleSidChange}
+                                           value={sid}
+                                           fullWidth 
+                                           required />
                             </div>
                         </div>
                     </div>
@@ -104,18 +126,18 @@ function register() {
 
                     <div className={styles.flowSection}>
                         <div className={styles.accountDetails}>
-                            <TextField label="Username" variant="filled" fullWidth />
+                            <TextField label="Username" variant="filled" fullWidth required />
                             <div className={styles.smallText}>This will be used to login from now on.</div>
                         </div>
                         <div className={styles.accountDetails}>
-                            <TextField label="name@email.com" variant="filled" type="email" fullWidth />
+                            <TextField label="name@email.com" variant="filled" type="email" fullWidth required />
                         </div>
                         <div className={styles.accountDetails}>
                             <TextField label="Password"
                                 variant="filled"
                                 type="password"
                                 onChange={handlePasswordChange}
-                                fullWidth />
+                                fullWidth required />
                         </div>
 
                         <div className={styles.accountDetails}>
@@ -124,7 +146,7 @@ function register() {
                                 type="password"
                                 error={arePasswordsMatching()}
                                 onChange={handleConfirmPasswordChange}
-                                fullWidth />
+                                fullWidth required />
 
                             {
                                 !arePasswordsMatching() 
@@ -137,9 +159,6 @@ function register() {
                 </div>
 
                 <div className={styles.buttonGroup}>
-                    <div className={styles.smallText}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur eius consectetur maiores vel? Corporis commodi itaque obcaecati magni dolor.
-                    </div>
                     <div className={styles.registerButton}>
                         <button>Register</button>
                     </div>
@@ -149,4 +168,4 @@ function register() {
     )
 }
 
-export default register;
+export default Register;
