@@ -2,7 +2,7 @@
 
 .sectionWrapper {
     // Add this color is variables.scss
-    border-bottom: 1px solid #0075ff;
+    border-bottom: 1px solid $acm-primary;
 
     padding-top: 30px;
     padding-bottom: 20px;
@@ -26,6 +26,11 @@
     letter-spacing: -.016em;
     color: #666;
     width: 28em;
+    word-wrap: break-word;
+}
+
+.errorText {
+    color: $error-color;
 }
 
 .buttonGroup {
@@ -35,7 +40,25 @@
 
     .registerButton {
         padding-top: 14px;
-        padding-bottom: 40px;   
+        padding-bottom: 40px; 
+        
+        // try to compose this
+        button {
+            outline: none;
+            background-color: $acm-primary;
+            color: white;
+            border: 1px solid $acm-primary;
+            padding: 10px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+        
+            &:hover {
+              cursor: pointer;
+              background-color: white;
+              color: $acm-primary;
+              transition: all 0.5s;
+            }
+        }
     }
 }
 
@@ -48,6 +71,10 @@
     .intro {
         text-align: center;
 
+        h1 {
+            word-wrap: break-word;
+        }
+
         .introLine {
             font-size: 17px;
         }
@@ -56,16 +83,17 @@
 
     .link {
         color: $link-primary-color;
+        white-space: nowrap;
     }
 
     .name {
         display: flex;
         margin-bottom: 14px;
         justify-content: space-between;
+    }
 
-        // .fName .lName {
-        //     width: 400px;    
-        // }
+    .fName .lName {
+        min-width: 240px;
     }
 
     .userDetails {
@@ -82,5 +110,32 @@
 
     .accountDetails {
         margin-bottom: 14px;
+    }
+}
+
+@media only screen and (max-device-width: $tablet-breakpoint)  {
+    .name {
+        flex-direction: column;
+
+        .fName .lName {
+            min-width: none;
+        }
+
+        .fName {
+            margin-bottom: 14px;
+        }
+    }
+
+    .sectionWrapper {
+        width: 90%;
+    }
+
+    .flowSection {
+        width: 100%;
+    }
+
+    .smallText {
+        width: 100%;
+        margin: 2px 0;
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
 import TextField from '@mui/material/TextField';
@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Link from "next/link";
-import { Button } from '@mui/material';
+import { Tooltip, makeStyles } from '@mui/material';
 
 function register() {
 
@@ -21,20 +21,33 @@ function register() {
         "CSEDS",
         "PROD"
     ]
+
+    const unequalPasswordWarningText = "The passwords you entered do not match.";
+
     const [branch, setBranch] = useState(branchNames.length === 0 ? "" : branchNames[0]);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
 
     const handleBranchChange = (event: SelectChangeEvent) => {
         setBranch(event.target.value);
     }
 
-    const handlePasswordChange = (event : SelectChangeEvent) => {
+    const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
     }
 
-    const handleConfirmPasswordChange = (event : SelectChangeEvent) => {
-        setConfirmPassword(event.target.value); 
+    const handleConfirmPasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setConfirmPassword(event.target.value);
+    }
+
+    const arePasswordsMatching = () => {
+        console.log(confirmPassword)
+        if (confirmPassword.length === 0) {
+            return false;
+        }
+
+        return password !== confirmPassword;
     }
 
     return (
@@ -58,10 +71,10 @@ function register() {
                     <div className={styles.flowSection}>
                         <div className={styles.name}>
                             <div className={styles.fName}>
-                                <TextField label="First Name" variant="filled" />
+                                <TextField label="First Name" variant="filled" fullWidth />
                             </div>
                             <div className={styles.lName}>
-                                <TextField label="Last Name" variant="filled" />
+                                <TextField label="Last Name" variant="filled" fullWidth />
                             </div>
                         </div>
 
@@ -95,15 +108,30 @@ function register() {
                             <div className={styles.smallText}>This will be used to login from now on.</div>
                         </div>
                         <div className={styles.accountDetails}>
-                            <TextField label="name@email.com" variant="filled" fullWidth />
+                            <TextField label="name@email.com" variant="filled" type="email" fullWidth />
                         </div>
                         <div className={styles.accountDetails}>
-                            <TextField label="Password" variant="filled" type="password" fullWidth />
-                        </div>
-                        <div className={styles.accountDetails}>
-                            <TextField label="Confirm Password" variant="filled" type="password" fullWidth />
+                            <TextField label="Password"
+                                variant="filled"
+                                type="password"
+                                onChange={handlePasswordChange}
+                                fullWidth />
                         </div>
 
+                        <div className={styles.accountDetails}>
+                            <TextField label="Confirm Password"
+                                variant="filled"
+                                type="password"
+                                error={arePasswordsMatching()}
+                                onChange={handleConfirmPasswordChange}
+                                fullWidth />
+
+                            {
+                                !arePasswordsMatching() 
+                                    ? <></>
+                                : <span className={`${styles.errorText} ${styles.smallText}`}>{unequalPasswordWarningText}</span>
+                            }
+                        </div>
                     </div>
 
                 </div>
@@ -113,11 +141,7 @@ function register() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur eius consectetur maiores vel? Corporis commodi itaque obcaecati magni dolor.
                     </div>
                     <div className={styles.registerButton}>
-                        <Button variant="contained" 
-                                sx = {{fontSize: "18px", borderRadius: "4px"}}
-                                disableElevation>
-                            REGISTER
-                        </Button>
+                        <button>Register</button>
                     </div>
                 </div>
             </form>
