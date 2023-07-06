@@ -19,8 +19,12 @@
     .logo_wrapper {
         padding: 10px 20px;
         z-index: 12;
+        a {
+            display: flex;
+            align-items: center;
+        }
         img {
-            height: 30px;
+            height: 60px;
             object-fit: cover;
         }
     }
@@ -84,6 +88,10 @@
                     &:hover {
                         color: $acm-primary;
                     }
+                }
+
+                .active_nav_link {
+                    color: $acm-primary;
                 }
 
                 button {

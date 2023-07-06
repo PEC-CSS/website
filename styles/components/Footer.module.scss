@@ -28,7 +28,7 @@
 
         &:hover {
           color: black;
-          transition: color 1s;
+          transition: color 0.3s;
         }
       }
     }
@@ -53,7 +53,7 @@
 
       &:hover {
         color: black;
-        transition: color 1s;
+        transition: color 0.3s;
       }
     }
   }
@@ -88,7 +88,7 @@
         &:hover {
           color: white;
           background-color: $acm-primary;
-          transition: color, background-color 1s;
+          transition: color, background-color 0.3s;
         }
       }
     }

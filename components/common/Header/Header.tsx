@@ -1,21 +1,32 @@
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import styles from "../../../styles/components/Header.module.scss";
 import Hamburger from "./Hamburger";
+import {useRouter} from "next/router";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [active, setActive] = useState("/");
 
     function toggleMenu() {
         setMenuOpen(!menuOpen);
     }
 
+    const router = useRouter();
+
+    useEffect(() => {
+        setActive(router.pathname);
+    }, [router.pathname])
+
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo_wrapper}>
                 <Link href={"/"}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/vercel.svg" alt="ACM at PEC"/>
+                    <>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/assets/logos/acm.svg" alt="ACM at PEC"/>
+                        <span>pecacm</span>
+                    </>
                 </Link>
             </div>
             <div className={styles.list_items_wrapper}>
@@ -32,9 +43,11 @@ function Header() {
                         role="presentation"
                     >
                         {headerItems.map((headerItem, i) => {
+                            const isActive = active === headerItem.href;
                             return (
                                 <li onClick={toggleMenu} key={i}>
-                                    <Link href={headerItem.href} className={styles.nav_link}>
+                                    <Link href={headerItem.href}
+                                          className={`${styles.nav_link} ${isActive ? styles.active_nav_link : ""}`}>
                                         {headerItem.name}
                                     </Link>
                                 </li>
