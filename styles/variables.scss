@@ -1,16 +1,11 @@
-$navbar-breakpoint: 1160px;
+$navbar-breakpoint: 900px;
 $sidebar-breakpoint: 420px;
 $tablet-breakpoint: 768px;
+$laptop-breakpoint: 1024px;
 
-// colors
-
-$font-display: 'Poppins', 'Helvetica Neue', 'Helvetica', sans-serif;
-$font-header: 'Poppins', sans-serif;
-$font-body: 'Open Sans', sans-serif;
+$acm-primary: #0075FF;
+$error-color: #de071c;
 
 $font-primary-color: #333;
 $font-secondary-color: #595959;
 $link-primary-color: #0070C9;
-
-$acm-primary: orange;
-$error-color: #de071c;
