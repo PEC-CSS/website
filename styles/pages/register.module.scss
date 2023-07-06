@@ -1,0 +1,86 @@
+@import '../variables.scss';
+
+.sectionWrapper {
+    // Add this color is variables.scss
+    border-bottom: 1px solid #0075ff;
+
+    padding-top: 30px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+}
+
+.flowSection {
+    max-width: 1200px;
+    width: 32em;
+    margin: auto;
+}
+
+.smallText {
+    font-size: 14px;
+    line-height: 1.42861;
+    font-weight: 500;
+    letter-spacing: -.016em;
+    color: #666;
+    width: 28em;
+}
+
+.buttonGroup {
+    padding-top: 16px;
+    margin: auto;
+    text-align: center;
+
+    .registerButton {
+        padding-top: 14px;
+        padding-bottom: 40px;   
+    }
+}
+
+.parent {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .intro {
+        text-align: center;
+
+        .introLine {
+            font-size: 17px;
+        }
+    }
+
+
+    .link {
+        color: $link-primary-color;
+    }
+
+    .name {
+        display: flex;
+        margin-bottom: 14px;
+        justify-content: space-between;
+
+        // .fName .lName {
+        //     width: 400px;    
+        // }
+    }
+
+    .userDetails {
+        width: 100%;
+        
+        h3 {
+            text-align: left;
+        }
+
+        div {
+            margin-bottom: 6px;
+        }
+    }
+
+    .accountDetails {
+        margin-bottom: 14px;
+    }
+}
