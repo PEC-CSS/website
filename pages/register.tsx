@@ -7,74 +7,61 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Link from "next/link";
+import { BiErrorCircle } from "react-icons/bi"
+import ErrorTextBox from '../components/register/ErrorTextBox';
 
 function Register() {
 
-    // TODO: Refactor branch name array
-    const branchNames = [
-        "CSE",
-        "ECE",
-        "EE",
-        "MECH",
-        "CIVIL",
-        "CSEDS",
-        "PROD"
-    ]
+    const [formValues, setFormValues] = useState({
+        firstName: '',
+        lastName: '',
+        branch: branchNames.length === 0 ? '' : branchNames[0],
+        sid: '',
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    })
 
-    const unequalPasswordWarningText = "The passwords you entered do not match.";
+    const [error, setError] = useState(false);
 
-    const [branch, setBranch] = useState(branchNames.length === 0 ? "" : branchNames[0]);
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [sid, setSid] = useState('');
-
-
-    const handleBranchChange = (event: SelectChangeEvent) => {
-        setBranch(event.target.value);
+    const handleChange = (event: ChangeEvent<HTMLInputElement>
+        | SelectChangeEvent
+        | React.ChangeEvent<HTMLTextAreaElement
+            | HTMLInputElement>) => {
+        event.preventDefault();
+        const name = event.target.name;
+        const value = event.target.value;
+        setFormValues({
+            ...formValues,
+            [name]: value
+        })
     }
 
-    const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value);
-    }
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
 
-    const handleConfirmPasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setConfirmPassword(event.target.value);
-    }
+        if (!isSidCorrect(formValues.sid) || !arePasswordsMatching(formValues.password, formValues.confirmPassword)) {
+            setError(true);
 
-    const handleSidChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setSid(event.target.value);
-    }
-
-    const arePasswordsMatching = () => {
-        if (confirmPassword.length === 0) {
-            return false;
+            setTimeout(() => {
+                setError(false);
+            }, 3000);
+        } else {
+            // make API calls
         }
-
-        return password !== confirmPassword;
-    }
-
-    const isSidCorrect = () => {
-        try {   
-            parseInt(sid);
-            return sid.length === 8;
-        } catch (e) {
-            return false;
-        }
-    }
-
-    const handleSubmit = () => {
-
     }
 
     return (
         <PageLayout title="Register | ACM at PEC">
 
-            <form className={styles.parent}>
+            {/* Header */}
+            <form className={styles.parent} onSubmit={handleSubmit}>
 
                 <div className={styles.intro}>
                     <h1>Code Your Future: Register Today!</h1>
                     <div className={styles.introLine}>
-                        One PEC ACM ID is all you need.
+                        You only need one PEC ACM ID.
                     </div>
                     <div className={styles.introLine}>
                         Already have an ID?
@@ -82,15 +69,30 @@ function Register() {
                     </div>
                 </div>
 
+                {/* Personal User Info */}
                 <div className={styles.sectionWrapper}>
 
                     <div className={styles.flowSection}>
                         <div className={styles.name}>
                             <div className={styles.fName}>
-                                <TextField label="First Name" variant="filled" fullWidth required />
+                                <TextField
+                                    name="firstName"
+                                    label="First Name"
+                                    variant="filled"
+                                    onChange={handleChange}
+                                    value={formValues.firstName}
+                                    fullWidth
+                                    required />
                             </div>
                             <div className={styles.lName}>
-                                <TextField label="Last Name" variant="filled" fullWidth required />
+                                <TextField
+                                    name="lastName"
+                                    label="Last Name"
+                                    variant="filled"
+                                    onChange={handleChange}
+                                    value={formValues.lastName}
+                                    fullWidth
+                                    required />
                             </div>
                         </div>
 
@@ -98,8 +100,9 @@ function Register() {
                             <FormControl variant="filled" size="small" fullWidth>
                                 <InputLabel>Branch</InputLabel>
                                 <Select
-                                    onChange={handleBranchChange}
-                                    value={branch}
+                                    name="branch"
+                                    onChange={handleChange}
+                                    value={formValues.branch}
                                     sx={{ height: "4em" }}
                                 >
                                     {
@@ -109,58 +112,99 @@ function Register() {
                             </FormControl>
 
                             <div>
-                                <TextField label="SID" 
-                                           variant="filled" 
-                                           error={!isSidCorrect()}
-                                           onChange={handleSidChange}
-                                           value={sid}
-                                           fullWidth 
-                                           required />
+                                <TextField label="SID"
+                                    name="sid"
+                                    variant="filled"
+                                    error={!isSidCorrect(formValues.sid)}
+                                    onChange={handleChange}
+                                    value={formValues.sid}
+                                    fullWidth
+                                    required />
+                                {
+                                    isSidCorrect(formValues.sid)
+                                        ? <></>
+                                        : <ErrorTextBox text={errorText.invalidSid} icon={<BiErrorCircle />} />
+                                }
                             </div>
                         </div>
                     </div>
 
                 </div>
 
+                {/* User Account Details */}
                 <div className={styles.sectionWrapper}>
 
                     <div className={styles.flowSection}>
                         <div className={styles.accountDetails}>
-                            <TextField label="Username" variant="filled" fullWidth required />
+                            <TextField
+                                name="username"
+                                label="Username"
+                                variant="filled"
+                                onChange={handleChange}
+                                value={formValues.username}
+                                fullWidth
+                                required />
                             <div className={styles.smallText}>This will be used to login from now on.</div>
                         </div>
                         <div className={styles.accountDetails}>
-                            <TextField label="name@email.com" variant="filled" type="email" fullWidth required />
+                            <TextField
+                                name="email"
+                                label="name@email.com"
+                                variant="filled"
+                                type="email"
+                                onChange={handleChange}
+                                value={formValues.email}
+                                fullWidth
+                                required />
                         </div>
                         <div className={styles.accountDetails}>
-                            <TextField label="Password"
+                            <TextField
+                                name="password"
+                                label="Password"
                                 variant="filled"
                                 type="password"
-                                onChange={handlePasswordChange}
-                                fullWidth required />
+                                onChange={handleChange}
+                                error={isPasswordStrong(formValues.password) !== 2}
+                                value={formValues.password}
+                                fullWidth
+                                required />
+                            
+                            {
+                                isPasswordStrong(formValues.password) == 2 
+                                    ? <></>
+                                    : <ErrorTextBox text={errorText.weakPassword[isPasswordStrong(formValues.password)]} icon={<BiErrorCircle />} />
+                            }
                         </div>
 
                         <div className={styles.accountDetails}>
-                            <TextField label="Confirm Password"
+                            <TextField
+                                name="confirmPassword"
+                                label="Confirm Password"
                                 variant="filled"
                                 type="password"
-                                error={arePasswordsMatching()}
-                                onChange={handleConfirmPasswordChange}
-                                fullWidth required />
+                                error={!arePasswordsMatching(formValues.password, formValues.confirmPassword)}
+                                onChange={handleChange}
+                                value={formValues.confirmPassword}
+                                fullWidth
+                                required />
 
                             {
-                                !arePasswordsMatching() 
+                                arePasswordsMatching(formValues.password, formValues.confirmPassword)
                                     ? <></>
-                                : <span className={`${styles.errorText} ${styles.smallText}`}>{unequalPasswordWarningText}</span>
+                                    : <ErrorTextBox text={errorText.unequalPasswords} icon={<BiErrorCircle />} />
                             }
                         </div>
                     </div>
-
                 </div>
 
-                <div className={styles.buttonGroup}>
+                {/* Submit Button */}
+                <div className={`${styles.buttonGroup} ${styles.flowSection}`}>
+                    {error
+                        ? <ErrorTextBox text={errorText.incorrectEntry} icon={<BiErrorCircle />} />
+                        : <></>
+                    }
                     <div className={styles.registerButton}>
-                        <button>Register</button>
+                        <button type="submit">Register</button>
                     </div>
                 </div>
             </form>
@@ -169,3 +213,78 @@ function Register() {
 }
 
 export default Register;
+
+const arePasswordsMatching = (password: string, confirmPassword: string): boolean => {
+    if (confirmPassword.length === 0) {
+        return true;
+    }
+
+    return password === confirmPassword;
+}
+
+const isSidCorrect = (sid: string): boolean => {
+    if (!sid) {
+        return true;
+    } else if (sid.length !== 8) {
+        return false;
+    }
+
+    for (let i = 0; i < sid.length; i++) {
+        if (sid[i] < '0' || sid[i] > '9') {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+const maxRepeatedCharacter = (text: string): number => {
+    let currentRepeated = 1, maxRepeated = 1;
+    for (let i = 1; i < text.length; i++) {
+        if (text[i] == text[i - 1]) {
+            currentRepeated++;
+            maxRepeated = Math.max(maxRepeated, currentRepeated);
+        } else {
+            currentRepeated = 1;
+        }
+    }
+
+    return maxRepeated;
+}
+
+const isPasswordStrong = (password: string): number => {
+    // 0: small in length 
+    // 1: repeated characters
+    // 2: ok
+
+    const minimumPasswordLength = 8;
+    const maximumRepeatedAllowed = 3;
+
+    if (maxRepeatedCharacter(password) > maximumRepeatedAllowed) {
+        return 0;
+    } else if (password.length < minimumPasswordLength) {
+        return 1;
+    } else {
+        return 2;
+    }
+}
+
+const branchNames: string[] = [
+    "CSE",
+    "ECE",
+    "EE",
+    "MECH",
+    "CIVIL",
+    "CSEDS",
+    "PROD"
+]
+
+const errorText = {
+    unequalPasswords: "The passwords you entered do not match.",
+    invalidSid: "Enter a valid SID.",
+    incorrectEntry: "One or more fields are filled incorrectly.",
+    weakPassword: [
+        "Too many consecutive repeated characters",
+        "Password needs to be atleast 8 letters long.",
+    ]
+}
