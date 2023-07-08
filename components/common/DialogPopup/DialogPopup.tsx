@@ -15,7 +15,7 @@ function DialogPopup({ icon, errorTitle, errorDescription, handleClose }: Props)
         <Dialog
             open={true}
             onClose={handleClose}
-            sx={{padding: "0", margin: "0"}}
+            sx={{padding: "0", margin: "0", backdropFilter: "blur(1px)"}}
         >
             <div className={styles.dialogParent}>
                 <div className={`${styles.popupContent}`}>
