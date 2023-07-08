@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { BiErrorCircle } from "react-icons/bi"
 import ErrorTextBox from '../components/register/ErrorTextBox';
+import { IconButton, InputAdornment } from '@mui/material';
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 
 function Login() {
 
@@ -14,6 +16,7 @@ function Login() {
     })
 
     const [error, setError] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>
         | SelectChangeEvent
@@ -72,9 +75,16 @@ function Login() {
                                 name="password"
                                 label="Password"
                                 variant="filled"
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 onChange={handleChange}
                                 value={formValues.password}
+                                InputProps={{
+                                    endAdornment: (<InputAdornment position="end">
+                                        <IconButton onClick={() => setShowPassword(!showPassword)}>
+                                            {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                                        </IconButton>
+                                    </InputAdornment>)
+                                }}
                                 fullWidth
                                 required />
                         </div>
