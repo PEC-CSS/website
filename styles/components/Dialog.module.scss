@@ -1,0 +1,54 @@
+@import "../variables.scss";
+
+.dialogParent {
+  text-align: left;
+  font-size: 17px;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  min-width: 250px;
+  max-width: 450px;
+  border-radius: 100px;
+  background-color: #fff;
+
+  .popupContent {
+    .text {
+      font-weight: 500;
+      line-height: 1.2;
+      word-wrap: break-word;
+    }
+    .largeText {
+      font-weight: 600;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .itemCentered {
+        display: flex;
+        align-items: center;
+    }
+  }
+
+  button {
+    outline: none;
+    background-color: $acm-primary;
+    color: white;
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 8px 25px;
+    font-size: 14px;
+    border-radius: 7px;
+    max-width: fit-content;
+    margin-top: 20px;
+    align-self: end;
+
+    &:hover {
+      cursor: pointer;
+      background-color: white;
+      color: $acm-primary;
+      transition: all 0.5s;
+      border: 1px solid $acm-primary;
+    }
+  }
+}
