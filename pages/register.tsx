@@ -8,7 +8,11 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Link from "next/link";
 import { BiErrorCircle } from "react-icons/bi"
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import ErrorTextBox from '../components/register/ErrorTextBox';
+import { IconButton, InputAdornment } from '@mui/material';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import DialogPopup from '../components/common/DialogPopup/DialogPopup';
 
 function Register() {
 
@@ -17,13 +21,13 @@ function Register() {
         lastName: '',
         branch: branchNames.length === 0 ? '' : branchNames[0],
         sid: '',
-        username: '',
         email: '',
         password: '',
         confirmPassword: '',
     })
 
     const [error, setError] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>
         | SelectChangeEvent
@@ -41,12 +45,10 @@ function Register() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (!isSidCorrect(formValues.sid) || !arePasswordsMatching(formValues.password, formValues.confirmPassword)) {
+        if (!isSidCorrect(formValues.sid) ||
+            !arePasswordsMatching(formValues.password, formValues.confirmPassword) ||
+            isPasswordStrong(formValues.password) < 2) {
             setError(true);
-
-            setTimeout(() => {
-                setError(false);
-            }, 3000);
         } else {
             // make API calls
         }
@@ -54,6 +56,14 @@ function Register() {
 
     return (
         <PageLayout title="Register | ACM at PEC">
+            {
+                error ? <DialogPopup 
+                            errorTitle={errorText.invalidFormData.title} 
+                            errorDescription={errorText.invalidFormData.description} 
+                            handleClose={() => setError(false)}
+                        /> 
+                      : <></>
+            }
 
             {/* Header */}
             <form className={styles.parent} onSubmit={handleSubmit}>
@@ -136,17 +146,7 @@ function Register() {
 
                     <div className={styles.flowSection}>
                         <div className={styles.accountDetails}>
-                            <TextField
-                                name="username"
-                                label="Username"
-                                variant="filled"
-                                onChange={handleChange}
-                                value={formValues.username}
-                                fullWidth
-                                required />
-                            <div className={styles.smallText}>This will be used to login from now on.</div>
-                        </div>
-                        <div className={styles.accountDetails}>
+                            <div className={`${styles.smallText} ${styles.smallHeading}`}>EMAIL ID</div>
                             <TextField
                                 name="email"
                                 label="name@email.com"
@@ -156,21 +156,30 @@ function Register() {
                                 value={formValues.email}
                                 fullWidth
                                 required />
+                            <div className={styles.smallText}>This will be used to login from now on.</div>
                         </div>
+                       
                         <div className={styles.accountDetails}>
                             <TextField
                                 name="password"
                                 label="Password"
                                 variant="filled"
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 onChange={handleChange}
                                 error={isPasswordStrong(formValues.password) !== 2}
                                 value={formValues.password}
+                                InputProps={{
+                                    endAdornment: (<InputAdornment position="end">
+                                        <IconButton onClick={() => setShowPassword(!showPassword)}>
+                                            {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                                        </IconButton>
+                                    </InputAdornment>)
+                                }}
                                 fullWidth
                                 required />
-                            
+
                             {
-                                isPasswordStrong(formValues.password) == 2 
+                                isPasswordStrong(formValues.password) == 2
                                     ? <></>
                                     : <ErrorTextBox text={errorText.weakPassword[isPasswordStrong(formValues.password)]} icon={<BiErrorCircle />} />
                             }
@@ -199,10 +208,6 @@ function Register() {
 
                 {/* Submit Button */}
                 <div className={`${styles.buttonGroup} ${styles.flowSection}`}>
-                    {error
-                        ? <ErrorTextBox text={errorText.incorrectEntry} icon={<BiErrorCircle />} />
-                        : <></>
-                    }
                     <div className={styles.registerButton}>
                         <button type="submit">Register</button>
                     </div>
@@ -257,6 +262,10 @@ const isPasswordStrong = (password: string): number => {
     // 1: repeated characters
     // 2: ok
 
+    if (password.length === 0) {
+        return 2;
+    }
+
     const minimumPasswordLength = 8;
     const maximumRepeatedAllowed = 3;
 
@@ -286,5 +295,9 @@ const errorText = {
     weakPassword: [
         "Too many consecutive repeated characters",
         "Password needs to be atleast 8 letters long.",
-    ]
+    ],
+    invalidFormData: {
+        title: "Error",
+        description: "Please review and correct the highlighted fields."
+    }
 }
