@@ -3,58 +3,44 @@
 $image-gap: 100px;
 $side-gap: min(60px, 6vw);
 
-.banner {
-  width: 100%;
-  height: 150px;
-}
 
 .about {
-  max-width: 1200px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .card {
+    max-width: 1200px;
     display: flex;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    margin-right: auto;
-    margin-left: $side-gap;
+    padding: 10px 0;
+    margin: 0 40px;
     align-items: center;
+    justify-content: space-evenly;
 
     .content {
-      max-width: 40%;
+      max-width: 50%;
       min-width: 260px;
       text-align: left;
 
       h1 {
-        padding: 20px;
+        padding: 20px 0;
       }
 
       .text {
-        font-size: 17px;
-        margin: 0 22px 14px 0;
+        font-size: 16px;
+        margin: 5px 0;
       }
     }
 
     .image {
-      margin-left: $image-gap;
-      
       img {
-        border-radius: 50px;
-        overflow-clip-margin: content-box;
-        overflow: clip;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
   }
 
   .flip {
     flex-flow: row-reverse;
-    margin-right: $side-gap;
-    margin-left: auto;
-    justify-content: flex-start;
-
-    .image {
-      margin-right: $image-gap;
-    }
   }
 
   @media screen and (max-width: $tablet-breakpoint) {
@@ -67,10 +53,6 @@ $side-gap: min(60px, 6vw);
         margin: 14px auto;
         h1 {
           text-align: center;
-        }
-
-        .text {
-          margin-left: 0 22px 14px 22px;
         }
       }
 
