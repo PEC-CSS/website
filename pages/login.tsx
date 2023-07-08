@@ -3,8 +3,6 @@ import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
 import { errorText } from '../constants/errorText';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { BiErrorCircle } from "react-icons/bi"
-import ErrorTextBox from '../components/register/ErrorTextBox';
 import { IconButton, InputAdornment } from '@mui/material';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import CustomTextField from '../components/common/CustomTextField/CustomTextField';
@@ -53,12 +51,7 @@ function Login() {
             // make API calls
         }
     }
-
-    useEffect(() => {
-        console.log(error)
-
-    }, [error])
-
+    
     return (
         <PageLayout title="Login | ACM at PEC">
 

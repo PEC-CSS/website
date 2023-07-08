@@ -27,7 +27,12 @@ function Register() {
         confirmPassword: '',
     })
 
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({
+        error: false,
+        title: '',
+        description: '',
+    });
+
     const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>
@@ -50,7 +55,10 @@ function Register() {
             !arePasswordsMatching(formValues.password, formValues.confirmPassword) ||
             isPasswordStrong(formValues.password) < 2) {
 
-            setError(true);
+            setError({
+                ...error,
+                error: true
+            });
         } else {
             // make API calls
         }
@@ -59,10 +67,13 @@ function Register() {
     return (
         <PageLayout title="Register | ACM at PEC">
             {
-                error ? <DialogPopup
+                error.error ? <DialogPopup
                     errorTitle={errorText.invalidFormData.title}
                     errorDescription={errorText.invalidFormData.description}
-                    handleClose={() => setError(false)}
+                    handleClose={() => setError({
+                        ...error,
+                        error: false
+                    })}
                 />
                     : <></>
             }

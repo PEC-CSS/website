@@ -22,13 +22,13 @@ function DialogPopup({ icon, errorTitle, errorDescription, handleClose }: Props)
             onClose={handleClose}
             sx={{ padding: "0", margin: "0", backdropFilter: "blur(1px)" }}
         >
-            <div className={`${styles.dialogParent} ${font.className}`}>
+            <div className={`${styles.dialogParent}`}>
                 <div className={`${styles.popupContent}`}>
-                    <div className={`${styles.text} ${styles.itemCentered} ${styles.largeText}`}>
+                    <div className={`${styles.text} ${styles.itemCentered} ${styles.largeText} ${font.className}`}>
                         {icon}
                         {errorTitle}
                     </div>
-                    <div className={styles.text}> {errorDescription} </div>
+                    <div className={`${styles.text} ${font.className}`}> {errorDescription} </div>
                 </div>
                 
                 <button onClick={handleClose}> OK </button>
