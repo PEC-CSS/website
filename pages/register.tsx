@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
-import TextField from '@mui/material/TextField';
+import { errorText } from '../constants/errorText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -289,17 +289,3 @@ const branchNames: string[] = [
     "CSEDS",
     "PROD"
 ]
-
-const errorText = {
-    unequalPasswords: "The passwords you entered do not match.",
-    invalidSid: "Enter a valid SID.",
-    incorrectEntry: "One or more fields are filled incorrectly.",
-    weakPassword: [
-        "Too many consecutive repeated characters",
-        "Password needs to be atleast 8 letters long.",
-    ],
-    invalidFormData: {
-        title: "Error",
-        description: "Please review and correct the highlighted fields."
-    }
-}
