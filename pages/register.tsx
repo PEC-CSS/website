@@ -13,6 +13,7 @@ import ErrorTextBox from '../components/register/ErrorTextBox';
 import { IconButton, InputAdornment } from '@mui/material';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DialogPopup from '../components/common/DialogPopup/DialogPopup';
+import CustomTextField from '../components/common/CustomTextField/CustomTextField';
 
 function Register() {
 
@@ -48,6 +49,7 @@ function Register() {
         if (!isSidCorrect(formValues.sid) ||
             !arePasswordsMatching(formValues.password, formValues.confirmPassword) ||
             isPasswordStrong(formValues.password) < 2) {
+
             setError(true);
         } else {
             // make API calls
@@ -57,12 +59,12 @@ function Register() {
     return (
         <PageLayout title="Register | ACM at PEC">
             {
-                error ? <DialogPopup 
-                            errorTitle={errorText.invalidFormData.title} 
-                            errorDescription={errorText.invalidFormData.description} 
-                            handleClose={() => setError(false)}
-                        /> 
-                      : <></>
+                error ? <DialogPopup
+                    errorTitle={errorText.invalidFormData.title}
+                    errorDescription={errorText.invalidFormData.description}
+                    handleClose={() => setError(false)}
+                />
+                    : <></>
             }
 
             {/* Header */}
@@ -85,29 +87,29 @@ function Register() {
                     <div className={styles.flowSection}>
                         <div className={styles.name}>
                             <div className={styles.fName}>
-                                <TextField
+                            <CustomTextField
                                     name="firstName"
                                     label="First Name"
                                     variant="filled"
                                     onChange={handleChange}
                                     value={formValues.firstName}
-                                    fullWidth
-                                    required />
+                                    fullWidth={true}
+                                    required={true} />
                             </div>
                             <div className={styles.lName}>
-                                <TextField
+                                <CustomTextField
                                     name="lastName"
                                     label="Last Name"
                                     variant="filled"
                                     onChange={handleChange}
                                     value={formValues.lastName}
-                                    fullWidth
-                                    required />
+                                    fullWidth={true}
+                                    required={true} />
                             </div>
                         </div>
 
                         <div className={styles.userDetails}>
-                            <FormControl variant="filled" size="small" fullWidth>
+                            <FormControl variant="filled" size="small" fullWidth={true}>
                                 <InputLabel>Branch</InputLabel>
                                 <Select
                                     name="branch"
@@ -116,20 +118,20 @@ function Register() {
                                     sx={{ height: "4em" }}
                                 >
                                     {
-                                        branchNames.map((branchName, id) => <MenuItem value={branchName} key={id}>{branchName}</MenuItem>)
+                                        branchNames.map((branchName, id) => <MenuItem value={branchName} key={id} >{branchName}</MenuItem>)
                                     }
                                 </Select>
                             </FormControl>
 
                             <div>
-                                <TextField label="SID"
+                                <CustomTextField label="SID"
                                     name="sid"
                                     variant="filled"
                                     error={!isSidCorrect(formValues.sid)}
                                     onChange={handleChange}
                                     value={formValues.sid}
-                                    fullWidth
-                                    required />
+                                    fullWidth={true}
+                                    required={true} />
                                 {
                                     isSidCorrect(formValues.sid)
                                         ? <></>
@@ -147,20 +149,20 @@ function Register() {
                     <div className={styles.flowSection}>
                         <div className={styles.accountDetails}>
                             <div className={`${styles.smallText} ${styles.smallHeading}`}>EMAIL ID</div>
-                            <TextField
+                            <CustomTextField
                                 name="email"
                                 label="name@email.com"
                                 variant="filled"
                                 type="email"
                                 onChange={handleChange}
                                 value={formValues.email}
-                                fullWidth
-                                required />
+                                fullWidth={true}
+                                required={true} />
                             <div className={styles.smallText}>This will be used to login from now on.</div>
                         </div>
-                       
+
                         <div className={styles.accountDetails}>
-                            <TextField
+                            <CustomTextField
                                 name="password"
                                 label="Password"
                                 variant="filled"
@@ -173,10 +175,10 @@ function Register() {
                                         <IconButton onClick={() => setShowPassword(!showPassword)}>
                                             {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
                                         </IconButton>
-                                    </InputAdornment>)
-                                }}
-                                fullWidth
-                                required />
+                                    </InputAdornment>)}
+                                }
+                                fullWidth={true}
+                                required={true} />
 
                             {
                                 isPasswordStrong(formValues.password) == 2
@@ -186,7 +188,7 @@ function Register() {
                         </div>
 
                         <div className={styles.accountDetails}>
-                            <TextField
+                            <CustomTextField
                                 name="confirmPassword"
                                 label="Confirm Password"
                                 variant="filled"
@@ -194,8 +196,8 @@ function Register() {
                                 error={!arePasswordsMatching(formValues.password, formValues.confirmPassword)}
                                 onChange={handleChange}
                                 value={formValues.confirmPassword}
-                                fullWidth
-                                required />
+                                fullWidth={true}
+                                required={true} />
 
                             {
                                 arePasswordsMatching(formValues.password, formValues.confirmPassword)
