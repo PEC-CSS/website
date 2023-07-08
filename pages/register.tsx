@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
-import { errorText } from '../constants/errorText';
+import { ERRORTEXT } from '../constants/errorText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -27,7 +27,12 @@ function Register() {
         confirmPassword: '',
     })
 
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({
+        error: false,
+        title: '',
+        description: '',
+    });
+
     const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>
@@ -50,7 +55,10 @@ function Register() {
             !arePasswordsMatching(formValues.password, formValues.confirmPassword) ||
             isPasswordStrong(formValues.password) < 2) {
 
-            setError(true);
+            setError({
+                ...error,
+                error: true
+            });
         } else {
             // make API calls
         }
@@ -59,10 +67,13 @@ function Register() {
     return (
         <PageLayout title="Register | ACM at PEC">
             {
-                error ? <DialogPopup
-                    errorTitle={errorText.invalidFormData.title}
-                    errorDescription={errorText.invalidFormData.description}
-                    handleClose={() => setError(false)}
+                error.error ? <DialogPopup
+                    errorTitle={ERRORTEXT.invalidFormData.title}
+                    errorDescription={ERRORTEXT.invalidFormData.description}
+                    handleClose={() => setError({
+                        ...error,
+                        error: false
+                    })}
                 />
                     : <></>
             }
@@ -135,7 +146,7 @@ function Register() {
                                 {
                                     isSidCorrect(formValues.sid)
                                         ? <></>
-                                        : <ErrorTextBox text={errorText.invalidSid} icon={<BiErrorCircle />} />
+                                        : <ErrorTextBox text={ERRORTEXT.invalidSid} icon={<BiErrorCircle />} />
                                 }
                             </div>
                         </div>
@@ -183,7 +194,7 @@ function Register() {
                             {
                                 isPasswordStrong(formValues.password) == 2
                                     ? <></>
-                                    : <ErrorTextBox text={errorText.weakPassword[isPasswordStrong(formValues.password)]} icon={<BiErrorCircle />} />
+                                    : <ErrorTextBox text={ERRORTEXT.weakPassword[isPasswordStrong(formValues.password)]} icon={<BiErrorCircle />} />
                             }
                         </div>
 
@@ -202,7 +213,7 @@ function Register() {
                             {
                                 arePasswordsMatching(formValues.password, formValues.confirmPassword)
                                     ? <></>
-                                    : <ErrorTextBox text={errorText.unequalPasswords} icon={<BiErrorCircle />} />
+                                    : <ErrorTextBox text={ERRORTEXT.unequalPasswords} icon={<BiErrorCircle />} />
                             }
                         </div>
                     </div>

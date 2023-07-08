@@ -1,10 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
-import { errorText } from '../constants/errorText';
+import { ERRORTEXT } from '../constants/errorText';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { BiErrorCircle } from "react-icons/bi"
-import ErrorTextBox from '../components/register/ErrorTextBox';
 import { IconButton, InputAdornment } from '@mui/material';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
 import CustomTextField from '../components/common/CustomTextField/CustomTextField';
@@ -53,12 +51,7 @@ function Login() {
             // make API calls
         }
     }
-
-    useEffect(() => {
-        console.log(error)
-
-    }, [error])
-
+    
     return (
         <PageLayout title="Login | ACM at PEC">
 
@@ -66,8 +59,8 @@ function Login() {
             <form className={styles.parent} onSubmit={handleSubmit}>
                 {
                     error.error ? <DialogPopup
-                        errorTitle={errorText.invalidFormData.title}
-                        errorDescription={errorText.invalidFormData.description}
+                        errorTitle={ERRORTEXT.invalidFormData.title}
+                        errorDescription={ERRORTEXT.invalidFormData.description}
                         handleClose={() => setError({
                             ...error,
                             error: false

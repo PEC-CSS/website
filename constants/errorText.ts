@@ -1,4 +1,4 @@
-export const errorText : any = {
+export const ERRORTEXT = {
     unequalPasswords: "The passwords you entered do not match.",
     invalidSid: "Enter a valid SID.",
     incorrectEntry: "One or more fields are filled incorrectly.",
