@@ -1,136 +1,230 @@
-@import '../variables.scss';
+@import "../variables.scss";
+
+$image-gap: 100px;
+$side-gap: min(60px, 6vw);
 
 .banner {
-    width: 100%;
-    height: 150px;
+  width: 100%;
+  height: 150px;
 }
 
 .about {
+  max-width: 1200px;
+  margin: auto;
+  .card {
     display: flex;
-    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-right: auto;
+    margin-left: $side-gap;
     align-items: center;
-    max-width: 900px;
+
+    .content {
+      max-width: 40%;
+      min-width: 260px;
+      text-align: left;
+
+      h1 {
+        padding: 20px;
+      }
+
+      .text {
+        font-size: 17px;
+        margin: 0 22px 14px 0;
+      }
+    }
+
+    .image {
+      margin-left: $image-gap;
+      
+      img {
+        border-radius: 50px;
+        overflow-clip-margin: content-box;
+        overflow: clip;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .flip {
+    flex-flow: row-reverse;
+    margin-right: $side-gap;
+    margin-left: auto;
+    justify-content: flex-start;
+
+    .image {
+      margin-right: $image-gap;
+    }
+  }
+
+  @media screen and (max-width: $tablet-breakpoint) {
     .card {
-        max-width: 60%;
-        display: flex;
-        margin: 50px 0;
-        .left {
-            flex: 1;
-        }
-        .right {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            img {
-                height: 170px;
-                object-fit: cover;
-                border-radius: 30px;
-            }
-        }
-        .title {
-            font-size: 18;
-            font-weight: 600;
-            margin: 15px 0;
-        }
-        .description {
-            white-space: pre-line;
-            font-size: 12;
-        }
-    }
-    .flip {
-        flex-direction: row-reverse;
-        .right {
-            justify-content: start;
-        }
-    }
-    .heading {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        max-width: 60%;
+      flex-direction: column-reverse;
+      margin: unset;
 
-        .leadership {
-            font-size: 16;
-            font-weight: 600;
-            margin: 10px 0;
+      .content {
+        max-width: 70%;
+        margin: 14px auto;
+        h1 {
+          text-align: center;
         }
 
-        .leadershipPara {
-            font-size: 10;
+        .text {
+          margin-left: 0 22px 14px 22px;
         }
-    }
+      }
 
-    .leadershipGrid {
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        max-width: 60%;
-        width: 100%;
-        padding: 10px;
-        .leadershipCard {
-            height: 70px;
-            display: flex;
-            align-items: center;
-            margin: 25px 0;
-            .left {
-                width: 30%;
-                height: 100%;
-                img {
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 999px;
-                }
-            }
-            .right {
-                width: 70%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-                .name {
-                    font-weight: bold;
-                    font-size: 14;
-                }
-                .post {
-                    font-size: 12;
-                }
-            }
-        }
+      .image {
+        width: unset;
+        margin: unset;
+      }
     }
+  }
 
-    @media screen and (max-width: $navbar-breakpoint) {
-        .leadershipGrid {
-            grid-template-columns: repeat(1, auto);
-            .leadershipCard {
-                margin: 10px 0;
-                .left {
-                    width: 15%;
-                }
-            }
-        }
-    }
-    @media screen and (max-width: 1068px) {
-        .card {
-            flex-direction: column-reverse;
-            align-items: flex-start;
-            img {
-                width: 100%;
-                object-fit: cover;
-            }
-        }
-    }
-    @media screen and (max-width: 900px) {
-        .leadershipGrid {
-            max-width: 80%;
-        }
-    }
+  @media screen and (max-width: $sidebar-breakpoint) {
+    .card {
+      .content {
+        width: 95%;
 
-    @media screen  and (max-width: $tablet-breakpoint) {
-        .leadershipGrid {
-            max-width: 100%;
+        .image {
+          img {
+            height: 200px;
+          }
         }
-        .heading, .card {
-            max-width: 90%;
-        }
+      }
     }
+  }
 }
+
+// Will Need Leaderboard Card CSS in Future
+
+// .about {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     .card {
+//         max-width: 1500px;
+//         display: flex;
+//         margin: 50px 0;
+//         .left {
+//             flex: 1;
+//             border: 2px solid blue;
+//         }
+//         .right {
+//             flex: 1;
+//             display: flex;
+//             align-items: center;
+//             justify-content: flex-end;
+//             border: 2px solid red;
+//             img {
+//                 height: 170px;
+//                 object-fit: cover;
+//                 border-radius: 30px;
+//             }
+//         }
+//         .title {
+//             font-size: 18;
+//             font-weight: 600;
+//             margin: 15px 0;
+//         }
+//         .description {
+//             white-space: pre-line;
+//             font-size: 12;
+//         }
+//     }
+//     .flip {
+//         flex-direction: row-reverse;
+//         .right {
+//             justify-content: start;
+//         }
+//     }
+//     .heading {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: flex-start;
+//         max-width: 60%;
+
+//         .leadership {
+//             font-size: 16;
+//             font-weight: 600;
+//             margin: 10px 0;
+//         }
+
+//         .leadershipPara {
+//             font-size: 10;
+//         }
+//     }
+
+//     .leadershipGrid {
+//         display: grid;
+//         grid-template-columns: repeat(3, auto);
+//         max-width: 60%;
+//         width: 100%;
+//         padding: 10px;
+//         .leadershipCard {
+//             height: 70px;
+//             display: flex;
+//             align-items: center;
+//             margin: 25px 0;
+//             .left {
+//                 width: 30%;
+//                 height: 100%;
+//                 img {
+//                     height: 100%;
+//                     object-fit: cover;
+//                     border-radius: 999px;
+//                 }
+//             }
+//             .right {
+//                 width: 70%;
+//                 height: 100%;
+//                 display: flex;
+//                 justify-content: center;
+//                 flex-direction: column;
+//                 .name {
+//                     font-weight: bold;
+//                     font-size: 14;
+//                 }
+//                 .post {
+//                     font-size: 12;
+//                 }
+//             }
+//         }
+//     }
+
+//     @media screen and (max-width: $navbar-breakpoint) {
+//         .leadershipGrid {
+//             grid-template-columns: repeat(1, auto);
+//             .leadershipCard {
+//                 margin: 10px 0;
+//                 .left {
+//                     width: 15%;
+//                 }
+//             }
+//         }
+//     }
+//     @media screen and (max-width: 1068px) {
+//         .card {
+//             flex-direction: column-reverse;
+//             align-items: flex-start;
+//             img {
+//                 width: 100%;
+//                 object-fit: cover;
+//             }
+//         }
+//     }
+//     @media screen and (max-width: 900px) {
+//         .leadershipGrid {
+//             max-width: 80%;
+//         }
+//     }
+
+//     @media screen  and (max-width: $tablet-breakpoint) {
+//         .leadershipGrid {
+//             max-width: 100%;
+//         }
+//         .heading, .card {
+//             max-width: 90%;
+//         }
+//     }
+// }
