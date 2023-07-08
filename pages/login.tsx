@@ -1,21 +1,29 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
-import TextField from '@mui/material/TextField';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { errorText } from '../constants/errorText';
+import { SelectChangeEvent } from '@mui/material/Select';
 import { BiErrorCircle } from "react-icons/bi"
 import ErrorTextBox from '../components/register/ErrorTextBox';
 import { IconButton, InputAdornment } from '@mui/material';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
+import CustomTextField from '../components/common/CustomTextField/CustomTextField';
+import DialogPopup from '../components/common/DialogPopup/DialogPopup';
+import Link from 'next/link';
 
 function Login() {
 
     const [formValues, setFormValues] = useState({
-        username: '',
+        email: '',
         password: '',
     })
 
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({
+        error: false,
+        title: '',
+        description: '',
+    });
+
     const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>
@@ -36,42 +44,66 @@ function Login() {
 
         // check if login credentials are valid
         if (true) {
-            setError(true);
+            setError({
+                ...error,
+                error: true
+            });
 
-            setTimeout(() => {
-                setError(false);
-            }, 3000);
         } else {
             // make API calls
         }
     }
+
+    useEffect(() => {
+        console.log(error)
+
+    }, [error])
 
     return (
         <PageLayout title="Login | ACM at PEC">
 
             {/* Header */}
             <form className={styles.parent} onSubmit={handleSubmit}>
+                {
+                    error.error ? <DialogPopup
+                        errorTitle={errorText.invalidFormData.title}
+                        errorDescription={errorText.invalidFormData.description}
+                        handleClose={() => setError({
+                            ...error,
+                            error: false
+                        })}
+                    />
+                        : <></>
+                }
 
                 <div className={styles.intro}>
-                    <h1>Login</h1>
+                    <h1>Login to PEC ACM</h1>
+                    <div style={{marginTop: "7px"}}>
+                        Don{`'`}t have an account? &nbsp;
+                        <Link href='/register' className={styles.link}>
+                            Register
+                        </Link>
+                    </div>
                 </div>
 
                 {/* User Account Details */}
                 <div className={styles.sectionWrapper}>
 
                     <div className={styles.flowSection}>
+                        <div className={`${styles.smallText} ${styles.smallHeading}`}>EMAIL ID</div>
                         <div className={styles.accountDetails}>
-                            <TextField
-                                name="username"
-                                label="Username"
+                            <CustomTextField
+                                name="email"
+                                type="email"
+                                label="email@name.com"
                                 variant="filled"
                                 onChange={handleChange}
-                                value={formValues.username}
-                                fullWidth
-                                required />
+                                value={formValues.email}
+                                fullWidth={true}
+                                required={true} />
                         </div>
                         <div className={styles.accountDetails}>
-                            <TextField
+                            <CustomTextField
                                 name="password"
                                 label="Password"
                                 variant="filled"
@@ -85,21 +117,18 @@ function Login() {
                                         </IconButton>
                                     </InputAdornment>)
                                 }}
-                                fullWidth
-                                required />
+                                fullWidth={true}
+                                required={true} />
                         </div>
                     </div>
                 </div>
 
                 {/* Submit Button */}
                 <div className={`${styles.buttonGroup} ${styles.flowSection}`}>
-                    {error
-                        ? <ErrorTextBox text={errorText.incorrectEntry} icon={<BiErrorCircle />} />
-                        : <></>
-                    }
                     <div className={styles.registerButton}>
                         <button type="submit">Login</button>
                     </div>
+
                 </div>
             </form>
         </PageLayout>
@@ -107,7 +136,3 @@ function Login() {
 }
 
 export default Login;
-
-const errorText = {
-    incorrectEntry: "Login credentials are incorrect."
-}
