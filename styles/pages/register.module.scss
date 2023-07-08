@@ -1,0 +1,153 @@
+@import "../variables.scss";
+
+.sectionWrapper {
+  border-bottom: 1px solid $acm-primary;
+
+  padding-top: 30px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 80%;
+}
+
+.flowSection {
+  max-width: 1200px;
+  width: 32em;
+  margin: auto;
+}
+
+.smallText {
+  font-size: 16px;
+  line-height: 1.42861;
+  font-weight: 500;
+  letter-spacing: -0.016em;
+  color: $font-secondary-color;
+  width: 28em;
+  word-wrap: break-word;
+}
+
+.errorText {
+  color: $error-color;
+}
+
+.errorBoxWrapper {
+    display: flex;
+    align-items: center;
+    padding: 3.6px;
+}
+
+.spaceBefore {
+    padding-left: 5px;
+}
+
+.smallHeading {
+  font-weight: 700;
+}
+
+.buttonGroup {
+  padding-top: 16px;
+
+  .registerButton {
+    padding-top: 14px;
+    padding-bottom: 40px;
+    text-align: center;
+
+    // try to compose this
+    button {
+      outline: none;
+      background-color: $acm-primary;
+      color: white;
+      border: 1px solid $acm-primary;
+      padding: 10px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: white;
+        color: $acm-primary;
+        transition: all 0.5s;
+      }
+    }
+  }
+}
+
+.parent {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .intro {
+    text-align: center;
+
+    h1 {
+      word-wrap: break-word;
+    }
+
+    .introLine {
+      font-size: 17px;
+      padding-top: 14px;
+    }
+  }
+
+  .link {
+    color: $link-primary-color;
+    white-space: nowrap;
+  }
+
+  .name {
+    display: flex;
+    margin-bottom: 14px;
+    justify-content: space-between;
+
+    .fName, .lName {
+        min-width: 245px;
+    }
+  }
+
+  .userDetails {
+    width: 100%;
+
+    h3 {
+      text-align: left;
+    }
+
+    > div {
+        margin-bottom: 12px;
+    }
+  }
+
+  .accountDetails {
+    margin-bottom: 14px;
+  }
+}
+
+@media only screen and (max-device-width: $tablet-breakpoint) {
+  .name {
+    flex-direction: column;
+
+    .fName, .lName {
+      min-width: none;
+    }
+
+    .fName {
+      margin-bottom: 14px;
+    }
+  }
+
+  .sectionWrapper {
+    width: 90%;
+  }
+
+  .flowSection {
+    width: 100%;
+  }
+
+  .smallText {
+    width: 100%;
+    margin: 2px 0;
+  }
+}
