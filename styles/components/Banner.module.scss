@@ -18,7 +18,7 @@
     border-radius: 4px;
     flex: 0 0 auto;
     background-color: transparent;
-    transition: background-color 0.5s;
+    transition: all ease-in .5s;
   }
 
   h3 {
@@ -27,5 +27,6 @@
     font-size: 36px;
     margin-left: 50%;
     translate: -50% 0;
+    font-weight: 600;
   }
 }
