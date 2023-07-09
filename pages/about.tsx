@@ -1,6 +1,6 @@
 import React from "react";
 import AboutCard from "../components/about/AboutCard";
-import {ABOUTUS} from "../constants/aboutUsText";
+import { ABOUTUS } from "../constants/aboutUsText";
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/about.module.scss";
 
@@ -16,7 +16,7 @@ function about() {
                             imgUrl={obj?.imgUrl}
                             imgAlt={obj.imgAlt}
                             key={obj.key}
-                            flip={id%2===1}
+                            flip={id % 2 === 1}
                         />
                     )
                 }

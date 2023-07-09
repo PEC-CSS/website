@@ -16,9 +16,10 @@ $side-gap: min(60px, 6vw);
     margin: 0 40px;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 60px;
 
     .content {
-      max-width: 50%;
+      max-width: 45%;
       min-width: 260px;
       text-align: left;
 
@@ -28,7 +29,7 @@ $side-gap: min(60px, 6vw);
 
       .text {
         font-size: 16px;
-        margin: 5px 0;
+        margin: 10px 0;
       }
     }
 
