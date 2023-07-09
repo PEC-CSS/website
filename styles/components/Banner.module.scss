@@ -27,5 +27,31 @@
     font-size: 36px;
     margin-left: 50%;
     translate: -50% 0;
+    text-align: center;
   }
 }
+
+
+@media screen and (max-width: $navbar-breakpoint) {
+  .banner {
+      h3 {
+          font-size: 32px;
+      }
+  }
+}
+
+@media screen and (max-width: 830px) {
+ .banner {
+  h3 {
+    font-size: 26px;
+  }
+ } 
+}
+
+@media screen and (max-width: 700px) {
+  .banner {
+   h3 {
+     font-size: 20px;
+   }
+  } 
+ }
