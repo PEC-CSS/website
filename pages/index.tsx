@@ -5,7 +5,7 @@ import Trending from "../components/home/Trending";
 import Link from "next/link";
 
 export default function Home() {
-    return <PageLayout title="Home | ACM at PEC">
+    return <PageLayout title="Home | ACM at PEC" heading={"A computer science society"}>
         <div className={styles.hero}>
             <p>
                 Embark on a captivating journey through the digital realm of the Computer Science Society, the
