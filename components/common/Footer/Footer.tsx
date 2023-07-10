@@ -83,30 +83,36 @@ const aboutLinks = [
     },
 ]
 
-const socialLinks = [
+export const socialLinks = [
     {
         href: "",
         icon: <FaDiscord/>,
         name: "Discord",
+        svg: "/assets/illustrations/socials/discord.svg"
     }, {
-        href: "",
+        href: "https://github.com/PEC-CSS/",
         icon: <BsGithub/>,
         name: "Github",
+        svg: ""
     }, {
         href: "",
         icon: <BsInstagram/>,
         name: "Instagram",
+        svg: "/assets/illustrations/socials/instagram.svg"
     }, {
         href: "",
         icon: <BsYoutube/>,
         name: "Youtube",
+        svg: "/assets/illustrations/socials/youtube.svg"
     }, {
         href: "",
         icon: <FaLinkedinIn/>,
         name: "Linkedin",
+        svg: "/assets/illustrations/socials/linkedin.svg"
     }, {
         href: "",
         icon: <BsFacebook/>,
         name: "Facebook",
+        svg: "/assets/illustrations/socials/facebook.svg"
     },
 ]
