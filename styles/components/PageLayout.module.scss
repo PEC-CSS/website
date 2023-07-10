@@ -3,8 +3,21 @@
     flex-direction: column;
     background-color: white;
     min-height: 100vh;
+    
+    .children {
+        overflow: hidden;
+        margin-top: 70px;
+
+    }
+}
+
+.dashboard {
+    display: flex;
+    background-color: #fff;
+    min-height: 100vh;
+    min-width: 100vw;
 
     .children {
-        margin-top: 70px;
+        overflow: hidden;
     }
 }
