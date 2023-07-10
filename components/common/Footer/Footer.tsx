@@ -83,30 +83,36 @@ const aboutLinks = [
     },
 ]
 
-const socialLinks = [
+export const socialLinks = [
     {
-        href: "",
+        href: "https://discord.gg/59mDGtSyGD",
         icon: <FaDiscord/>,
         name: "Discord",
+        svg: "/assets/illustrations/socials/discord.svg"
     }, {
-        href: "",
+        href: "https://github.com/PEC-CSS/",
         icon: <BsGithub/>,
         name: "Github",
+        svg: ""
     }, {
-        href: "",
+        href: "https://www.instagram.com/pecacm",
         icon: <BsInstagram/>,
         name: "Instagram",
+        svg: "/assets/illustrations/socials/instagram.svg"
     }, {
-        href: "",
+        href: "https://www.youtube.com/c/PECACMStudentChapter",
         icon: <BsYoutube/>,
         name: "Youtube",
+        svg: "/assets/illustrations/socials/youtube.svg"
     }, {
-        href: "",
+        href: "https://www.linkedin.com/company/pec-acm-student-chapter",
         icon: <FaLinkedinIn/>,
         name: "Linkedin",
+        svg: "/assets/illustrations/socials/linkedin.svg"
     }, {
-        href: "",
+        href: "https://www.facebook.com/pecacm/",
         icon: <BsFacebook/>,
         name: "Facebook",
+        svg: "/assets/illustrations/socials/facebook.svg"
     },
 ]
