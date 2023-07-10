@@ -6,10 +6,12 @@ export const BannerBox = ({opacity, color}: { opacity: number, color: string }) 
     useEffect(() => {
         if (divRef.current!=null) {
             setTimeout(() => {
-                if(divRef.current) // i know redundant, but TS :(
+                if(divRef.current) {
                     divRef.current.style.backgroundColor = color; // Set the desired background color
+                    divRef.current.style.opacity = `${opacity}`;
+                } // i know redundant, but TS :(
             }, 0);
         }
     })
-    return <div ref={divRef} className={styles.banner_box} style={{opacity: opacity, backgroundColor: color}}/>
+    return <div ref={divRef} className={styles.banner_box} style={{opacity: 0.05, backgroundColor: color}}/>
 }

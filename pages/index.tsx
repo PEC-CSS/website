@@ -3,6 +3,7 @@ import styles from "../styles/pages/index.module.scss";
 import Branches from "../components/home/Branches";
 import Trending from "../components/home/Trending";
 import Link from "next/link";
+import { socialLinks } from "../components/common/Footer/Footer";
 
 export default function Home() {
     return <PageLayout title="Home | ACM at PEC" heading={"A computer science society"}>
@@ -35,9 +36,9 @@ export default function Home() {
             <h3>Reach out us at</h3>
             <div className={styles.divider}/>
             <div className={styles.social_icons}>
-                {socialLinks.map((socialLink, index) => {
+                {socialLinks.filter((socialLink) => socialLink.svg.length > 0 ).map((socialLink, index) => {
                     return <a key={index} href={socialLink.href}>
-                        <img src={socialLink.image} alt={socialLink.name}/>
+                        <img src={socialLink.svg} alt={socialLink.name} />
                     </a>
                 })}
             </div>
@@ -53,26 +54,26 @@ export default function Home() {
     </PageLayout>;
 }
 
-const socialLinks = [
-    {
-        href: "",
-        image: "/assets/illustrations/socials/discord.svg",
-        name: "Discord"
-    }, {
-        href: "",
-        image: "/assets/illustrations/socials/instagram.svg",
-        name: "Instagram"
-    }, {
-        href: "",
-        image: "/assets/illustrations/socials/linkedin.svg",
-        name: "Linkedin"
-    }, {
-        href: "",
-        image: "/assets/illustrations/socials/youtube.svg",
-        name: "YouTube"
-    }, {
-        href: "",
-        image: "/assets/illustrations/socials/facebook.svg",
-        name: "Facebook"
-    },
-]
+// const socialLinks = [
+//     {
+//         href: "",
+//         image: "/assets/illustrations/socials/discord.svg",
+//         name: "Discord"
+//     }, {
+//         href: "",
+//         image: "/assets/illustrations/socials/instagram.svg",
+//         name: "Instagram"
+//     }, {
+//         href: "",
+//         image: "/assets/illustrations/socials/linkedin.svg",
+//         name: "Linkedin"
+//     }, {
+//         href: "",
+//         image: "/assets/illustrations/socials/youtube.svg",
+//         name: "YouTube"
+//     }, {
+//         href: "",
+//         image: "/assets/illustrations/socials/facebook.svg",
+//         name: "Facebook"
+//     },
+// ]
