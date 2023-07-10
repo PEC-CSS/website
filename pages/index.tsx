@@ -53,27 +53,3 @@ export default function Home() {
         </div>
     </PageLayout>;
 }
-
-// const socialLinks = [
-//     {
-//         href: "",
-//         image: "/assets/illustrations/socials/discord.svg",
-//         name: "Discord"
-//     }, {
-//         href: "",
-//         image: "/assets/illustrations/socials/instagram.svg",
-//         name: "Instagram"
-//     }, {
-//         href: "",
-//         image: "/assets/illustrations/socials/linkedin.svg",
-//         name: "Linkedin"
-//     }, {
-//         href: "",
-//         image: "/assets/illustrations/socials/youtube.svg",
-//         name: "YouTube"
-//     }, {
-//         href: "",
-//         image: "/assets/illustrations/socials/facebook.svg",
-//         name: "Facebook"
-//     },
-// ]
