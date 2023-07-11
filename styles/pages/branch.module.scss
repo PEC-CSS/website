@@ -1,0 +1,7 @@
+.branch {
+    background-color: red;
+
+    &[data-branch="development"] {
+        background-color: green;
+    }
+}
