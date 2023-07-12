@@ -1,0 +1,25 @@
+@import "../variables";
+
+.rbc-header {
+    background-color: $acm-primary;
+    border: 0 !important;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500 !important;
+    padding: 0.5em !important;
+}
+
+.rbc-toolbar {
+    .rbc-btn-group {
+        background: #000;
+    }
+}
+
+.rbc-date-cell {
+    text-align: left !important;
+    padding-left: 5px !important;
+    padding-top: 5px !important;
+}
