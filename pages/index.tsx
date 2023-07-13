@@ -3,7 +3,7 @@ import styles from "../styles/pages/index.module.scss";
 import Branches from "../components/home/Branches";
 import Trending from "../components/home/Trending";
 import Link from "next/link";
-import { socialLinks } from "../components/common/Footer/Footer";
+import {socialLinks} from "../components/common/SocialLinks/SocialLinks";
 
 export default function Home() {
     return <PageLayout title="Home | ACM at PEC" heading={"A computer science society"}>

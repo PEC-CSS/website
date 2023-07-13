@@ -1,0 +1,35 @@
+@import "../variables";
+
+.sidebar {
+    flex-basis: 18%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: $acm-primary;
+    color: white;
+
+    .header {
+        padding: 10px 15px;
+
+        img {
+            width: 80px;
+            height: 80px;
+            margin: 10px 0;
+            border-radius: 50%;
+        }
+    }
+
+    .items {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .socialLinks {
+        margin: -5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        scale: 0.85;
+    }
+
+}
