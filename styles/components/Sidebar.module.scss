@@ -1,7 +1,6 @@
 @import "../variables";
 
 .sidebar {
-    flex-basis: 18%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -11,12 +10,26 @@
     .header {
         padding: 10px 15px;
 
-        img {
-            width: 80px;
-            height: 80px;
-            margin: 10px 0;
-            border-radius: 50%;
+        .pfp {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: start;
+            img {
+                width: 80px;
+                height: 80px;
+                margin: 10px 0;
+                border-radius: 50%;
+            }
+
+            .close {
+                display: none;
+                align-self: flex-end;
+                margin: 0 0 auto auto;
+                font-size: 25px;
+            }
         }
+
     }
 
     .items {
@@ -32,4 +45,47 @@
         scale: 0.85;
     }
 
+}
+
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    font-size: 35px;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    color: white;
+    z-index: 50;
+    background-color: $acm-primary;
+}
+
+@media screen and (max-width: $navbar-breakpoint) {
+    .sidebar {
+        transition: 400ms;
+        position: fixed;
+        z-index: 100;
+
+        .header {
+            .pfp {
+                .close {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .sidebar[data-open="true"] {
+        translate: 0;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    .sidebar[data-open="false"] {
+        translate: -100% 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
