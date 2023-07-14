@@ -1,5 +1,4 @@
 import React from 'react'
-import { IconType } from 'react-icons/lib'
 import styles from "../../styles/pages/register.module.scss";
 
 type Props = {

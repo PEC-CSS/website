@@ -1,0 +1,81 @@
+@import "../variables.scss";
+
+.card {
+    border: 1px solid #d0d0d0;
+    width: 240px;
+    padding: 10px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+    border-radius: 8px;
+
+    h2 {
+        font-size: 28px;
+        word-wrap: break-word;
+    }
+
+    .startTime {
+        font-weight: 300;
+        font-size: 22px;
+    }
+
+    .bold {
+        font-weight: 400;
+    }
+    
+    button {
+        outline: none;
+        background-color: $acm-primary;
+        color: white;
+        border: 1px solid $acm-primary;
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 10px;
+  
+        &:hover {
+            cursor: pointer;
+            background-color: white;
+            color: $acm-primary;
+            transition: background-color 0.5s, color 0.5s;
+        }
+    }
+}
+
+@keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+}
+
+.suspense {
+    h2 {
+        height: 60px;
+        width: 218px;
+    }
+
+    div {
+        height: 22px;
+        width: 110px;
+    }
+
+    button {
+        height: 15px;
+        width: 70px;
+        border: none;
+        cursor: default;
+        
+        &:hover {
+            cursor: default;
+        }
+    }
+
+    h2, div, button {
+        background: $fallback-bg-color;
+        border-radius: 5px;
+        background-size: 200% 100%;
+        animation: shine linear infinite 1s;
+    }
+}
