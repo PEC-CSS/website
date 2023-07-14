@@ -8,16 +8,9 @@ We ll start with the website and rebrand everything that comes in the way.
 
 ## Tech Stack
 - NextJs
-- ThreeJs
-- Sanity CMS
 - Material UI
 - CSS3
-
-## Softwares
-- VS Code
-- Blender
-- Adobe Illustrator
-- Git
+- SpringBoot API [Backend](https://github.com/PEC-CSS/acm-website-backend)
 
 ## Target
 Target is to build a whole new brand of the computer science society.

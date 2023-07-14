@@ -27,7 +27,7 @@ export default function Trending() {
 
     const fetchTrending = async () => {
     }
-
+    console.log("hi", loading)
     return <div className={styles.trending_cards}>
         {
             (loading || trendingInfo == null) ?
