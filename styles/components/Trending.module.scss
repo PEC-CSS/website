@@ -1,0 +1,56 @@
+@import "../variables";
+
+.trending_cards {
+    display: flex;
+    padding: 30px 0;
+
+    .trending_card {
+        margin: 0 10px;
+        border-radius: 20px;
+        height: 300px;
+        width: 300px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: white;
+
+        h4 {
+            font-size: 20px;
+        }
+
+        p {
+            text-align: center;
+        }
+    }
+
+    .loading {
+        cursor: default;
+        background: linear-gradient(
+            292deg,
+            rgba(13, 169, 217, 1) 0%,
+            rgba(0, 117, 255, 1) 35%,
+            rgba(0, 212, 255, 1) 100%
+        );
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .trending_cards {
+        flex-direction: column;
+
+        .trending_card {
+            width: 80vw;
+            margin: 20px 0;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet-breakpoint) {
+    .trending .trending_cards .trending_card {
+        height: 200px;
+    }
+}

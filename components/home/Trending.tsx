@@ -1,4 +1,4 @@
-import styles from "../../styles/pages/index.module.scss";
+import styles from "../../styles/components/Trending.module.scss";
 import {useEffect, useState} from "react";
 
 interface TrendingCard {
@@ -27,7 +27,7 @@ export default function Trending() {
 
     const fetchTrending = async () => {
     }
-    console.log("hi", loading)
+
     return <div className={styles.trending_cards}>
         {
             (loading || trendingInfo == null) ?
