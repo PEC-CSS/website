@@ -1,193 +1,145 @@
 @import "../variables";
 
 .hero {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 
-  p {
-    width: 50%;
-    max-width: 1000px;
-    text-align: center;
-    margin: 20px 0;
-    font-weight: 200;
-    color: $font-secondary-color;
-    font-size: 18px;
+    p {
+        width: 50%;
+        max-width: 1000px;
+        text-align: center;
+        margin: 20px 0;
+        font-weight: 200;
+        color: $font-secondary-color;
+        font-size: 18px;
 
-    em {
-      font-weight: 700;
+        em {
+            font-weight: 700;
+        }
     }
-  }
 }
 
 .branches {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
 
-  h2 {
-    font-size: 36px;
-    font-weight: 600;
-  }
-
-  .branch_illustration {
-    margin: 60px 0 30px;
-    display: grid;
-    place-items: center;
-    width: 100%;
-
-    img {
-      width: 65%;
-      max-height: 200px;
-      object-fit: contain;
+    h2 {
+        font-size: 36px;
+        font-weight: 600;
     }
-  }
 
-  button {
-    outline: none;
-    background-color: $acm-primary;
-    color: white;
-    border: 1px solid $acm-primary;
-    padding: 10px 30px;
-    font-size: 18px;
-    border-radius: 10px;
+    .branch_illustration {
+        margin: 60px 0 30px;
+        display: grid;
+        place-items: center;
+        width: 100%;
 
-    &:hover {
-      cursor: pointer;
-      background-color: white;
-      color: $acm-primary;
-      transition: all 0.5s;
+        img {
+            width: 65%;
+            max-height: 200px;
+            object-fit: contain;
+        }
     }
-  }
+
+    button {
+        outline: none;
+        background-color: $acm-primary;
+        color: white;
+        border: 1px solid $acm-primary;
+        padding: 10px 30px;
+        font-size: 18px;
+        border-radius: 10px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: white;
+            color: $acm-primary;
+            transition: all 0.5s;
+        }
+    }
 }
 
 .reach_us {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: center;
-  margin: 50px 0;
-
-  h3 {
-    font-size: 36px;
-    font-weight: 500;
-  }
-
-  .divider {
-    background-color: black;
-    height: 50px;
-    width: 7px;
-    border-radius: 2px;
-    margin: 0 30px;
-  }
-
-  .social_icons {
     display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin: 50px 0;
 
-    img {
-      margin: 0 5px;
-
-      &:hover {
-        filter: drop-shadow(0 0 5px $acm-primary);
-      }
+    h3 {
+        font-size: 36px;
+        font-weight: 500;
     }
-  }
+
+    .divider {
+        background-color: black;
+        height: 50px;
+        width: 7px;
+        border-radius: 2px;
+        margin: 0 30px;
+    }
+
+    .social_icons {
+        display: flex;
+
+        img {
+            margin: 0 5px;
+
+            &:hover {
+                filter: drop-shadow(0 0 5px $acm-primary);
+            }
+        }
+    }
 }
 
 .trending {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 0;
-
-  h2 {
-    font-size: 36px;
-    font-weight: 600;
-  }
-
-  .trending_cards {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 30px 0;
 
-    .trending_card {
-      margin: 0 10px;
-      border-radius: 20px;
-      height: 300px;
-      width: 300px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      color: white;
-
-      h4 {
-        font-size: 20px;
-      }
-
-      p {
-        text-align: center;
-      }
+    h2 {
+        font-size: 36px;
+        font-weight: 600;
     }
-
-    .loading {
-      cursor: default;
-      background: linear-gradient(292deg, rgba(13, 169, 217, 1) 0%, rgba(0, 117, 255, 1) 35%, rgba(0, 212, 255, 1) 100%);
-    }
-  }
 }
 
 @media screen and (max-width: $laptop-breakpoint) {
-  .hero {
-    p {
-      width: 75%;
+    .hero {
+        p {
+            width: 75%;
+        }
     }
-  }
-  .branches {
-    .branch_illustration {
-      img {
-        width: 80%;
-      }
+    .branches {
+        .branch_illustration {
+            img {
+                width: 80%;
+            }
+        }
     }
-  }
 }
 
 @media screen and (max-width: $tablet-breakpoint) {
-  .reach_us {
-    flex-direction: column;
+    .reach_us {
+        flex-direction: column;
 
-    .divider {
-      display: none;
+        .divider {
+            display: none;
+        }
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        img {
+            height: 45px;
+        }
     }
-
-    h3 {
-      margin: 10px 0;
-    }
-
-    img {
-      height: 45px;
-    }
-  }
-
-  .trending .trending_cards .trending_card {
-    height: 200px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .trending .trending_cards {
-    flex-direction: column;
-
-    .trending_card {
-      width: 80vw;
-      margin: 20px 0;
-    }
-  }
 }
