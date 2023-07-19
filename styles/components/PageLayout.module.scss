@@ -19,5 +19,12 @@
 
     .children {
         overflow: hidden;
+        display: flex;
+        flex-direction: row;
+
+        .content {
+            flex: 1;
+            overflow: hidden;
+        }
     }
 }

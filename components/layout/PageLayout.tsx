@@ -8,7 +8,7 @@ import Banner from "../banner/Banner";
 type Props = {
     title: string;
     description?: string;
-    heading?: string;
+    heading?: string | JSX.Element;
     children?: ReactNode;
 };
 

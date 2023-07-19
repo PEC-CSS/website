@@ -4,7 +4,7 @@ import {Common} from "../../constants/common";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Banner({heading, color=Common.primaryColor}: {heading?: string, color?: string}) {
+export default function Banner({heading, color=Common.primaryColor}: {heading?: string | JSX.Element, color?: string}) {
     const [matrix, setMatrix] = useState<Array<Array<number>>>();
     const router = useRouter();
 
