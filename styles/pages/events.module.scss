@@ -9,40 +9,18 @@ $max-width-calendar: 900px;
     justify-content: center;
 
     .calendarWrapper {
-        border: 1px solid rgb(92, 92, 92);
+        // border: 1px solid rgb(92, 92, 92);
         height: 600px;
         width: $width-calendar;
         max-width: 900px;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 40px 10px;
     }
     .calendar {
         height: 100%;
         width: 100%;
-    }
-
-    .toolbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: $width-calendar;
-        max-width: $max-width-calendar;
-        padding: 10px 0;
-        border: 1px solid black;
-
-        .left {
-            display: flex;
-            align-items: center;
-            font-size: 20px;
-            color: #5E5873;
-            .icon {
-                font-size: 30px;
-                cursor: pointer;
-            }
-            p {
-                margin: 0 10px;
-            }
-        }
+        border-radius: 20px;
     }
 }

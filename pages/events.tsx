@@ -7,16 +7,13 @@ const localizer = momentLocalizer(moment);
 
 import styles from "../styles/pages/events.module.scss";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // calendar css
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-
-type NavigateAction = "PREV" | "NEXT" | "TODAY" | "DATE";
 
 function Events() {
     const [listedEvents, setListedEvents] = useState<Event[] | undefined>([
         {
-            start: moment().toDate(),
-            end: moment().add(17, "hours").toDate(),
-            title: "sex sux",
+            start: moment().add(2, "h").toDate(),
+            end: moment().add(2, "hours").toDate(),
+            title: "dummy event",
             resource: "huehheuuheu",
         },
     ]);
@@ -26,14 +23,7 @@ function Events() {
     return (
         <PageLayout title="Events | ACM at PEC" heading="Events">
             <div className={styles.events}>
-                <div className={styles.toolbar}>
-                    <div className={styles.left}>
-                        <BiChevronLeft className={styles.icon} />
-                        <BiChevronRight className={styles.icon} />
-                        <p>Month XXXX</p>
-                    </div> 
-                    <div className={styles.right}>{/* MUI button grp */}</div>
-                </div>
+                <p>Have a look at our calendar</p>
                 <div className={styles.calendarWrapper}>
                     <Calendar
                         localizer={localizer}
@@ -49,11 +39,12 @@ function Events() {
                         }
                         views={{
                             month: true,
-                            week: true,
-                            day: true,
+                            week: false,
+                            day: false,
+                            agenda: true,
                         }}
+                        
                         dayLayoutAlgorithm={"no-overlap"}
-                        toolbar={false}
                     />
                 </div>
             </div>
