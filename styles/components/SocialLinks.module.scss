@@ -1,0 +1,31 @@
+@import "../variables.scss";
+
+.socialLinks {
+    display: grid;
+    list-style: none;
+    grid-template-columns: repeat(3, auto);
+
+    li {
+        border: 1px solid white;
+        font-size: 36px;
+        height: 66px;
+        width: 66px;
+        display: grid;
+        place-items: center;
+        color: $acm-primary;
+        background: white;
+        margin: 5px;
+        border-radius: 20px;
+        cursor: pointer;
+
+        a {
+            height: 36px;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $acm-primary;
+            transition: color, background-color 0.3s;
+        }
+    }
+}

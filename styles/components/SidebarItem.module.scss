@@ -1,0 +1,30 @@
+@import "../variables";
+
+.sidebarItem {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 25px;
+    transition: 400ms;
+    align-items: center;
+    margin: 10px 0;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: black;
+        background-color: white;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin: 0 0 -5px 5px;
+    }
+}
+
+.sidebarItem[data-selected="true"] {
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: black;
+    background-color: white;
+}

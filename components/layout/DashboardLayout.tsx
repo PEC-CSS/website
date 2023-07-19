@@ -2,6 +2,7 @@ import Head from "next/head";
 import {ReactNode} from "react";
 import styles from "../../styles/components/PageLayout.module.scss";
 import Banner from "../banner/Banner";
+import {Sidebar} from "../dashboard/Sidebar";
 
 type Props = {
     title: string;
@@ -19,8 +20,11 @@ function DashboardLayout({title, children, description, heading}: Props) {
             </Head>
 
             <div className={styles.children}>
-                <Banner heading={heading}/>
-                {children}
+                <Sidebar />
+                <div className={styles.content}>
+                    <Banner heading={heading}/>
+                    {children}
+                </div>
             </div>
         </div>
     );
