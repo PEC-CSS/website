@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PageLayout from "../../components/layout/PageLayout";
 import { BRANCHES } from "../../constants/branch";
 import { useRouter } from "next/router";
@@ -33,12 +33,13 @@ type Props = {
     whatWeDo: string[];
     logoUrl: string;
     alias: string;
+    subgroupColor?: string;
 }
 
-export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alias }: Props) {
+export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alias, subgroupColor }: Props) {
     const router = useRouter();
     return (
-        <PageLayout title={`${branch} | ACM at PEC`} heading={branchHeading(branch)}>
+        <PageLayout title={`${branch} | ACM at PEC`} heading={branchHeading(branch)} bannerColor={subgroupColor} footerColor={subgroupColor} branch={alias}>
             <div className={styles.branch} data-branch={branch}>
                 <div className={styles.branchInfo}>
                     <div className={styles.content}>
@@ -48,20 +49,24 @@ export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alia
                         <h3>What we do?</h3>
                             { whatWeDo?.map((content, id) => <p key={id + 20}>{content}</p>)}
                     </div>
-                    <h1>LOGO</h1>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src={logoUrl as string}
+                    alt={`${branch}-logo`}
+                    width={300}
+                    height={300}
+                />
                 </div>
 
                 <div className={styles.trendingFromBranch}>
                     <h3>Trending from <code>acm::{alias}</code></h3>
-                    {/* Dummy Text Replace it when you have card */}
-                    Trending Cards 
                     <Trending />
                 </div>
 
                 <div className={styles.upNext}>
                     <h3>Up Next</h3>
                     <span className={styles.eventCard}>
-                        <NextEventCard />    
+                        <NextEventCard branch={alias} />    
                     </span>
                 </div>
             </div>
@@ -91,6 +96,7 @@ export async function getServerSideProps({ query }: any) {
             whatWeDo: branches.whatWeDo,
             logoUrl: branches.logoUrl,
             alias: branches.alias,
+            subgroupColor: branches.color,
         },
     };
 }

@@ -8,7 +8,7 @@ interface EventInfo {
     href: string;
 }
 
-export default function NextEventCard() {
+export default function NextEventCard({branch = "none"} : {branch?: string}) {
 
     const [loading, setLoading] = useState(false);
     const [eventInfo, setEventInfo] = useState<EventInfo | null>();
@@ -43,7 +43,7 @@ export default function NextEventCard() {
                     </p>
                     <span className={`${styles.startTime} ${styles.bold}`}> 2h 59min </span>
                 </div>
-                <button>Register</button>
+                <button name={branch}>Register</button>
             </div>
     )
 }

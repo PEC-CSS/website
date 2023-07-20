@@ -24,7 +24,7 @@ function Header() {
                 <Link href={"/"}>
                     <>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/assets/logos/pecacm.svg" alt="ACM at PEC"/>
+                        <img src="/assets/logos/acmSVG.svg" alt="ACM at PEC"/>
                         <span>pecacm</span>
                     </>
                 </Link>

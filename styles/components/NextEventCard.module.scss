@@ -39,9 +39,77 @@
             cursor: pointer;
             background-color: white;
             color: $acm-primary;
-            transition: background-color 0.5s, color 0.5s;
+            transition: background-color 0.4s, color 0.4s;
         }
     }
+
+    button[name="cp"] {
+        color: white;
+        background-color: $cp-primary;
+        border: 1px solid $cp-primary;
+
+        &:hover {
+            color: $cp-primary;
+            background-color: white;
+        }
+    }
+
+    button[name="cyber"] {
+        color: white;
+        background-color: $cyber-primary;
+        border: 1px solid $cyber-primary;
+
+        &:hover {
+            color: $cyber-primary;
+            background-color: white;
+        }
+    }
+
+    button[name="dev"] {
+        color: white;
+        background-color: $dev-primary;
+        border: 1px solid $dev-primary;
+
+        &:hover {
+            color: $dev-primary;
+            background-color: white;
+        }
+    }
+
+    button[name="socials"] {
+        color: white;
+        background-color: $socials-primary;
+        border: 1px solid $socials-primary;
+
+        &:hover {
+            color: $socials-primary;
+            background-color: white;
+        }
+    }
+
+    button[name="ai"] {
+        color: white;
+        background-color: $ai-primary;
+        border: 1px solid $ai-primary;
+
+        &:hover {
+            color: $ai-primary;
+            background-color: white;
+        }
+    }
+
+    button[name="wit"] {
+        color: white;
+        background-color: $wit-primary;
+        border: 1px solid $wit-primary;
+
+        &:hover {
+            color: $wit-primary;
+            background-color: white;
+        }
+    }
+
+    
 }
 
 @keyframes shine {
