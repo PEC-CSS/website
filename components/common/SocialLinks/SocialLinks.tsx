@@ -4,7 +4,7 @@ import {BsFacebook, BsGithub, BsInstagram, BsYoutube} from "react-icons/bs";
 import {FaDiscord, FaLinkedinIn} from "react-icons/fa";
 import styles from "../../../styles/components/SocialLinks.module.scss"
 
-export const SocialLinks = ({branch} : {branch: string}) => {
+export const SocialLinks = ({branch = "none"} : {branch: string}) => {
     return (
         <ul className={styles.socialLinks}>
             {socialLinks.map((socialLink, index) => {
