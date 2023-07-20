@@ -52,7 +52,7 @@ export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alia
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src={logoUrl as string}
-                    alt={`${branch}-logo`}
+                    alt={`${name}-logo`}
                     width={300}
                     height={300}
                 />

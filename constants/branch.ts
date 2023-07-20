@@ -37,18 +37,6 @@ const BRANCHES = {
         alias: "cp",
         color: "#5A2E8F",
     },
-    socials: {
-        name: "Socials",
-        whoAreWe: [
-            "ACM club's creative team for social media and publicity. Promote activities, design captivating materials, engage the audience, and foster a vibrant community. Attract and retain members with visually appealing content.",
-        ],
-        whatWeDo: [
-            "We do more than create content - analyzing social media data, gathering feedback, and adapting strategies to boost our online presence and reach. Join us to unleash your creativity beyond websites and flags!"
-        ],
-        logoUrl: "/assets/logos/socialsSVG.svg",
-        alias: "social",
-        color: "#CB1D8C",
-    },
     cyber: {
         name: "Cyber",
         whoAreWe: [
@@ -61,6 +49,19 @@ const BRANCHES = {
         alias: "cyber",
         color: "#38B64B",
     },
+    socials: {
+        name: "Socials",
+        whoAreWe: [
+            "ACM club's creative team for social media and publicity. Promote activities, design captivating materials, engage the audience, and foster a vibrant community. Attract and retain members with visually appealing content.",
+        ],
+        whatWeDo: [
+            "We do more than create content - analyzing social media data, gathering feedback, and adapting strategies to boost our online presence and reach. Join us to unleash your creativity beyond websites and flags!"
+        ],
+        logoUrl: "/assets/logos/socialsSVG.svg",
+        alias: "socials",
+        color: "#CB1D8C",
+    },
+
     wit: {
         name: "WiT",
         whoAreWe: [
