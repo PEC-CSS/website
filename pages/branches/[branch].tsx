@@ -45,7 +45,7 @@ export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alia
             bannerColor={subgroupColor} 
             footerColor={subgroupColor} 
             branch={alias}
-            headerImgUrl={`/assets/logos/${alias}SVG.svg`}
+            headerImgUrl={`/assets/logos/${alias}.png`}
         >
             <div className={styles.branch} data-branch={branch}>
                 <div className={styles.branchInfo}>
@@ -101,7 +101,7 @@ export async function getServerSideProps({ query }: any) {
             name: branches.name,
             whoAreWe: branches.whoAreWe,
             whatWeDo: branches.whatWeDo,
-            logoUrl: branches.logoUrl,
+            logoUrl: `/assets/logos/${branches.alias}.png`,
             alias: branches.alias,
             subgroupColor: branches.color,
         },

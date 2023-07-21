@@ -7,7 +7,6 @@ const BRANCHES = {
         whatWeDo: [
             "Empower growth with workshops, hackathons & knowledge sharing. Explore diverse technologies. Shape the future of tech together. Join us to unleash your potential and collaborate with a vibrant community.",
         ],
-        logoUrl: "/assets/logos/devSVG.svg",
         alias: "dev",
         color: "#EF3133",
     },
@@ -20,7 +19,6 @@ const BRANCHES = {
             "Prioritizing projects & hackathons for hands-on experience & teamwork. Apply knowledge in real-world scenarios, innovate AI solutions. Creative thinking, time constraints & judging at hackathons.",
             "Beyond hackathons, we offer workshops, guest lectures & research opportunities to broaden knowledge in AI and data science. Empowering students to excel and present their findings at conferences, fostering a collaborative learning community.",
         ],
-        logoUrl: "/assets/logos/aiSVG.svg",
         alias: "ai",
         color: "#FCBA28",
     },
@@ -33,7 +31,6 @@ const BRANCHES = {
             "Cherishing the thrill of competitive programming, we find joy in the adrenaline rush during intense coding competitions and celebrate each accepted submission with happiness.",
             "Besides organizing various coding contests, we actively teach diverse algorithms and encourage interactive discussions."
         ],
-        logoUrl: "/assets/logos/cpSVG.svg",
         alias: "cp",
         color: "#5A2E8F",
     },
@@ -45,7 +42,6 @@ const BRANCHES = {
         whatWeDo: [
             "We use our skills, and knowledge to find a way to get around challenges, go to places where we are not supposed to be, look at things hidden away from the rest of the world, and break things that are not meant to be broken. We organize, and participate in challenges where breaking things and uncovering secrets not only earns you prizes but also allows you to showcase your computer skills.",
         ],
-        logoUrl: "/assets/logos/cyberSVG.svg",
         alias: "cyber",
         color: "#38B64B",
     },
@@ -57,7 +53,6 @@ const BRANCHES = {
         whatWeDo: [
             "We do more than create content - analyzing social media data, gathering feedback, and adapting strategies to boost our online presence and reach. Join us to unleash your creativity beyond websites and flags!"
         ],
-        logoUrl: "/assets/logos/socialsSVG.svg",
         alias: "socials",
         color: "#CB1D8C",
     },
@@ -70,7 +65,6 @@ const BRANCHES = {
         whatWeDo: [
             "By providing a platform for networking, mentorship, and professional development, we seek to empower women to pursue their passion for computing. We are committed to cultivating a diverse and inclusive community, where women can thrive and contribute their unique perspectives, talents, and ideas to shape the future of computing.",
         ],
-        logoUrl: "/assets/logos/witSVG.svg",
         alias: "wit",
         color: "#3CB878"
     },
