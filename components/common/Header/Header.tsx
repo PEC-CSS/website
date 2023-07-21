@@ -24,7 +24,7 @@ function Header({imgUrl} : {imgUrl?: string}) {
                 <Link href={"/"}>
                     <>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={imgUrl ? imgUrl as string : "/assets/logos/acmSVG.svg"} alt="ACM at PEC"/>
+                        <img src={imgUrl ? imgUrl as string : "/assets/logos/acm.png"} alt="ACM at PEC"/>
                         <span>pecacm</span>
                     </>
                 </Link>
