@@ -1,4 +1,4 @@
-import '../styles/globals.scss'
+import '../styles/app.scss'
 import type { AppProps } from 'next/app'
 import {Josefin_Sans} from 'next/font/google';
 
