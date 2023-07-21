@@ -1,2 +1,18 @@
+.parent {
+    display: flex;
+    justify-self: center;
+    text-align: center;
+    align-items: center;
 
+    svg g {
+      border: 2px solid red;
+      fill-opacity: 0.8;
+    }
+    svg g:hover {
+      fill-opacity: 1;
+    }
 
+    svg g:hover text {
+      fill-opacity: 1;
+    }
+}

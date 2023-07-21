@@ -9,6 +9,17 @@ $dropdownText: 17px;
 }
 
 .branch {
+    .subgroupLogo {
+        rotate: 45deg;
+        border-radius: 25px;
+        max-height: 310px;
+        max-width: 310px;
+        margin-top: 30px;
+    }
+
+    img {
+        rotate: -45deg;
+    }
     code {
         font-family: 'Narnoor', monospace;
         line-height: 1.3;
@@ -130,6 +141,15 @@ $dropdownText: 17px;
                     font-size: 1.3em;
                 }
             }
+
+            .subgroupLogo {
+                margin-bottom: 25px;
+            }
+
+            img {
+                width: 200px;
+                height: 200px;
+            }
         }
 
         .trendingFromBranch {
@@ -140,6 +160,7 @@ $dropdownText: 17px;
 
         .upNext {
             flex-direction: column;
+            margin-left: -40px;
 
             h3 {
                 margin-bottom: 30px;

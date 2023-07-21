@@ -57,12 +57,14 @@ export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alia
                             { whatWeDo?.map((content, id) => <p key={id + 20}>{content}</p>)}
                     </div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    src={logoUrl as string}
-                    alt={`${name}-logo`}
-                    width={300}
-                    height={300}
-                />
+                <div className={styles.subgroupLogo} style={{border: `8px solid ${subgroupColor}`}}>
+                    <img
+                        src={logoUrl as string}
+                        alt={`${name}-logo`}
+                        width={250}
+                        height={250}
+                    />
+                </div>
                 </div>
 
                 <div className={styles.trendingFromBranch}>
