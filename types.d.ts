@@ -1,1 +1,1 @@
-declare module 'react-hexagon';
+declare module 'react-hexgrid';
