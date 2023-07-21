@@ -5,7 +5,7 @@ export const ABOUTUS = [
             'PEC ACM is the official student chapter of the Association for Computing Machinery (ACM) at our college. As an ACM chapter, our responsibilities include organizing technical workshops, hosting coding competitions, conducting guest lectures, and fostering a community of passionate computer science enthusiasts.',
             'Our team works tirelessly to promote and enhance coding skills among students through various initiatives and events. Additionally, we collaborate with different companies on specific projects, bridging the gap between academia and industry.'
         ],
-        imgUrl: '/assets/logos/acm.svg',
+        imgUrl: '/assets/logos/acmSVG.svg',
         imgAlt: 'PEC ACM Logo',
         key: 1
     },

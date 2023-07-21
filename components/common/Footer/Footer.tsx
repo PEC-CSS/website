@@ -3,9 +3,9 @@ import styles from "../../../styles/components/Footer.module.scss";
 import Link from "next/link";
 import {SocialLinks} from "../SocialLinks/SocialLinks";
 
-function Footer() {
+function Footer({color, branch} : {color: string, branch: string}) {
     return (
-        <footer className={styles.footer}>
+        <footer className={styles.footer} style={{backgroundColor: color}}>
             <div className={styles.left}>
                 <h2>About</h2>
                 <ul>
@@ -28,7 +28,7 @@ function Footer() {
             </div>
             <div className={styles.right}>
                 <h2>Social Media</h2>
-                <SocialLinks />
+                <SocialLinks branch={branch} />
             </div>
         </footer>
     );
