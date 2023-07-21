@@ -3,6 +3,7 @@
 .title {
     text-align: left;
     width: 100%;
+    margin: 0 20px;
 }
 
 .trending {
@@ -52,6 +53,11 @@
 }
 
 @media screen and (max-width: $navbar-breakpoint) {
+
+    .title {
+        text-align: center;
+    }
+
     .trending {
         display: flex;
         flex-direction: column;
