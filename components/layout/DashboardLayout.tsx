@@ -7,7 +7,7 @@ import {Sidebar} from "../dashboard/Sidebar";
 type Props = {
     title: string;
     description?: string;
-    heading?: string;
+    heading?: string | JSX.Element;
     children?: ReactNode;
 };
 

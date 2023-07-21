@@ -1,0 +1,21 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+
+    img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    .details {
+        margin: 0 10px;
+        flex: 1;
+    }
+
+    .xp {
+        font-size: larger;
+    }
+}

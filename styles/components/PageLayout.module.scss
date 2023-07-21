@@ -1,3 +1,5 @@
+@import "../variables";
+
 .page {
     display: flex;
     flex-direction: column;
@@ -15,7 +17,7 @@
     display: flex;
     background-color: #fff;
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 100%;
 
     .children {
         overflow: hidden;
@@ -24,7 +26,19 @@
 
         .content {
             flex: 1;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            margin-left: 240px;
+        }
+    }
+}
+
+@media screen and (max-width: $navbar-breakpoint) {
+    .dashboard {
+        .children {
+            .content {
+                margin-left: 0;
+            }
         }
     }
 }
