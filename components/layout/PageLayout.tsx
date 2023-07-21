@@ -14,16 +14,17 @@ type Props = {
     bannerColor?: string;
     footerColor?: string;
     branch?: string;
+    headerImgUrl?: string;
 };
 
-function PageLayout({title, children, description, heading, bannerColor, footerColor, branch }: Props) {
+function PageLayout({title, children, description, heading, bannerColor, footerColor, branch, headerImgUrl }: Props) {
     return (
         <div className={styles.page}>
             <Head>
                 <title>{title}</title>
                 <meta name="description" content={description}/>
             </Head>
-            <Header/>
+            {headerImgUrl ? <Header imgUrl={headerImgUrl} /> : <Header />}
             <div className={styles.children}>
                 <Banner heading={heading} color={bannerColor ? bannerColor : Common.primaryColor}/>
                 {children}

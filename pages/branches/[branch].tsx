@@ -39,7 +39,14 @@ type Props = {
 export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alias, subgroupColor }: Props) {
     const router = useRouter();
     return (
-        <PageLayout title={`${branch} | ACM at PEC`} heading={branchHeading(branch)} bannerColor={subgroupColor} footerColor={subgroupColor} branch={alias}>
+        <PageLayout 
+            title={`${branch} | ACM at PEC`} 
+            heading={branchHeading(branch)} 
+            bannerColor={subgroupColor} 
+            footerColor={subgroupColor} 
+            branch={alias}
+            headerImgUrl={`/assets/logos/${alias}SVG.svg`}
+        >
             <div className={styles.branch} data-branch={branch}>
                 <div className={styles.branchInfo}>
                     <div className={styles.content}>
