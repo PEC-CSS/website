@@ -3,6 +3,9 @@
 .sidebar {
     height: 100%;
     display: flex;
+    overflow-y: hidden;
+    width: 240px;
+    position: fixed;
     flex-direction: column;
     background-color: $acm-primary;
     color: white;
@@ -64,7 +67,6 @@
 @media screen and (max-width: $navbar-breakpoint) {
     .sidebar {
         transition: 400ms;
-        position: fixed;
         z-index: 100;
 
         .header {
