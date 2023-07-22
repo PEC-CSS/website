@@ -3,11 +3,107 @@
 $headerText: 24px;
 $dropdownText: 17px;
 
-@font-face {
-    font-family: 'Narnoor';
-    src: url(../../public/assets/fonts/Narnoor-Regular.ttf);
+.wrapper {
+    $logoSize: 180px;
+
+    display: grid;
+    margin: 20px;
+
+    img {
+        opacity: 0.9;
+
+        &:hover {
+            opacity: 1;
+            filter: brightness(110%);
+        }
+    }
+
+    .grid1 {
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        justify-content: center;
+    }
+
+    .grid2 {
+        display: grid;
+        grid-template-columns: repeat(10, auto);
+        justify-content: center;
+
+        div {
+            height: $logoSize;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .center {
+        justify-self: center;
+    }
+
+    .emptySpace {
+        width: $logoSize / 6;
+    }    
 }
 
+@media screen and (max-width: 640px) {
+    $logoSize: 140px;
+    .wrapper {
+        margin: 10px;
+
+        .grid2 {
+            div {
+                height: $logoSize;
+            }
+        }
+
+        img {
+            height: $logoSize;
+            width: $logoSize;
+        }
+
+        .center {
+            img {
+                height: $logoSize * 1.44688645;
+                width: $logoSize * 1.44688645;
+            }
+        }
+
+        .emptySpace {
+            width: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .wrapper {
+        margin: 0;
+
+        .grid2 {
+            div {
+                height: 90px;
+            }
+        }
+
+        img {
+            height: 90px;
+            width: 90px;
+        }
+
+        .center {
+            img {
+                height: 130px;
+                width: 130px;
+            }
+        }
+
+        .emptySpace {
+            width: 20px;
+        }
+    }
+}
+
+// [branch].tsx
 .branch {
     .subgroupLogo {
         rotate: 45deg;
