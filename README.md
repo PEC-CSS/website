@@ -14,3 +14,8 @@ We ll start with the website and rebrand everything that comes in the way.
 
 ## Target
 Target is to build a whole new brand of the computer science society.
+
+## Contributors
+<a href="https://github.com/PEC-CSS/website/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=PEC-CSS/website" />
+</a>
