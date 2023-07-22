@@ -58,7 +58,7 @@ const BRANCHES = {
     },
 
     wit: {
-        name: "WiT",
+        name: "Women in Tech",
         whoAreWe: [
             "Our mission is to foster and promote female participation in ACM and tech-related events, addressing the existing gender disparity in these fields. Through strategic & focused initiatives, our subgroup aims to create a supportive and empowering environment that encourages and enables women to actively engage and excel in ACM and the broader technology community.",
         ],

@@ -40,7 +40,7 @@ export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alia
     const router = useRouter();
     return (
         <PageLayout 
-            title={`${branch} | ACM at PEC`} 
+            title={`${name} | ACM at PEC`} 
             heading={branchHeading(branch)} 
             bannerColor={subgroupColor} 
             footerColor={subgroupColor} 
