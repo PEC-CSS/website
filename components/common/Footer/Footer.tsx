@@ -38,10 +38,10 @@ export default Footer;
 
 const communityLinks = [
     {
-        href: "/dev",
+        href: "/development",
         name: "Development Web/App"
     }, {
-        href: "/ml",
+        href: "/ai",
         name: "Machine Learning"
     }, {
         href: "/cp",
@@ -63,7 +63,7 @@ const aboutLinks = [
         href: "/about",
         name: "About Us"
     }, {
-        href: "/core",
+        href: "/team",
         name: "Core Team"
     }, {
         href: "/events",
