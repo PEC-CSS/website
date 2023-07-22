@@ -15,7 +15,6 @@ export const SidebarItem = (item: Item) => {
     const router = useRouter()
 
     const selected = (router.pathname === item.path) ? "true": "false"
-    console.log(selected)
     return (
         <Link href={item.path} className={styles.sidebarItem} data-selected={selected}>
             {item.icon}

@@ -28,13 +28,13 @@ export default function Team() {
                 {/* <h3>Core-Team</h3> */}
                 <div className={styles.cards}>
                     {CORE.map((head, i) => {
-                        const image = head.image.length !=0 ? head.image : "/assets/logos/pecacm.svg"
+                        const image = head.image.length !=0 ? head.image : "/assets/logos/acm.png"
                         return (
                             <div className={styles.card} key={i}>
                                 <img src={image} alt={head.name} />
                                 <div className={styles.data}>
                                     <p className={styles.name}>{head.name}</p>
-                                    <p>{head.post}</p>
+                                    <p className={styles.post}>{head.post}</p>
                                 </div>
                             </div>
                         );
