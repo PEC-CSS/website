@@ -1,0 +1,29 @@
+.parent {
+    .container {
+      display: flex;
+      border: 8px solid black;
+      width: 95vw;
+      margin: auto;
+    }
+
+    .layout {
+      fill-opacity: 1;
+    }
+
+    .logo {
+      background-color: red;
+    }
+
+    svg g {
+      fill-opacity: 0.9;
+      outline: red;
+    }
+    
+    svg g:hover {
+      fill-opacity: 1;
+    }
+
+    svg g:hover text {
+      fill-opacity: 1;
+    }
+}

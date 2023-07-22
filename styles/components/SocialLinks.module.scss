@@ -25,7 +25,61 @@
         &:hover {
             color: white;
             background-color: $acm-primary;
-            transition: color, background-color 0.3s;
+            transition: color, background-color 0.1s;
+        }
+    }
+
+    li[value="cp"] {
+        color: $cp-primary;
+
+        &:hover {
+            background-color: $cp-primary;
+            color: white;
+        }
+    }
+
+    li[value="dev"] {
+        color: $dev-primary;
+
+        &:hover {
+            background-color: $dev-primary;
+            color: white;
+        }
+    }
+
+    li[value="ai"] {
+        color: $ai-primary;
+
+        &:hover {
+            background-color: $ai-primary;
+            color: white;
+        }
+    }
+
+    li[value="socials"] {
+        color: $socials-primary;
+
+        &:hover {
+            background-color: $socials-primary;
+            color: white;
+        }
+    }
+
+    li[value="cyber"] {
+        color: $cyber-primary;
+
+        &:hover {
+            background-color: $cyber-primary;
+            color: white;
+        }
+    }
+
+    li[value="wit"] {
+        color: $wit-primary;
+
+        &:hover {
+            background-color: $wit-primary;
+            color: white;
         }
     }
 }
