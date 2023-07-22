@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-import { BRANCHES } from "../../constants/branch";
 import PageLayout from "../../components/layout/PageLayout";
 import styles from "../../styles/pages/branch.module.scss";
 import Link from "next/link";
@@ -16,14 +14,12 @@ export default function Branches() {
                     <div></div>
                     <div>
                         <Link href='branches/cp'>
-                            
                             <img src="/assets/logos/cpBorder.png" alt="cp logo" height={logoSize} width={logoSize} />
                         </Link>
                     </div>
                     <div className={styles.emptySpace}></div>
                     <div>
                         <Link href='branches/ai'>
-                            
                             <img src="/assets/logos/aiBorder.png" alt="ai logo" height={logoSize} width={logoSize} />
                         </Link>
                     </div>
