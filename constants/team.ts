@@ -21,52 +21,75 @@ const HEADS = [
     },
 ];
 
+const folderPath = "/assets/images/team/core";
+
 const CORE = [
     {
         name: "Abhinav Rawal",
-        image: "",
-        post: "",
-    },
-    {
-        name: "Uttam Mittal",
-        image: "",
-        post: "",
-    },
-    {
-        name: "Vinayak Gupta",
-        image: "",
-        post: "",
-    },
-    {
-        name: "Dhruv Bansal",
-        image: "",
-        post: "",
-    },
-    {
-        name: "Kavya Rishi",
-        image: "",
-        post: "",
-    },
-    {
-        name: "Anuj Awasthi",
-        image: "",
-        post: "",
-    },
-    {
-        name: "Prakhar Tomar",
-        image: "",
-        post: "",
+        image: `${folderPath}/Abhinav_Rawal.jpg`,
+        post: "CP Lead",
     },
     {
         name: "Harasees Singh",
-        image: "",
-        post: "",
+        image: `${folderPath}/harasees_singh.jpg`,
+        post: "CP Co-Lead",
     },
     {
-        name: "Ashutosh Aswal",
-        image: "",
-        post: "",
+        name: "Uttam Mittal",
+        image: `${folderPath}/Uttam_Mittal.jpg`,
+        post: "AI Lead",
     },
+    {
+        name: "Armaan Badhan",
+        image: `${folderPath}/armaan_badhan.jpg`,
+        post: "AI Co-Lead",
+    },
+    {
+        name: "Vinayak Gupta",
+        image: `${folderPath}/Vinayak_Gupta.jpg`,
+        post: "Dev : Cloud Lead",
+    },
+    {
+        name: "Dhruv Bansal",
+        image: ``,
+        post: "Dev : Web Lead",
+    },
+    {
+        name: "Jagjit Singh",
+        image: `${folderPath}/jagjit_singh.jpeg`,
+        post: "Dev : Open Source Lead",
+    },
+    {
+        name: "Sanil Gupta",
+        image: `${folderPath}/Sanil_Gupta.jpeg`,
+        post: "Cyber Lead",
+    },
+    {
+        name: "Kavya Rishi",
+        image: `${folderPath}/kavya_rishi.jpeg`,
+        post: "Cyber Co-Lead",
+    },
+    {
+        name: "Kanika Kaur",
+        image: `${folderPath}/Kanika Kaur.jpeg`,
+        post: "WiT Lead",
+    },
+    {
+        name: "Kanisha Kaur",
+        image: `${folderPath}/Kanisha Kaur.jpg`,
+        post: "WiT Co-Lead",
+    },
+    {
+        name: "Aayush Singh Panwar",
+        image: `${folderPath}/Aayush_Singh_Panwar.jpg`,
+        post: "Socials Lead",
+    },
+    {
+        name: "Saniya Singla",
+        image: ``,
+        post: "Socials Co-Lead",
+    },
+    
 ];
 
 export { HEADS, CORE };

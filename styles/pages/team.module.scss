@@ -56,17 +56,24 @@
         justify-content: center;
         max-width: 1200px;
         width: 70%;
+        background-color: #f2f4f6;
+        border-radius: 20px;
+        padding: 0 20px;
 
         .card {
             display: flex;
             max-width: 400px;
+            padding: 10px;
+            background: #fff;
             margin: 20px 5px;
             align-items: center;
-
+            border-radius: 20px;
 
             img {
                 height: 70px;
+                width: 70px;
                 border-radius: 9999px;
+                object-fit: cover;
             }
 
             .data {
@@ -74,6 +81,10 @@
                 flex-direction: column;
                 justify-content: center;
                 margin: 0 10px;
+
+                .post {
+                    font-weight: 200;
+                }
             }
         }
     }
@@ -85,6 +96,12 @@
             img {
                 height: 150px;
             }
+        }
+    }
+
+    .core {
+        .cards {
+            width: 90%;
         }
     }
 }
