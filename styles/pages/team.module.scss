@@ -94,7 +94,8 @@
     .heads {
         .card {
             img {
-                height: 150px;
+                height: 150px !important;
+                width: 150px !important;
             }
         }
     }
@@ -114,7 +115,8 @@
         }
         .card {
             img {
-                height: 200px;
+                height: 200px !important;
+                width: 200px !important;
             }
         }
     }
@@ -128,7 +130,8 @@
 
 @media screen and (max-width: 500px) {
     .heads .card img {
-        height: 140px;
+        height: 140px !important;
+        width: 140px !important;
     }
     .core {
         .cards {

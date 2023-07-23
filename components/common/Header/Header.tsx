@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import styles from "../../../styles/components/Header.module.scss";
 import Hamburger from "./Hamburger";
 import {useRouter} from "next/router";
+import Image from "next/image";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -23,8 +24,7 @@ function Header() {
             <div className={styles.logo_wrapper}>
                 <Link href={"/"} aria-label="PEC ACM">
                     <>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={"/assets/logos/acm.png"} alt="ACM at PEC"/>
+                        <Image height={60} width={60} src={"/assets/logos/acm.png"} alt="ACM at PEC"/>
                         <span>pecacm</span>
                     </>
                 </Link>

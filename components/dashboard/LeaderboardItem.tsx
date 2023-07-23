@@ -1,3 +1,4 @@
+import Image from "next/image"
 import styles from "../../styles/components/LeaderboardItem.module.scss"
 
 // defining user here for now
@@ -11,7 +12,7 @@ type User = {
 export const LeaderboardItem = ({user}: {user: User}) => {
     return (
         <div className={styles.item}>
-            <img src={user.dp} alt={""} />
+            <Image src={user.dp} alt={""} height={50} width={60} />
             <div className={styles.details}>
                 <h2>{user.name}</h2>
                 <div>{user.designation}</div>

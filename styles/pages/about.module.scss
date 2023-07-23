@@ -58,7 +58,7 @@ $side-gap: min(60px, 6vw);
       }
 
       .image {
-        width: unset;
+        width: unset !important;
         margin: unset;
       }
     }
@@ -71,143 +71,10 @@ $side-gap: min(60px, 6vw);
 
         .image {
           img {
-            height: 200px;
+            height: 200px !important;
           }
         }
       }
     }
   }
 }
-
-// Will Need Leaderboard Card CSS in Future
-
-// .about {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     .card {
-//         max-width: 1500px;
-//         display: flex;
-//         margin: 50px 0;
-//         .left {
-//             flex: 1;
-//             border: 2px solid blue;
-//         }
-//         .right {
-//             flex: 1;
-//             display: flex;
-//             align-items: center;
-//             justify-content: flex-end;
-//             border: 2px solid red;
-//             img {
-//                 height: 170px;
-//                 object-fit: cover;
-//                 border-radius: 30px;
-//             }
-//         }
-//         .title {
-//             font-size: 18;
-//             font-weight: 600;
-//             margin: 15px 0;
-//         }
-//         .description {
-//             white-space: pre-line;
-//             font-size: 12;
-//         }
-//     }
-//     .flip {
-//         flex-direction: row-reverse;
-//         .right {
-//             justify-content: start;
-//         }
-//     }
-//     .heading {
-//         display: flex;
-//         flex-direction: column;
-//         align-items: flex-start;
-//         max-width: 60%;
-
-//         .leadership {
-//             font-size: 16;
-//             font-weight: 600;
-//             margin: 10px 0;
-//         }
-
-//         .leadershipPara {
-//             font-size: 10;
-//         }
-//     }
-
-//     .leadershipGrid {
-//         display: grid;
-//         grid-template-columns: repeat(3, auto);
-//         max-width: 60%;
-//         width: 100%;
-//         padding: 10px;
-//         .leadershipCard {
-//             height: 70px;
-//             display: flex;
-//             align-items: center;
-//             margin: 25px 0;
-//             .left {
-//                 width: 30%;
-//                 height: 100%;
-//                 img {
-//                     height: 100%;
-//                     object-fit: cover;
-//                     border-radius: 999px;
-//                 }
-//             }
-//             .right {
-//                 width: 70%;
-//                 height: 100%;
-//                 display: flex;
-//                 justify-content: center;
-//                 flex-direction: column;
-//                 .name {
-//                     font-weight: bold;
-//                     font-size: 14;
-//                 }
-//                 .post {
-//                     font-size: 12;
-//                 }
-//             }
-//         }
-//     }
-
-//     @media screen and (max-width: $navbar-breakpoint) {
-//         .leadershipGrid {
-//             grid-template-columns: repeat(1, auto);
-//             .leadershipCard {
-//                 margin: 10px 0;
-//                 .left {
-//                     width: 15%;
-//                 }
-//             }
-//         }
-//     }
-//     @media screen and (max-width: 1068px) {
-//         .card {
-//             flex-direction: column-reverse;
-//             align-items: flex-start;
-//             img {
-//                 width: 100%;
-//                 object-fit: cover;
-//             }
-//         }
-//     }
-//     @media screen and (max-width: 900px) {
-//         .leadershipGrid {
-//             max-width: 80%;
-//         }
-//     }
-
-//     @media screen  and (max-width: $tablet-breakpoint) {
-//         .leadershipGrid {
-//             max-width: 100%;
-//         }
-//         .heading, .card {
-//             max-width: 90%;
-//         }
-//     }
-// }
