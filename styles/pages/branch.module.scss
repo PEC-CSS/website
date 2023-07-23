@@ -3,6 +3,11 @@
 $headerText: 24px;
 $dropdownText: 17px;
 
+@font-face {
+    font-family: 'Narnoor';
+    src: url(../../public/assets/fonts/Narnoor-Regular.ttf);
+}
+
 .aboutBranches {
     display: flex;
     justify-content: center;  
