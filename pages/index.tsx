@@ -6,7 +6,7 @@ import Link from "next/link";
 import {socialLinks} from "../components/common/SocialLinks/SocialLinks";
 
 export default function Home() {
-    return <PageLayout title="Home | ACM at PEC" heading={"A computer science society"}>
+    return <PageLayout title="Home | ACM at PEC" heading={"A computer science society"} description="The prestigious student chapter of ACM at Punjab Engineering College, Chandigarh.">
         <div className={styles.hero}>
             <p>
                 Embark on a captivating journey through the digital realm of the Computer Science Society, the
@@ -27,8 +27,8 @@ export default function Home() {
 
             <Branches/>
 
-            <Link href={"/branches"}>
-                <button>Learn More</button>
+            <Link href={"/branches"} aria-label="Branches">
+                <button>Dive Deeper</button>
             </Link>
         </div>
 

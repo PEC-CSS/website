@@ -21,7 +21,7 @@ function Events() {
     const [activeEvent, setActiveEvent] = useState<Event | null>(null);
 
     return (
-        <PageLayout title="Events | ACM at PEC" heading="Events">
+        <PageLayout title="Events | ACM at PEC" heading="Events" description="Upcoming anf Ongoing events at PEC ACM">
             <div className={styles.events}>
                 <p>Have a look at our calendar</p>
                 <div className={styles.calendarWrapper}>

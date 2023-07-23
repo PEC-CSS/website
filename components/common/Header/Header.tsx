@@ -21,7 +21,7 @@ function Header() {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo_wrapper}>
-                <Link href={"/"}>
+                <Link href={"/"} aria-label="PEC ACM">
                     <>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={"/assets/logos/acm.png"} alt="ACM at PEC"/>
@@ -47,6 +47,7 @@ function Header() {
                             return (
                                 <li onClick={toggleMenu} key={i}>
                                     <Link href={headerItem.href}
+                                    aria-label={headerItem.name}
                                           className={`${styles.nav_link} ${isActive ? styles.active_nav_link : ""}`}>
                                         {headerItem.name}
                                     </Link>
@@ -54,7 +55,7 @@ function Header() {
                             )
                         })}
                         <li>
-                            <Link href={"/login"}>
+                            <Link href={"/login"} aria-label="Login">
                                 <button>Login</button>
                             </Link>
                         </li>

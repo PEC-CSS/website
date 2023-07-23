@@ -4,7 +4,7 @@ import styles from "../styles/pages/team.module.scss";
 
 export default function Team() {
     return (
-        <PageLayout title={"Team | ACM at PEC"} heading="Leadership">
+        <PageLayout title={"Team | ACM at PEC"} heading="Leadership" description="The team which makes it all possible with their constant efforts and time.">
             <p className={styles.title}>
                 Our heads support the entire ACM community while our committee
                 presidents foster the growth of their committee.

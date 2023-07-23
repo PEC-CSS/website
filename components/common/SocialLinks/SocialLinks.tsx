@@ -9,7 +9,7 @@ export const SocialLinks = ({branch} : {branch?: string}) => {
         <ul className={styles.socialLinks}>
             {socialLinks.map((socialLink, index) => {
                 return <li key={index} value={branch ? branch : "none"}>
-                    <Link href={socialLink.href}>
+                    <Link href={socialLink.href} aria-label={socialLink.name}>
                         {socialLink.icon}
                     </Link>
                 </li>

@@ -16,7 +16,7 @@ export const SidebarItem = (item: Item) => {
 
     const selected = (router.pathname === item.path) ? "true": "false"
     return (
-        <Link href={item.path} className={styles.sidebarItem} data-selected={selected}>
+        <Link href={item.path} className={styles.sidebarItem} data-selected={selected} aria-label={item.title}>
             {item.icon}
             <h3>{item.title}</h3>
         </Link>
