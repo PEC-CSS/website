@@ -9,6 +9,7 @@ const BRANCHES = {
         ],
         alias: "dev",
         color: "#EF3133",
+        oneLiner: "Dynamic web dev community empowering growth through workshops, hackathons, and knowledge sharing. Shape the future together! Join us!"
     },
     ai: {
         name: "Machine Learning",
@@ -21,6 +22,7 @@ const BRANCHES = {
         ],
         alias: "ai",
         color: "#FCBA28",
+        oneLiner: "Hackathons, projects, workshops empower students with AI skills, teamwork, and real-world innovation. Presenting findings, fostering collaboration."
     },
     cp: {
         name: "Competitive Programming",
@@ -33,6 +35,7 @@ const BRANCHES = {
         ],
         alias: "cp",
         color: "#5A2E8F",
+        oneLiner: "Passionate problem solvers, excelling in contests and team challenges, driven by adrenaline and collaboration."
     },
     cyber: {
         name: "Cyber",
@@ -44,6 +47,7 @@ const BRANCHES = {
         ],
         alias: "cyber",
         color: "#38B64B",
+        oneLiner: "Exploring limits, breaking barriers, and unraveling secrets. Join PEC-ACM Cyber for cybersecurity adventures."
     },
     socials: {
         name: "Socials",
@@ -55,6 +59,7 @@ const BRANCHES = {
         ],
         alias: "socials",
         color: "#CB1D8C",
+        oneLiner: "PEC-ACM club's creative team - Engaging content, vibrant community. Unleash creativity beyond websites! Join us!"
     },
 
     wit: {
@@ -66,7 +71,8 @@ const BRANCHES = {
             "By providing a platform for networking, mentorship, and professional development, we seek to empower women to pursue their passion for computing. We are committed to cultivating a diverse and inclusive community, where women can thrive and contribute their unique perspectives, talents, and ideas to shape the future of computing.",
         ],
         alias: "wit",
-        color: "#3CB878"
+        color: "#3CB878",
+        oneLiner: "Fostering female participation in tech. Empowering women to excel and shape computing's future. Inclusive community, join us!"
     },
 };
 
