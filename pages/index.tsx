@@ -4,9 +4,10 @@ import Branches from "../components/home/Branches";
 import Trending from "../components/home/Trending";
 import Link from "next/link";
 import {socialLinks} from "../components/common/SocialLinks/SocialLinks";
+import Image from "next/image";
 
 export default function Home() {
-    return <PageLayout title="Home | ACM at PEC" heading={"A computer science society"}>
+    return <PageLayout title="Home | ACM at PEC" heading={"A computer science society"} description="The prestigious student chapter of ACM at Punjab Engineering College, Chandigarh.">
         <div className={styles.hero}>
             <p>
                 Embark on a captivating journey through the digital realm of the Computer Science Society, the
@@ -27,8 +28,8 @@ export default function Home() {
 
             <Branches/>
 
-            <Link href={"/branches"}>
-                <button>Learn More</button>
+            <Link href={"/branches"} aria-label="Branches">
+                <button>Dive Deeper</button>
             </Link>
         </div>
 
@@ -38,7 +39,7 @@ export default function Home() {
             <div className={styles.social_icons}>
                 {socialLinks.filter((socialLink) => socialLink.svg.length > 0 ).map((socialLink, index) => {
                     return <a key={index} href={socialLink.href}>
-                        <img src={socialLink.svg} alt={socialLink.name} />
+                        <Image height={70} width={70} src={socialLink.svg} alt={socialLink.name} />
                     </a>
                 })}
             </div>

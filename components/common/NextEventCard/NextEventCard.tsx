@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styles from "../../../styles/components/NextEventCard.module.scss"
-import Link from 'next/link';
 
 interface EventInfo {
     title: string;

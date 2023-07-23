@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "../../styles/pages/about.module.scss";
 
 type Props = {
@@ -22,8 +23,7 @@ function AboutCard({ title, descriptions, imgUrl, imgAlt, flip = false }: Props)
             </div>
 
             <div className={styles.image}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                     src={imgUrl as string}
                     alt={imgAlt ? (imgAlt as string) : ""}
                     width={270}

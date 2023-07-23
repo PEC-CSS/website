@@ -11,7 +11,7 @@ function Footer({color, branch} : {color: string, branch: string}) {
                 <ul>
                     {aboutLinks.map((aboutLink, index) => {
                         return <li key={index}>
-                            <Link href={aboutLink.href}>{aboutLink.name}</Link>
+                            <Link href={aboutLink.href} aria-label={aboutLink.name}>{aboutLink.name}</Link>
                         </li>
                     })}
                 </ul>
@@ -21,7 +21,7 @@ function Footer({color, branch} : {color: string, branch: string}) {
                 <ul>
                     {communityLinks.map((communityLink, index) => {
                         return <li key={index}>
-                            <Link href={communityLink.href}>{communityLink.name}</Link>
+                            <Link href={communityLink.href} aria-label={communityLink.name}>{communityLink.name}</Link>
                         </li>
                     })}
                 </ul>

@@ -65,7 +65,7 @@ function Register() {
     }
 
     return (
-        <PageLayout title="Register | ACM at PEC">
+        <PageLayout title="Register | ACM at PEC" description='Register yourself to this wonderful society of coders.'>
             {
                 error.error ? <DialogPopup
                     errorTitle={ERRORTEXT.invalidFormData.title}
@@ -88,7 +88,7 @@ function Register() {
                     </div>
                     <div className={styles.introLine}>
                         Already have an ID?
-                        <Link href="/login" className={styles.link}> Log in </Link>
+                        <Link href="/login" className={styles.link} aria-label='Login'> Log in </Link>
                     </div>
                 </div>
 

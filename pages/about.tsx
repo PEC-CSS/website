@@ -6,7 +6,7 @@ import styles from "../styles/pages/about.module.scss";
 
 function about() {
     return (
-        <PageLayout title="About | ACM at PEC" heading="About Us">
+        <PageLayout title="About | ACM at PEC" heading="About Us" description="Information about the Computer Science Society at PEC.">
             <div className={styles.about}>
                 {
                     ABOUTUS.map((obj, id) =>

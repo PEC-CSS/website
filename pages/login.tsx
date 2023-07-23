@@ -53,7 +53,7 @@ function Login() {
     }
     
     return (
-        <PageLayout title="Login | ACM at PEC">
+        <PageLayout title="Login | ACM at PEC" description='Login into the PECACM platform.'>
 
             {/* Header */}
             <form className={styles.parent} onSubmit={handleSubmit}>
@@ -73,7 +73,7 @@ function Login() {
                     <h1>Login to PEC ACM</h1>
                     <div style={{marginTop: "7px"}}>
                         Don{`'`}t have an account? &nbsp;
-                        <Link href='/register' className={styles.link}>
+                        <Link href='/register' className={styles.link} aria-label="Register">
                             Register
                         </Link>
                     </div>

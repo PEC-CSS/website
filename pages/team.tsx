@@ -1,10 +1,11 @@
+import Image from "next/image";
 import PageLayout from "../components/layout/PageLayout";
 import { CORE, HEADS } from "../constants/team";
 import styles from "../styles/pages/team.module.scss";
 
 export default function Team() {
     return (
-        <PageLayout title={"Team | ACM at PEC"} heading="Leadership">
+        <PageLayout title={"Team | ACM at PEC"} heading="Leadership" description="The team which makes it all possible with their constant efforts and time.">
             <p className={styles.title}>
                 Our heads support the entire ACM community while our committee
                 presidents foster the growth of their committee.
@@ -15,7 +16,7 @@ export default function Team() {
                     {HEADS.map((head, i) => {
                         return (
                             <div className={styles.card} key={i}>
-                                <img src={head.image} alt={head.name} />
+                                <Image height={200} width={200} src={head.image} alt={head.name} />
                                 <p className={styles.name}>{head.name}</p>
                                 <p>{head.post}</p>
                             </div>
@@ -31,7 +32,7 @@ export default function Team() {
                         const image = head.image.length !=0 ? head.image : "/assets/logos/acm.png"
                         return (
                             <div className={styles.card} key={i}>
-                                <img src={image} alt={head.name} />
+                                <Image height={70} width={70} src={image} alt={head.name} />
                                 <div className={styles.data}>
                                     <p className={styles.name}>{head.name}</p>
                                     <p className={styles.post}>{head.post}</p>

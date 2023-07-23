@@ -7,6 +7,7 @@ import {AiFillTrophy, AiOutlineMenuUnfold} from "react-icons/ai";
 import {SidebarItem} from "./SidebarItem";
 import {useState} from "react";
 import {CgClose} from "react-icons/cg";
+import Image from 'next/image';
 
 const sidebarItems = [
     {
@@ -55,8 +56,7 @@ export const Sidebar = () => {
             <div className={styles.sidebar} data-open={mobileSidebarOpen}>
                 <div className={styles.header}>
                     <div className={styles.pfp}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={user.dp} alt={""} />
+                        <Image src={user.dp} alt={""} height={80} width={80} />
                         <CgClose
                             onClick={() => setMobileSidebarOpen("false")}
                             className={styles.close}

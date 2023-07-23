@@ -1,4 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
+
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import PageLayout from "../../components/layout/PageLayout";
@@ -40,7 +41,7 @@ export default function Branches() {
                     >
                         <div>
                             <Link href='branches/cp'>
-                                <img src="/assets/logos/cpBorder.png" alt="cp logo" height={logoSize} width={logoSize} />
+                                <Image src="/assets/logos/cpBorder.png" alt="cp logo" height={logoSize} width={logoSize} />
                             </Link>
                         </div>
                     </HtmlTooltip>
@@ -54,7 +55,7 @@ export default function Branches() {
                     >
                         <div>
                             <Link href='branches/ai'>
-                                <img src="/assets/logos/aiBorder.png" alt="ai logo" height={logoSize} width={logoSize} />
+                                <Image src="/assets/logos/aiBorder.png" alt="ai logo" height={logoSize} width={logoSize} />
                             </Link>
                         </div>
                     </HtmlTooltip>
@@ -71,13 +72,13 @@ export default function Branches() {
                     >
                         <div>
                             <Link href='/branches/socials'>
-                                <img src="/assets/logos/socialsBorder.png" alt="socials logo" height={logoSize} width={logoSize} />
+                                <Image src="/assets/logos/socialsBorder.png" alt="socials logo" height={logoSize} width={logoSize} />
                             </Link>
                         </div>
                     </HtmlTooltip>
                     <div className={styles.center}>
                         <Link href='/'>
-                            <img src="/assets/logos/acmBorder.png" alt="acm logo" height={middleLogo} width={middleLogo} />
+                            <Image src="/assets/logos/acmBorder.png" alt="acm logo" height={middleLogo} width={middleLogo} />
                         </Link>
                     </div>
 
@@ -89,7 +90,7 @@ export default function Branches() {
                         <div>
                             <Link href='branches/cyber'>
 
-                                <img src="/assets/logos/cyberBorder.png" alt="cyber logo" height={logoSize} width={logoSize} />
+                                <Image src="/assets/logos/cyberBorder.png" alt="cyber logo" height={logoSize} width={logoSize} />
                             </Link>
                         </div>
                     </HtmlTooltip>
@@ -106,7 +107,7 @@ export default function Branches() {
                     >
                         <div>
                             <Link href='branches/wit'>
-                                <img src="/assets/logos/witBorder.png" alt="wit logo" height={logoSize} width={logoSize} />
+                                <Image src="/assets/logos/witBorder.png" alt="wit logo" height={logoSize} width={logoSize} />
                             </Link>
                         </div>
                     </HtmlTooltip>
@@ -120,7 +121,7 @@ export default function Branches() {
                         <div>
                             <Link href='branches/development'>
 
-                                <img src="/assets/logos/devBorder.png" alt="dev logo" height={logoSize} width={logoSize} />
+                                <Image src="/assets/logos/devBorder.png" alt="dev logo" height={logoSize} width={logoSize} />
                             </Link>
                         </div>
                     </HtmlTooltip>
