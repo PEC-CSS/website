@@ -51,23 +51,13 @@ const CORE = [
     },
     {
         name: "Dhruv Bansal",
-        image: ``,
+        image: `${folderPath}/Dhruv.jpeg`,
         post: "Dev : Web Lead",
     },
     {
         name: "Jagjit Singh",
         image: `${folderPath}/jagjit_singh.jpeg`,
         post: "Dev : Open Source Lead",
-    },
-    {
-        name: "Sanil Gupta",
-        image: `${folderPath}/Sanil_Gupta.jpeg`,
-        post: "Cyber Lead",
-    },
-    {
-        name: "Kavya Rishi",
-        image: `${folderPath}/kavya_rishi.jpeg`,
-        post: "Cyber Co-Lead",
     },
     {
         name: "Kanika Kaur",
@@ -80,13 +70,23 @@ const CORE = [
         post: "WiT Co-Lead",
     },
     {
+        name: "Sanil Gupta",
+        image: `${folderPath}/Sanil_Gupta.jpeg`,
+        post: "Cyber Lead",
+    },
+    {
+        name: "Kavya Rishi",
+        image: `${folderPath}/kavya_rishi.jpeg`,
+        post: "Cyber Co-Lead",
+    },
+    {
         name: "Aayush Singh Panwar",
         image: `${folderPath}/Aayush_Singh_Panwar.jpg`,
         post: "Socials Lead",
     },
     {
         name: "Saniya Singla",
-        image: ``,
+        image: `${folderPath}/Saniya Singla.jpg`,
         post: "Socials Co-Lead",
     },
     
