@@ -22,21 +22,16 @@ export default function Trending({trendingType} : Props) {
         if(trendingType=="home"){
             fetchHomeTrending().then((res) => {
                 setTrendingInfo(res);
-                console.log('Fetched Trending Data:', res);
                 setLoading(false);      
             });
         }
         else{
             fetchBranchTrending(trendingType).then((res) => {
                 setTrendingInfo(res);
-                console.log('Fetched ' + trendingType + ' Trending Data:', res);
                 setLoading(false);      
             });
         }      
     }, [trendingType]);
-
-    // const fetchTrending = async () => {
-    // }
 
     return <div className={styles.trending_cards}>
         {
@@ -46,8 +41,6 @@ export default function Trending({trendingType} : Props) {
                 })
                 :
                 trendingInfo?.map((info, index) => {
-                    console.log('Trending Data:', trendingInfo);
-
                     return <div key={index} className={styles.trending_card} style={{
                         backgroundImage: `url(${info.image})`,
                         backgroundPosition: 'center'
