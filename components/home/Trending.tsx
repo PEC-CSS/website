@@ -1,32 +1,42 @@
 import styles from "../../styles/components/Trending.module.scss";
+import {fetchHomeTrending, fetchBranchTrending } from "../../utils/spreadsheet";
 import {useEffect, useState} from "react";
 
-interface TrendingCard {
+export interface TrendingCard {
     title: String,
     description: String,
     image: String,
     href: String,
 }
 
-export default function Trending() {
+type Props = {
+    trendingType : string;
+}
+
+export default function Trending({trendingType} : Props) {
 
     const [loading, setLoading] = useState(true);
     const [trendingInfo, setTrendingInfo] = useState<TrendingCard[] | null>();
 
     useEffect(() => {
-        fetchTrending().then((res) => {
-            setLoading(false);
+        if(trendingType=="home"){
+            fetchHomeTrending().then((res) => {
+                setTrendingInfo(res);
+                console.log('Fetched Trending Data:', res);
+                setLoading(false);      
+            });
+        }
+        else{
+            fetchBranchTrending(trendingType).then((res) => {
+                setTrendingInfo(res);
+                console.log('Fetched ' + trendingType + ' Trending Data:', res);
+                setLoading(false);      
+            });
+        }      
+    }, [trendingType]);
 
-            // TODO
-            // setTrendingInfo(
-            //
-            // );
-        });
-
-    })
-
-    const fetchTrending = async () => {
-    }
+    // const fetchTrending = async () => {
+    // }
 
     return <div className={styles.trending_cards}>
         {
@@ -36,6 +46,8 @@ export default function Trending() {
                 })
                 :
                 trendingInfo?.map((info, index) => {
+                    console.log('Trending Data:', trendingInfo);
+
                     return <div key={index} className={styles.trending_card} style={{
                         backgroundImage: `url(${info.image})`,
                         backgroundPosition: 'center'
