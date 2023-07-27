@@ -50,7 +50,7 @@ export default function Home() {
                 Trending
             </h2>
 
-            <Trending/>
+            <Trending trendingType="home"/>
         </div>
     </PageLayout>;
 }

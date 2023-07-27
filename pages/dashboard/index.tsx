@@ -55,7 +55,7 @@ function DashboardHome() {
         )}>
             <div className={styles.trending}>
                 <h2 className={styles.header}>What&#39;s going on?</h2>
-                <Trending />
+                <Trending trendingType="home"/>
             </div>
             <div className={styles.details}>
                 <div className={styles.contributors}>
