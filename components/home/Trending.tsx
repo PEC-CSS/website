@@ -19,7 +19,7 @@ export default function Trending({ trendingType }: Props) {
 
     useEffect(() => {
         getTrendingData(trendingType);
-    }, []);
+    }, [trendingType]);
 
     const getTrendingData = async (trendingType: string) => {
         const res = await fetch("/api/trending/get", {
