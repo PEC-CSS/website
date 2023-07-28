@@ -6,6 +6,7 @@ import PageLayout from "../../components/layout/PageLayout";
 import styles from "../../styles/pages/branch.module.scss";
 import Link from "next/link";
 import { BRANCHES } from '../../constants/branch';
+import {CSSProperties} from "react";
 
 const HtmlTooltip = styled(({ className, color, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} arrow />
@@ -147,12 +148,13 @@ const getSubgroupData = (branchName: string) => {
     const subgroupColor = branch.color;
     const content = branch.oneLiner;
 
-    const style = {
+    const style: CSSProperties = {
         border: `4px solid ${subgroupColor}`,
         padding: '0px 10px 20px 10px',
         color: subgroupColor,
         fontSize: '14px',
         borderRadius: '10px',
+        fontFamily: 'Josefin_Sans'
     }
 
     return <div style={style}>
