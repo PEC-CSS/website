@@ -15,7 +15,7 @@ export default function Team() {
                 <div className={styles.cards}>
                     {HEADS.map((head, i) => {
                         return (
-                            <div className={styles.card} key={i}>
+                            <div className={`${styles.card}`} key={i}>
                                 <Image height={200} width={200} src={head.image} alt={head.name} />
                                 <p className={styles.name}>{head.name}</p>
                                 <p>{head.post}</p>
