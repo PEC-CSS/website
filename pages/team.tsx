@@ -2,6 +2,7 @@ import Image from "next/image";
 import PageLayout from "../components/layout/PageLayout";
 import { CORE, HEADS } from "../constants/team";
 import styles from "../styles/pages/team.module.scss";
+import CoreCard from "../components/common/CoreCard/CoreCard";
 
 export default function Team() {
     return (
