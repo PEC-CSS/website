@@ -7,6 +7,7 @@ import CustomDropdown from "../../components/branch/CustomDropdown";
 import { FiChevronDown } from "react-icons/fi";
 import NextEventCard from "../../components/common/NextEventCard/NextEventCard";
 import Trending from "../../components/home/Trending";
+import Image from "next/image";
 
 const branchHeading = (branch: string) => {
     const branchList = Object.keys(BRANCHES);
@@ -58,7 +59,7 @@ export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alia
                     </div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                 <div className={styles.subgroupLogo} style={{border: `8px solid ${subgroupColor}`}}>
-                    <img
+                    <Image
                         src={logoUrl as string}
                         alt={`${name}-logo`}
                         width={250}
