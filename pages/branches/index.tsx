@@ -23,7 +23,16 @@ export default function Branches() {
     const logoSize = 180;
     const FACTOR = 1.44688645;
     const middleLogo = FACTOR * logoSize;
-    const aboutBranches = `PEC ACM stands tall with its 6 passionate branches, each a sanctuary of the college's finest minds. These divisions were made to channel the limitless potential of each subgroup's work, ensuring focused and impactful pursuits. Diverse events and opportunities unite members, fostering growth, excellence, and camaraderie within this thriving community of aspiring innovators.`;
+    const aboutBranches = 
+    <>
+        <p>
+            PEC ACM stands tall with its 6 passionate branches, each a sanctuary of the college{"'"}s finest minds.
+        </p>
+        <br />
+        <p>
+            These divisions were made to channel the limitless potential of each subgroup{"'"}s work, ensuring focused and impactful pursuits.
+        </p>
+    </>
 
     return (
         <PageLayout title={"Branches | ACM at PEC"} heading={"Branches"}>

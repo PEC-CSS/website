@@ -3,7 +3,6 @@
 $image-gap: 100px;
 $side-gap: min(60px, 6vw);
 
-
 .about {
   display: flex;
   flex-direction: column;
@@ -50,7 +49,7 @@ $side-gap: min(60px, 6vw);
       margin: unset;
 
       .content {
-        max-width: 70%;
+        max-width: 90%;
         margin: 14px auto;
         h1 {
           text-align: center;
