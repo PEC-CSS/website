@@ -13,7 +13,7 @@ const HtmlTooltip = styled(({ className, color, ...props }: TooltipProps) => (
 ))(({ color }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'transparent',
-        maxWidth: '250px',
+        maxWidth: '260px',
     },
     [`& .${tooltipClasses.arrow}`]: {
         color
@@ -158,8 +158,22 @@ const getSubgroupData = (branchName: string) => {
     }
 
     return <div style={style}>
-        <h2 style={{ fontWeight: 600, lineHeight: 2 }}>
-            <u>acm::{branch.alias}</u>
+        <h2 style={{
+            fontWeight: 600,
+            lineHeight: 2.3,
+            fontFamily: 'Narnoor',
+            letterSpacing: "2px",
+            color: "white",
+            marginBottom: "5px",
+            fontSize: "18px"
+        }}>
+            <span style={{
+                backgroundColor: subgroupColor,
+                padding: "0 5px 5px 5px",
+                borderRadius: "10px"
+            }}>
+                acm::{branch.alias}
+            </span>
         </h2>
 
         <p style={{ fontSize: '14px', wordBreak: 'break-word' }}>{content}</p>
