@@ -6,13 +6,14 @@ import PageLayout from "../../components/layout/PageLayout";
 import styles from "../../styles/pages/branch.module.scss";
 import Link from "next/link";
 import { BRANCHES } from '../../constants/branch';
+import {CSSProperties} from "react";
 
 const HtmlTooltip = styled(({ className, color, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} arrow />
 ))(({ color }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: 'transparent',
-        maxWidth: '250px',
+        maxWidth: '260px',
     },
     [`& .${tooltipClasses.arrow}`]: {
         color
@@ -23,7 +24,16 @@ export default function Branches() {
     const logoSize = 180;
     const FACTOR = 1.44688645;
     const middleLogo = FACTOR * logoSize;
-    const aboutBranches = `PEC ACM stands tall with its 6 passionate branches, each a sanctuary of the college's finest minds. These divisions were made to channel the limitless potential of each subgroup's work, ensuring focused and impactful pursuits. Diverse events and opportunities unite members, fostering growth, excellence, and camaraderie within this thriving community of aspiring innovators.`;
+    const aboutBranches = 
+    <>
+        <p>
+            PEC ACM stands tall with its 6 passionate branches, each a sanctuary of the college{"'"}s finest minds.
+        </p>
+        <br />
+        <p>
+            These divisions were made to channel the limitless potential of each subgroup{"'"}s work, ensuring focused and impactful pursuits.
+        </p>
+    </>
 
     return (
         <PageLayout title={"Branches | ACM at PEC"} heading={"Branches"}>
@@ -138,17 +148,32 @@ const getSubgroupData = (branchName: string) => {
     const subgroupColor = branch.color;
     const content = branch.oneLiner;
 
-    const style = {
+    const style: CSSProperties = {
         border: `4px solid ${subgroupColor}`,
         padding: '0px 10px 20px 10px',
         color: subgroupColor,
         fontSize: '14px',
         borderRadius: '10px',
+        fontFamily: 'Josefin_Sans'
     }
 
     return <div style={style}>
-        <h2 style={{ fontWeight: 600, lineHeight: 2 }}>
-            <u>acm::{branch.alias}</u>
+        <h2 style={{
+            fontWeight: 600,
+            lineHeight: 2.3,
+            fontFamily: 'Narnoor',
+            letterSpacing: "2px",
+            color: "white",
+            marginBottom: "5px",
+            fontSize: "18px"
+        }}>
+            <span style={{
+                backgroundColor: subgroupColor,
+                padding: "0 5px 5px 5px",
+                borderRadius: "10px"
+            }}>
+                acm::{branch.alias}
+            </span>
         </h2>
 
         <p style={{ fontSize: '14px', wordBreak: 'break-word' }}>{content}</p>

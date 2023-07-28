@@ -1,3 +1,5 @@
+const folderPath = "/assets/images/team/core";
+
 const BRANCHES = {
     development: {
         name: "Development",
@@ -9,7 +11,25 @@ const BRANCHES = {
         ],
         alias: "dev",
         color: "#EF3133",
-        oneLiner: "Dynamic web dev community empowering growth through workshops, hackathons, and knowledge sharing. Shape the future together! Join us!"
+        oneLiner: "Dynamic web dev community empowering growth through workshops, hackathons, and knowledge sharing. Shape the future together! Join us!",
+        leads: [
+            {
+                name: "Vinayak Gupta",
+                image: `${folderPath}/Vinayak_Gupta.jpg`,
+                post: "Dev : Cloud Lead",
+            },
+            {
+                name: "Dhruv Bansal",
+                image: `${folderPath}/Dhruv.jpeg`,
+                post: "Dev : Web Lead",
+            },
+            {
+                name: "Jagjit Singh",
+                image: `${folderPath}/jagjit_singh.jpeg`,
+                post: "Dev : Open Source Lead",
+            },
+        ],
+        
     },
     ai: {
         name: "Machine Learning",
@@ -22,7 +42,19 @@ const BRANCHES = {
         ],
         alias: "ai",
         color: "#FCBA28",
-        oneLiner: "Hackathons, projects, workshops empower students with AI skills, teamwork, and real-world innovation. Presenting findings, fostering collaboration."
+        oneLiner: "Hackathons, projects, workshops empower students with AI skills, teamwork, and real-world innovation. Presenting findings, fostering collaboration.",
+        leads: [
+            {
+                name: "Uttam Mittal",
+                image: `${folderPath}/Uttam_Mittal.jpg`,
+                post: "AI Lead",
+            },
+            {
+                name: "Armaan Badhan",
+                image: `${folderPath}/armaan_badhan.jpg`,
+                post: "AI Co-Lead",
+            },
+        ],
     },
     cp: {
         name: "Competitive Programming",
@@ -35,7 +67,19 @@ const BRANCHES = {
         ],
         alias: "cp",
         color: "#5A2E8F",
-        oneLiner: "Passionate problem solvers, excelling in contests and team challenges, driven by adrenaline and collaboration."
+        oneLiner: "Passionate problem solvers, excelling in contests and team challenges, driven by adrenaline and collaboration.",
+        leads: [
+            {
+                name: "Abhinav Rawal",
+                image: `${folderPath}/Abhinav_Rawal.jpg`,
+                post: "CP Lead",
+            },
+            {
+                name: "Harasees Singh",
+                image: `${folderPath}/harasees_singh.jpg`,
+                post: "CP Co-Lead",
+            },
+        ],
     },
     cyber: {
         name: "Cyber",
@@ -47,7 +91,19 @@ const BRANCHES = {
         ],
         alias: "cyber",
         color: "#38B64B",
-        oneLiner: "Exploring limits, breaking barriers, and unraveling secrets. Join PEC-ACM Cyber for cybersecurity adventures."
+        oneLiner: "Exploring limits, breaking barriers, and unraveling secrets. Join PEC-ACM Cyber for cybersecurity adventures.",
+        leads: [
+            {
+                name: "Sanil Gupta",
+                image: `${folderPath}/Sanil_Gupta.jpeg`,
+                post: "Cyber Lead",
+            },
+            {
+                name: "Kavya Rishi",
+                image: `${folderPath}/kavya_rishi.jpeg`,
+                post: "Cyber Co-Lead",
+            },
+        ],
     },
     socials: {
         name: "Socials",
@@ -59,7 +115,19 @@ const BRANCHES = {
         ],
         alias: "socials",
         color: "#CB1D8C",
-        oneLiner: "PEC-ACM club's creative team - Engaging content, vibrant community. Unleash creativity beyond websites! Join us!"
+        oneLiner: "PEC-ACM club's creative team - Engaging content, vibrant community. Unleash creativity beyond websites! Join us!",
+        leads: [
+            {
+                name: "Aayush Singh Panwar",
+                image: `${folderPath}/Aayush_Singh_Panwar.jpg`,
+                post: "Socials Lead",
+            },
+            {
+                name: "Saniya Singla",
+                image: `${folderPath}/Saniya Singla.jpg`,
+                post: "Socials Co-Lead",
+            },
+        ],
     },
 
     wit: {
@@ -72,7 +140,19 @@ const BRANCHES = {
         ],
         alias: "wit",
         color: "#3CB878",
-        oneLiner: "Fostering female participation in tech. Empowering women to excel and shape computing's future. Inclusive community, join us!"
+        oneLiner: "Fostering female participation in tech. Empowering women to excel and shape computing's future. Inclusive community, join us!",
+        leads: [
+            {
+                name: "Kanika Kaur",
+                image: `${folderPath}/Kanika Kaur.jpeg`,
+                post: "WiT Lead",
+            },
+            {
+                name: "Kanisha Kaur",
+                image: `${folderPath}/Kanisha Kaur.jpg`,
+                post: "WiT Co-Lead",
+            },
+        ],
     },
 };
 

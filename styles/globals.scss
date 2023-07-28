@@ -11,3 +11,8 @@ button, a, ul, li {
 a, button {
   cursor: pointer;
 }
+
+@font-face {
+  font-family: Josefin_Sans;
+  src: url("../public/assets/fonts/JosefinSans-Regular.ttf");
+}
