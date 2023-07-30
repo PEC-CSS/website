@@ -24,7 +24,7 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <title>{title}</title>
                 <meta name="description" content={description}/>
 
-                <link rel="icon" href="/assets/logo/acm.png"/>
+                <link rel="icon" href="/assets/logos/acm.png"/>
                 <meta name="author" content="PEC ACM CSS" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
