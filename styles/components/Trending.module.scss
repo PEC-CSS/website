@@ -1,5 +1,11 @@
 @import "../variables";
 
+@keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+}
+
 .trending_cards {
     display: flex;
     padding: 30px 0;
@@ -29,12 +35,29 @@
 
     .loading {
         cursor: default;
-        background: linear-gradient(
-            292deg,
-            rgba(13, 169, 217, 1) 0%,
-            rgba(0, 117, 255, 1) 35%,
-            rgba(0, 212, 255, 1) 100%
-        );
+        h4 {
+            height: min(30%, 60px);
+            width: min(70%, 250px);
+            margin-bottom: 14px;
+        }
+
+        p {
+            height: 60%;
+            width: 80%;
+            word-break: break-all;
+        }
+    
+        h4, p {
+            background: linear-gradient(
+                110deg, 
+                #f5f5f5 8%, 
+                #ececec 18%, 
+                #f5f5f5 33%
+            );
+            border-radius: 5px;
+            background-size: 200% 100%;
+            animation: shine linear infinite 1s;
+        }
     }
 }
 

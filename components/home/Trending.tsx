@@ -11,36 +11,38 @@ export interface TrendingCard {
 
 type Props = {
     trendingType: string;
+    subgroupColor?: string;
 };
 
-export default function Trending({ trendingType }: Props) {
+export default function Trending({ trendingType, subgroupColor }: Props) {
     const [loading, setLoading] = useState(true);
     const [trendingInfo, setTrendingInfo] = useState<TrendingCard[] | null>();
+    subgroupColor = subgroupColor ? subgroupColor : '#0075FF';
 
     useEffect(() => {
         getTrendingData(trendingType);
     }, [trendingType]);
 
     const getTrendingData = async (trendingType: string) => {
-        const res = await fetch("/api/trending/get", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                branch: trendingType,
-            }),
-        });
+        // const res = await fetch("/api/trending/get", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         branch: trendingType,
+        //     }),
+        // });
 
-        if (res.status != 200) {
-            return;
-        }
-        const trending = await res.json();
+        // if (res.status != 200) {
+        //     return;
+        // }
+        // const trending = await res.json();
 
-        let trendingData = trending.result as TrendingCard[];
+        // let trendingData = trending.result as TrendingCard[];
 
-        setTrendingInfo(trendingData);
-        setLoading(false);
+        // setTrendingInfo(trendingData);
+        // setLoading(false);
     };
 
     return (
@@ -51,7 +53,13 @@ export default function Trending({ trendingType }: Props) {
                         <div
                             key={i}
                             className={`${styles.trending_card} ${styles.loading}`}
-                        />
+                            style={{
+                                backgroundColor: subgroupColor,
+                            }}
+                        >
+                            <h4 />
+                            <p />
+                        </div>
                     );
                 })
             ) : trendingInfo?.length === 0 ? (
