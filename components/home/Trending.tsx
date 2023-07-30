@@ -24,25 +24,25 @@ export default function Trending({ trendingType, subgroupColor }: Props) {
     }, [trendingType]);
 
     const getTrendingData = async (trendingType: string) => {
-        // const res = await fetch("/api/trending/get", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         branch: trendingType,
-        //     }),
-        // });
+        const res = await fetch("/api/trending/get", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                branch: trendingType,
+            }),
+        });
 
-        // if (res.status != 200) {
-        //     return;
-        // }
-        // const trending = await res.json();
+        if (res.status != 200) {
+            return;
+        }
+        const trending = await res.json();
 
-        // let trendingData = trending.result as TrendingCard[];
+        let trendingData = trending.result as TrendingCard[];
 
-        // setTrendingInfo(trendingData);
-        // setLoading(false);
+        setTrendingInfo(trendingData);
+        setLoading(false);
     };
 
     return (
