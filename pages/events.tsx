@@ -48,7 +48,7 @@ function Events() {
                             month: true,
                             week: false,
                             day: false,
-                            agenda: true,
+                            agenda: false,
                         }}
                         
                         dayLayoutAlgorithm={"no-overlap"}
