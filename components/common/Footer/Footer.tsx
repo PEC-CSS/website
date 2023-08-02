@@ -38,22 +38,22 @@ export default Footer;
 
 const communityLinks = [
     {
-        href: "/development",
+        href: "/branches/development",
         name: "Development Web/App"
     }, {
-        href: "/ai",
+        href: "/branches/ai",
         name: "Machine Learning"
     }, {
-        href: "/cp",
+        href: "/branches/cp",
         name: "Competitive Programming"
     }, {
-        href: "/cyber",
+        href: "/branches/cyber",
         name: "Cyber Security"
     }, {
-        href: "/os",
+        href: "/branches/os",
         name: "Open Source"
     }, {
-        href: "/design",
+        href: "/branches/design",
         name: "Designing and Socials"
     },
 ]
