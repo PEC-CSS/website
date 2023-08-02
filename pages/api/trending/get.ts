@@ -68,7 +68,6 @@ export default function handler(
                 });
         })
         .catch((e) => {
-            console.error(e);
             return res.status(500).json({
                 error: e.message,
             });

@@ -48,11 +48,6 @@
     padding-top: 5px !important;
 }
 
-.rbc-event {
-    background-color: $acm-primary !important;
-    border-radius: 5px !important;
-}
-
 .rbc-agenda-date-cell {
     background-color: white !important;
 }
@@ -68,4 +63,34 @@
 
 .rbc-month-header {
     border-radius: 20px;
+}
+
+.rbc-override-event {
+    background-color: $acm-primary !important;
+    border-radius: 10px !important;
+}
+
+
+.rbc-override-development {
+    background-color: $dev-primary !important;
+}
+
+.rbc-override-cp {
+    background-color: $cp-primary !important;
+}
+
+.rbc-override-wit {
+    background-color: $wit-primary !important;
+}
+
+.rbc-override-ai {
+    background-color: $ai-primary !important;
+}
+
+.rbc-override-socials {
+    background-color: $socials-primary !important;
+}
+
+.rbc-override-cyber {
+    background-color: $cyber-primary !important;
 }
