@@ -7,19 +7,14 @@ const localizer = momentLocalizer(moment);
 
 import styles from "../styles/pages/events.module.scss";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // calendar css
+import { mockEvents } from "../data/mockEvents";
 
 function Events() {
-    const [listedEvents, setListedEvents] = useState<Event[] | undefined>([
-        {
-            start: moment().add(2, "h").toDate(),
-            end: moment().add(2, "hours").toDate(),
-            title: "dummy event",
-            resource: "huehheuuheu",
-        },
-    ]);
+    const [listedEvents, setListedEvents] = useState<Event[] | undefined>(mockEvents);
 
     const [activeEvent, setActiveEvent] = useState<Event | null>(null);
 
+    console.log(listedEvents)
     return (
         <PageLayout title="Events | ACM at PEC" heading="Events" description="Upcoming anf Ongoing events at PEC ACM">
             <div className={styles.events}>
