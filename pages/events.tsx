@@ -9,12 +9,23 @@ import styles from "../styles/pages/events.module.scss";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // calendar css
 import { mockEvents } from "../data/mockEvents";
 
+// see eventPropGetter
+const getEventClassByEvent = (event:Event) => {
+	let modifierStr = '';
+	if (event.resource[0]) {
+        const commitee = event.resource[0];
+		modifierStr = `rbc-override-${commitee}`;
+	}
+	return ({
+		className: `rbc-override-event ${modifierStr}`,
+	});
+};
+
 function Events() {
     const [listedEvents, setListedEvents] = useState<Event[] | undefined>(mockEvents);
 
     const [activeEvent, setActiveEvent] = useState<Event | null>(null);
 
-    console.log(listedEvents)
     return (
         <PageLayout title="Events | ACM at PEC" heading="Events" description="Upcoming anf Ongoing events at PEC ACM">
             <div className={styles.events}>
@@ -32,11 +43,12 @@ function Events() {
                         endAccessor={(event) =>
                             new Date(event.end ?? Date.now())
                         }
+                        eventPropGetter={getEventClassByEvent}
                         views={{
                             month: true,
                             week: false,
                             day: false,
-                            agenda: true,
+                            agenda: false,
                         }}
                         
                         dayLayoutAlgorithm={"no-overlap"}

@@ -35,6 +35,8 @@ export default function Trending({ trendingType, subgroupColor }: Props) {
         });
 
         if (res.status != 200) {
+            setLoading(false);
+            setTrendingInfo([]);
             return;
         }
         const trending = await res.json();
