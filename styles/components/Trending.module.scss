@@ -13,7 +13,7 @@
     .trending_card {
         margin: 0 10px;
         border-radius: 20px;
-        height: 300px;
+        height: 350px;
         width: 300px;
         cursor: pointer;
         display: flex;
@@ -61,12 +61,11 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 950px) {
     .trending_cards {
         flex-direction: column;
 
         .trending_card {
-            width: 80vw;
             margin: 20px 0;
         }
     }
