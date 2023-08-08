@@ -1,8 +1,11 @@
 @import "../variables";
 
-@keyframes shine {
-    to {
-      background-position-x: -200%;
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .7;
     }
 }
 
@@ -13,8 +16,8 @@
     .trending_card {
         margin: 0 10px;
         border-radius: 20px;
-        height: 350px;
-        width: 300px;
+        height: 320px;
+        width: 290px;
         cursor: pointer;
         display: flex;
         flex-direction: column;
@@ -34,29 +37,32 @@
     }
 
     .loading {
+        border: 1px solid #d0d0d0;
         cursor: default;
         h4 {
-            height: min(30%, 60px);
+            height: min(20%, 28px);
             width: min(70%, 250px);
-            margin-bottom: 14px;
+            margin-bottom: 24px;
         }
 
         p {
-            height: 60%;
+            height: 16px;
             width: 80%;
             word-break: break-all;
+            margin: 4px 0;
+            align-self: flex-start;
+            margin-left: 20px;
+        }
+
+        .half {
+            width: 40%;
         }
     
         h4, p {
-            background: linear-gradient(
-                110deg, 
-                #f5f5f5 8%, 
-                #ececec 18%, 
-                #f5f5f5 33%
-            );
-            border-radius: 5px;
+            background: $fallback-bg-color;
+            border-radius: 30px;
             background-size: 200% 100%;
-            animation: shine linear infinite 1s;
+            animation: pulse 2s infinite;
         }
     }
 }

@@ -98,7 +98,7 @@ export default function Branch({ branch, name, whoAreWe, whatWeDo, logoUrl, alia
 
                 <div className={styles.trendingFromBranch}>
                     <h3>Trending from <code>acm::{alias}</code></h3>
-                    <Trending trendingType={alias} subgroupColor={subgroupColor} />
+                    <Trending trendingType={alias} />
                 </div>
 
                 <div className={styles.upNext}>
