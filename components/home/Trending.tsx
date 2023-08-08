@@ -22,7 +22,6 @@ export default function Trending({ trendingType }: Props) {
     }, [trendingType]);
 
     const getTrendingData = async (trendingType: string) => {
-        console.log("api call")
         const res = await fetch("/api/trending/get", {
             method: "POST",
             headers: {
