@@ -11,13 +11,11 @@ export interface TrendingCard {
 
 type Props = {
     trendingType: string;
-    subgroupColor?: string;
 };
 
-export default function Trending({ trendingType, subgroupColor }: Props) {
+export default function Trending({ trendingType }: Props) {
     const [loading, setLoading] = useState(true);
     const [trendingInfo, setTrendingInfo] = useState<TrendingCard[] | null>();
-    subgroupColor = subgroupColor ? subgroupColor : '#0075FF';
 
     useEffect(() => {
         getTrendingData(trendingType);
@@ -55,12 +53,10 @@ export default function Trending({ trendingType, subgroupColor }: Props) {
                         <div
                             key={i}
                             className={`${styles.trending_card} ${styles.loading}`}
-                            style={{
-                                backgroundColor: subgroupColor,
-                            }}
                         >
                             <h4 />
-                            <p />
+                            <p /><p /><p />
+                            <p className={styles.half} />
                         </div>
                     );
                 })

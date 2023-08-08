@@ -112,38 +112,57 @@
     
 }
 
-@keyframes shine {
-    to {
-      background-position-x: -200%;
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .7;
     }
 }
 
 .suspense {
+    align-items: flex-start;
+    justify-content: center;
+    
     h2 {
-        height: 60px;
-        width: 218px;
+        height: 34px;
+        width: 190px;
+        align-self: center;
+        margin-bottom: 20px;
     }
 
-    div {
-        height: 22px;
+    p {
+        height: 18px;
         width: 110px;
+        margin-left: 2px;
+        margin-bottom: 20px;
+    }
+
+    .full {
+        width: 210px;
+        margin-bottom: 0;
     }
 
     button {
-        height: 15px;
-        width: 70px;
+        height: 10px;
+        width: 50px;
         border: none;
         cursor: default;
+        align-self: center;
         
         &:hover {
             cursor: default;
+            background-color: $fallback-bg-color;
         }
     }
 
-    h2, div, button {
+    h2, p, button {
         background: $fallback-bg-color;
-        border-radius: 5px;
+        border-radius: 30px;
         background-size: 200% 100%;
-        animation: shine linear infinite 1s;
+        animation: pulse 2s infinite;
+        margin-top: 10px;
     }
 }
