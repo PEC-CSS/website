@@ -5,7 +5,7 @@ export const fetchWrapper = {
     delete: _delete,
 };
 
-function get({ url, token }: { url: string; token: string }) {
+async function get({ url, token }: { url: string; token?: string }) {
     const requestOptions = {
         method: "GET",
         headers: {
@@ -13,10 +13,18 @@ function get({ url, token }: { url: string; token: string }) {
             Authorization: `Bearer ${token}`,
         },
     };
-    return fetch(url, requestOptions).then(handleResponse);
+    return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
-function post({ url, body, token }: { url: string; token: string; body: any }) {
+async function post({
+    url,
+    body,
+    token,
+}: {
+    url: string;
+    token?: string;
+    body: any;
+}) {
     const requestOptions = {
         method: "POST",
         headers: {
@@ -25,10 +33,18 @@ function post({ url, body, token }: { url: string; token: string; body: any }) {
         },
         body: JSON.stringify(body),
     };
-    return fetch(url, requestOptions).then(handleResponse);
+    return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
-function put({ url, body, token }: { url: string; token: string; body: any }) {
+async function put({
+    url,
+    body,
+    token,
+}: {
+    url: string;
+    token?: string;
+    body: any;
+}) {
     const requestOptions = {
         method: "PUT",
         headers: {
@@ -37,18 +53,18 @@ function put({ url, body, token }: { url: string; token: string; body: any }) {
         },
         body: JSON.stringify(body),
     };
-    return fetch(url, requestOptions).then(handleResponse);
+    return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
-function _delete({ url, token }: { url: string; token: string }) {
+async function _delete({ url, token }: { url: string; token?: string }) {
     const requestOptions = {
         method: "DELETE",
         Authorization: `Bearer ${token}`,
     };
-    return fetch(url, requestOptions).then(handleResponse);
+    return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
-function handleResponse(response: Response) {
+async function handleResponse(response: Response) {
     return response.text().then((text) => {
         const data = text && JSON.parse(text);
 
@@ -59,4 +75,11 @@ function handleResponse(response: Response) {
 
         return data;
     });
+}
+
+function fetchUrl(url: string) {
+    const root =
+        process.env.NODE_ENV === "development" ? "http://localhost:8080" : ""; // TODO : add hosted ip
+
+    return `${root}/${url}`;
 }
