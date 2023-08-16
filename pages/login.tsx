@@ -8,7 +8,6 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import CustomTextField from "../components/common/CustomTextField/CustomTextField";
 import DialogPopup from "../components/common/DialogPopup/DialogPopup";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
 import { login } from "../repository/auth";
 import { useLocalStorage } from "usehooks-ts";
 import { Common } from "../constants/common";
@@ -56,9 +55,10 @@ function Login() {
         event.preventDefault();
         setLoading(true);
 
-        if (error.error) {
+        if (!formValues.email.endsWith("@pec.edu.in")) {
             setError({
-                ...error,
+                title: "Ckeck email id",
+                description: "Use registered pec id",
                 error: true,
             });
         } else {

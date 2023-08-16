@@ -1,4 +1,4 @@
 export interface ErrorResponse {
-    code: string
+    code?: string
     message: string
 }
