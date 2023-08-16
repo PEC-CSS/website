@@ -19,7 +19,7 @@ async function get({ url, token }: { url: string; token?: string }) {
 async function post({
     url,
     body,
-    token,
+    token = "",
 }: {
     url: string;
     token?: string;
