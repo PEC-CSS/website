@@ -1,0 +1,32 @@
+@import "../variables.scss";
+
+.message {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.verified {
+    display: flex;
+    flex-direction: column;
+}
+.link {
+    color: $acm-primary;
+    text-align: center;
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+}
+
+.first {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    button {
+
+        padding: 10px 20px;
+        color: white;
+        background-color: $acm-primary;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}

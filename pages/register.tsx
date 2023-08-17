@@ -17,6 +17,7 @@ import CustomTextField from "../components/common/CustomTextField/CustomTextFiel
 import { register } from "../repository/auth";
 import { useLocalStorage } from "usehooks-ts";
 import { Common } from "../constants/common";
+import { useRouter } from "next/router";
 
 function Register() {
     const [formValues, setFormValues] = useState({
@@ -41,6 +42,7 @@ function Register() {
     });
 
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -91,6 +93,7 @@ function Register() {
             setAuthorization(jwtToken);
         }
         setLoading(false);
+        router.push("/verify/welcome");
     };
 
     return (
@@ -101,7 +104,10 @@ function Register() {
             {error.error ? (
                 <DialogPopup
                     errorTitle={error.title ?? ERRORTEXT.invalidFormData.title}
-                    errorDescription={error.description ?? ERRORTEXT.invalidFormData.description}
+                    errorDescription={
+                        error.description ??
+                        ERRORTEXT.invalidFormData.description
+                    }
                     handleClose={() =>
                         setError({
                             ...error,

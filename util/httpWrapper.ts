@@ -5,7 +5,7 @@ export const fetchWrapper = {
     delete: _delete,
 };
 
-async function get({ url, token }: { url: string; token?: string }) {
+async function get({ url, token = "" }: { url: string; token?: string }) {
     const requestOptions = {
         method: "GET",
         headers: {
