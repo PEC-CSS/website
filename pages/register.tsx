@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
 import { ERRORTEXT } from "../constants/errorText";
@@ -17,6 +17,9 @@ import CustomTextField from "../components/common/CustomTextField/CustomTextFiel
 import { register } from "../repository/auth";
 import { useLocalStorage } from "usehooks-ts";
 import { Common } from "../constants/common";
+import { useRouter } from "next/router";
+import {setCookie, parseCookies} from "nookies";
+import { GetServerSidePropsContext } from "next";
 
 function Register() {
     const [formValues, setFormValues] = useState({
@@ -41,6 +44,7 @@ function Register() {
     });
 
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -89,9 +93,16 @@ function Register() {
             }
             const jwtToken = response.jwtToken;
             setAuthorization(jwtToken);
+            setCookie(null, Common.AUTHORIZATION, jwtToken, {
+                path: "/",
+                sameSite: "strict",
+                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
+            })
         }
         setLoading(false);
+        router.push("/verify/welcome");
     };
+
 
     return (
         <PageLayout
@@ -101,7 +112,10 @@ function Register() {
             {error.error ? (
                 <DialogPopup
                     errorTitle={error.title ?? ERRORTEXT.invalidFormData.title}
-                    errorDescription={error.description ?? ERRORTEXT.invalidFormData.description}
+                    errorDescription={
+                        error.description ??
+                        ERRORTEXT.invalidFormData.description
+                    }
                     handleClose={() =>
                         setError({
                             ...error,
@@ -414,3 +428,22 @@ const isEmailCorrect = (email: string) => {
     if (email.length == 0) return true;
     return email.endsWith("@pec.edu.in");
 };
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { req } = context;
+    const cookies = parseCookies({ req });
+    const token = cookies[Common.AUTHORIZATION];
+
+    if (token) {
+        return {
+            redirect: {
+                destination: "/dashboard",
+                permanent: true,
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+}

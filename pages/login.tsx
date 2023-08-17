@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
 import { ERRORTEXT } from "../constants/errorText";
@@ -12,6 +12,9 @@ import { login } from "../repository/auth";
 import { useLocalStorage } from "usehooks-ts";
 import { Common } from "../constants/common";
 import { useRouter } from "next/router";
+import {setCookie, parseCookies} from "nookies";
+import { GetServerSidePropsContext } from "next";
+
 
 function Login() {
     const [_, setAuthorization] = useLocalStorage<string | null>(
@@ -74,6 +77,11 @@ function Login() {
             }
             const jwtToken = response.jwtToken;
             setAuthorization(jwtToken);
+            setCookie(null, Common.AUTHORIZATION, jwtToken, {
+                path: "/",
+                sameSite: "strict",
+                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
+            })
         }
         setLoading(false);
         router.push("/dashboard");
@@ -186,3 +194,23 @@ function Login() {
 }
 
 export default Login;
+
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { req } = context;
+    const cookies = parseCookies({ req });
+    const token = cookies[Common.AUTHORIZATION];
+
+    if (token) {
+        return {
+            redirect: {
+                destination: "/dashboard",
+                permanent: true,
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+}

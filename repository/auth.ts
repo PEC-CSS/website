@@ -63,4 +63,15 @@ const register = async ({
     }
 };
 
-export { login, register };
+const verify = async ({ token }: { token: string }): Promise<boolean> => {
+    try {
+        await fetchWrapper.get({
+            url: `v1/user/verify?token=${token}`,
+        });
+        return true;
+    } catch (error: any) {
+        return false;
+    }
+};
+
+export { login, register, verify };

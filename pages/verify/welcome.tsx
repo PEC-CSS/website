@@ -1,28 +1,29 @@
+import PageLayout from "../../components/layout/PageLayout";
+import styles from "../../styles/pages/verify.module.scss";
 import { GetServerSidePropsContext } from "next";
-import DashboardLayout from "../../components/layout/DashboardLayout";
 import { Common } from "../../constants/common";
 import { parseCookies } from "nookies";
 
-function Events() {
+export default function Welcome() {
     return (
-        <DashboardLayout title="Events | ACM at PEC" heading="Events">
-            EVENTS
-        </DashboardLayout>
+        <PageLayout title="Welcome to PECACM" heading={"Welcome to PEC ACM!"}>
+            <p className={styles.message}>
+                Please check pec id for verification mail.
+            </p>
+        </PageLayout>
     );
 }
-
-export default Events;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { req } = context;
     const cookies = parseCookies({ req });
     const token = cookies[Common.AUTHORIZATION];
 
-    if (!token) {
+    if (token) {
         return {
             redirect: {
-                destination: "/login",
-                permanent: false,
+                destination: "/dashboard",
+                permanent: true,
             },
         };
     }

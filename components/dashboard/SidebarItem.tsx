@@ -5,6 +5,7 @@ import styles from "../../styles/components/SidebarItem.module.scss";
 import { useRouter } from "next/router";
 import { Common } from "../../constants/common";
 import { useLocalStorage } from "usehooks-ts";
+import { destroyCookie } from "nookies";
 
 type Item = {
     title: string;
@@ -24,6 +25,12 @@ export const SidebarItem = (item: Item) => {
 
     const logout = () => {
         setAuthorization(null);
+        destroyCookie(null, Common.AUTHORIZATION, {
+            path: "/",
+            sameSite: "strict",
+            maxAge: 0,
+        });
+        router.push("/login");
         router.push("/");
     };
 
