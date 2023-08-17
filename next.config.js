@@ -49,6 +49,9 @@ const nextConfig = {
             },
           ],
     },
+    env: {
+        BACKEND: process.env.BACKEND
+    },
     headers,
 };
 
