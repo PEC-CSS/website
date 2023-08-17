@@ -1,9 +1,12 @@
 import { useRouter } from "next/router";
 import PageLayout from "../../components/layout/PageLayout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { verify } from "../../repository/auth";
 import Link from "next/link";
 import styles from "../../styles/pages/verify.module.scss";
+import { GetServerSidePropsContext } from "next";
+import { Common } from "../../constants/common";
+import { parseCookies } from "nookies";
 
 export default function Index() {
     const { token } = useRouter().query;
@@ -54,4 +57,23 @@ export default function Index() {
             )}
         </PageLayout>
     );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { req } = context;
+    const cookies = parseCookies({ req });
+    const token = cookies[Common.AUTHORIZATION];
+
+    if (token) {
+        return {
+            redirect: {
+                destination: "/dashboard",
+                permanent: true,
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
 }
