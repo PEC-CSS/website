@@ -39,6 +39,16 @@ const nextConfig = {
             ssr: false,
         },
     },
+    images: {
+        remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: 'avatars.githubusercontent.com',
+              port: '',
+              pathname: '/**',
+            },
+          ],
+    },
     headers,
 };
 

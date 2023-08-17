@@ -9,5 +9,6 @@ export const ERRORTEXT = {
     invalidFormData: {
         title: "Error",
         description: "Please review and correct the highlighted fields."
-    }
+    },
+    emailCorrect: "Use only PEC id to register."
 }
