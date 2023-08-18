@@ -9,7 +9,7 @@ interface EventInfo {
 
 export default function NextEventCard({branch = "none"} : {branch?: string}) {
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [eventInfo, setEventInfo] = useState<EventInfo | null>();
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export default function NextEventCard({branch = "none"} : {branch?: string}) {
             
             : <div className={styles.card}>
                 <h2> 
-                    PEC ACM General Body Meet
+                    General Body Meet
                 </h2>
                 <div>
                     <p className={styles.startTime}>
@@ -43,7 +43,7 @@ export default function NextEventCard({branch = "none"} : {branch?: string}) {
                     </p>
                     {/* <span className={`${styles.startTime} ${styles.bold}`}> 2h 59min </span> */}
                 </div>
-                <button name={branch}>Register</button>
+                <button name={branch} disabled>Register</button>
             </div>
     )
 }

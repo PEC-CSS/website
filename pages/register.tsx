@@ -418,10 +418,15 @@ const branchNames: string[] = [
     "CSE",
     "ECE",
     "EE",
+    "CSEDS",
+    "AI",
+    "VLSI",
     "MECH",
     "CIVIL",
-    "CSEDS",
-    "PROD",
+    "AERO",
+    "AI",
+    "DESIGN",
+    "PROD/META"
 ];
 
 const isEmailCorrect = (email: string) => {
