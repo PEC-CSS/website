@@ -89,7 +89,39 @@ const CORE = [
         image: `${folderPath}/Saniya Singla.jpg`,
         post: "Socials Co-Lead",
     },
-    
 ];
 
-export { HEADS, CORE };
+const DEVELOPERS = [
+    {
+        name: "Harshpreet Singh Johar",
+        image: "/assets/images/team/heads/harshpreet.jpeg",
+        post: "Chair",
+    },
+    {
+        name: "Manjot Singh Oberoi",
+        image: "/assets/images/team/heads/manjot.jpeg",
+        post: "Vice Chair",
+    },
+    {
+        name: "Ishwarendra Jha",
+        image: "/assets/images/team/heads/ishwarendra.jpeg",
+        post: "Secretary/Treasurer",
+    },
+    {
+        name: "Sanil Gupta",
+        image: `${folderPath}/Sanil_Gupta.jpeg`,
+        post: "Cyber Lead",
+    },
+    {
+        name: "Abhinav Rawal",
+        image: `${folderPath}/Abhinav_Rawal.jpg`,
+        post: "CP Lead",
+    },
+    {
+        name: "Kriti Mahajan",
+        image: "/assets/images/team/heads/kriti.jpeg",
+        post: "Webmaster",
+    },
+];
+
+export { HEADS, CORE, DEVELOPERS };

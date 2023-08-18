@@ -6,13 +6,32 @@ import NextEventCard from "../../components/common/NextEventCard/NextEventCard";
 import { parseCookies } from "nookies";
 import { GetServerSidePropsContext } from "next";
 import { Common } from "../../constants/common";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../../redux/store";
+import { useEffect, useState } from "react";
+import { getUser } from "../../repository/user";
+import { setUser } from "../../redux/slices/userSlice";
+import { User } from "../../types/user";
 
 function DashboardHome() {
-    // dummy user
-    const user = {
-        name: "Ken",
-        designation: "Member",
-        email: "msinghoberoi993@gmail.com",
+    const dispatch = useDispatch();
+    const user = useSelector<AppState, User | null>((state) => state.user);
+
+    const [userState, setUserState] = useState<User | null>(null);
+
+    useEffect(() => {
+        // if (user == null) {
+        //     pushUserToRedux();
+        // }
+        if(userState == null) {
+            pushUserToRedux();
+        }
+    }, [user]);
+
+    const pushUserToRedux = async () => {
+        const response = await getUser();
+        // dispatch(setUser(response as User));
+        setUserState(response as User)
     };
 
     // dummy leaderboard
@@ -52,7 +71,7 @@ function DashboardHome() {
     return (
         <DashboardLayout
             title="Dashboard | ACM at PEC"
-            heading={<div className={styles.title}>Hey {user.name},</div>}
+            heading={<div className={styles.title}>Hey {userState?.designation},</div>}
         >
             <div className={styles.trending}>
                 <h2 className={styles.header}>What&#39;s going on?</h2>
