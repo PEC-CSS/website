@@ -70,7 +70,7 @@ export default function Trending({ trendingType }: Props) {
                             className={styles.trending_card}
                             style={{
                                 backgroundImage: `url(${info.image})`,
-                                backgroundPosition: "center",
+                                backgroundSize: 'contain'
                             }}
                         >
                             <h4>{info.title}</h4>

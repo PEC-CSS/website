@@ -50,11 +50,11 @@ const communityLinks = [
         href: "/branches/cyber",
         name: "Cyber Security"
     }, {
-        href: "/branches/os",
-        name: "Open Source"
-    }, {
-        href: "/branches/design",
+        href: "/branches/socials",
         name: "Designing and Socials"
+    }, {
+        href: "/branches/wit",
+        name: "Women in Tech"
     },
 ]
 

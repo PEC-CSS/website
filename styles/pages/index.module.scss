@@ -41,7 +41,7 @@
         width: 100%;
 
         img {
-            width: 65% !important;
+            width: 65%;
             max-height: 200px;
             object-fit: contain;
         }
@@ -140,6 +140,14 @@
 
         img {
             height: 45px;
+        }
+    }
+
+    .branches {
+        .branch_illustration {
+            img {
+                width: 95%;
+            }
         }
     }
 }
