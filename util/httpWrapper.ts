@@ -78,7 +78,10 @@ async function handleResponse(response: Response) {
 }
 
 function fetchUrl(url: string) {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND;
-    const root =backendUrl;
+    const backendUrl = process.env.BACKEND;
+    const root =
+        process.env.NODE_ENV === "development"
+            ? "http://localhost:8080"
+            : backendUrl;
     return `${root}/${url}`;
 }

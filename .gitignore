@@ -38,3 +38,11 @@ next-env.d.ts
 
 # IDE
 .idea
+
+# firebase admin sdk
+*.json
+
+# extra pwa files
+public/workbox*.js
+public/fallback*.js
+public/sw.js
