@@ -55,6 +55,7 @@ function DashboardHome() {
             heading={<div className={styles.title}>Hey {user.name},</div>}
         >
             <div className={styles.trending}>
+                
                 <h2 className={styles.header}>What&#39;s going on?</h2>
                 <Trending trendingType="home" />
             </div>
