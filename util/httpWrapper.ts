@@ -78,7 +78,7 @@ async function handleResponse(response: Response) {
 }
 
 function fetchUrl(url: string) {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND;
+    const backendUrl = process.env.BACKEND;
     const root =backendUrl;
     return `${root}/${url}`;
 }

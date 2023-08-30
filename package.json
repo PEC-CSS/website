@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/firebase-adapter": "^1.0.0",
     "@auth/supabase-adapter": "^0.1.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

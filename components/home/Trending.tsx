@@ -55,13 +55,18 @@ export default function Trending({ trendingType }: Props) {
                             className={`${styles.trending_card} ${styles.loading}`}
                         >
                             <h4 />
-                            <p /><p /><p />
+                            <p />
+                            <p />
+                            <p />
                             <p className={styles.half} />
                         </div>
                     );
                 })
             ) : trendingInfo?.length === 0 ? (
-                <p>Coming soon! Get ready for exciting trending content. Stay tuned! 🚀</p>
+                <p>
+                    Coming soon! Get ready for exciting trending content. Stay
+                    tuned! 🚀
+                </p>
             ) : (
                 trendingInfo?.map((info, index) => {
                     return (
@@ -70,7 +75,7 @@ export default function Trending({ trendingType }: Props) {
                             className={styles.trending_card}
                             style={{
                                 backgroundImage: `url(${info.image})`,
-                                backgroundSize: 'contain'
+                                backgroundSize: "contain",
                             }}
                         >
                             <h4>{info.title}</h4>
