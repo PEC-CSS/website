@@ -12,9 +12,9 @@ import { login } from "../repository/auth";
 import { useLocalStorage } from "usehooks-ts";
 import { Common } from "../constants/common";
 import { useRouter } from "next/router";
-import {setCookie, parseCookies} from "nookies";
+import { setCookie, parseCookies } from "nookies";
 import { GetServerSidePropsContext } from "next";
-
+import { signIn, useSession } from "next-auth/react";
 
 function Login() {
     const [_, setAuthorization] = useLocalStorage<string | null>(
@@ -38,6 +38,8 @@ function Login() {
     const router = useRouter();
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const { data: session, status } = useSession();
 
     const handleChange = (
         event:
@@ -65,23 +67,34 @@ function Login() {
                 error: true,
             });
         } else {
-            const response = await login({ ...formValues });
-            if (response.error || !response.jwtToken) {
-                setError({
-                    title: "Error while signing in",
-                    description: response.error?.message || "",
-                    error: true,
+            // const response = await login({ ...formValues });
+            // if (response.error || !response.jwtToken) {
+            //     setError({
+            //         title: "Error while signing in",
+            //         description: response.error?.message || "",
+            //         error: true,
+            //     });
+            //     setLoading(false);
+            //     return;
+            // }
+            try {
+                const res = await signIn("credentials", {
+                    ...formValues,
                 });
-                setLoading(false);
-                return;
+                console.log(res);
+            } catch (e) {
+                console.error(e);
             }
-            const jwtToken = response.jwtToken;
-            setAuthorization(jwtToken);
-            setCookie(null, Common.AUTHORIZATION, jwtToken, {
-                path: "/",
-                sameSite: "strict",
-                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
-            })
+            // const jwtToken = response.jwtToken;
+            // setAuthorization(jwtToken);
+            // setCookie(null, Common.AUTHORIZATION, jwtToken, {
+            //     path: "/",
+            //     sameSite: "strict",
+            //     maxAge:  3 * 24 * 60 * 60, // expires in 3 days
+            // })
+            if (status === "authenticated") {
+                router.push("/dashboard");
+            }
         }
         setLoading(false);
         router.push("/dashboard");
@@ -194,7 +207,6 @@ function Login() {
 }
 
 export default Login;
-
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { req } = context;

@@ -77,21 +77,21 @@ function DashboardHome() {
 
 export default DashboardHome;
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { req } = context;
-    const cookies = parseCookies({ req });
-    const token = cookies[Common.AUTHORIZATION];
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//     const { req } = context;
+//     const cookies = parseCookies({ req });
+//     const token = cookies[Common.AUTHORIZATION];
 
-    if (!token) {
-        return {
-            redirect: {
-                destination: "/login",
-                permanent: false,
-            },
-        };
-    }
+//     if (!token) {
+//         return {
+//             redirect: {
+//                 destination: "/login",
+//                 permanent: false,
+//             },
+//         };
+//     }
 
-    return {
-        props: {},
-    };
-}
+//     return {
+//         props: {},
+//     };
+// }

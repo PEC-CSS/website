@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useReadLocalStorage } from "usehooks-ts";
 import { Common } from "../../../constants/common";
+import { signIn } from "next-auth/react";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -73,9 +74,9 @@ function Header() {
                         })}
                         {authorization == null ? (
                             <li>
-                                <Link href={"/login"} aria-label="Login">
-                                    <button>Login</button>
-                                </Link>
+                                <div>
+                                    <button onClick={() => signIn()}>Login</button>
+                                </div>
                             </li>
                         ) : (
                             <li>
