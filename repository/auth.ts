@@ -88,7 +88,6 @@ const verify = async ({ token }: { token: string }): Promise<boolean> => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
             },
         };
         const res = await fetch(

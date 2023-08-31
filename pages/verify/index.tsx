@@ -27,7 +27,15 @@ export default function Index() {
     };
 
     if (error) {
-        return <p className={styles.message}>Error occured!</p>;
+        return (
+            <PageLayout title="Verify Email" heading={"Error Occurred"}>
+                <div className={styles.verified}>
+                    <p className={styles.message}>
+                        Something went wrong {":("}
+                    </p>
+                </div>
+            </PageLayout>
+        );
     }
 
     return (
@@ -37,9 +45,7 @@ export default function Index() {
                     <p className={styles.message}>
                         User Verified.
                         <Link href={"/login"} className={styles.link}>
-                            <p className={styles.message}>
-                                Login to continue
-                            </p>
+                            <p className={styles.message}>Login to continue</p>
                         </Link>
                     </p>
                 </div>
