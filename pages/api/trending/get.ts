@@ -59,7 +59,7 @@ export default function handler(
                                 content: row.get("Content"),
                             };
                         });
-                    return res.status(200).json({
+                    res.status(200).json({
                         result: trendingCards,
                     });
                 })
@@ -68,7 +68,7 @@ export default function handler(
                 });
         })
         .catch((e) => {
-            return res.status(500).json({
+            res.status(500).json({
                 error: e.message,
             });
         });

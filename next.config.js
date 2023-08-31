@@ -50,7 +50,7 @@ const nextConfig = {
           ],
     },
     env: {
-        BACKEND: process.env.BACKEND
+        BACKEND: process.env.BACKEND,
     },
     headers,
 };
