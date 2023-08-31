@@ -82,7 +82,7 @@ function Register() {
             });
         } else {
             const response = await register({ ...formValues });
-            if (response.error || !response.jwtToken) {
+            if (!response.success) {
                 setError({
                     title: "Error",
                     description: response.error?.message || "",
@@ -91,13 +91,7 @@ function Register() {
                 setLoading(false);
                 return;
             }
-            const jwtToken = response.jwtToken;
-            setAuthorization(jwtToken);
-            setCookie(null, Common.AUTHORIZATION, jwtToken, {
-                path: "/",
-                sameSite: "strict",
-                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
-            })
+            console.log("all went well")
         }
         setLoading(false);
         router.push("/verify/welcome");

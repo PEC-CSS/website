@@ -17,7 +17,7 @@ export default function Index() {
     const handle = async (token: string) => {
         setLoading(true);
         const res = await verify({ token });
-
+        console.log(res);
         if (res) {
             setVerified(true);
         } else {

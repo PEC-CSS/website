@@ -1,5 +1,7 @@
 import { AuthResponseState } from "../types/response/authResponse";
-import { fetchWrapper } from "../util/httpWrapper";
+import { ErrorResponse } from "../types/response/errorResponse";
+import { RegisterResponse } from "../types/response/resgisterResponse";
+import { fetchUrl, fetchWrapper } from "../util/httpWrapper";
 
 const login = async ({
     email,
@@ -39,20 +41,38 @@ const register = async ({
     branch: string;
     sid: string;
     email: string;
-}): Promise<AuthResponseState> => {
+}): Promise<RegisterResponse> => {
     try {
-        const response = await fetchWrapper.post({
-            url: "v1/user",
-            body: {
+        const res = await fetch("/api/auth/register", {
+            method: "POST",
+            body: JSON.stringify({
                 name: `${firstName} ${lastName}`,
                 sid: Number.parseInt(sid),
                 branch,
                 email,
                 password,
+            }),
+            headers: {
+                "Content-Type": "application/json",
             },
         });
+        const json = await res.json();
+        if (res.status !== 200) {
+            return {
+                error: {
+                    message: json.error,
+                },
+            };
+        }
+        if (json.result.success) {
+            return {
+                success: true,
+            };
+        }
         return {
-            ...response,
+            error: {
+                message: json.error,
+            },
         };
     } catch (error: any) {
         return {
@@ -65,9 +85,14 @@ const register = async ({
 
 const verify = async ({ token }: { token: string }): Promise<boolean> => {
     try {
-        await fetchWrapper.get({
-            url: `v1/user/verify?token=${token}`,
-        });
+        const requestOptions = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        await fetch(fetchUrl(`v1/user/verify?token=${token}`), requestOptions);
         return true;
     } catch (error: any) {
         return false;

@@ -77,11 +77,17 @@ async function handleResponse(response: Response) {
     });
 }
 
-function fetchUrl(url: string) {
+export function fetchUrl(url: string) {
     const backendUrl = process.env.BACKEND;
     const root =
         process.env.NODE_ENV === "development"
             ? "http://localhost:8080"
             : backendUrl;
     return `${root}/${url}`;
+}
+
+export function fetchFrontendUrl() {
+    return process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://pecacm.vercel.app";
 }

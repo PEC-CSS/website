@@ -46,3 +46,6 @@ next-env.d.ts
 public/workbox*.js
 public/fallback*.js
 public/sw.js
+
+# mail format
+*.html
