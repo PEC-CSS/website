@@ -1,5 +1,4 @@
 import { AuthResponseState } from "../types/response/authResponse";
-import { ErrorResponse } from "../types/response/errorResponse";
 import { RegisterResponse } from "../types/response/resgisterResponse";
 import { fetchUrl, fetchWrapper } from "../util/httpWrapper";
 
@@ -92,8 +91,15 @@ const verify = async ({ token }: { token: string }): Promise<boolean> => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        await fetch(fetchUrl(`v1/user/verify?token=${token}`), requestOptions);
-        return true;
+        const res = await fetch(
+            fetchUrl(`v1/user/verify?token=${token}`),
+            requestOptions
+        );
+        if (res.status == 200) {
+            return true;
+        } else {
+            return false;
+        }
     } catch (error: any) {
         return false;
     }

@@ -34,7 +34,6 @@ export default async function registerHandler(
             },
         });
     } catch (err: any) {
-        console.log(err)
         res.status(500).json({
             error: err,
         });

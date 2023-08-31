@@ -17,7 +17,6 @@ export default function Index() {
     const handle = async (token: string) => {
         setLoading(true);
         const res = await verify({ token });
-        console.log(res);
         if (res) {
             setVerified(true);
         } else {
@@ -37,9 +36,9 @@ export default function Index() {
                 <div className={styles.verified}>
                     <p className={styles.message}>
                         User Verified.
-                        <Link href={"/dashboard"} className={styles.link}>
+                        <Link href={"/login"} className={styles.link}>
                             <p className={styles.message}>
-                                Checkout the dashboard
+                                Login to continue
                             </p>
                         </Link>
                     </p>

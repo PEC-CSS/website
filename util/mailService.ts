@@ -29,8 +29,6 @@ export async function sendMail({
         html: convertToMail(message),
     };
 
-    console.log(mailOptions);
-
     await new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {

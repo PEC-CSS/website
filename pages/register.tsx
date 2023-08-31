@@ -91,7 +91,6 @@ function Register() {
                 setLoading(false);
                 return;
             }
-            console.log("all went well")
         }
         setLoading(false);
         router.push("/verify/welcome");
