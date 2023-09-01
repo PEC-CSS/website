@@ -76,8 +76,19 @@ function Login() {
                 return;
             }
             const jwtToken = response.jwtToken;
+            const user = response.user;
             setAuthorization(jwtToken);
             setCookie(null, Common.AUTHORIZATION, jwtToken, {
+                path: "/",
+                sameSite: "strict",
+                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
+            })
+            setCookie(null, Common.USERNAME, user?.name ?? "", {
+                path: "/",
+                sameSite: "strict",
+                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
+            })
+            setCookie(null, Common.PHOTO, user?.dp ?? "", {
                 path: "/",
                 sameSite: "strict",
                 maxAge:  3 * 24 * 60 * 60, // expires in 3 days

@@ -7,52 +7,45 @@ import { parseCookies } from "nookies";
 import { GetServerSidePropsContext } from "next";
 import { Common } from "../../constants/common";
 
-function DashboardHome() {
-    // dummy user
-    const user = {
-        name: "Ken",
-        designation: "Member",
-        email: "msinghoberoi993@gmail.com",
-    };
-
+function DashboardHome({username, photo}: any) {
     // dummy leaderboard
     const leaderboard = [
         {
-            name: "Ken",
-            designation: "Member",
-            dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
-            xp: 10,
+            name: "Harshpreet Singh Johar",
+            designation: "Chairperson",
+            dp: "https://avatars.githubusercontent.com/u/50266759?v=4",
+            xp: 69,
         },
         {
-            name: "Ken",
-            designation: "Member",
+            name: "Ishwarendra Jha",
+            designation: "Tresurer",
             dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
-            xp: 9,
+            xp: 49,
         },
         {
-            name: "Ken",
-            designation: "Member",
+            name: "Akash Rout",
+            designation: "EB Memeber",
             dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
-            xp: 3,
+            xp: 20,
         },
         {
-            name: "Ken",
-            designation: "Member",
+            name: "Priyanka Soni",
+            designation: "EB Member",
             dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
-            xp: 2,
+            xp: 18,
         },
         {
-            name: "Ken",
-            designation: "Member",
+            name: "Pranav Sharma",
+            designation: "IB Member",
             dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
-            xp: 1,
+            xp: 13,
         },
     ];
 
     return (
         <DashboardLayout
             title="Dashboard | ACM at PEC"
-            heading={<div className={styles.title}>Hey {user.name},</div>}
+            heading={<div className={styles.title}>Hey {username},</div>}
         >
             <div className={styles.trending}>
                 
@@ -81,7 +74,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { req } = context;
     const cookies = parseCookies({ req });
     const token = cookies[Common.AUTHORIZATION];
-
+    const username = cookies[Common.USERNAME];
+    const photo = cookies[Common.PHOTO];
     if (!token) {
         return {
             redirect: {
@@ -92,6 +86,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
 
     return {
-        props: {},
+        props: {
+            username, photo
+        },
     };
 }

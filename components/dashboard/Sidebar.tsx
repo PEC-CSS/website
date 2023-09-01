@@ -8,6 +8,8 @@ import { SidebarItem } from "./SidebarItem";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import Image from "next/image";
+import nookies, { parseCookies } from 'nookies'
+import { Common } from "../../constants/common";
 
 const sidebarItems = [
     {
@@ -39,11 +41,13 @@ const sidebarItems = [
 ];
 
 export const Sidebar = () => {
+    const cookies = parseCookies();
     const user = {
-        name: "Ken",
+        name: cookies[Common.USERNAME],
         designation: "Member",
-        dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
+        dp: cookies[Common.PHOTO],
     };
+
 
     const [mobileSidebarOpen, setMobileSidebarOpen] = useState("false");
 
