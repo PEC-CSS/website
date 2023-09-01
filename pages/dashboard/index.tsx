@@ -14,7 +14,7 @@ function DashboardHome({username, photo}: any) {
             name: "Harshpreet Singh Johar",
             designation: "Chairperson",
             dp: "https://avatars.githubusercontent.com/u/50266759?v=4",
-            xp: 69,
+            xp: 68,
         },
         {
             name: "Ishwarendra Jha",

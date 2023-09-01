@@ -4,101 +4,152 @@ import { parseCookies } from "nookies";
 import { GetServerSidePropsContext } from "next";
 import { Common } from "../../constants/common";
 import Image from "next/image";
-import React,{ useState } from "react";
+import React, { useState } from "react";
+import { getUser } from "../../repository/user";
+import { User } from "../../types/user";
+import { ErrorResponse } from "../../types/response/errorResponse";
+import { Avatar } from "@mui/material";
 
-function MyProfile() {
-  const user = {
-      name: "Ken",
-      branch: "CSE",
-      SID: "20103076",
-      designation: "Member",
-      email: "msinghoberoi993@gmail.com",
-      dp: "/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F78747188%3Fv%3D4&w=128&q=75",
-      //trophy: "/_next/image?url=https://img.favpng.com/15/4/1/trophy-cartoon-png-favpng-D3Eg2sgAks8xcVfmb8cCUDW7F.jpg"
+function MyProfile({
+    user,
+    error,
+}: {
+    user: User | null;
+    error: ErrorResponse | null;
+}) {
+    const [selectedTab, setSelectedTab] = useState(0);
+
+    if (error) {
+        return (
+            <DashboardLayout title="Dashboard | ACM at PEC">
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <p>Something wrong happened</p>
+                </div>
+            </DashboardLayout>
+        );
     }
-    
-    const [events, setevents] = useState('Events');
 
-    
-  return (
-    <DashboardLayout
-        title="Dashboard | ACM at PEC"
-    >
-        <div style={{
-             display: 'flex',
-             flexDirection: 'row',
-             justifyContent: 'space-between'
-        }}>
+    return (
+        <DashboardLayout title="Dashboard | ACM at PEC">
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                }}
+            >
+                <div className={styles.userInfo}>
+                    <Avatar
+                        sx={{
+                            height: 100,
+                            width: 100,
+                            fontSize: 36,
+                            fontFamily: "Josefin Sans",
+                            bgcolor: Common.primaryColor,
+                            color: "white",
+                            mb: 2,
+                        }}
+                        src={user?.dp}
+                    >
+                        {user?.name?.[0]}
+                    </Avatar>
+                    <div className={styles.info}>
+                        <h2 className={styles.header}>
+                            {user?.name},{" "}
+                            <span className={styles.designation}>
+                                {user?.designation}
+                            </span>
+                        </h2>
+                        <h2 className={styles.header}>{user?.branch}</h2>
+                        <h2 className={styles.header}>{user?.sid}</h2>
+                    </div>
+                </div>
+                <div className={styles.experience}>
+                    <Image
+                        src="/assets/images/trophy.png"
+                        alt={""}
+                        height={75}
+                        width={75}
+                    />
+                    <div className={styles.info}>
+                        <h1 className={styles.header}>{user?.xp}</h1>
+                    </div>
+                </div>
+            </div>
 
-        <div className={styles.trending}>
-              <Image className={styles.userImg} src={user.dp} alt={""} height={150} width={150} />
-              <div className={styles.info}>
-                <h2 className={styles.header}>{user.name}, <span className={styles.designation}>{user.designation}</span></h2>
-                  <h2 className={styles.header}>{user.branch}</h2>
-                  <h2 className={styles.header}>{user.SID}</h2>
-              </div>
-          </div>
-          <div className={styles.trending1}>
-          <Image src="/assets/images/trophy3.png" alt={""} height={150} width={150}  />
-          <div className={styles.info}>
-                
-                  <h1 className={styles.header}>{user.SID}</h1>
-              </div>
-          </div>
-          </div>
-          
-          <div className={styles.menu}>
-              <button className={styles.MenuButton} onClick ={() => setevents('Events')}>Events</button>
-              <button className={styles.MenuButton} onClick ={() => setevents('History')}>History</button>
-          </div>
+            <div className={styles.menu}>
+                <button
+                    className={`${styles.MenuButton} ${
+                        selectedTab == 0 ? styles.active : ""
+                    }`}
+                    onClick={() => setSelectedTab(0)}
+                >
+                    Events
+                </button>
+                <button
+                    className={`${styles.MenuButton} ${
+                        selectedTab == 1 ? styles.active : ""
+                    }`}
+                    onClick={() => setSelectedTab(1)}
+                >
+                    History
+                </button>
+            </div>
 
-          <div>
-              {events == 'Events' ? (
-                <div className={styles.cardcontainer} >
-                <div className={styles.outtercard}>
-                <div className={styles.card}>
-                  <div className = {styles.cardcontent} >
-                      <p>No Events Found</p>
-                  </div>
-                </div>
-                </div>
-                </div>
-              ) :
-                  (
-                    <div className={styles.cardcontainer} >
-                <div className={styles.outtercard}>
-                <div className={styles.card}>
-                  <div className = {styles.cardcontent} >
-                      <p>No History Found</p>
-                  </div>
-                </div>
-                </div>
-                </div>
-                      
-                  )}
-          </div>
-          
-    </DashboardLayout>
-  );
-};
+            <div>
+                {selectedTab === 0 ? (
+                    <div className={styles.cardcontainer}>
+                        <div className={styles.outtercard}>
+                            <div className={styles.card}>
+                                <div className={styles.cardcontent}>
+                                    <p>No Events Found</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div className={styles.cardcontainer}>
+                        <div className={styles.outtercard}>
+                            <div className={styles.card}>
+                                <div className={styles.cardcontent}>
+                                    <p>No History Found</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </DashboardLayout>
+    );
+}
 
 export default MyProfile;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { req } = context;
-  const cookies = parseCookies({ req });
-  const token = cookies[Common.AUTHORIZATION];
+    const { req } = context;
+    const cookies = parseCookies({ req });
+    const token = cookies[Common.AUTHORIZATION];
 
-  if (!token) {
-      return {
-          redirect: {
-              destination: "/login",
-              permanent: false,
-          },
-      };
-  }
+    if (!token) {
+        return {
+            redirect: {
+                destination: "/login",
+                permanent: false,
+            },
+        };
+    }
+    const userDetails = await getUser(token);
 
-  return {
-      props: {},
-  };
+    return {
+        props: {
+            user: userDetails.user ?? null,
+            error: userDetails.error ?? null,
+        },
+    };
 }

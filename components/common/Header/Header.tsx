@@ -6,14 +6,13 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { useReadLocalStorage } from "usehooks-ts";
 import { Common } from "../../../constants/common";
+import { parseCookies } from "nookies";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState("/");
-
-    const authorization = useReadLocalStorage<string | null>(
-        Common.AUTHORIZATION
-    );
+    const cookies = parseCookies();
+    const authorization = cookies[Common.AUTHORIZATION]
 
     function toggleMenu() {
         setMenuOpen(!menuOpen);

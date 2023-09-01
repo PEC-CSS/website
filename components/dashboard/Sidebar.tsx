@@ -71,7 +71,7 @@ export const Sidebar = () => {
                             }}
                             src={user.dp}
                         >
-                            {user.name[0]}
+                            {user.name?.[0]}
                         </Avatar>
                         <CgClose
                             onClick={() => setMobileSidebarOpen("false")}
@@ -79,7 +79,6 @@ export const Sidebar = () => {
                         />
                     </div>
                     <h2>{user.name}</h2>
-                    <h4>{user.designation}</h4>
                 </div>
                 <div className={styles.items}>
                     {sidebarItems.map((item, index) => {
