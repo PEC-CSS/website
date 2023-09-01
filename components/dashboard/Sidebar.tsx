@@ -7,8 +7,7 @@ import { AiFillTrophy, AiOutlineMenuUnfold } from "react-icons/ai";
 import { SidebarItem } from "./SidebarItem";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
-import Image from "next/image";
-import nookies, { parseCookies } from "nookies";
+import { parseCookies } from "nookies";
 import { Common } from "../../constants/common";
 import { Avatar } from "@mui/material";
 
