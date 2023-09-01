@@ -93,6 +93,11 @@ function Login() {
                 sameSite: "strict",
                 maxAge:  3 * 24 * 60 * 60, // expires in 3 days
             })
+            setCookie(null, Common.EMAIL, user?.email ?? "", {
+                path: "/",
+                sameSite: "strict",
+                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
+            })
         }
         setLoading(false);
         router.push("/dashboard");

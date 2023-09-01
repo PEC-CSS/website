@@ -6,4 +6,4 @@ Allow: /
 User-agent: Googlebot
 Disallow: /nogooglebot/
 
-Sitemap: https://pecacm.vercel.app/sitemap.xml
+Sitemap: https://www.pecacm.com/sitemap.xml

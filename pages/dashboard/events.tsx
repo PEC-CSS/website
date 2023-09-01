@@ -6,7 +6,7 @@ import { parseCookies } from "nookies";
 function Events() {
     return (
         <DashboardLayout title="Events | ACM at PEC" heading="Events">
-            EVENTS
+            <p style={{ textAlign: "center" }}>Coming Soon! ✨</p>
         </DashboardLayout>
     );
 }

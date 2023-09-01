@@ -19,25 +19,25 @@ function DashboardHome({username, photo}: any) {
         {
             name: "Ishwarendra Jha",
             designation: "Tresurer",
-            dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
+            dp: "",
             xp: 49,
         },
         {
             name: "Akash Rout",
             designation: "EB Memeber",
-            dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
+            dp: "",
             xp: 20,
         },
         {
             name: "Priyanka Soni",
             designation: "EB Member",
-            dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
+            dp: "",
             xp: 18,
         },
         {
             name: "Pranav Sharma",
             designation: "IB Member",
-            dp: "https://avatars.githubusercontent.com/u/78747188?v=4",
+            dp: "",
             xp: 13,
         },
     ];

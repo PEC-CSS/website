@@ -8,8 +8,9 @@ import { SidebarItem } from "./SidebarItem";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import Image from "next/image";
-import nookies, { parseCookies } from 'nookies'
+import nookies, { parseCookies } from "nookies";
 import { Common } from "../../constants/common";
+import { Avatar } from "@mui/material";
 
 const sidebarItems = [
     {
@@ -48,7 +49,6 @@ export const Sidebar = () => {
         dp: cookies[Common.PHOTO],
     };
 
-
     const [mobileSidebarOpen, setMobileSidebarOpen] = useState("false");
 
     return (
@@ -60,13 +60,25 @@ export const Sidebar = () => {
             <div className={styles.sidebar} data-open={mobileSidebarOpen}>
                 <div className={styles.header}>
                     <div className={styles.pfp}>
-                        <Image src={user.dp} alt={""} height={80} width={80} />
+                        <Avatar
+                            sx={{
+                                height: 80,
+                                width: 80,
+                                fontSize: 36,
+                                fontFamily: "Josefin Sans",
+                                bgcolor: "white",
+                                color: "black",
+                                mb: 2,
+                            }}
+                            src={user.dp}
+                        >
+                            {user.name[0]}
+                        </Avatar>
                         <CgClose
                             onClick={() => setMobileSidebarOpen("false")}
                             className={styles.close}
                         />
                     </div>
-
                     <h2>{user.name}</h2>
                     <h4>{user.designation}</h4>
                 </div>

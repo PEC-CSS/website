@@ -6,9 +6,9 @@ import { GetServerSidePropsContext } from "next";
 function Leaderboard() {
     return (
         <DashboardLayout title="Leaderboard | ACM at PEC" heading="Leaderboard">
-            LEADERBOARD
+            <p style={{ textAlign: "center" }}>Coming Soon! 🏆</p>
         </DashboardLayout>
-    )
+    );
 }
 
 export default Leaderboard;

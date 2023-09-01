@@ -3,5 +3,6 @@ export class Common {
     static AUTHORIZATION = "Authorization";
     static BEARER = "Bearer";
     static USERNAME = "Username";
-    static PHOTO = "photoUrl"
+    static PHOTO = "photoUrl";
+    static EMAIL = "Email";
 }

@@ -49,26 +49,26 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <link rel='manifest' href='/manifest.json' />
                 <link rel='mask-icon' href='/assets/icons/safari-pinned-tab.svg' color='#0075FF' />
                 <link rel='shortcut icon' href='/assets/icons/favicon.ico' />
-                <link rel='canonical' href='https://pecacm.vercel.app/' />
+                <link rel='canonical' href='https://www.pecacm.com/' />
 
                 <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://pecacm.vercel.app/" />
+                <meta property="twitter:url" content="https://www.pecacm.com/" />
                 <meta property="twitter:title" content={title} />
                 <meta property="twitter:description" content={description} />
-                <meta property="twitter:image" content="https://pecacm.vercel.app/assets/logos/acm.png" />
+                <meta property="twitter:image" content="https://www.pecacm.com/assets/logos/acm.png" />
                 <meta name='twitter:creator' content='@pec_acm' />
 
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://pecacm.vercel.app/" />
+                <meta property="og:url" content="https://www.pecacm.com/" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
-                <meta property="og:image" content="https://pecacm.vercel.app/assets/logos/acm.png" />
+                <meta property="og:image" content="https://www.pecacm.com/assets/logos/acm.png" />
                 <meta property='og:site_name' content='PEC CSS | ACM at PEC' />
 
                 <meta name="keywords" content="pecacm, acmcss, punjab engineering college, pec, pec cse, pec chandigarh, saasc, scc, drams, peb, eeb, heb, Technical Society of PEC, Coding Club of PEC, ai, cp, dev, socials, wit, cyber, punjabi editorial board pec, pecfest, iit chandigarh, iitc, chandigarh" />
 
                 {/* TODO : Verification pending */}
-                <meta name="google-site-verification" content="xdiZs2FpoXT0KuSAuJLXXhVhPqSrQtG8ZAGSrph0ptI" />
+                <meta name="google-site-verification" content="wJCASasAYLy_hM-ndSessna54e0JH7VCzmg5asx1aFc" />
             </Head>
             <Header />
             <div className={styles.children}>
