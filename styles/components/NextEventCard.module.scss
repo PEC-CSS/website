@@ -36,7 +36,8 @@
         border-radius: 10px;
   
         &:hover {
-            cursor: pointer;
+            // cursor: pointer;
+            cursor: not-allowed;
             background-color: white;
             color: $acm-primary;
             transition: background-color 0.4s, color 0.4s;

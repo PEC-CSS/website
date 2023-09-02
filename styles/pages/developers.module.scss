@@ -10,7 +10,7 @@
     h3 {
         font-size: 22px;
         text-align: center;
-        margin: 20px 0;
+        margin: 20px 2px;
     }
 
     .card {
@@ -33,7 +33,9 @@
 
             .name {
                 font-weight: 700;
-                text-align: center;
+            }
+            .post {
+                margin-bottom: 10px;
             }
             .tech {
                 display: flex;
