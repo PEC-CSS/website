@@ -25,7 +25,7 @@ function dev() {
                                 />
                                 <div className={styles.details}>
                                     <p className={styles.name}>{head.name}</p>
-                                    <p>{head.post}</p>
+                                    <p className={styles.post}>{head.post}</p>
                                     <div key={i} className={styles.tech}>
                                         {head.tech.map((t, i) => {
                                             return (
@@ -35,6 +35,7 @@ function dev() {
                                                     src={t}
                                                     alt={t}
                                                     key={i}
+                                                    style={{marginRight: '3px'}}
                                                 />
                                             );
                                         })}

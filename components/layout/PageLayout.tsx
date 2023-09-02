@@ -37,7 +37,7 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <meta name='msapplication-config' content='/assets/icons/browserconfig.xml' />
                 <meta name='msapplication-TileColor' content='#0075FF' />
                 <meta name='msapplication-tap-highlight' content='no' />
-                <meta name='theme-color' content='#0075FF' />
+                <meta name='theme-color' content={Common.primaryColor} />
 
                 <link rel='apple-touch-icon' href='/assets/icons/apple-touch-icon.png' />
                 <link rel='apple-touch-icon' sizes='152x152' href='/assets/icons/apple-touch-icon.png' />
@@ -51,21 +51,17 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <link rel='shortcut icon' href='/assets/icons/favicon.ico' />
                 <link rel='canonical' href='https://www.pecacm.com/' />
 
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://www.pecacm.com/" />
-                <meta property="twitter:title" content={title} />
-                <meta property="twitter:description" content={description} />
-                <meta property="twitter:image" content="https://www.pecacm.com/assets/logos/acm.png" />
-                <meta name='twitter:creator' content='@pec_acm' />
-
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.pecacm.com/" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:image" content="https://www.pecacm.com/assets/logos/acm.png" />
+                <meta property="og:image:type" content="image/png" />
+                <meta property="og:image:height" content="350" />
+                <meta property="og:image:width" content="350" />
                 <meta property='og:site_name' content='PEC CSS | ACM at PEC' />
 
-                <meta name="keywords" content="pecacm, acmcss, punjab engineering college, pec, pec cse, pec chandigarh, saasc, scc, drams, peb, eeb, heb, Technical Society of PEC, Coding Club of PEC, ai, cp, dev, socials, wit, cyber, punjabi editorial board pec, pecfest, iit chandigarh, iitc, chandigarh" />
+                <meta name="keywords" content="pecacm, acmcss, punjab engineering college, pec, pec cse, pec chandigarh, saasc, scc, drams, peb, eeb, heb, Technical Society of PEC, Coding Club of PEC, ai, cp, dev, socials, wit, cyber, punjabi editorial board pec, pecfest, iit chandigarh, iitc, chandigarh, pwoc, ideathon, codebattle, hackathons, codeblooded, kaggle, tips and tricks" />
 
                 {/* TODO : Verification pending */}
                 <meta name="google-site-verification" content="wJCASasAYLy_hM-ndSessna54e0JH7VCzmg5asx1aFc" />
