@@ -51,13 +51,6 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <link rel='shortcut icon' href='/assets/icons/favicon.ico' />
                 <link rel='canonical' href='https://www.pecacm.com/' />
 
-                {/* <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://www.pecacm.com/" />
-                <meta property="twitter:title" content={title} />
-                <meta property="twitter:description" content={description} />
-                <meta property="twitter:image" content="https://www.pecacm.com/assets/logos/acm.png" />
-                <meta name='twitter:creator' content='@pec_acm' /> */}
-
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.pecacm.com/" />
                 <meta property="og:title" content={title} />
