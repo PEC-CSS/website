@@ -55,6 +55,7 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <meta property="og:url" content="https://www.pecacm.com/" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
+                <meta property="og:image" content="https://www.pecacm.com/assets/logos/acm.png" />
                 <meta property="og:image:type" content="image/png" />
                 <meta property="og:image:height" content="350" />
                 <meta property="og:image:width" content="350" />
