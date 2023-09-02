@@ -63,8 +63,8 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description + "\n" + "We are a 300+ strong community of Computer Science enthusiasts working together to advance Computing as a Science and Profession. We are proud to be part of the official ACM Student Chapter - PEC ACM, and our base camp is at Punjab Engineering College, Chandigarh."} />
                 <meta property="og:image" content="https://www.pecacm.com/assets/logos/acm.png" />
-                <meta property="og:image:height" content="1200" />
-                <meta property="og:image:width" content="630" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:width" content="1200" />
                 <meta property='og:site_name' content='PEC CSS | ACM at PEC' />
 
                 <meta name="keywords" content="pecacm, acmcss, punjab engineering college, pec, pec cse, pec chandigarh, saasc, scc, drams, peb, eeb, heb, Technical Society of PEC, Coding Club of PEC, ai, cp, dev, socials, wit, cyber, punjabi editorial board pec, pecfest, iit chandigarh, iitc, chandigarh" />
