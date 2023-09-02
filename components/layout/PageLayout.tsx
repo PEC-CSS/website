@@ -37,7 +37,7 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <meta name='msapplication-config' content='/assets/icons/browserconfig.xml' />
                 <meta name='msapplication-TileColor' content='#0075FF' />
                 <meta name='msapplication-tap-highlight' content='no' />
-                <meta name='theme-color' content='#0075FF' />
+                <meta name='theme-color' content={Common.primaryColor} />
 
                 <link rel='apple-touch-icon' href='/assets/icons/apple-touch-icon.png' />
                 <link rel='apple-touch-icon' sizes='152x152' href='/assets/icons/apple-touch-icon.png' />
@@ -61,12 +61,11 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.pecacm.com/" />
                 <meta property="og:title" content={title} />
-                <meta property="og:description" content={description} />
+                <meta property="og:description" content={description + "\n" + "We are a 300+ strong community of Computer Science enthusiasts working together to advance Computing as a Science and Profession. We are proud to be part of the official ACM Student Chapter - PEC ACM, and our base camp is at Punjab Engineering College, Chandigarh."} />
                 <meta property="og:image" content="https://www.pecacm.com/assets/logos/acm.png" />
-                <meta property="og:image:width" content="200" />
-                <meta property="og:image:height" content="200" />
+                <meta property="og:image:height" content="1200" />
+                <meta property="og:image:width" content="630" />
                 <meta property='og:site_name' content='PEC CSS | ACM at PEC' />
-                <meta name='theme-color' content={Common.primaryColor} />
 
                 <meta name="keywords" content="pecacm, acmcss, punjab engineering college, pec, pec cse, pec chandigarh, saasc, scc, drams, peb, eeb, heb, Technical Society of PEC, Coding Club of PEC, ai, cp, dev, socials, wit, cyber, punjabi editorial board pec, pecfest, iit chandigarh, iitc, chandigarh" />
 
