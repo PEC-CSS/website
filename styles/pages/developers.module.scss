@@ -1,0 +1,81 @@
+@import "../variables.scss";
+.heads {
+    .cards {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    h3 {
+        font-size: 22px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .card {
+        margin: 0 20px;
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        img {
+            height: 200px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+
+            .name {
+                font-weight: 700;
+                text-align: center;
+            }
+            .tech {
+                display: flex;
+                img {
+                    height: 30px;
+                    width: 30px;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $navbar-breakpoint) {
+    .heads {
+        .card 
+            > img {
+                height: 150px !important;
+                width: 150px !important;
+            }
+        
+    }
+}
+
+@media screen and (max-width: $tablet-breakpoint) {
+    .heads {
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .card {
+            > img {
+                height: 200px !important;
+                width: 200px !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .heads .card > img {
+        height: 140px !important;
+        width: 140px !important;
+    }
+}
