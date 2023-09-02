@@ -63,7 +63,10 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:image" content="https://www.pecacm.com/assets/logos/acm.png" />
+                <meta property="og:image:width" content="500" />
+                <meta property="og:image:height" content="500" />
                 <meta property='og:site_name' content='PEC CSS | ACM at PEC' />
+                <meta name='theme-color' content={Common.primaryColor} />
 
                 <meta name="keywords" content="pecacm, acmcss, punjab engineering college, pec, pec cse, pec chandigarh, saasc, scc, drams, peb, eeb, heb, Technical Society of PEC, Coding Club of PEC, ai, cp, dev, socials, wit, cyber, punjabi editorial board pec, pecfest, iit chandigarh, iitc, chandigarh" />
 
