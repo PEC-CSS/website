@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PageLayout from "../components/layout/PageLayout";
-import { Calendar, Event, momentLocalizer } from "react-big-calendar";
+import { Calendar, Event, dateFnsLocalizer, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 
 const localizer = momentLocalizer(moment);
@@ -50,8 +50,8 @@ function Events() {
                             imageUrl={eventResource[eventResource.length - 1].length === 0 
                                         ? `/assets/logos/${eventResource[0]}.png`
                                         : eventResource.slice(-1)[0]}
-                            startDate={activeEvent?.start}
-                            endDate={activeEvent?.end}
+                            startDate={activeEvent?.start ? activeEvent.start : new Date()}
+                            endDate={activeEvent?.end ? activeEvent.end : new Date()}
                         />
                     ) : (
                         <></>
