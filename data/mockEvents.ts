@@ -18,7 +18,7 @@ export const mockEvents = <Event[]>[
             "dev", "Month long hackathon",
             "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
             "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
-            "https://cdn.discordapp.com/attachments/981855994340597810/1149264104226295868/image.png",
+            "",
         ],
     },
     {
@@ -41,7 +41,7 @@ export const mockEvents = <Event[]>[
             "cp", "DSA mock round for internships",
             "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
             "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
-            "https://cdn.discordapp.com/attachments/981855994340597810/1149264104226295868/image.png",
+            "",
         ],
     },
     {
@@ -64,7 +64,7 @@ export const mockEvents = <Event[]>[
             "cp", "DSA mock round for internships",
             "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
             "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
-            "https://cdn.discordapp.com/attachments/981855994340597810/1149264104226295868/image.png",
+            "",
         ],
     },
     {
@@ -133,7 +133,7 @@ export const mockEvents = <Event[]>[
             "dev", "Introduction to Web3",
             "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
             "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
-            "https://cdn.discordapp.com/attachments/981855994340597810/1149264104226295868/image.png",
+            "",
         ],
     }
 ];

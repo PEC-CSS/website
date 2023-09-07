@@ -76,6 +76,7 @@
 
 @media screen and (max-width: $sidebar-breakpoint) {
     .modal {
+        padding: 10px 0;
         .content {
             img {
                 width: 230px;

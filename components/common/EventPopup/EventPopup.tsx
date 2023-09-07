@@ -41,7 +41,12 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                 </div>
 
                 <div className={styles.content}>
-                    <img src={imageUrl} alt={`${title} event poster`} />
+                    <Image 
+                        src={imageUrl} 
+                        alt={`${title} event poster`}
+                        width={200} 
+                        height={200}
+                    />
                     <div className={styles.text}>
                         <p className={styles.subtitle}>
                             <h3>{subTitle}</h3>
