@@ -14,7 +14,12 @@ export const mockEvents = <Event[]>[
             year: 2023,
         }).toDate(),
         title: "Ideathon 3.0",
-        resource: ["development", "Month long hackathon"],
+        resource: [
+            "dev", "Month long hackathon",
+            "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
+            "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
+            "",
+        ],
     },
     {
         start: moment({
@@ -32,7 +37,12 @@ export const mockEvents = <Event[]>[
             minute: 30,
         }).toDate(),
         title: "CodeBattle_2023.1",
-        resource: ["cp", "DSA mock round for internships"],
+        resource: [
+            "cp", "DSA mock round for internships",
+            "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
+            "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
+            "",
+        ],
     },
     {
         start: moment({
@@ -50,7 +60,12 @@ export const mockEvents = <Event[]>[
             minute: 30,
         }).toDate(),
         title: "CodeBattle_2023.2",
-        resource: ["cp", "DSA mock round for internships"],
+        resource: [
+            "cp", "DSA mock round for internships",
+            "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
+            "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
+            "",
+        ],
     },
     {
         start: moment({
@@ -68,7 +83,12 @@ export const mockEvents = <Event[]>[
             minute: 0,
         }).toDate(),
         title: "Kaggle Quest Ignite",
-        resource: ["ai", "Kaggle Challenge"],
+        resource: [
+            "ai", "Kaggle Challenge",
+            "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
+            "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
+            "",
+        ],
     },
     {
         start: moment({
@@ -86,7 +106,12 @@ export const mockEvents = <Event[]>[
             minute: 0,
         }).toDate(),
         title: "Kaggle Tips & Tricks",
-        resource: ["ai", "Kaggle Challenge Discussion"],
+        resource: [
+            "ai", "Kaggle Challenge Discussion",
+            "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
+            "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
+            "",
+        ],
     },
     {
         start: moment({
@@ -104,6 +129,11 @@ export const mockEvents = <Event[]>[
             minute: 0,
         }).toDate(),
         title: "Crewsphere Web 3.0 Session",
-        resource: ["development", ""],
+        resource: [
+            "dev", "Introduction to Web3",
+            "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
+            "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
+            "",
+        ],
     }
 ];
