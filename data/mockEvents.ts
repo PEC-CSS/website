@@ -1,6 +1,21 @@
 import { Event } from "react-big-calendar";
 import moment from "moment";
 
+/*
+  Resources = [
+        subgroup alias,
+        short subtitle (Not event name),
+        para_1,
+        para_2,
+        ...
+        para_x,
+        imageUrl: leave empty ("") if no url.
+    ]
+
+    you must have keep atleast one para.
+    There is not limit to para but the total content (para_1 + para_2 + ... + para_x) should be within 50 words.
+*/
+
 export const mockEvents = <Event[]>[
     {
         start: moment({
