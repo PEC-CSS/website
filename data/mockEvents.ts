@@ -139,18 +139,14 @@ export const mockEvents = <Event[]>[
     },
     {
         start: moment({
-            month: 5,
-            day: 10,
+            month: 6,
+            day: 17,
             year: 2023,
-            hour: 17,
-            minute: 30,
         }).toDate(),
         end: moment({
             month: 7,
             day: 19,
             year: 2023,
-            hour: 19,
-            minute: 0,
         }).toDate(),
         title: "Ideathon 3.0",
         resource: [
