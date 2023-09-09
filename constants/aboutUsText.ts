@@ -15,7 +15,7 @@ export const ABOUTUS = [
             'The Computer Science Society at Punjab Engineering College, Chandigarh, functions as a collaborative platform where students with a passion for computer science come together to explore, learn, and innovate.',
             'Through a combination of workshops, guest lectures, coding competitions, and interactive sessions, we provide a dynamic learning environment that encourages active participation and knowledge sharing. By leveraging the expertise of our members and fostering a spirit of teamwork, we aim to create a space where ideas flourish and innovation thrives.'
         ],
-        imgUrl: '/assets/images/team.jpg',
+        imgUrl: '/assets/images/team.png',
         imgAlt: 'Our team',
         key: 2
     },
