@@ -3,7 +3,7 @@ import { SocialLinks } from "../common/SocialLinks/SocialLinks";
 import { FaHome } from "react-icons/fa";
 import { MdAccountCircle, MdLogout } from "react-icons/md";
 import { BiCalendarEvent } from "react-icons/bi";
-import { AiFillTrophy, AiOutlineMenuUnfold } from "react-icons/ai";
+import { AiFillTrophy, AiOutlineMenu } from "react-icons/ai";
 import { SidebarItem } from "./SidebarItem";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
@@ -52,7 +52,7 @@ export const Sidebar = () => {
 
     return (
         <>
-            <AiOutlineMenuUnfold
+            <AiOutlineMenu
                 onClick={() => setMobileSidebarOpen("true")}
                 className={styles.hamburger}
             />
