@@ -6,41 +6,9 @@ import NextEventCard from "../../components/common/NextEventCard/NextEventCard";
 import { parseCookies } from "nookies";
 import { GetServerSidePropsContext } from "next";
 import { Common } from "../../constants/common";
+import { fetchWrapper } from "../../util/httpWrapper";
 
-function DashboardHome({username, photo}: any) {
-    // dummy leaderboard
-    const leaderboard = [
-        {
-            name: "Harshpreet Singh Johar",
-            designation: "Chairperson",
-            dp: "https://avatars.githubusercontent.com/u/50266759?v=4",
-            xp: 70,
-        },
-        {
-            name: "Ishwarendra Jha",
-            designation: "Treasurer",
-            dp: "",
-            xp: 49,
-        },
-        {
-            name: "Akash Rout",
-            designation: "EB Memeber",
-            dp: "",
-            xp: 20,
-        },
-        {
-            name: "Priyanka Soni",
-            designation: "EB Member",
-            dp: "",
-            xp: 18,
-        },
-        {
-            name: "Pranav Sharma",
-            designation: "IB Member",
-            dp: "",
-            xp: 13,
-        },
-    ];
+function DashboardHome({ username, photo, leaderboard}: any) {    
 
     return (
         <DashboardLayout
@@ -48,7 +16,7 @@ function DashboardHome({username, photo}: any) {
             heading={<div className={styles.title}>Hey {username},</div>}
         >
             <div className={styles.trending}>
-                
+
                 <h2 className={styles.header}>What&#39;s going on?</h2>
                 <Trending trendingType="home" />
             </div>
@@ -56,9 +24,15 @@ function DashboardHome({username, photo}: any) {
                 <div className={styles.contributors}>
                     <h2 className={styles.header}>Top contributors</h2>
                     <div className={styles.leaderboard}>
-                        {leaderboard.map((user, index) => {
-                            return <LeaderboardItem user={user} key={index} />;
-                        })}
+                        {
+                            leaderboard &&
+                            leaderboard
+                                .filter((user: any) => user.xp > 0)
+                                .sort((user1: any, user2: any) => user2.xp - user1.xp)
+                                .map((user: any, index: any) => {
+                                    return <LeaderboardItem user={user} key={index} />;
+                                })
+                        }
                     </div>
                 </div>
                 <div className={styles.space}></div>
@@ -85,9 +59,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         };
     }
 
+    const leaderboard = await fetchWrapper.get({ url: "v1/user/leaderboard", token });
+
     return {
         props: {
-            username, photo
+            username, photo, leaderboard
         },
     };
 }
