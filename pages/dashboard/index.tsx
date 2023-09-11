@@ -26,9 +26,8 @@ function DashboardHome({ username, photo, leaderboard}: any) {
                     <div className={styles.leaderboard}>
                         {
                             leaderboard &&
-                            leaderboard
-                                .filter((user: any) => user.xp > 0)
-                                .sort((user1: any, user2: any) => user2.xp - user1.xp)
+                            leaderboard  
+                                .slice(0, 5)
                                 .map((user: any, index: any) => {
                                     return <LeaderboardItem user={user} key={index} />;
                                 })

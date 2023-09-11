@@ -14,9 +14,8 @@ function Leaderboard({ data }: any) {
         if (data) {
             setLoading(false);
         }
-    }, [data]);
+    }, [data]);    
 
-    
     return (
         <DashboardLayout title="Leaderboard | ACM at PEC" heading="Leaderboard">
             <div className={styles.details}>
@@ -25,12 +24,9 @@ function Leaderboard({ data }: any) {
                         <h2 className={styles.header}>🏆 Contributors</h2>
                         <div className={styles.leaderboard}>
                             {data && !loading ? (
-                                data
-                                    .filter((user: any) => user.xp > 0)
-                                    .sort((user1: any, user2: any) => user2.xp - user1.xp)
-                                    .map((user: any, index: any) => (
-                                        <LeaderboardItem user={user} key={index} />
-                                    ))
+                                data.map((user: any, index: any) => (
+                                    <LeaderboardItem user={user} key={index} />
+                                ))
                             ) : null}
                         </div>
                     </div>
