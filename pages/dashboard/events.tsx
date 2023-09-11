@@ -25,11 +25,13 @@ const getEventClassByEvent = (event: Event) => {
   };
 };
 
-function Events() {
+function Events({designation}:any) {
   const [listedEvents, setListedEvents] = useState<Event[] | undefined>( mockEvents);
   const [activeEvent, setActiveEvent] = useState<Event | null>(null);
   const [eventResource, setEventResource] = useState<string[]>(["acm","","","",]);
   const [showModal, setShowModal] = useState<Boolean>(false);
+
+  console.log(designation);
 
   const handleSelectEvent = (event: Event) => {
     setEventResource(event ? event.resource : ["acm", "", "", ""]);
@@ -43,9 +45,15 @@ function Events() {
         <p>Have a look at our calendar</p>
         
         <div className={styles.calendarWrapper}>
-        <div className={styles.eventButton}>
-          <button type="submit">Create Event</button>
-        </div>
+  
+          {
+            (designation === ("Admin")) || (designation === "Core") || (designation === "ExecutiveBody") ?
+          <div className={styles.eventButton}>
+            <button type="submit">Create Event</button>
+          </div> :
+          <>
+          </>}
+          
           {showModal ? (
             <EventPopup
               handleClose={() => {
@@ -95,6 +103,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { req } = context;
   const cookies = parseCookies({ req });
   const token = cookies[Common.AUTHORIZATION];
+  const designation = cookies[Common.DESIGNATION];
+  // console.log(designation);
 
   if (!token) {
     return {
@@ -106,6 +116,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   return {
-    props: {},
+    props: {designation},
   };
 }
