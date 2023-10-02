@@ -300,6 +300,53 @@ export const mockEvents = <Event[]>[
             "Get ready to create and code for the web!",
             "",
         ],
+    },
+    {
+        start: moment({
+            month: 9,
+            day: 4,
+            year: 2023,
+            hour: 21,
+            minute: 30,
+        }).toDate(),
+        end: moment({
+            month: 9,
+            day: 4,
+            year: 2023,
+            hour: 22,
+            minute: 0,
+        }).toDate(),
+        title: "Hacktoberfest Kickoff 🎃",
+        resource: [
+            "dev", "Introducing Hacktoberfest",
+            "Platform: Gmeet",
+            "With the dawn of October, it's time for some exciting contributions to Hacktoberfest!",
+            "This annual event is a fantastic opportunity for new as well as experienced developers to get involved in open-source projects and make impactful contributions to the global tech community.",
+            "",
+        ],
+    },
+    {
+        start: moment({
+            month: 9,
+            day: 7,
+            year: 2023,
+            hour: 19,
+            minute: 0,
+        }).toDate(),
+        end: moment({
+            month: 9,
+            day: 7,
+            year: 2023,
+            hour: 20,
+            minute: 45,
+        }).toDate(),
+        title: "Rising Coders Challenge",
+        resource: [
+            "cp", "Beginner Friendly Contest",
+            "Platform: Hackerrank",
+            "Special coding contest designed for beginners. Solve 6 problems in 90 minutes and prove your skills. ",
+            "Ranking will be based on ICPC style. Get ready to learn and have fun! See you at the contest! 🚀",
+            "",
+        ],
     }
-
 ];
