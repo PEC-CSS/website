@@ -17,16 +17,15 @@
 .details {
     display: flex;
     flex-direction: row;
-    margin: 10px 20px;
+    margin: 5px 20px;
     align-items: center;
+    
 
     .contributors {
-        flex-basis: 70%;
+        flex-basis: 80%;
 
         .leaderboard {
-            margin: 10px 0;
-            border-radius: 15px;
-            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+            margin: 10px 0; 
         }
     }
 

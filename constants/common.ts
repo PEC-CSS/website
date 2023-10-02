@@ -5,4 +5,5 @@ export class Common {
     static USERNAME = "Username";
     static PHOTO = "photoUrl";
     static EMAIL = "Email";
+    static DESIGNATION = "Designation";
 }
