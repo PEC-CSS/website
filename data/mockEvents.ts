@@ -415,7 +415,7 @@ export const mockEvents = <Event[]>[
         title: "GANesis",
         resource: [
             "ai", "Generative Adversial Network",
-            "Platform: Hackerrank",
+            "Platform: L21",
             "Embark on an exciting journey into the world of creativity and artificial intelligence. Discover the magic of Generative Adversarial Networks(GAN's), the wizards of the digital world.",
             "The session is meant to be for 2nd, 3rd and 4th year!",
             "",
@@ -486,7 +486,7 @@ export const mockEvents = <Event[]>[
         title: "RCC v1 Discussion",
         resource: [
             "cp", "Rising Coders Challenge Discussion",
-            "Platform: L21",
+            "Platform: Google Meet",
             "Felt the problems were a little on tough end? Don't worry, we got you covered.",
             "We will talk not only about the problem solution but also tell the intuition behind those solutions as well.",
             "",
