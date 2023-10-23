@@ -495,14 +495,14 @@ export const mockEvents = <Event[]>[
     {
         start: moment({
             month: 9,
-            day: 26,
+            day: 27,
             year: 2023,
             hour: 17,
             minute: 0,
         }).toDate(),
         end: moment({
             month: 9,
-            day: 26,
+            day: 27,
             year: 2023,
             hour: 19,
             minute: 0,
