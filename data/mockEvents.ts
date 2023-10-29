@@ -568,6 +568,29 @@ export const mockEvents = <Event[]>[
     {
         start: moment({
             month: 9,
+            day: 29,
+            year: 2023,
+            hour: 21,
+            minute: 0,
+        }).toDate(),
+        end: moment({
+            month: 9,
+            day: 29,
+            year: 2023,
+            hour: 22,
+            minute: 30,
+        }).toDate(),
+        title: "GBM v2",
+        resource: [
+            "acm", "ACM IB, EB, Core Update",
+            "Platform: GMeet",
+            "We are excited to announce the formation of the new IB and share updates on non-working IBs and EB removal. Stay tuned for more details and thank you for your understanding and support. Final list will be released soon.",
+            "",
+        ],
+    },
+    {
+        start: moment({
+            month: 9,
             day: 30,
             year: 2023,
             hour: 21,
@@ -604,7 +627,7 @@ export const mockEvents = <Event[]>[
             hour: 20,
             minute: 0,
         }).toDate(),
-        title: "Techni Biz Quiz",
+        title: "Techno Biz Quiz",
         resource: [
             "acm", "ACM x SAASC Quiz",
             "Platform: L21",
