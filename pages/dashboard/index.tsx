@@ -46,7 +46,7 @@ export default DashboardHome;
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { data } = getServerCookieData(context);
 
-    const token = data.token;
+    const token = data?.token;
 
     if (!token) {
         return {
@@ -64,7 +64,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     return {
         props: {
-            username: data.user.name,
+            username: data?.user?.name,
             leaderboard,
         },
     };

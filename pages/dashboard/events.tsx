@@ -125,8 +125,8 @@ export default Events;
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { data } = getServerCookieData(context);
 
-    const token = data.token;
-    const designation = data.user.designation;
+    const token = data?.token;
+    const designation = data?.user?.designation;
 
     if (!token) {
         return {

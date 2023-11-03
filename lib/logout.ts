@@ -6,7 +6,6 @@ import { Session } from "next-auth";
 const logout = async (router: NextRouter, session: Session | null) => {
     try {
         const cookies = new Cookies();
-        const redirectPath = router.asPath;
 
         let data;
         if (session) {
@@ -18,7 +17,7 @@ const logout = async (router: NextRouter, session: Session | null) => {
         cookies.remove("redirectPath");
         cookies.remove("session-token");
 
-        router.push(redirectPath);
+        router.push('/');
         return {
             success: true,
         };

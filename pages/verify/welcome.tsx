@@ -15,7 +15,7 @@ export default function Welcome() {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const {data} = getServerCookieData(context);
-    const token = data.token;
+    const token = data?.token;
 
     if (token) {
         return {
