@@ -70,7 +70,7 @@ function Header() {
                                 </li>
                             );
                         })}
-                        {authorization == null ? (
+                        {/* {authorization == null ? (
                             <li>
                                 <Link href={"/login"} aria-label="Login">
                                     <button>Login</button>
@@ -85,7 +85,7 @@ function Header() {
                                     <button>Dashboard</button>
                                 </Link>
                             </li>
-                        )}
+                        )} */}
                     </ul>
                 </div>
             </div>

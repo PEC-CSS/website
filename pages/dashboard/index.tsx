@@ -7,6 +7,7 @@ import { parseCookies } from "nookies";
 import { GetServerSidePropsContext } from "next";
 import { Common } from "../../constants/common";
 import { fetchWrapper } from "../../util/httpWrapper";
+import getServerCookieData from "../../lib/getServerCookieData";
 
 function DashboardHome({ username, photo, leaderboard}: any) {    
 
