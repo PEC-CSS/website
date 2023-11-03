@@ -1,6 +1,5 @@
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import styles from "../../styles/pages/me.module.scss";
-import { parseCookies } from "nookies";
 import { GetServerSidePropsContext } from "next";
 import { Common } from "../../constants/common";
 import Image from "next/image";
@@ -9,6 +8,7 @@ import { getUser } from "../../repository/user";
 import { User } from "../../types/user";
 import { ErrorResponse } from "../../types/response/errorResponse";
 import { Avatar } from "@mui/material";
+import getServerCookieData from "../../lib/getServerCookieData";
 
 function MyProfile({
     user,
@@ -132,9 +132,8 @@ function MyProfile({
 export default MyProfile;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { req } = context;
-    const cookies = parseCookies({ req });
-    const token = cookies[Common.AUTHORIZATION];
+    const {data} = getServerCookieData(context);
+    const token = data?.token;
 
     if (!token) {
         return {

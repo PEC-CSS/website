@@ -7,9 +7,9 @@ import { AiFillTrophy, AiOutlineMenu } from "react-icons/ai";
 import { SidebarItem } from "./SidebarItem";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
-import { parseCookies } from "nookies";
-import { Common } from "../../constants/common";
 import { Avatar } from "@mui/material";
+import getCookieData from "../../lib/getCookieData";
+import { useSession } from "next-auth/react";
 
 const sidebarItems = [
     {
@@ -41,19 +41,20 @@ const sidebarItems = [
 ];
 
 export const Sidebar = () => {
-    const cookies = parseCookies();
+    const { data: session } = useSession();
+    const { data } = getCookieData(session);
     const user = {
-        name: cookies[Common.USERNAME],
-        designation: "Member",
-        dp: cookies[Common.PHOTO],
+        name: data?.user?.name,
+        designation: data?.user?.designation,
+        dp: data?.user?.dp,
     };
 
-    const [mobileSidebarOpen, setMobileSidebarOpen] = useState("false");
+    const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
     return (
         <>
             <AiOutlineMenu
-                onClick={() => setMobileSidebarOpen("true")}
+                onClick={() => setMobileSidebarOpen(true)}
                 className={styles.hamburger}
             />
             <div className={styles.sidebar} data-open={mobileSidebarOpen}>
@@ -74,7 +75,7 @@ export const Sidebar = () => {
                             {user.name?.[0]}
                         </Avatar>
                         <CgClose
-                            onClick={() => setMobileSidebarOpen("false")}
+                            onClick={() => setMobileSidebarOpen(false)}
                             className={styles.close}
                         />
                     </div>

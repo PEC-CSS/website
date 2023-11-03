@@ -1,8 +1,9 @@
 import Head from "next/head";
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 import styles from "../../styles/components/PageLayout.module.scss";
 import Banner from "../banner/Banner";
-import {Sidebar} from "../dashboard/Sidebar";
+import { Sidebar } from "../dashboard/Sidebar";
+import NoSSRWrapper from "../common/NoSSRWrapper";
 
 type Props = {
     title: string;
@@ -11,18 +12,20 @@ type Props = {
     children?: ReactNode;
 };
 
-function DashboardLayout({title, children, description, heading}: Props) {
+function DashboardLayout({ title, children, description, heading }: Props) {
     return (
         <div className={styles.dashboard}>
             <Head>
                 <title>{title}</title>
-                <meta name="description" content={description}/>
+                <meta name="description" content={description} />
             </Head>
 
             <div className={styles.children}>
-                <Sidebar />
+                <NoSSRWrapper>
+                    <Sidebar />
+                </NoSSRWrapper>
                 <div className={styles.content}>
-                    <Banner heading={heading}/>
+                    <Banner heading={heading} />
                     {children}
                 </div>
             </div>

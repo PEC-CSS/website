@@ -4,15 +4,14 @@ import styles from "../../../styles/components/Header.module.scss";
 import Hamburger from "./Hamburger";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { useReadLocalStorage } from "usehooks-ts";
-import { Common } from "../../../constants/common";
-import { parseCookies } from "nookies";
+import { useSession } from "next-auth/react";
+import getCookieData from "../../../lib/getCookieData";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState("/");
-    const cookies = parseCookies();
-    const authorization = cookies[Common.AUTHORIZATION]
+    const { data: session } = useSession();
+    const { data: cookieData } = getCookieData(session);
 
     function toggleMenu() {
         setMenuOpen(!menuOpen);
@@ -70,7 +69,7 @@ function Header() {
                                 </li>
                             );
                         })}
-                        {authorization == null ? (
+                        {cookieData == null ? (
                             <li>
                                 <Link href={"/login"} aria-label="Login">
                                     <button>Login</button>
