@@ -2,6 +2,8 @@ import NextAuth, { AuthOptions, Session } from "next-auth";
 import Cookies from "universal-cookie";
 import GoogleProvider from "next-auth/providers/google";
 import { NextApiRequest, NextApiResponse } from "next";
+import { fetchWrapper } from "../../../util/httpWrapper";
+import { Common } from "../../../constants/common";
 
 const authOptions = (req: NextApiRequest, res: NextApiResponse) => {
     const cookies = new Cookies(req.headers.cookie);
@@ -15,6 +17,11 @@ const authOptions = (req: NextApiRequest, res: NextApiResponse) => {
         ],
         callbacks: {
             async session({ session }: { session: Session }) {
+                const backendRes = await fetchWrapper.get({
+                    url: "/v1/users",
+                    token: cookies.get("session-token").token,
+                });
+                console.log(backendRes);
                 return session;
             },
 
