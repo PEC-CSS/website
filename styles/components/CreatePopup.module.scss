@@ -1,0 +1,154 @@
+@import "./../variables.scss";
+
+.modal {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 1rem;
+    font-family: 'Josefin_Sans';
+
+    .content {
+        word-wrap: break-word;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        img {
+            width: 250px;
+            height: 250px;
+        }
+
+        .text {
+            p {
+                margin: 6px 0;
+            }
+
+            .subtitle {
+                margin-bottom: 12px;
+
+                div {
+                    font-size: 14px;
+                }
+            }
+        }
+
+    }
+
+    .forms {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 2rem;
+
+        .items {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px;
+            align-items: center;
+            border: 2px solid #322f2f04;
+            border-radius: 4px;
+            
+
+            .inputBox{
+                padding: 10px;
+                border: 1px solid #ccc;
+                width: 70%;
+                font-family: 'Josefin_Sans';
+
+            }
+
+            .textArea{
+                padding: 10px;
+                border: 1px solid #ccc;
+                width: 70%;
+                font-family: 'Josefin_Sans';
+                resize: none;
+
+            }
+
+        }
+
+        .button{
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: $acm-primary;
+            color: white;
+            &:hover {
+                color: $acm-primary;
+                border: solid 1px black;
+                background-color: white;
+                transition: all 0.5s;
+            }
+
+        }
+
+    }
+
+
+
+
+    .modalHeading {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $acm-primary;
+        padding-bottom: 5px;
+    }
+
+    .closeIcon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+        width: 32px;
+        height: 32px;
+
+        &:hover {
+            background-color: $acm-light;
+            cursor: pointer;
+        }
+    }
+
+    h2 {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: $tablet-breakpoint) {
+    .modal {
+        .content {
+            grid-template-columns: 1fr;
+            justify-items: center;
+
+            img {
+                margin-bottom: 5px;
+            }
+
+            .text {
+                max-width: 250px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $sidebar-breakpoint) {
+    .modal {
+        padding: 10px 0;
+
+        .content {
+            img {
+                width: 230px;
+                height: 230px;
+            }
+
+            .text {
+                max-width: 230px;
+
+                .subtitle {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

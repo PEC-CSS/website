@@ -12,6 +12,7 @@ import styles from "../../styles/pages/dashEvents.module.scss";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // calendar css
 import { mockEvents } from "../../data/mockEvents";
 import EventPopup from "../../components/common/EventPopup/EventPopup";
+import CreatePopup from "../../components/common/CreatePopup/CreatePopup";
 
 // see eventPropGetter
 const getEventClassByEvent = (event: Event) => {
@@ -30,6 +31,7 @@ function Events({designation}:any) {
   const [activeEvent, setActiveEvent] = useState<Event | null>(null);
   const [eventResource, setEventResource] = useState<string[]>(["acm","","","",]);
   const [showModal, setShowModal] = useState<Boolean>(false);
+  const [createModal, setCreateModal] = useState<Boolean>(false);
 
   console.log(designation);
 
@@ -39,21 +41,38 @@ function Events({designation}:any) {
     setShowModal(true);
   };
 
+  const handleCreateEvent = () => {
+    setCreateModal(true);
+  }
+
   return (
     <DashboardLayout title="Events | ACM at PEC" heading="Events">
       <div className={styles.events}>
-        <p>Have a look at our calendar</p>
-        
+        <p>Have a look at our calendar!</p>
+
         <div className={styles.calendarWrapper}>
-  
-          {
+          {/* {
             (designation === ("Admin")) || (designation === "Core") || (designation === "ExecutiveBody") ?
           <div className={styles.eventButton}>
             <button type="submit">Create Event</button>
           </div> :
           <>
-          </>}
-          
+          </>} */}
+
+          <div className={styles.eventButton}>
+            <button type="submit" onClick={handleCreateEvent}>Create Event</button>
+          </div>
+
+          {createModal ? (
+            <CreatePopup
+              handleClose={() => {
+                setCreateModal(false);
+              }}
+            />
+          ) : (
+            <></>
+          )}
+
           {showModal ? (
             <EventPopup
               handleClose={() => {
@@ -114,6 +133,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       },
     };
   }
+
+  console.log(designation);
 
   return {
     props: {designation},

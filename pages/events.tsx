@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageLayout from "../components/layout/PageLayout";
 import { Calendar, Event, dateFnsLocalizer, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
@@ -23,6 +23,14 @@ const getEventClassByEvent = (event: Event) => {
 };
 
 function Events() {
+    const [hydrated, setHydrated] = useState(false);
+    useEffect(() => {
+      setHydrated(true);
+    }, []);
+    if (!hydrated) {
+      // Returns null on first render, so the client and server match
+      return null;
+    }
     const [listedEvents, setListedEvents] = useState<Event[] | undefined>(mockEvents);
     const [activeEvent, setActiveEvent] = useState<Event | null>(null);
     const [eventResource, setEventResource] = useState<string[]>(['acm', '', '', '']);
@@ -37,7 +45,7 @@ function Events() {
     return (
         <PageLayout title="Events | ACM at PEC" heading="Events" description="Upcoming and Ongoing events at PEC ACM">
             <div className={styles.events}>
-                <p>Have a look at our calendar</p>
+                <p>Have a look at our calendar!</p>
                 <div className={styles.calendarWrapper}>
                     {showModal ? (
                         <EventPopup 
