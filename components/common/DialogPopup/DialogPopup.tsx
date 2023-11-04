@@ -8,7 +8,7 @@ type Props = {
     errorTitle: string;
     errorDescription: string;
     handleClose: any;
-    handleAction: any;
+    handleAction?: any;
 }
 
 const font = Josefin_Sans({

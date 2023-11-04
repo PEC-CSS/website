@@ -39,7 +39,11 @@ export const SidebarItem = (item: Item) => {
     if (item.logout) {
         return (
             showLogoutDialog ? 
-            <DialogPopup errorDescription="are you sure you want to logout ?" errorTitle="Logout" handleAction={() => logout(router, session)} handleClose={ () => setShowLogoutDialog(false)} /> :
+            <DialogPopup 
+                errorDescription="are you sure you want to logout ?" 
+                errorTitle="Logout" 
+                handleAction={() => logout(router, session)} 
+                handleClose={ () => setShowLogoutDialog(false)} /> :
             <button
                 className={styles.sidebarItem}
                 aria-label={item.title}
