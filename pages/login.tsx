@@ -9,19 +9,14 @@ import CustomTextField from "../components/common/CustomTextField/CustomTextFiel
 import DialogPopup from "../components/common/DialogPopup/DialogPopup";
 import Link from "next/link";
 import { login } from "../repository/auth";
-import { useLocalStorage } from "usehooks-ts";
 import { Common } from "../constants/common";
 import { useRouter } from "next/router";
-import {setCookie, parseCookies} from "nookies";
 import { GetServerSidePropsContext } from "next";
-
+import Cookies from "universal-cookie";
+import { useSession } from "next-auth/react";
+import getServerCookieData from "../lib/getServerCookieData";
 
 function Login() {
-    const [_, setAuthorization] = useLocalStorage<string | null>(
-        Common.AUTHORIZATION,
-        null
-    );
-
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
@@ -36,8 +31,15 @@ function Login() {
     });
 
     const router = useRouter();
+    const { data: session } = useSession();
+    const cookies = new Cookies();
 
     const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        if (session) router.push("/dashboard");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [session]);
 
     const handleChange = (
         event:
@@ -77,36 +79,18 @@ function Login() {
             }
             const jwtToken = response.jwtToken;
             const user = response.user;
-            setAuthorization(jwtToken);
-            setCookie(null, Common.AUTHORIZATION, jwtToken, {
-                path: "/",
-                sameSite: "strict",
-                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
-            })
-            setCookie(null, Common.USERNAME, user?.name ?? "", {
-                path: "/",
-                sameSite: "strict",
-                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
-            })
-            setCookie(null, Common.PHOTO, user?.dp ?? "", {
-                path: "/",
-                sameSite: "strict",
-                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
-            })
-            setCookie(null, Common.EMAIL, user?.email ?? "", {
-                path: "/",
-                sameSite: "strict",
-                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
-            })
-            setCookie(null, Common.DESIGNATION, user?.designation ?? "" , {
-                path: "/",
-                sameSite: "strict",
-                maxAge:  3 * 24 * 60 * 60, // expires in 3 days
-            })
+            cookies.set(
+                "session-token",
+                JSON.stringify({ token: jwtToken, user })
+            );
         }
         setLoading(false);
-        router.push("/dashboard");
+        const redirectPath = cookies.get("redirectPath") || "/dashboard";
+        cookies.remove("redirectPath");
+        router.push(redirectPath);
     };
+
+    if (session) return <div></div>;
 
     return (
         <PageLayout
@@ -216,21 +200,16 @@ function Login() {
 
 export default Login;
 
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { req } = context;
-    const cookies = parseCookies({ req });
-    const token = cookies[Common.AUTHORIZATION];
-
-    if (token) {
+    const { data } = getServerCookieData(context);
+    if (data != null) {
         return {
             redirect: {
+                permanent: false,
                 destination: "/dashboard",
-                permanent: true,
             },
         };
     }
-
     return {
         props: {},
     };

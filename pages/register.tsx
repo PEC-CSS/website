@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import PageLayout from "../components/layout/PageLayout";
 import styles from "../styles/pages/register.module.scss";
 import { ERRORTEXT } from "../constants/errorText";
@@ -18,8 +18,8 @@ import { register } from "../repository/auth";
 import { useLocalStorage } from "usehooks-ts";
 import { Common } from "../constants/common";
 import { useRouter } from "next/router";
-import {setCookie, parseCookies} from "nookies";
 import { GetServerSidePropsContext } from "next";
+import getServerCookieData from "../lib/getServerCookieData";
 
 function Register() {
     const [formValues, setFormValues] = useState({
@@ -95,7 +95,6 @@ function Register() {
         setLoading(false);
         router.push("/verify/welcome");
     };
-
 
     return (
         <PageLayout
@@ -419,7 +418,7 @@ const branchNames: string[] = [
     "AERO",
     "AI",
     "DESIGN",
-    "PROD/META"
+    "PROD/META",
 ];
 
 const isEmailCorrect = (email: string) => {
@@ -428,19 +427,15 @@ const isEmailCorrect = (email: string) => {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { req } = context;
-    const cookies = parseCookies({ req });
-    const token = cookies[Common.AUTHORIZATION];
-
-    if (token) {
+    const { data } = getServerCookieData(context);
+    if (data != null) {
         return {
             redirect: {
+                permanent: false,
                 destination: "/dashboard",
-                permanent: true,
             },
         };
     }
-
     return {
         props: {},
     };

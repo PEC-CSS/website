@@ -5,8 +5,7 @@ import { verify } from "../../repository/auth";
 import Link from "next/link";
 import styles from "../../styles/pages/verify.module.scss";
 import { GetServerSidePropsContext } from "next";
-import { Common } from "../../constants/common";
-import { parseCookies } from "nookies";
+import getServerCookieData from "../../lib/getServerCookieData";
 
 export default function Index() {
     const { token } = useRouter().query;
@@ -65,9 +64,8 @@ export default function Index() {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { req } = context;
-    const cookies = parseCookies({ req });
-    const token = cookies[Common.AUTHORIZATION];
+    const {data} = getServerCookieData(context);
+    const token = data?.token;
 
     if (token) {
         return {

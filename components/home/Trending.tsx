@@ -61,7 +61,7 @@ export default function Trending({ trendingType }: Props) {
                     );
                 })
             ) : trendingInfo?.length === 0 ? (
-                <p>Coming soon! Get ready for exciting trending content. Stay tuned! 🚀</p>
+                <p style={{textAlign: 'center'}}>Coming soon! Get ready for exciting trending content. Stay tuned! 🚀</p>
             ) : (
                 trendingInfo?.map((info, index) => {
                     return (
