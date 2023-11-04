@@ -2,7 +2,6 @@ import React from "react";
 import { Dialog } from "@mui/material";
 import styles from "../../../styles/components/CreatePopup.module.scss";
 import { Josefin_Sans } from "next/font/google";
-import Image from "next/image";
 import { RxCross2 } from "react-icons/rx";
 import { Common } from "../../../constants/common";
 
@@ -15,6 +14,11 @@ const font = Josefin_Sans({
 });
 
 function DialogPopup({ handleClose }: Props) {
+
+  const handleSubmit = () => {
+
+  }
+
   return (
     <Dialog
       fullWidth={true}
@@ -54,6 +58,14 @@ function DialogPopup({ handleClose }: Props) {
             <input
               type="text"
               placeholder="Enter Start Date: "
+              className={styles.inputBox}
+            />
+          </div>
+          <div className={styles.items}>
+            <h3>End Date</h3>
+            <input
+              type="text"
+              placeholder="Enter End Date: "
               className={styles.inputBox}
             />
           </div>

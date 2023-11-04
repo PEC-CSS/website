@@ -10,7 +10,7 @@ import styles from "../../styles/pages/dashEvents.module.scss";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // calendar css
 import { mockEvents } from "../../data/mockEvents";
 import EventPopup from "../../components/common/EventPopup/EventPopup";
-import CreatePopup from "../../components/common/CreatePopup/CreatePopup";
+import CreatePopup from "../../components/common/CreateEventPopup/CreatePopup";
 import getServerCookieData from "../../lib/getServerCookieData";
 
 // see eventPropGetter
