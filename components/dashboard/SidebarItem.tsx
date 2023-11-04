@@ -6,7 +6,9 @@ import { useRouter } from "next/router";
 import { Common } from "../../constants/common";
 import { useLocalStorage } from "usehooks-ts";
 import logout from "../../lib/logout";
+import { useState } from "react"
 import { useSession } from "next-auth/react";
+import DialogPopup from "../common/DialogPopup/DialogPopup";
 
 type Item = {
     title: string;
@@ -21,6 +23,8 @@ export const SidebarItem = (item: Item) => {
 
     const selected = router.pathname === item.path ? "true" : "false";
 
+    const [showLogoutDialog, setShowLogoutDialog] = useState(false);
+
     // const logout = () => {
     //     setAuthorization(null);
     //     destroyCookie(null, Common.AUTHORIZATION, {
@@ -34,10 +38,12 @@ export const SidebarItem = (item: Item) => {
 
     if (item.logout) {
         return (
+            showLogoutDialog ? 
+            <DialogPopup errorDescription="are you sure you want to logout ?" handleAction={() => logout(router, session)} handleClose={ () => setShowLogoutDialog(false)} /> :
             <button
                 className={styles.sidebarItem}
                 aria-label={item.title}
-                onClick={() => logout(router, session)}
+                onClick={() => setShowLogoutDialog(true)}
             >
                 {item.icon}
                 <h3>{item.title}</h3>
