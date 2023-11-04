@@ -14,6 +14,7 @@ import styles from "../../styles/pages/dashEvents.module.scss";
 import "react-big-calendar/lib/css/react-big-calendar.css"; // calendar css
 import { mockEvents } from "../../data/mockEvents";
 import EventPopup from "../../components/common/EventPopup/EventPopup";
+import CreatePopup from "../../components/common/CreatePopup/CreatePopup";
 import getServerCookieData from "../../lib/getServerCookieData";
 
 // see eventPropGetter
@@ -40,6 +41,7 @@ function Events({ designation }: any) {
         "",
     ]);
     const [showModal, setShowModal] = useState<Boolean>(false);
+    const [createModal, setCreateModal] = useState<Boolean>(false);
 
     const handleSelectEvent = (event: Event) => {
         setEventResource(event ? event.resource : ["acm", "", "", ""]);
@@ -47,76 +49,79 @@ function Events({ designation }: any) {
         setShowModal(true);
     };
 
+    const handleCreateEvent = ()=>{
+        setCreateModal(true);
+    }
+
     return (
-        <DashboardLayout title="Events | ACM at PEC" heading="Events">
-            <div className={styles.events}>
-                <p>Have a look at our calendar</p>
+      <DashboardLayout title="Events | ACM at PEC" heading="Events">
+        <div className={styles.events}>
+          <p>Have a look at our calendar</p>
 
-                <div className={styles.calendarWrapper}>
-                    {designation === "Admin" ||
-                    designation === "Core" ||
-                    designation === "ExecutiveBody" ? (
-                        <div className={styles.eventButton}>
-                            <button type="submit">Create Event</button>
-                        </div>
-                    ) : (
-                        <></>
-                    )}
+          <div className={styles.calendarWrapper}>
+            {designation === "Admin" ||
+            designation === "Core" ||
+            designation === "ExecutiveBody" ? (
+              <div className={styles.eventButton}>
+                <button type="submit" onClick={handleCreateEvent}>Create Event</button>
+              </div>
+            ) : (
+              <></>
+            )}
+            {/* <div className={styles.eventButton}>
+              <button type="submit" onClick={handleCreateEvent}>Create Event</button>
+            </div> */}
 
-                    {showModal ? (
-                        <EventPopup
-                            handleClose={() => {
-                                setShowModal(false);
-                            }}
-                            title={activeEvent?.title as string}
-                            subTitle={eventResource[1]}
-                            description={eventResource.slice(
-                                2,
-                                eventResource.length - 1
-                            )}
-                            imageUrl={
-                                eventResource[eventResource.length - 1]
-                                    .length === 0
-                                    ? `/assets/logos/${eventResource[0]}.png`
-                                    : eventResource.slice(-1)[0]
-                            }
-                            startDate={
-                                activeEvent?.start
-                                    ? activeEvent.start
-                                    : new Date()
-                            }
-                            endDate={
-                                activeEvent?.end ? activeEvent.end : new Date()
-                            }
-                        />
-                    ) : (
-                        <></>
-                    )}
+            {createModal ? (
+              <CreatePopup
+                handleClose={() => {
+                  setCreateModal(false);
+                }}
+              />
+            ) : (
+              <></>
+            )}
 
-                    <Calendar
-                        localizer={localizer}
-                        events={listedEvents}
-                        className={styles.calendar}
-                        popup={true}
-                        onSelectEvent={handleSelectEvent}
-                        startAccessor={(event) =>
-                            new Date(event.start ?? Date.now())
-                        }
-                        endAccessor={(event) =>
-                            new Date(event.end ?? Date.now())
-                        }
-                        eventPropGetter={getEventClassByEvent}
-                        views={{
-                            month: true,
-                            week: false,
-                            day: false,
-                            agenda: false,
-                        }}
-                        dayLayoutAlgorithm={"no-overlap"}
-                    />
-                </div>
-            </div>
-        </DashboardLayout>
+            {showModal ? (
+              <EventPopup
+                handleClose={() => {
+                  setShowModal(false);
+                }}
+                title={activeEvent?.title as string}
+                subTitle={eventResource[1]}
+                description={eventResource.slice(2, eventResource.length - 1)}
+                imageUrl={
+                  eventResource[eventResource.length - 1].length === 0
+                    ? `/assets/logos/${eventResource[0]}.png`
+                    : eventResource.slice(-1)[0]
+                }
+                startDate={activeEvent?.start ? activeEvent.start : new Date()}
+                endDate={activeEvent?.end ? activeEvent.end : new Date()}
+              />
+            ) : (
+              <></>
+            )}
+
+            <Calendar
+              localizer={localizer}
+              events={listedEvents}
+              className={styles.calendar}
+              popup={true}
+              onSelectEvent={handleSelectEvent}
+              startAccessor={(event) => new Date(event.start ?? Date.now())}
+              endAccessor={(event) => new Date(event.end ?? Date.now())}
+              eventPropGetter={getEventClassByEvent}
+              views={{
+                month: true,
+                week: false,
+                day: false,
+                agenda: false,
+              }}
+              dayLayoutAlgorithm={"no-overlap"}
+            />
+          </div>
+        </div>
+      </DashboardLayout>
     );
 }
 
