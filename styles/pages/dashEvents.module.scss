@@ -20,18 +20,37 @@ $max-width-calendar: 900px;
         justify-content: center;
         padding: 2rem 0px;
 
-        .eventButton{
+        .eventButton {
             margin: 0px 12px 8px auto;
-            padding:12px;
+            padding: 12px;
             background-color: $acm-primary;
-            color:white;
-            border: 1px ;
+            color: white;
+            border: 1px;
             border-radius: 2rem;
         }
     }
+
+    @media screen and (max-width: 600px) {
+        .calendarWrapper {
+            flex-direction: column-reverse;
+
+            .eventButton {
+                margin: 10px 0;
+            }
+        }
+    }
+
     .calendar {
         height: 100%;
         width: 100%;
         border-radius: 20px;
     }
 }
+
+// @media screen and (max-width: 600px) {
+//     .events {
+//         .calendarWrapper {
+//             flex-direction: column-reverse;
+//         }
+//     }
+// }

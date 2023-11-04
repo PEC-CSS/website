@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { GetServerSidePropsContext } from "next";
 import DashboardLayout from "../../components/layout/DashboardLayout";
-import {
-    Calendar,
-    Event,
-    momentLocalizer,
-} from "react-big-calendar";
+import { Calendar, Event, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 
 const localizer = momentLocalizer(moment);
@@ -29,7 +25,7 @@ const getEventClassByEvent = (event: Event) => {
     };
 };
 
-function Events({ designation }: any) {
+function Events({ designation }: { designation: string }) {
     const [listedEvents, setListedEvents] = useState<Event[] | undefined>(
         mockEvents
     );
@@ -49,79 +45,92 @@ function Events({ designation }: any) {
         setShowModal(true);
     };
 
-    const handleCreateEvent = ()=>{
+    const handleCreateEvent = () => {
         setCreateModal(true);
-    }
+    };
 
     return (
-      <DashboardLayout title="Events | ACM at PEC" heading="Events">
-        <div className={styles.events}>
-          <p>Have a look at our calendar</p>
+        <DashboardLayout title="Events | ACM at PEC" heading="Events">
+            <div className={styles.events}>
+                <p>Have a look at our calendar</p>
 
-          <div className={styles.calendarWrapper}>
-            {designation === "Admin" ||
-            designation === "Core" ||
-            designation === "ExecutiveBody" ? (
-              <div className={styles.eventButton}>
-                <button type="submit" onClick={handleCreateEvent}>Create Event</button>
-              </div>
-            ) : (
-              <></>
-            )}
-            {/* <div className={styles.eventButton}>
-              <button type="submit" onClick={handleCreateEvent}>Create Event</button>
-            </div> */}
+                <div className={styles.calendarWrapper}>
+                    {designation === "Admin" ||
+                    designation === "Core" ||
+                    designation === "ExecutiveBody" ? (
+                        <div className={styles.eventButton}>
+                            <button type="submit" onClick={handleCreateEvent}>
+                                Create Event
+                            </button>
+                        </div>
+                    ) : (
+                        <></>
+                    )}
 
-            {createModal ? (
-              <CreatePopup
-                handleClose={() => {
-                  setCreateModal(false);
-                }}
-              />
-            ) : (
-              <></>
-            )}
+                    {createModal ? (
+                        <CreatePopup
+                            handleClose={() => {
+                                setCreateModal(false);
+                            }}
+                        />
+                    ) : (
+                        <></>
+                    )}
 
-            {showModal ? (
-              <EventPopup
-                handleClose={() => {
-                  setShowModal(false);
-                }}
-                title={activeEvent?.title as string}
-                subTitle={eventResource[1]}
-                description={eventResource.slice(2, eventResource.length - 1)}
-                imageUrl={
-                  eventResource[eventResource.length - 1].length === 0
-                    ? `/assets/logos/${eventResource[0]}.png`
-                    : eventResource.slice(-1)[0]
-                }
-                startDate={activeEvent?.start ? activeEvent.start : new Date()}
-                endDate={activeEvent?.end ? activeEvent.end : new Date()}
-              />
-            ) : (
-              <></>
-            )}
+                    {showModal ? (
+                        <EventPopup
+                            handleClose={() => {
+                                setShowModal(false);
+                            }}
+                            title={activeEvent?.title as string}
+                            subTitle={eventResource[1]}
+                            description={eventResource.slice(
+                                2,
+                                eventResource.length - 1
+                            )}
+                            imageUrl={
+                                eventResource[eventResource.length - 1]
+                                    .length === 0
+                                    ? `/assets/logos/${eventResource[0]}.png`
+                                    : eventResource.slice(-1)[0]
+                            }
+                            startDate={
+                                activeEvent?.start
+                                    ? activeEvent.start
+                                    : new Date()
+                            }
+                            endDate={
+                                activeEvent?.end ? activeEvent.end : new Date()
+                            }
+                        />
+                    ) : (
+                        <></>
+                    )}
 
-            <Calendar
-              localizer={localizer}
-              events={listedEvents}
-              className={styles.calendar}
-              popup={true}
-              onSelectEvent={handleSelectEvent}
-              startAccessor={(event) => new Date(event.start ?? Date.now())}
-              endAccessor={(event) => new Date(event.end ?? Date.now())}
-              eventPropGetter={getEventClassByEvent}
-              views={{
-                month: true,
-                week: false,
-                day: false,
-                agenda: false,
-              }}
-              dayLayoutAlgorithm={"no-overlap"}
-            />
-          </div>
-        </div>
-      </DashboardLayout>
+                    <Calendar
+                        localizer={localizer}
+                        events={listedEvents}
+                        className={styles.calendar}
+                        popup={true}
+                        onSelectEvent={handleSelectEvent}
+                        startAccessor={(event) =>
+                            new Date(event.start ?? Date.now())
+                        }
+                        endAccessor={(event) =>
+                            new Date(event.end ?? Date.now())
+                        }
+                        eventPropGetter={getEventClassByEvent}
+                        views={{
+                            month: true,
+                            week: false,
+                            day: false,
+                            agenda: false,
+                        }}
+                        dayLayoutAlgorithm={"no-overlap"}
+                    />
+                </div>
+            </div>
+        </DashboardLayout>
     );
 }
 
@@ -140,6 +149,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             },
         };
     }
+
+    console.log(designation);
 
     return {
         props: { designation },
