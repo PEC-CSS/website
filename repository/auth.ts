@@ -105,23 +105,11 @@ const verify = async ({ token }: { token: string }): Promise<boolean> => {
 };
 
 const sendResetEmail = async (email: string) => {
-    try {
-        // Simulate an asynchronous operation that takes 5 seconds to complete
-        await new Promise((resolve) => setTimeout(resolve, 5000));
-        return { success: true };
-    } catch (error) {
-        return { success: false, error: { message: `Error sending email to ${email}` } };
-    }
+    return { success: false, error: { message: `This feature is still under testing` } };
 };
 
 const changePassword = async (password: string, token: any) => {
-    try {
-        // Simulate an asynchronous operation that takes 5 seconds to complete
-        await new Promise((resolve) => setTimeout(resolve, 5000));
-        return { success: true };
-    } catch (error) {
-        return { success: false, error: { message: `Error` } };
-    }
+    return { success: false, error: { message: `This feature is still under testing` } };
 };
 
 

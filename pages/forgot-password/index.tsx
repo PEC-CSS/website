@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from "react";
-import PageLayout from "../components/layout/PageLayout";
-import styles from "../styles/pages/register.module.scss";
-import CustomTextField from "../components/common/CustomTextField/CustomTextField";
-import DialogPopup from "../components/common/DialogPopup/DialogPopup";
-import { sendResetEmail } from "../repository/auth"; // Replace with the appropriate function for resetting the password
+import PageLayout from "../../components/layout/PageLayout";
+import styles from "../../styles/pages/register.module.scss";
+import CustomTextField from "../../components/common/CustomTextField/CustomTextField";
+import DialogPopup from "../../components/common/DialogPopup/DialogPopup";
+import { sendResetEmail } from "../../repository/auth"; // Replace with the appropriate function for resetting the password
 
 function forgotPassword() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
