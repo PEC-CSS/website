@@ -104,4 +104,14 @@ const verify = async ({ token }: { token: string }): Promise<boolean> => {
     }
 };
 
-export { login, register, verify };
+const sendResetEmail = async (email: string) => {
+    return { success: false, error: { message: `This feature is still under testing` } };
+};
+
+const changePassword = async (password: string, token: any) => {
+    return { success: false, error: { message: `This feature is still under testing` } };
+};
+
+
+
+export { login, register, verify, sendResetEmail, changePassword };
