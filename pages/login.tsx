@@ -183,6 +183,13 @@ function Login() {
                                 required={true}
                             />
                         </div>
+                <Link
+                    href="/forgot-password"
+                    className={styles.link}
+                    aria-label="ForgotPassword"
+                >
+                    Forgot your password?
+                </Link>
                     </div>
                 </div>
 

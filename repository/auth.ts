@@ -104,4 +104,26 @@ const verify = async ({ token }: { token: string }): Promise<boolean> => {
     }
 };
 
-export { login, register, verify };
+const sendResetEmail = async (email: string) => {
+    try {
+        // Simulate an asynchronous operation that takes 5 seconds to complete
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        return { success: true };
+    } catch (error) {
+        return { success: false, error: { message: `Error sending email to ${email}` } };
+    }
+};
+
+const changePassword = async (password: string, token: any) => {
+    try {
+        // Simulate an asynchronous operation that takes 5 seconds to complete
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        return { success: true };
+    } catch (error) {
+        return { success: false, error: { message: `Error` } };
+    }
+};
+
+
+
+export { login, register, verify, sendResetEmail, changePassword };
