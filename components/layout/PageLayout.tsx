@@ -5,6 +5,7 @@ import Header from "../common/Header/Header";
 import styles from "../../styles/components/PageLayout.module.scss";
 import Banner from "../banner/Banner";
 import {Common} from "../../constants/common";
+import NoSSRWrapper from "../common/NoSSRWrapper";
 
 type Props = {
     title: string;
@@ -66,7 +67,9 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 {/* TODO : Verification pending */}
                 <meta name="google-site-verification" content="wJCASasAYLy_hM-ndSessna54e0JH7VCzmg5asx1aFc" />
             </Head>
-            <Header />
+            <NoSSRWrapper>
+                <Header />
+            </NoSSRWrapper>
             <div className={styles.children}>
                 <Banner heading={heading} color={bannerColor ? bannerColor : Common.primaryColor}/>
                 {children}

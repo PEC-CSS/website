@@ -9,11 +9,14 @@ export default function Banner({heading, color=Common.primaryColor}: {heading?: 
     const router = useRouter();
 
     useEffect(()=> {
-        setMatrix(getArray())
-    }, [router.pathname])
+        setTimeout ( () => {
+            setMatrix(getArray())
+        },
+        1500)    
+    })
 
     function getArray() {
-        let matrix = new Array<Array<number>>(8);
+        let matrix = new Array<Array<number>>(9);
         for (let i = 0; i < matrix.length; i++) {
             matrix[i] = new Array<number>(200); // kind of infinity when it comes to screens (15 x 200px = 3000px)
             for (let j = 0; j < matrix[i].length; j++) {
@@ -24,12 +27,18 @@ export default function Banner({heading, color=Common.primaryColor}: {heading?: 
         // generate opacity : can be improved
         for (let i = 0; i < matrix.length; i++) {
             for (let j = 0; j < matrix[0].length; j++) {
-                matrix[i][j] = Math.random()*0.3;
-                if(i>3) {
-                    matrix[i][j] = Math.random()*0.2;
+                matrix[i][j] = Math.random()*0.6;
+                if(i>2) {
+                    matrix[i][j] = Math.random()*0.4;
                 }
-                if(i>5) {
+                if (i>4) {
+                    matrix[i][j] = Math.random()*0.2
+                }
+                if(i>6) {
                     matrix[i][j] = Math.random()*0.1;
+                }
+                if(i>7) {
+                    matrix[i][j] = Math.random()*0.05;
                 }
             }
         }

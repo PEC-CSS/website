@@ -8,13 +8,14 @@ type Props = {
     errorTitle: string;
     errorDescription: string;
     handleClose: any;
+    handleAction?: any;
 }
 
 const font = Josefin_Sans({
     preload: false
 });
 
-function DialogPopup({ icon, errorTitle, errorDescription, handleClose }: Props) {
+function DialogPopup({ icon, errorTitle, errorDescription, handleClose, handleAction }: Props) {
 
     return (
         <Dialog
@@ -31,7 +32,7 @@ function DialogPopup({ icon, errorTitle, errorDescription, handleClose }: Props)
                     <div className={`${styles.text} ${font.className}`}> {errorDescription} </div>
                 </div>
                 
-                <button onClick={handleClose}> OK </button>
+                <button onClick={handleAction ?? handleClose}> OK </button>
             </div>
         </Dialog>
     )

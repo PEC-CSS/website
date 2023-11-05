@@ -1,11 +1,10 @@
 import DashboardLayout from "../../components/layout/DashboardLayout";
-import { parseCookies } from "nookies";
-import { Common } from "../../constants/common";
 import { GetServerSidePropsContext } from "next";
 import { fetchWrapper } from "../../util/httpWrapper";
 import styles from "../../styles/pages/DashboardHome.module.scss";
 import { LeaderboardItem } from "../../components/dashboard/LeaderboardItem";
 import { useEffect, useState } from "react";
+import getServerCookieData from "../../lib/getServerCookieData";
 
 function Leaderboard({ data }: any) {
     const [loading, setLoading] = useState(true);
@@ -39,9 +38,8 @@ function Leaderboard({ data }: any) {
 export default Leaderboard;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { req } = context;
-    const cookies = parseCookies({ req });
-    const token = cookies[Common.AUTHORIZATION];
+    const {data} = getServerCookieData(context);
+    const token = data?.token;
 
     if (!token) {
         return {
@@ -52,11 +50,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         };
     }
 
-    const data = await fetchWrapper.get({ url: "v1/user/leaderboard", token });
+    const leaderboard = await fetchWrapper.get({ url: "v1/user/leaderboard", token });
 
     return {
         props: {
-            data,
+            data: leaderboard,
         },
     };
 }
