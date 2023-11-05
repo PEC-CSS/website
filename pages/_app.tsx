@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { LinearProgress } from "@mui/material";
 import { SessionProvider } from "next-auth/react";
+import zIndex from "@mui/material/styles/zIndex";
 
 const font = Josefin_Sans({
     preload: false,
@@ -33,7 +34,20 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     return (
         <SessionProvider session={session}>
             <main className={font.className} style={{ position: "relative" }}>
-                {isLoading ? <LinearProgress /> : null}
+            {isLoading && (
+                <div
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        zIndex: 999, // Set a high z-index to overlay on top
+                    }}
+                >
+                    <LinearProgress />
+                </div>
+                )}
                 <Component {...pageProps} />
             </main>
         </SessionProvider>
