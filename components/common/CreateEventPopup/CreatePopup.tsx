@@ -240,6 +240,8 @@ function DialogPopup({ open, setOpen, appendEvent }: Props) {
                         <input
                             type="text"
                             placeholder="Enter Event Venue"
+                            value={formValues.venue}
+                            onChange={handleChange}
                             name="venue"
                             required
                             className={styles.inputBox}
