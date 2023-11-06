@@ -6,4 +6,5 @@ export class Common {
     static PHOTO = "photoUrl";
     static EMAIL = "Email";
     static DESIGNATION = "Designation";
+    static BRANCHES = ["DEVELOPMENT", "CP", "AI", "WIT", "CYBER", "SOCIALS"]
 }
