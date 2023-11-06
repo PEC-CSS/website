@@ -34,7 +34,7 @@ export const mockEvents = <Event[]>[
         }).toDate(),
         title: "Ideathon v3.0 Introductory Session",
         resource: [
-            "dev", "Intro Session for Month long hackathon",
+            "development", "Intro Session for Month long hackathon",
             "Platform: Google Meet",
             "Hackathon enhances your resume, showcasing practical problem-solving skills and innovation",
             "Don't miss out on this opportunity. Mark your calendars and make sure to be there! ",
@@ -150,7 +150,7 @@ export const mockEvents = <Event[]>[
         }).toDate(),
         title: "Ideathon 3.0",
         resource: [
-            "dev", "Month long hackathon",
+            "development", "Month long hackathon",
             "Platform: Online",
             "Hackathon enhances your resume, showcasing practical problem-solving skills and innovation",
             "Don't miss out on this opportunity. Mark your calendars and make sure to be there! ",
@@ -198,7 +198,7 @@ export const mockEvents = <Event[]>[
         }).toDate(),
         title: "Crewsphere Keynote Session",
         resource: [
-            "dev", "Introduction to Web3",
+            "development", "Introduction to Web3",
             "Platform: L21",
             "Web3 is the future, and we want you to be at the forefront of this revolutionary technology.",
             "Don't miss out on this opportunity to enhance your skills and secure your academic success. Mark your calendars and make sure to be there! We have exciting surprises for everyone.",
@@ -270,7 +270,7 @@ export const mockEvents = <Event[]>[
     //     }).toDate(),
     //     title: "Intro to Git/github",
     //     resource: [
-    //         "dev", "Introduction to Version Control System",
+    //         "development", "Introduction to Version Control System",
     //         "Platform: L21",
     //         "Learning git and github is important for collaboration, and open-source development, enhancing employability and project management skills",
     //         "Don't miss out on this opportunity. Mark your calendars and make sure to be there!",
@@ -294,7 +294,7 @@ export const mockEvents = <Event[]>[
         }).toDate(),
         title: "Web Wizardry 101: Unleash the Digital Magic",
         resource: [
-            "dev", "Introduction to Web Development",
+            "development", "Introduction to Web Development",
             "Platform: L21",
             "Discover the world of web development! Our workshop will introduce you to the foundations of building websites.",
             "Get ready to create and code for the web!",
@@ -318,7 +318,7 @@ export const mockEvents = <Event[]>[
         }).toDate(),
         title: "Hacktoberfest Kickoff 🎃",
         resource: [
-            "dev", "Introducing Hacktoberfest",
+            "development", "Introducing Hacktoberfest",
             "Platform: Gmeet",
             "Embark on an exciting journey into the world of creativity and artificial intelligence with us.",
             "Discover the magic of Generative Adversarial Networks(GAN's), the wizards of the digital world. GANs are transforming how we generate art, music, and even entire virtual worlds, unleashing unparalleled creative potential.",
@@ -390,7 +390,7 @@ export const mockEvents = <Event[]>[
         }).toDate(),
         title: "PortfoliYou",
         resource: [
-            "dev", "Your First Website",
+            "development", "Your First Website",
             "Platform: L21",
             "Want to wander into the wonderful world of web development? Aiming to create websites that inspire? Guess what, ACM is there for you!",
             "Join us for the 'PortfoliYou' session where you'll get to build your very own portfolio website step by step from absolute scratch.",

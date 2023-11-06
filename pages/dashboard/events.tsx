@@ -49,6 +49,12 @@ function Events({ designation }: { designation: string }) {
         setCreateModal(true);
     };
 
+    const appendEvent = (event: Event) => {
+        const newEvents = listedEvents;
+        newEvents?.push(event);
+        setListedEvents(newEvents);
+    }
+
     return (
         <DashboardLayout title="Events | ACM at PEC" heading="Events">
             <div className={styles.events}>
@@ -71,6 +77,7 @@ function Events({ designation }: { designation: string }) {
                         <CreatePopup
                             open={createModal}
                             setOpen={setCreateModal}
+                            appendEvent={appendEvent}
                         />
                     ) : (
                         <></>
@@ -148,8 +155,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             },
         };
     }
-
-    console.log(designation);
+    
+    // TODO : fetch events according to date
 
     return {
         props: { designation },

@@ -19,17 +19,19 @@ import { fetchWrapper } from "../../../util/httpWrapper";
 import getCookieData from "../../../lib/getCookieData";
 import { useSession } from "next-auth/react";
 import { MdErrorOutline } from "react-icons/md";
+import moment from "moment";
 
 type Props = {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    appendEvent: any;
 };
 
 const font = Josefin_Sans({
     preload: false,
 });
 
-function DialogPopup({ open, setOpen }: Props) {
+function DialogPopup({ open, setOpen, appendEvent }: Props) {
     const defaultFormValues = {
         title: "",
         branch: "DEVELOPMENT",
@@ -48,7 +50,6 @@ function DialogPopup({ open, setOpen }: Props) {
     const { data: session } = useSession();
 
     React.useEffect(() => {
-        console.log(formValues);
         if (formValues.startDate > formValues.endDate) {
             setDateError(true);
         } else {
@@ -91,14 +92,6 @@ function DialogPopup({ open, setOpen }: Props) {
         setLoading(true);
         setError(false);
 
-        if (
-            formValues.title.length === 0 ||
-            formValues.description.length === 0 ||
-            formValues.venue.length === 0
-        ) {
-            setError(true);
-        }
-
         const eventDetails = {
             ...formValues,
             startDate: formValues.startDate
@@ -121,8 +114,17 @@ function DialogPopup({ open, setOpen }: Props) {
             .then((json) => {
                 setLoading(false);
                 setSuccess(true);
-                console.log(json);
-                // TODO push this to the array of events
+                appendEvent({
+                    start: moment(eventDetails.startDate).toDate(),
+                    end: moment(eventDetails.endDate).toDate(),
+                    title: eventDetails.title,
+                    resource: [
+                        eventDetails.branch.toLowerCase(),
+                        `Platform: ${eventDetails.venue}`,
+                        eventDetails.description,
+                        "", // maybe image
+                    ],
+                });
             })
             .catch((e) => {
                 setError(true);
