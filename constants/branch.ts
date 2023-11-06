@@ -9,7 +9,7 @@ const BRANCHES = {
         whatWeDo: [
             "Empower growth with workshops, hackathons & knowledge sharing. Explore diverse technologies. Shape the future of tech together. Join us to unleash your potential and collaborate with a vibrant community.",
         ],
-        alias: "dev",
+        alias: "development",
         color: "#EF3133",
         oneLiner: "Dynamic web dev community empowering growth through workshops, hackathons, and knowledge sharing. Shape the future together! Join us!",
         leads: [

@@ -11,7 +11,7 @@ import styles from "../../../styles/components/CreatePopup.module.scss";
 import { Josefin_Sans } from "next/font/google";
 import { RxCross2 } from "react-icons/rx";
 import { Common } from "../../../constants/common";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
@@ -57,17 +57,17 @@ function DialogPopup({ open, setOpen, appendEvent }: Props) {
         }
     }, [formValues]);
 
-    const handleStartDateTimeChange = (newDate: any) => {
+    const handleStartDateTimeChange = (newDate: Dayjs | null) => {
         setFormValues({
             ...formValues,
-            startDate: newDate,
+            startDate: newDate ?? dayjs(),
         });
     };
 
-    const handleEndDateTimeChange = (newDate: any) => {
+    const handleEndDateTimeChange = (newDate: Dayjs | null) => {
         setFormValues({
             ...formValues,
-            endDate: newDate,
+            endDate: newDate ?? dayjs(),
         });
     };
 
