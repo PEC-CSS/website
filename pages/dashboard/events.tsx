@@ -37,7 +37,7 @@ function Events({ designation }: { designation: string }) {
         "",
     ]);
     const [showModal, setShowModal] = useState<Boolean>(false);
-    const [createModal, setCreateModal] = useState<Boolean>(false);
+    const [createModal, setCreateModal] = useState(false);
 
     const handleSelectEvent = (event: Event) => {
         setEventResource(event ? event.resource : ["acm", "", "", ""]);
@@ -69,9 +69,8 @@ function Events({ designation }: { designation: string }) {
 
                     {createModal ? (
                         <CreatePopup
-                            handleClose={() => {
-                                setCreateModal(false);
-                            }}
+                            open={createModal}
+                            setOpen={setCreateModal}
                         />
                     ) : (
                         <></>
