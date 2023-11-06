@@ -11,7 +11,7 @@ export default function Banner({heading, color=Common.primaryColor}: {heading?: 
         setTimeout ( () => {
             setMatrix(getArray())
         },
-        1000)    
+        1500)    
     })
 
     function getArray() {
