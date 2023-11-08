@@ -270,7 +270,7 @@ function DialogPopup({ open, setOpen, appendEvent }: Props) {
                 </form>
             </div>
             <Snackbar
-                open={success ? true : false}
+                open={success}
                 autoHideDuration={2000}
                 onClose={handleSnackbarClose}
             >

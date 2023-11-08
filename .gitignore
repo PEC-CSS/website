@@ -47,5 +47,7 @@ public/workbox*.js
 public/fallback*.js
 public/sw.js
 
+yarn.lock
+
 # mail format
 *.html

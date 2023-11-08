@@ -8,11 +8,14 @@ import {User} from '../../../types/user'
 import CustomTextField from "../CustomTextField/CustomTextField";
 
 type Props = {
-    teamTitle: string
+    teamTitle: string,
+    pills: Pill[],
+    setPills: React.Dispatch<React.SetStateAction<Pill[]>>
 }
-export default function AcmEventPeeps({teamTitle}: Props) {
+
+export default function AcmEventPeeps({teamTitle, pills, setPills}: Props) {
     const [nameSearchValue, setNameSearchValue] = useState("")
-    const [pills, setPills] = useState<Pill[]>([])
+    // const [pills, setPills] = useState<Pill[]>([])
     const [searchResult, setSearchResult] = useState<Pill[]>([])
 
     const {data: session} = useSession();

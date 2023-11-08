@@ -1,6 +1,6 @@
 import {fetchWrapper} from '../../../util/httpWrapper'
 
-export async function getMatchingUsersApi(
+export async function endEventApi(
     participantsList: string[],
     organizersList: string[],
     publicityList: string[],

@@ -1,15 +1,19 @@
 import React, {useRef, useState} from 'react'
-import { Dialog } from '@mui/material';
+import {Alert, Dialog, Snackbar, TextField} from '@mui/material';
 import styles from "../../../styles/components/EventPopup.module.scss";
 import { Josefin_Sans } from 'next/font/google';
 import Image from 'next/image';
 import {RxCross2} from 'react-icons/rx';
 import { Common } from '../../../constants/common';
 import {Button} from '@mui/material'
-import {Pill} from './Pill'
-import PillContainer from "./PillContainer";
 import AcmEventPeeps from "./AcmEventPeeps";
-import {getMatchingUsernamesApi} from "./getMatchingUsernamesApi";
+import {Pill} from "./Pill";
+import {endEventApi} from "../../../pages/api/endEvent/endEventApi";
+import {useSession} from "next-auth/react";
+import getCookieData from "../../../lib/getCookieData";
+import {Input} from "@mui/base";
+import {BsChatLeftTextFill} from "react-icons/bs";
+import {FaStaffSnake} from "react-icons/fa6";
 
 type Props = {
     title: string;
@@ -27,6 +31,51 @@ const font = Josefin_Sans({
 
 function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDate, handleClose }: Props) {
     const [showModal, setShowModal] = useState(false);
+    const [pillsOrganizers, setPillsOrganizers] = useState<Pill[]>([])
+    const [pillsPublicity, setPillsPublicity] = useState<Pill[]>([])
+    const [contributorXp, setContributorXp] = useState(5)
+    const [publicityXp, setPublicityXp] = useState(2)
+    const [participantXp, setParticipantXp] = useState(1)
+    const [showSnackBar, setShowSnackBar] = useState(false)
+    const [error, setError] = useState("")
+
+    const handleContributorXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setContributorXp(parseInt(e.target.value))
+    }
+    const handlePublicityXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setContributorXp(parseInt(e.target.value))
+    }
+    const handleParticipantXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setContributorXp(parseInt(e.target.value))
+    }
+
+
+    const {data: session} = useSession();
+
+    const token = getCookieData(session).data.token
+    const handleEndEvent = async () => {
+        const publicityList: string[] = pillsPublicity.map( (pillObject) => pillObject.email);
+        const organizerList: string[] = pillsOrganizers.map( (pillObject: Pill) => pillObject.email);
+        const participantsList: string[] = []
+
+        try{
+            await endEventApi(
+                participantsList,
+                publicityList,
+                organizerList,
+                2,
+                3,
+                4,
+                1,
+                token
+            )
+        }
+        catch (error: any){
+            setShowSnackBar(true)
+            console.log(error)
+            setError(error)
+        }
+    }
 
     return (
         !showModal ?
@@ -110,11 +159,28 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                         height={200}
                     />
                     <div className={styles.text} >
-                        <AcmEventPeeps teamTitle={"Organizing Peeps"} />
-                        <AcmEventPeeps teamTitle={"Publicity Peeps"} />
+                        <AcmEventPeeps teamTitle={"Organizing Peeps"} pills={pillsOrganizers} setPills={setPillsOrganizers} />
+                        <AcmEventPeeps teamTitle={"Publicity Peeps"} pills={pillsPublicity} setPills={setPillsPublicity} />
+                        <TextField style={{margin:"10px"}} label={"Contributor Xp"} variant={"outlined"} value={contributorXp} onChange={handleContributorXpChange} type={'number'} ></TextField>
+                        <TextField style={{margin:"10px"}} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
+                        <TextField style={{margin:"10px"}} label={"Participant Xp"} variant={"outlined"} value={participantXp} onChange={handleParticipantXpChange} type={'number'} ></TextField>
+                        <Button onClick={handleEndEvent} variant="outlined" color="warning">End Event</Button>
                     </div>
                 </div>
             </div>
+            <Snackbar
+                open={showSnackBar}
+                autoHideDuration={2000}
+                onClose={() => setShowSnackBar(false)}
+            >
+                <Alert
+                    onClose={() => setShowSnackBar(false)}
+                    severity="error"
+                    sx={{ width: "100%" }}
+                >
+                    {error}
+                </Alert>
+            </Snackbar>
         </Dialog>
     )
 }
