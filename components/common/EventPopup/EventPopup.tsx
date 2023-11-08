@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useRef, useState} from 'react'
 import { Dialog } from '@mui/material';
 import styles from "../../../styles/components/EventPopup.module.scss";
 import { Josefin_Sans } from 'next/font/google';
 import Image from 'next/image';
 import {RxCross2} from 'react-icons/rx';
 import { Common } from '../../../constants/common';
+import {Button} from '@mui/material'
+import {Pill} from './Pill'
+import PillContainer from "./PillContainer";
+import AcmEventPeeps from "./AcmEventPeeps";
+import {getMatchingUsernamesApi} from "./getMatchingUsernamesApi";
 
 type Props = {
     title: string;
@@ -21,8 +26,12 @@ const font = Josefin_Sans({
 });
 
 function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDate, handleClose }: Props) {
+    const [showModal, setShowModal] = useState(false);
+    // const nameSearchInput = useRef(null);
     
     return (
+        !showModal ?
+
         <Dialog
             fullWidth={true}
             maxWidth={'sm'}
@@ -32,7 +41,6 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
             PaperProps={{ sx: { borderRadius: "10px" } }}
         >
             <div className={styles.modal}>
-
                 <div className={styles.modalHeading}>
                     <h2>{title}</h2>
                     <div className={styles.closeIcon} onClick={handleClose}>
@@ -53,7 +61,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                             <div>
                                 {
                                     finalDateString(
-                                        getDateString(startDate.getDate(), startDate.getMonth(),    startDate.getFullYear()),
+                                        getDateString(startDate.getDate(), startDate.getMonth(), startDate.getFullYear()),
                                         getDateString(endDate.getDate(), endDate.getMonth(), endDate.getFullYear()),
                                     )
                                 }
@@ -67,6 +75,47 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                     </div>
                 </div>
 
+                <div style={{
+                    width:"100%",
+                    textAlign:"right"
+                }}>
+                    <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>
+                </div>
+
+                {showModal &&
+                    <p>sell another soul</p>
+                }
+            </div>
+        </Dialog> :
+
+        <Dialog
+            fullWidth={true}
+            maxWidth={'lg'}
+            open={true}
+            // onClose={handleClose}
+            sx={{ padding: "0", margin: "0", backdropFilter: "blur(5px)" }}
+            PaperProps={{ sx: { borderRadius: "10px" } }}
+        >
+            <div className={styles.modal}>
+                <div className={styles.modalHeading}>
+                    <h2>{title}</h2>
+                    <div className={styles.closeIcon} onClick={handleClose}>
+                        <RxCross2 size={25} color={Common.primaryColor} />
+                    </div>
+                </div>
+
+                <div className={styles.content}>
+                    <Image
+                        src={imageUrl}
+                        alt={`${title} event poster`}
+                        width={200}
+                        height={200}
+                    />
+                    <div className={styles.text} >
+                        <AcmEventPeeps teamTitle={"Organizing Peeps"} />
+                        <AcmEventPeeps teamTitle={"Publicity Peeps"} />
+                    </div>
+                </div>
             </div>
         </Dialog>
     )

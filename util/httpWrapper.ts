@@ -11,7 +11,7 @@ async function get({ url, token = "" }: { url: string; token?: string }) {
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
-        },
+        }
     };
     return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
