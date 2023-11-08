@@ -24,10 +24,11 @@ export default function PillComponent( { pill, handleDelete } : Props) {
         alignItems:"center",
         height:"30px"
     }}>
-        <p style={{marginRight:"8px"}}>{pill.name.split(' ')[0]}</p>
+        <div style={{marginRight:"8px"}}>
+            {pill.name.split(' ')[0]}
+        </div>
         <RxCross1 onClick={() => {
             handleDelete(pill.email)
         }}/>
-    {/*    first name only*/}
     </div>
 }

@@ -1,7 +1,7 @@
 import {Pill} from "./Pill"
 import PillContainer from "./PillContainer";
 import React, {useEffect, useState} from "react";
-import {getMatchingUsernamesApi} from "./getMatchingUsernamesApi";
+import {getMatchingUsersApi} from "../../../pages/api/searchUsers/getMatchingUsersApi";
 import {useSession} from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
 import {User} from '../../../types/user'
@@ -19,7 +19,7 @@ export default function AcmEventPeeps({teamTitle}: Props) {
 
     const token = getCookieData(session).data.token
 
-    const callApi = (pattern: string) => getMatchingUsernamesApi(pattern, token)
+    const searchUsersApi = (pattern: string) => getMatchingUsersApi(pattern, token)
         .then((response : User[]) => {
             // take first 5 only
             response = response.slice(0, 5)
@@ -56,12 +56,12 @@ export default function AcmEventPeeps({teamTitle}: Props) {
         }
     }
 
-    const handleNameSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleNameSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         setNameSearchValue(e.target.value)
-        if (e.target.value === "") {
+        if (e.target.value.trim() === "") {
             setSearchResult([]);
         } else {
-            callApi(e.target.value)
+            await searchUsersApi(e.target.value)
         }
     }
 
@@ -100,6 +100,10 @@ export default function AcmEventPeeps({teamTitle}: Props) {
                                     }}
                                 >
                                     {pill.name}
+                                    <p style={{
+                                        color:"grey",
+                                        fontSize:"small",
+                                    }}>{pill.email}</p>
                                 </p>)
                         }
                     </div>

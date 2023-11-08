@@ -27,8 +27,7 @@ const font = Josefin_Sans({
 
 function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDate, handleClose }: Props) {
     const [showModal, setShowModal] = useState(false);
-    // const nameSearchInput = useRef(null);
-    
+
     return (
         !showModal ?
 
@@ -56,7 +55,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                         height={200}
                     />
                     <div className={styles.text}>
-                        <p className={styles.subtitle}>
+                        <div className={styles.subtitle}>
                             <h3>{subTitle}</h3>
                             <div>
                                 {
@@ -66,7 +65,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                                     )
                                 }
                             </div>
-                        </p>
+                        </div>
                         {
                             description.map((desc, i) => {
                                 return <p key={i}>{desc}</p>
@@ -92,7 +91,6 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
             fullWidth={true}
             maxWidth={'lg'}
             open={true}
-            // onClose={handleClose}
             sx={{ padding: "0", margin: "0", backdropFilter: "blur(5px)" }}
             PaperProps={{ sx: { borderRadius: "10px" } }}
         >
