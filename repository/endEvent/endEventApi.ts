@@ -1,4 +1,4 @@
-import {fetchWrapper} from '../../../util/httpWrapper'
+import {fetchWrapper} from '../../util/httpWrapper'
 
 export async function endEventApi(
     participantsList: string[],

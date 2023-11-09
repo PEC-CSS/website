@@ -8,7 +8,7 @@ import { Common } from '../../../constants/common';
 import {Button} from '@mui/material'
 import AcmEventPeeps from "./AcmEventPeeps";
 import {Pill} from "./Pill";
-import {endEventApi} from "../../../pages/api/endEvent/endEventApi";
+import {endEventApi} from "../../../repository/endEvent/endEventApi";
 import {useSession} from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
 import {Input} from "@mui/base";

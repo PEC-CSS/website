@@ -1,7 +1,7 @@
 import {Pill} from "./Pill"
 import PillContainer from "./PillContainer";
 import React, {useEffect, useState} from "react";
-import {getMatchingUsersApi} from "../../../pages/api/searchUsers/getMatchingUsersApi";
+import {getMatchingUsersApi} from "../../../repository/searchUsers/getMatchingUsersApi";
 import {useSession} from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
 import {User} from '../../../types/user'
