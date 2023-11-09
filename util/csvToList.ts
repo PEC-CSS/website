@@ -6,9 +6,10 @@ interface CsvRow {
 }
 
 function getEmailColumnIndex(headers: string[]): number {
+    const emailKeywords = ['email', 'mail', 'email id'];
     for (let i = 0; i < headers.length; i++) {
         const header = headers[i].toLowerCase();
-        if (header.includes('email')) {
+        if (emailKeywords.some(keyword => header.includes(keyword))) {
             return i;
         }
     }
@@ -21,7 +22,6 @@ export const getEmailsFromCSV = (csvData: string): string[] => {
         header: true,
         skipEmptyLines: true,
     });
-    console.log(results);
 
     if (results.errors.length > 0) {
         console.error('Error parsing CSV:', results.errors);
@@ -37,17 +37,15 @@ export const getEmailsFromCSV = (csvData: string): string[] => {
     return results.data.map(row => row[results.meta?.fields?.[emailColumnIndex] ?? '']);
 }
 
-export const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
+export const handleFileUpload = (event: ChangeEvent<HTMLInputElement>): string[] => {
     const file = event.target.files?.[0];
     if (file) {
         const reader = new FileReader();
 
         reader.onload = (e: any) => {
             const csvData = e.target.result;
-            const emails = getEmailsFromCSV(csvData);
-            console.log('Emails:', emails);
+            return getEmailsFromCSV(csvData);
         };
-
-        reader.readAsText(file);
     }
+    return [];
 };
