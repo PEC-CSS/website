@@ -37,7 +37,8 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
     const [publicityXp, setPublicityXp] = useState(2)
     const [participantXp, setParticipantXp] = useState(1)
     const [showSnackBar, setShowSnackBar] = useState(false)
-    const [error, setError] = useState("")
+    const [error, setError] = useState<String>("")
+    const [loading, setLoading] = useState(false)
 
     const handleContributorXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setContributorXp(parseInt(e.target.value))
@@ -49,13 +50,13 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
         setContributorXp(parseInt(e.target.value))
     }
 
-
     const {data: session} = useSession();
 
     const token = getCookieData(session).data.token
     const handleEndEvent = async () => {
         const publicityList: string[] = pillsPublicity.map( (pillObject) => pillObject.email);
         const organizerList: string[] = pillsOrganizers.map( (pillObject: Pill) => pillObject.email);
+        setLoading(true)
 
         try{
             await endEventApi(
@@ -65,14 +66,17 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                 2,
                 3,
                 4,
-                6,
+                8,
                 token
             )
         }
         catch (error: any){
-            setShowSnackBar(true)
             console.log(error)
             setError(error)
+        }
+        finally {
+            setShowSnackBar(true)
+            setLoading(false)
         }
     }
 
@@ -145,7 +149,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                 fullWidth={true}
                 maxWidth={'lg'}
                 open={true}
-                sx={{ padding: "0", margin: "0", backdropFilter: "blur(5px)" }}
+                sx={{ padding: "0", margin: "0", backdropFilter: "blur(10px)" }}
                 PaperProps={{ sx: { borderRadius: "10px" } }}
             >
                 <div className={styles.modal}>
@@ -178,21 +182,28 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                             <TextField style={{margin:"10px"}} label={"Contributor Xp"} variant={"outlined"} value={contributorXp} onChange={handleContributorXpChange} type={'number'} ></TextField>
                             <TextField style={{margin:"10px"}} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
                             <TextField style={{margin:"10px"}} label={"Participant Xp"} variant={"outlined"} value={participantXp} onChange={handleParticipantXpChange} type={'number'} ></TextField>
-                            <Button onClick={handleEndEvent} variant="outlined" color="warning">End Event</Button>
+                            <Button
+                                onClick={handleEndEvent}
+                                variant="outlined"
+                                color="warning"
+                                disabled={loading}
+                            >
+                                {loading ? "Loading..." : "End Event"}
+                            </Button>
                         </div>
                     </div>
                 </div>
                 <Snackbar
                     open={showSnackBar}
                     autoHideDuration={2000}
-                    onClose={() => setShowSnackBar(false)}
+                    onClose={handleClose}
                 >
                     <Alert
-                        onClose={() => setShowSnackBar(false)}
-                        severity="error"
+                        onClose={handleClose}
+                        severity={error.length ? "error" : "success"}
                         sx={{ width: "100%" }}
                     >
-                        {error}
+                        {error.length ? error : "Event ended successfully"}
                     </Alert>
                 </Snackbar>
             </Dialog>
