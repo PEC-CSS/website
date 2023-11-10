@@ -16,7 +16,6 @@ type Props = {
 
 export default function AcmEventPeeps({teamTitle, pills, setPills}: Props) {
     const [nameSearchValue, setNameSearchValue] = useState("")
-    // @ts-ignore
     const [debouncedValue, setDebouncedValue] = useState("")
     const [searchResult, setSearchResult] = useState<Pill[]>([])
     const {data: session} = useSession();
