@@ -9,6 +9,7 @@ export async function endEventApi(
     participantXp: number,
     eventId: number,
     token: string) {
+    console.log(participantsList)
     return await fetchWrapper.post(
         {
             url: `v1/events/${eventId}/end`,

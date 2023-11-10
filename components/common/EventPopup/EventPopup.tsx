@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react'
-import {Alert, Dialog, Snackbar, TextField} from '@mui/material';
+import React, {useState} from 'react'
+import {Alert, Dialog, Input, Snackbar, TextField} from '@mui/material';
 import styles from "../../../styles/components/EventPopup.module.scss";
 import { Josefin_Sans } from 'next/font/google';
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import {Pill} from "./Pill";
 import {endEventApi} from "../../../repository/endEvent/endEventApi";
 import {useSession} from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
+import {handleFileUpload} from "../../../util/csvToList";
 
 
 type Props = {
@@ -31,6 +32,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
     const [showModal, setShowModal] = useState(false);
     const [pillsOrganizers, setPillsOrganizers] = useState<Pill[]>([])
     const [pillsPublicity, setPillsPublicity] = useState<Pill[]>([])
+    const [participantsList, setParticipantsList] = useState<string[]>([])
     const [contributorXp, setContributorXp] = useState(5)
     const [publicityXp, setPublicityXp] = useState(2)
     const [participantXp, setParticipantXp] = useState(1)
@@ -54,7 +56,6 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
     const handleEndEvent = async () => {
         const publicityList: string[] = pillsPublicity.map( (pillObject) => pillObject.email);
         const organizerList: string[] = pillsOrganizers.map( (pillObject: Pill) => pillObject.email);
-        const participantsList: string[] = []
 
         try{
             await endEventApi(
@@ -64,7 +65,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                 2,
                 3,
                 4,
-                1,
+                6,
                 token
             )
         }
@@ -73,6 +74,11 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
             console.log(error)
             setError(error)
         }
+    }
+
+    const handleCSVUpload = (e: any) => {
+        const participantEmails = handleFileUpload(e)
+        setParticipantsList(participantEmails)
     }
 
     return (
@@ -160,6 +166,15 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                         <div className={styles.text} >
                             <AcmEventPeeps teamTitle={"Organizing Peeps"} pills={pillsOrganizers} setPills={setPillsOrganizers} />
                             <AcmEventPeeps teamTitle={"Publicity Peeps"} pills={pillsPublicity} setPills={setPillsPublicity} />
+                            <form>
+                                <input
+                                    type={"file"}
+                                    name={"file"}
+                                    accept={".csv"}
+                                    onChange={handleCSVUpload}
+                                />
+                                <input type={"reset"} />
+                            </form>
                             <TextField style={{margin:"10px"}} label={"Contributor Xp"} variant={"outlined"} value={contributorXp} onChange={handleContributorXpChange} type={'number'} ></TextField>
                             <TextField style={{margin:"10px"}} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
                             <TextField style={{margin:"10px"}} label={"Participant Xp"} variant={"outlined"} value={participantXp} onChange={handleParticipantXpChange} type={'number'} ></TextField>

@@ -6,7 +6,7 @@ interface CsvRow {
 }
 
 function getEmailColumnIndex(headers: string[]): number {
-    const emailKeywords = ['email', 'mail', 'email id'];
+    const emailKeywords = ['mail'];
     for (let i = 0; i < headers.length; i++) {
         const header = headers[i].toLowerCase();
         if (emailKeywords.some(keyword => header.includes(keyword))) {
@@ -41,11 +41,11 @@ export const handleFileUpload = (event: ChangeEvent<HTMLInputElement>): string[]
     const file = event.target.files?.[0];
     if (file) {
         const reader = new FileReader();
-
         reader.onload = (e: any) => {
             const csvData = e.target.result;
             return getEmailsFromCSV(csvData);
         };
+        reader.readAsText(file);
     }
     return [];
 };
