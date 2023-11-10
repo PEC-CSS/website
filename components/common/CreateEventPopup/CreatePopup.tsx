@@ -20,11 +20,12 @@ import getCookieData from "../../../lib/getCookieData";
 import { useSession } from "next-auth/react";
 import { MdErrorOutline } from "react-icons/md";
 import moment from "moment";
+import { Event } from "react-big-calendar";
 
 type Props = {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    appendEvent: any;
+    appendEvent: (event: Event) => void;
 };
 
 const font = Josefin_Sans({
@@ -118,12 +119,13 @@ function DialogPopup({ open, setOpen, appendEvent }: Props) {
                     start: moment(eventDetails.startDate).toDate(),
                     end: moment(eventDetails.endDate).toDate(),
                     title: eventDetails.title,
-                    resource: [
-                        eventDetails.branch.toLowerCase(),
-                        `Platform: ${eventDetails.venue}`,
-                        eventDetails.description,
-                        "", // maybe image
-                    ],
+                    resource: {
+                        id: json.id,
+                        branch: eventDetails.branch,
+                        venue: eventDetails.venue,
+                        description: eventDetails.description,
+                        relatedLink: eventDetails.relatedLink,
+                    },
                 });
             })
             .catch((e) => {
