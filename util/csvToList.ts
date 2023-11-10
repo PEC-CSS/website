@@ -13,7 +13,6 @@ function getEmailColumnIndex(headers: string[]): number {
             return i;
         }
     }
-
     return -1;
 }
 
@@ -34,18 +33,35 @@ export const getEmailsFromCSV = (csvData: string): string[] => {
         console.error('No email column found in the CSV.');
         return [];
     }
-    return results.data.map(row => row[results.meta?.fields?.[emailColumnIndex] ?? '']);
+    const emails = results.data.map(row => row[results.meta?.fields?.[emailColumnIndex] ?? '']);
+    return emails
 }
 
-export const handleFileUpload = (event: ChangeEvent<HTMLInputElement>): string[] => {
+export const handleFileUpload = (event: ChangeEvent<HTMLInputElement>): Promise<string[]> => {
     const file = event.target.files?.[0];
-    if (file) {
+
+    if (!file) {
+        return Promise.resolve([]);
+    }
+
+    return new Promise((resolve, reject) => {
         const reader = new FileReader();
+
         reader.onload = (e: any) => {
             const csvData = e.target.result;
-            return getEmailsFromCSV(csvData);
+            const emails = getEmailsFromCSV(csvData);
+            resolve(emails);
         };
+
+        reader.onerror = () => {
+            reject(new Error('Error reading file'));
+        };
+
         reader.readAsText(file);
-    }
-    return [];
+    });
 };
+
+
+
+
+

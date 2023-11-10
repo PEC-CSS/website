@@ -12,9 +12,10 @@ type Props = {
     teamTitle: string,
     pills: Pill[],
     setPills: React.Dispatch<React.SetStateAction<Pill[]>>
+    setEmptyError: any
 }
 
-export default function AcmEventPeeps({teamTitle, pills, setPills}: Props) {
+export default function AcmEventHeads({teamTitle, pills, setPills, setEmptyError}: Props) {
     const [nameSearchValue, setNameSearchValue] = useState("")
     const [debouncedValue, setDebouncedValue] = useState("")
     const [searchResult, setSearchResult] = useState<Pill[]>([])
@@ -57,13 +58,16 @@ export default function AcmEventPeeps({teamTitle, pills, setPills}: Props) {
 
     const handleDelete = (email: string) => {
         setPills((prevState) => prevState.filter((pill) => pill.email != email))
+
     }
 
     const addUserToPills = (pill: Pill): void => {
         const foundPill = pills.find(pillObject => pillObject.name == pill.name && pillObject.email == pill.email)
         if (!foundPill) {
             setNameSearchValue("")
+            setDebouncedValue("")
             setSearchResult([])
+            setEmptyError(false)
             setPills((prevState) => {
                 return [...prevState, pill];
             });
@@ -90,7 +94,6 @@ export default function AcmEventPeeps({teamTitle, pills, setPills}: Props) {
             <div style={{
                 width: "300px"
             }}>
-                {/*<p style={{margin: "10px"}}>{teamTitle}</p>*/}
                 <div style={{
                     width:"300px",
                     padding:"20px"

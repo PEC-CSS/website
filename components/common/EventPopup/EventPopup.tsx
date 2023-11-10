@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import {Alert, Dialog, Input, Snackbar, TextField} from '@mui/material';
 import styles from "../../../styles/components/EventPopup.module.scss";
 import { Josefin_Sans } from 'next/font/google';
@@ -6,12 +6,13 @@ import Image from 'next/image';
 import {RxCross2} from 'react-icons/rx';
 import { Common } from '../../../constants/common';
 import {Button} from '@mui/material'
-import AcmEventPeeps from "./AcmEventPeeps";
+import AcmEventHeads from "./AcmEventHeads";
 import {Pill} from "./Pill";
 import {endEventApi} from "../../../repository/endEvent/endEventApi";
 import {useSession} from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
 import {handleFileUpload} from "../../../util/csvToList";
+import {upperSnake} from "next-auth/core/errors";
 
 
 type Props = {
@@ -37,8 +38,11 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
     const [publicityXp, setPublicityXp] = useState(2)
     const [participantXp, setParticipantXp] = useState(1)
     const [showSnackBar, setShowSnackBar] = useState(false)
-    const [error, setError] = useState<String>("")
+    const [snackBarError, setSnackBarError] = useState<String>("")
     const [loading, setLoading] = useState(false)
+    const [participantsEmptyError, setParticipantsEmptyError] = useState(false)
+    const [contributorsEmptyError, setContributorsEmptyError] = useState(false)
+    const [publicityEmptyError, setPublicityEmptyError] = useState(false)
 
     const handleContributorXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setContributorXp(parseInt(e.target.value))
@@ -54,6 +58,19 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
 
     const token = getCookieData(session).data.token
     const handleEndEvent = async () => {
+        if (participantsList.length === 0) {
+            setParticipantsEmptyError(true);
+            return;
+        }
+        if (pillsOrganizers.length === 0) {
+            setContributorsEmptyError(true);
+            return;
+        }
+        if (pillsPublicity.length === 0) {
+            setPublicityEmptyError(true);
+            return;
+        }
+
         const publicityList: string[] = pillsPublicity.map( (pillObject) => pillObject.email);
         const organizerList: string[] = pillsOrganizers.map( (pillObject: Pill) => pillObject.email);
         setLoading(true)
@@ -72,7 +89,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
         }
         catch (error: any){
             console.log(error)
-            setError(error)
+            setSnackBarError(error)
         }
         finally {
             setShowSnackBar(true)
@@ -80,9 +97,13 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
         }
     }
 
-    const handleCSVUpload = (e: any) => {
-        const participantEmails = handleFileUpload(e)
-        setParticipantsList(participantEmails)
+    const handleCSVUpload = (e: ChangeEvent<HTMLInputElement>) => {
+        handleFileUpload(e).then((participantEmails) => {
+            setParticipantsList(participantEmails)
+            if (participantEmails.length !== 0) {
+                setParticipantsEmptyError(false)
+            }
+        })
     }
 
     return (
@@ -168,8 +189,8 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                             height={200}
                         />
                         <div className={styles.text} >
-                            <AcmEventPeeps teamTitle={"Organizing Peeps"} pills={pillsOrganizers} setPills={setPillsOrganizers} />
-                            <AcmEventPeeps teamTitle={"Publicity Peeps"} pills={pillsPublicity} setPills={setPillsPublicity} />
+                            <AcmEventHeads teamTitle={"Organizing Heads"} pills={pillsOrganizers} setPills={setPillsOrganizers} setEmptyError={setContributorsEmptyError} />
+                            <AcmEventHeads teamTitle={"Publicity Heads"} pills={pillsPublicity} setPills={setPillsPublicity} setEmptyError={setPublicityEmptyError} />
                             <form>
                                 <input
                                     type={"file"}
@@ -190,6 +211,15 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                             >
                                 {loading ? "Loading..." : "End Event"}
                             </Button>
+                            {
+                                participantsEmptyError && <p style={{color:"red"}}>Please upload a csv containing participants' emails. Make sure there is at least 1 participant and the column name for email addresses contains 'mail' as a substring</p>
+                            }
+                            {
+                                publicityEmptyError && <p style={{color:"red"}}>Please add at least 1 Publicity Head</p>
+                            }
+                            {
+                                contributorsEmptyError && <p style={{color:"red"}}>Please add at least 1 Contributor Head</p>
+                            }
                         </div>
                     </div>
                 </div>
@@ -200,10 +230,10 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                 >
                     <Alert
                         onClose={handleClose}
-                        severity={error.length ? "error" : "success"}
+                        severity={snackBarError.length ? "error" : "success"}
                         sx={{ width: "100%" }}
                     >
-                        {error.length ? error : "Event ended successfully"}
+                        {snackBarError.length ? snackBarError : "Event ended successfully"}
                     </Alert>
                 </Snackbar>
             </Dialog>
