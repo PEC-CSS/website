@@ -21,7 +21,6 @@ const font = Josefin_Sans({
 });
 
 function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDate, handleClose }: Props) {
-    
     return (
         <Dialog
             fullWidth={true}
@@ -55,6 +54,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                                     finalDateString(
                                         getDateString(startDate.getDate(), startDate.getMonth(),    startDate.getFullYear()),
                                         getDateString(endDate.getDate(), endDate.getMonth(), endDate.getFullYear()),
+                                        startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' })
                                     )
                                 }
                             </div>
@@ -83,9 +83,9 @@ const getDateString = (date: number, month: number, year: number) => {
     return dateString;
 }
 
-const finalDateString = (date1: string, date2: string) => {
+const finalDateString = (date1: string, date2: string, time: string) => {
     if (date1 === date2) {
-        return date1;
+        return `${date1}, ${time}`;
     } else {
         return `${date1} - ${date2}`;
     }
