@@ -198,7 +198,10 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                                     accept={".csv"}
                                     onChange={handleCSVUpload}
                                 />
-                                <input type={"reset"} />
+                                <input
+                                    type={"reset"}
+                                    onClick={() => setParticipantsList([])}
+                                />
                             </form>
                             <TextField style={{margin:"10px"}} label={"Contributor Xp"} variant={"outlined"} value={contributorXp} onChange={handleContributorXpChange} type={'number'} ></TextField>
                             <TextField style={{margin:"10px"}} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
@@ -212,13 +215,13 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                                 {loading ? "Loading..." : "End Event"}
                             </Button>
                             {
-                                participantsEmptyError && <p style={{color:"red"}}>Please upload a csv containing participants' emails. Make sure there is at least 1 participant and the column name for email addresses contains 'mail' as a substring</p>
+                                participantsEmptyError && <p style={{color:"red"}}>- Please upload a csv containing participants emails. Make sure there is at least 1 participant and the column name for email addresses contains &quot;mail&quot; as a substring</p>
                             }
                             {
-                                publicityEmptyError && <p style={{color:"red"}}>Please add at least 1 Publicity Head</p>
+                                publicityEmptyError && <p style={{color:"red"}}>- Please add at least 1 Publicity Head</p>
                             }
                             {
-                                contributorsEmptyError && <p style={{color:"red"}}>Please add at least 1 Contributor Head</p>
+                                contributorsEmptyError && <p style={{color:"red"}}>- Please add at least 1 Contributor Head</p>
                             }
                         </div>
                     </div>
