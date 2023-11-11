@@ -7,6 +7,8 @@ import { Common } from "../../../constants/common";
 
 type Props = {
     title: string;
+    id: number;
+    ended: boolean;
     subTitle?: string;
     description?: string;
     imageUrl: string;
@@ -25,6 +27,8 @@ function DialogPopup({
     endDate,
     handleClose,
     venue,
+    id,
+    ended,
 }: Props) {
     return (
         <Dialog

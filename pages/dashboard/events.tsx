@@ -30,9 +30,9 @@ const getEventClassByEvent = (event: Event) => {
 function Events({ designation }: { designation: string }) {
     const [listedEvents, setListedEvents] = useState<Event[] | undefined>([]);
     const [activeEvent, setActiveEvent] = useState<Event | null>(null);
-    const [eventResource, setEventResource] = useState<EventResource>({
-        branch: "acm",
-    });
+    const [eventResource, setEventResource] = useState<EventResource | null>(
+        null
+    );
     const [showModal, setShowModal] = useState<Boolean>(false);
     const [createModal, setCreateModal] = useState(false);
 
@@ -122,13 +122,17 @@ function Events({ designation }: { designation: string }) {
 
                     {showModal ? (
                         <EventPopup
+                            id={eventResource?.id ?? 0}
+                            ended={eventResource?.ended ?? false}
                             handleClose={() => {
                                 setShowModal(false);
                             }}
                             title={activeEvent?.title as string}
-                            description={eventResource.description}
-                            imageUrl={`/assets/logos/${eventResource.branch}.png`}
-                            venue={eventResource.venue}
+                            description={eventResource?.description as string}
+                            imageUrl={`/assets/logos/${
+                                eventResource?.branch ?? "acm"
+                            }.png`}
+                            venue={eventResource?.venue ?? ""}
                             startDate={
                                 activeEvent?.start
                                     ? activeEvent.start
