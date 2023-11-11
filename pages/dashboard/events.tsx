@@ -39,6 +39,7 @@ function Events({ designation }: { designation: string }) {
     const [currDate, setCurrDate] = useState(new Date(Date.now()));
 
     const handleSelectEvent = (event: Event) => {
+        console.log(event)
         setEventResource(event.resource);
         setActiveEvent(event);
         setShowModal(true);
@@ -82,6 +83,7 @@ function Events({ designation }: { designation: string }) {
                         venue: event.venue,
                         description: event.description,
                         relatedLink: event.relatedLink,
+                        ended: event.ended
                     } as EventResource,
                 };
             });
@@ -141,6 +143,8 @@ function Events({ designation }: { designation: string }) {
                             endDate={
                                 activeEvent?.end ? activeEvent.end : new Date()
                             }
+                            listedEvents={listedEvents}
+                            setListedEvents={setListedEvents}
                         />
                     ) : (
                         <></>

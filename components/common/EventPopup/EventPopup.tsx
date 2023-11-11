@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react'
-import {Alert, Dialog, Input, Snackbar, TextField} from '@mui/material';
+import {Alert, Dialog, Snackbar, TextField} from '@mui/material';
 import styles from "../../../styles/components/EventPopup.module.scss";
-import { Josefin_Sans } from 'next/font/google';
+import { Event } from "react-big-calendar";
 import Image from 'next/image';
 import {RxCross2} from 'react-icons/rx';
 import { Common } from '../../../constants/common';
@@ -25,23 +25,24 @@ type Props = {
     endDate: Date;
     venue?: string;
     handleClose: any;
+    listedEvents: Event[] | undefined;
+    setListedEvents: React.Dispatch<React.SetStateAction<Event[] | undefined>>;
 };
 
-const font = Josefin_Sans({
-    preload: false
-});
-
 function DialogPopup({
-         title,
-         subTitle,
-         description,
-         imageUrl,
-         startDate,
-         endDate,
-         handleClose,
-         venue,
-         id,
-                         ended,}: Props) {
+    title,
+    subTitle,
+    description,
+    imageUrl,
+    startDate,
+    endDate,
+    handleClose,
+    venue,
+    id,
+    ended,
+    listedEvents,
+    setListedEvents
+}: Props) {
     const [showModal, setShowModal] = useState(false);
     const [pillsOrganizers, setPillsOrganizers] = useState<Pill[]>([])
     const [pillsPublicity, setPillsPublicity] = useState<Pill[]>([])
@@ -60,15 +61,22 @@ function DialogPopup({
         setContributorXp(parseInt(e.target.value))
     }
     const handlePublicityXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setContributorXp(parseInt(e.target.value))
+        setPublicityXp(parseInt(e.target.value))
     }
     const handleParticipantXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setContributorXp(parseInt(e.target.value))
+        setParticipantXp(parseInt(e.target.value))
     }
 
     const {data: session} = useSession();
 
     const token = getCookieData(session).data.token
+
+    const markListedEventAsEnded = () => {
+        const calendarEvent = listedEvents?.find((event) => event.resource.id === id) as Event
+        calendarEvent.resource.ended = true;
+        const updatedListedEvents = listedEvents?.filter((event) => event.resource.id !== id)
+        setListedEvents([...(updatedListedEvents as Array<Event>), calendarEvent])
+    }
     const handleEndEvent = async () => {
         if (participantsList.length === 0) {
             setParticipantsEmptyError(true);
@@ -92,12 +100,13 @@ function DialogPopup({
                 participantsList,
                 publicityList,
                 organizerList,
-                2,
-                3,
-                4,
-                8,
+                contributorXp,
+                publicityXp,
+                participantXp,
+                id,
                 token
             )
+            markListedEventAsEnded()
         }
         catch (error: any){
             console.log(error)
@@ -170,17 +179,12 @@ function DialogPopup({
                         <p>{venue}</p>
                         <p>{description}</p>
                     </div>
-
-                    <div style={{
-                        width:"100%",
-                        textAlign:"right"
-                    }}>
-                        <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>
-                    </div>
-
-                    {showModal &&
-                        <p>sell another soul</p>
-                    }
+                        <div style={{
+                            width:"100%",
+                            textAlign:"right"
+                        }}>
+                            {!ended && <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>}
+                        </div>
                     </div>
                 </div>
             </Dialog> :
