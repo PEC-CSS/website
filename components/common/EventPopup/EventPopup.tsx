@@ -12,24 +12,36 @@ import {endEventApi} from "../../../repository/endEvent/endEventApi";
 import {useSession} from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
 import {handleFileUpload} from "../../../util/csvToList";
-import {upperSnake} from "next-auth/core/errors";
 
 
 type Props = {
     title: string;
-    subTitle: string;
-    description: string[];
+    id: number;
+    ended: boolean;
+    subTitle?: string;
+    description?: string;
     imageUrl: string;
     startDate: Date;
     endDate: Date;
+    venue?: string;
     handleClose: any;
-}
+};
 
 const font = Josefin_Sans({
     preload: false
 });
 
-function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDate, handleClose }: Props) {
+function DialogPopup({
+         title,
+         subTitle,
+         description,
+         imageUrl,
+         startDate,
+         endDate,
+         handleClose,
+         venue,
+         id,
+                         ended,}: Props) {
     const [showModal, setShowModal] = useState(false);
     const [pillsOrganizers, setPillsOrganizers] = useState<Pill[]>([])
     const [pillsPublicity, setPillsPublicity] = useState<Pill[]>([])
@@ -125,32 +137,38 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                         </div>
                     </div>
 
-                    <div className={styles.content}>
-                        <Image
-                            src={imageUrl}
-                            alt={`${title} event poster`}
-                            width={200}
-                            height={200}
-                        />
-                        <div className={styles.text}>
-                            <div className={styles.subtitle}>
-                                <h3>{subTitle}</h3>
-                                <div>
-                                    {
-                                        finalDateString(
-                                            getDateString(startDate.getDate(), startDate.getMonth(), startDate.getFullYear()),
-                                            getDateString(endDate.getDate(), endDate.getMonth(), endDate.getFullYear()),
-                                            startDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' })
-                                        )
-                                    }
-                                </div>
+                <div className={styles.content}>
+                    <Image
+                        src={imageUrl}
+                        alt={`${title} event poster`}
+                        width={200}
+                        height={200}
+                    />
+                    <div className={styles.text}>
+                        <div className={styles.subtitle}>
+                            {/* <h3>{subTitle}</h3> */}
+                            <div>
+                                {finalDateString(
+                                    getDateString(
+                                        startDate.getDate(),
+                                        startDate.getMonth(),
+                                        startDate.getFullYear()
+                                    ),
+                                    getDateString(
+                                        endDate.getDate(),
+                                        endDate.getMonth(),
+                                        endDate.getFullYear()
+                                    ),
+                                    startDate.toLocaleTimeString("en-US", {
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                        timeZone: "Asia/Kolkata",
+                                    })
+                                )}
                             </div>
-                            {
-                                description.map((desc, i) => {
-                                    return <p key={i}>{desc}</p>
-                                })
-                            }
                         </div>
+                        <p>{venue}</p>
+                        <p>{description}</p>
                     </div>
 
                     <div style={{
@@ -163,6 +181,7 @@ function DialogPopup({ title, subTitle, description, imageUrl, startDate, endDat
                     {showModal &&
                         <p>sell another soul</p>
                     }
+                    </div>
                 </div>
             </Dialog> :
 
@@ -250,9 +269,11 @@ const getDateString = (date: number, month: number, year: number) => {
     const dummyDate = new Date();
     dummyDate.setMonth(month);
 
-    dateString += `${dummyDate.toLocaleString('en-US', { month: 'short', })}, ${year}`;
+    dateString += `${dummyDate.toLocaleString("en-US", {
+        month: "short",
+    })}, ${year}`;
     return dateString;
-}
+};
 
 const finalDateString = (date1: string, date2: string, time: string) => {
     if (date1 === date2) {
@@ -260,4 +281,4 @@ const finalDateString = (date1: string, date2: string, time: string) => {
     } else {
         return `${date1} - ${date2}`;
     }
-}
+};

@@ -55,7 +55,7 @@ function Events() {
       <div className={styles.events}>
         <p>Have a look at our calendar</p>
         <div className={styles.calendarWrapper}>
-          {showModal ? (
+          {/* {showModal ? (
             <EventPopup
               handleClose={() => {
                 setShowModal(false);
@@ -73,7 +73,7 @@ function Events() {
             />
           ) : (
             <></>
-          )}
+          )} */}
 
           <Calendar
             localizer={localizer}

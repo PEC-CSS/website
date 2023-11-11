@@ -1,11 +1,8 @@
-export interface Event {
+export interface EventResource {
     id: number;
-    title: string;
     branch: string;
-    startDate: string;
-    endDate: string;
+    venue: string;
     description: string;
     relatedLink: string;
-    venue: string;
     ended: boolean;
 }
