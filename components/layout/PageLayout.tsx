@@ -6,6 +6,7 @@ import styles from "../../styles/components/PageLayout.module.scss";
 import Banner from "../banner/Banner";
 import {Common} from "../../constants/common";
 import NoSSRWrapper from "../common/NoSSRWrapper";
+import Script from "next/script";
 
 type Props = {
     title: string;
@@ -67,6 +68,16 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
                 {/* TODO : Verification pending */}
                 <meta name="google-site-verification" content="wJCASasAYLy_hM-ndSessna54e0JH7VCzmg5asx1aFc" />
             </Head>
+            <Script src="https://www.googletagmanager.com/gtag/js?id=G-5647L00T6L" />
+            <Script id="google-analytics">
+                {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+        
+                gtag('config', 'G-5647L00T6L');
+                `}
+            </Script>
             <NoSSRWrapper>
                 <Header />
             </NoSSRWrapper>
