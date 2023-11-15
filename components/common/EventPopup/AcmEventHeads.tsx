@@ -1,13 +1,12 @@
-import {Pill} from "./Pill"
+import { Pill } from "./Pill"
 import PillContainer from "./PillContainer";
-import React, {useCallback, useEffect, useState} from "react";
-import {getMatchingUsersApi} from "../../../repository/searchUsers/getMatchingUsersApi";
-import {useSession} from "next-auth/react";
+import React, { useCallback, useEffect, useState } from "react";
+import { getMatchingUsersApi } from "../../../repository/searchUsers/getMatchingUsersApi";
+import { useSession } from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
-import {User} from '../../../types/user'
-import CustomTextField from "../CustomTextField/CustomTextField";
-import {useDebouncedCallback} from "use-debounce";
-
+import { User } from '../../../types/user'
+import { useDebouncedCallback } from "use-debounce";
+import styles from "../../../styles/components/AcmEventHeads.module.scss";
 type Props = {
     teamTitle: string,
     pills: Pill[],
@@ -15,43 +14,43 @@ type Props = {
     setEmptyError: any
 }
 
-export default function AcmEventHeads({teamTitle, pills, setPills, setEmptyError}: Props) {
+export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyError }: Props) {
     const [nameSearchValue, setNameSearchValue] = useState("")
     const [debouncedValue, setDebouncedValue] = useState("")
     const [searchResult, setSearchResult] = useState<Pill[]>([])
-    const {data: session} = useSession();
+    const { data: session } = useSession();
     const token = getCookieData(session).data.token
 
     const searchUsersApi = useCallback((pattern: string) => {
-            getMatchingUsersApi(pattern, token)
-                .then((response: User[]) => {
-                    // take first 5 only
-                    response = response.slice(0, 5)
-                    // remove already added pills
-                    response = response.filter((user) => {
-                            const foundPill = pills.find(pillObject =>
-                                pillObject.email == user.email
-                            )
-                            return !foundPill
-                        }
+        getMatchingUsersApi(pattern, token)
+            .then((response: User[]) => {
+                // take first 5 only
+                response = response.slice(0, 5)
+                // remove already added pills
+                response = response.filter((user) => {
+                    const foundPill = pills.find(pillObject =>
+                        pillObject.email == user.email
                     )
+                    return !foundPill
+                }
+                )
 
-                    setSearchResult(response.map((user: User) => {
-                        return {
-                            name: user.name,
-                            email: user.email
-                        }
-                    }))
-                })
-                .catch((error) => console.log(error))
-        }
+                setSearchResult(response.map((user: User) => {
+                    return {
+                        name: user.name,
+                        email: user.email
+                    }
+                }))
+            })
+            .catch((error) => console.log(error))
+    }
         , [pills, token])
 
     useEffect(() => {
-        if (!debouncedValue || debouncedValue.trim() === ""){
+        if (!debouncedValue || debouncedValue.trim() === "") {
             setSearchResult([])
         }
-        else{
+        else {
             searchUsersApi(debouncedValue)
         }
     }, [debouncedValue, searchUsersApi]);
@@ -87,55 +86,34 @@ export default function AcmEventHeads({teamTitle, pills, setPills, setEmptyError
     }
 
     return (
-        <div style={{
-            display: "flex",
-            margin: "30px",
-        }}>
-            <div style={{
-                width: "300px"
-            }}>
-                <div style={{
-                    width:"300px",
-                    padding:"20px"
-                }}>
-                    <CustomTextField
-                        type="text"
-                        onChange={ handleNameSearchChange }
-                        value={nameSearchValue}
-                        label={`Search ${teamTitle}`}
-                        fullWidth={true}
-                        variant="filled"
-                    />
-
-                    <div>
-                        {
-                            searchResult.map((pill: Pill) =>
-                                <div
-                                    onClick={() => addUserToPills(pill)}
-                                    key={pill.email}
-                                    style={{
-                                        height: "40px",
-                                        borderRadius: "10px",
-                                        padding: "5px"
-                                    }}
-                                >
-                                    {pill.name}
-                                    <p
-                                        style={{
-                                            color:"grey",
-                                            fontSize:"small",
-                                        }}
-                                    >
-                                        {pill.email}
-                                    </p>
-                                </div>)
-                        }
-                    </div>
-                </div>
+        <div className={styles['acm-event-heads-container']}>
+            <div className={styles.pillInputDiv}>
+                <PillContainer handleDelete={handleDelete} pills={pills} />
+                <input
+                    type="text"
+                    onChange={handleNameSearchChange}
+                    value={nameSearchValue}
+                    className={styles.pillInput}
+                    placeholder={`Search ${teamTitle}*`}
+                />
             </div>
 
-            <PillContainer handleDelete={handleDelete} pills={pills}/>
+            <div>
+                <div className={styles['pills-container']}>
+                    {searchResult.map((pill: Pill) =>
+                        <div
+                            onClick={() => addUserToPills(pill)}
+                            key={pill.email}
+                            className={styles['pill']}
+                        >
+                            {pill.name}
+                            <p>
+                                {pill.email}
+                            </p>
+                        </div>)
+                    }
+                </div>
+            </div>
         </div>
-    )
-
+    );
 }
