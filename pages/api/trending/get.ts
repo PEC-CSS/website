@@ -12,6 +12,7 @@ type Trending = {
     description: string;
     image: string;
     content: string;
+    branch: string;
 };
 
 export default function handler(
@@ -48,7 +49,8 @@ export default function handler(
                             : rows;
 
                     trendingCards = filteredRows
-                        .slice(Math.max(filteredRows.length - 3, 0))
+                        // take the latest 12 events
+                        .slice(Math.max(filteredRows.length - 12, 0))
                         .map((row: GoogleSpreadsheetRow) => {
                             const image = row.get("Image");
                             const imageUrl = `https://drive.google.com/uc?id=${getId(image)}`;
@@ -57,6 +59,7 @@ export default function handler(
                                 description: row.get("Description"),
                                 image: imageUrl,
                                 content: row.get("Content"),
+                                branch: row.get("Branch")
                             };
                         });
                     res.status(200).json({

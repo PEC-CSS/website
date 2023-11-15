@@ -1,12 +1,14 @@
 import styles from "../../styles/components/Trending.module.scss";
 import { useEffect, useState } from "react";
+import {useSelector} from "react-redux";
+import {selectTrendingState} from "../../redux/slices/trendingSlice";
 
 export interface TrendingCard {
     title: string;
     description: string;
     image: string;
-    href: string;
     content: string;
+    branch: string;
 }
 
 type Props = {
@@ -14,40 +16,19 @@ type Props = {
 };
 
 export default function Trending({ trendingType }: Props) {
-    const [loading, setLoading] = useState(true);
+    const trendingData = useSelector(selectTrendingState)
     const [trendingInfo, setTrendingInfo] = useState<TrendingCard[] | null>();
 
     useEffect(() => {
-        getTrendingData(trendingType);
-    }, [trendingType]);
-
-    const getTrendingData = async (trendingType: string) => {
-        const res = await fetch("/api/trending/get", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                branch: trendingType,
-            }),
-        });
-
-        if (res.status != 200) {
-            setLoading(false);
-            setTrendingInfo([]);
-            return;
-        }
-        const trending = await res.json();
-
-        let trendingData = trending.result as TrendingCard[];
-
-        setTrendingInfo(trendingData);
-        setLoading(false);
-    };
+        const filteredCards = trendingData.trendingCards.filter((trendingCard) => trendingCard.branch === trendingType || trendingType === "home");
+        setTrendingInfo(
+            filteredCards.slice( Math.max(filteredCards.length - 3, 0) )
+        )
+    }, [trendingData, trendingType]);
 
     return (
         <div className={styles.trending_cards}>
-            {loading || trendingInfo == null ? (
+            {trendingData.loading || trendingInfo == null ? (
                 Array.apply(null, Array(3)).map((_, i) => {
                     return (
                         <div
