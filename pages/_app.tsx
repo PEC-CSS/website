@@ -17,7 +17,6 @@ const font = Josefin_Sans({
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     const router = useRouter();
     const [isLoading, setIsLoading] = React.useState(false);
-    const trendingData = useSelector(selectTrendingState)
     const dispatch = useDispatch();
 
     const fetchTrendingCards = async (branchAlias: string) => {

@@ -17,7 +17,6 @@ export const trendingSlice = createSlice({
     initialState,
     reducers: {
         setTrendingCards(state, action ) {
-            // @ts-ignore
             state.trendingCards = action.payload
         },
         setLoadingCards(state, action) {
