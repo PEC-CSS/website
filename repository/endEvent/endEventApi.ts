@@ -2,7 +2,7 @@ import {fetchWrapper} from '../../util/httpWrapper'
 
 export async function endEventApi(
     participantsList: string[],
-    organizersList: string[],
+    contributorsList: string[],
     publicityList: string[],
     contributorXp: number,
     publicityXp: number,
@@ -13,7 +13,7 @@ export async function endEventApi(
         {
             url: `v1/events/${eventId}/end`,
             body: {
-                contributors: organizersList,
+                contributors: contributorsList,
                 publicity: publicityList,
                 participants: participantsList,
                 contributorXp: contributorXp,

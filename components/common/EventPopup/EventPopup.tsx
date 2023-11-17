@@ -12,8 +12,6 @@ import { endEventApi } from "../../../repository/endEvent/endEventApi";
 import { useSession } from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
 import { handleFileUpload } from "../../../util/csvToList";
-// import ReplayIcon from '@mui/icons-material/Replay';
-
 
 type Props = {
     title: string;
@@ -45,7 +43,7 @@ function DialogPopup({
     setListedEvents
 }: Props) {
     const [showModal, setShowModal] = useState(false);
-    const [pillsOrganizers, setPillsOrganizers] = useState<Pill[]>([])
+    const [pillsContributor, setPillsContributor] = useState<Pill[]>([])
     const [pillsPublicity, setPillsPublicity] = useState<Pill[]>([])
     const [participantsList, setParticipantsList] = useState<string[]>([])
     const [contributorXp, setContributorXp] = useState(5)
@@ -83,7 +81,7 @@ function DialogPopup({
             setParticipantsEmptyError(true);
             return;
         }
-        if (pillsOrganizers.length === 0) {
+        if (pillsContributor.length === 0) {
             setContributorsEmptyError(true);
             return;
         }
@@ -93,14 +91,14 @@ function DialogPopup({
         }
 
         const publicityList: string[] = pillsPublicity.map((pillObject) => pillObject.email);
-        const organizerList: string[] = pillsOrganizers.map((pillObject: Pill) => pillObject.email);
+        const contributorsList: string[] = pillsContributor.map((pillObject: Pill) => pillObject.email);
         setLoading(true)
 
         try {
             await endEventApi(
                 participantsList,
                 publicityList,
-                organizerList,
+                contributorsList,
                 contributorXp,
                 publicityXp,
                 participantXp,
@@ -215,7 +213,7 @@ function DialogPopup({
                         </div>
                         <div className={styles.text} style={{ flex: '1.5' }}>
                             <div className={styles.flexElements}>
-                                <AcmEventHeads teamTitle={"Organizing Heads"} pills={pillsOrganizers} setPills={setPillsOrganizers} setEmptyError={setContributorsEmptyError} />
+                                <AcmEventHeads teamTitle={"Contributing Heads"} pills={pillsContributor} setPills={setPillsContributor} setEmptyError={setContributorsEmptyError} />
                                 <AcmEventHeads teamTitle={"Publicity Heads"} pills={pillsPublicity} setPills={setPillsPublicity} setEmptyError={setPublicityEmptyError} />
                             </div>
                             <div className={styles.flexElements}>
