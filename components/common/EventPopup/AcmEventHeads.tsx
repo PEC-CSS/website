@@ -18,6 +18,7 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
     const [nameSearchValue, setNameSearchValue] = useState("")
     const [debouncedValue, setDebouncedValue] = useState("")
     const [searchResult, setSearchResult] = useState<Pill[]>([])
+    const [showSearchResults, setShowSearchResults] = useState(true)
     const { data: session } = useSession();
     const token = getCookieData(session).data.token
 
@@ -32,8 +33,7 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
                         pillObject.email == user.email
                     )
                     return !foundPill
-                }
-                )
+                })
 
                 setSearchResult(response.map((user: User) => {
                     return {
@@ -81,8 +81,15 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
     );
 
     const handleNameSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setShowSearchResults(true)
         setNameSearchValue(e.target.value)
         handleDebouncedInput(e.target.value)
+    }
+
+    const handleBlur = () => {
+        setTimeout ( () => {
+            setShowSearchResults(false)
+        }, 500)
     }
 
     return (
@@ -95,24 +102,28 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
                     value={nameSearchValue}
                     className={styles.pillInput}
                     placeholder={`Search ${teamTitle}*`}
+                    onBlur={handleBlur}
                 />
             </div>
 
             <div>
-                <div className={styles['pills-container']}>
-                    {searchResult.map((pill: Pill) =>
-                        <div
-                            onClick={() => addUserToPills(pill)}
-                            key={pill.email}
-                            className={styles['pill']}
-                        >
-                            {pill.name}
-                            <p>
-                                {pill.email}
-                            </p>
-                        </div>)
-                    }
-                </div>
+                {
+                    showSearchResults &&
+                    <div className={styles['pills-container']}>
+                        {searchResult.map((pill: Pill) =>
+                            <div
+                                onClick={() => addUserToPills(pill)}
+                                key={pill.email}
+                                className={styles['pill']}
+                            >
+                                {pill.name}
+                                <p>
+                                    {pill.email}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                }
             </div>
         </div>
     );

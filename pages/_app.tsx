@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import { LinearProgress } from "@mui/material";
 import { SessionProvider } from "next-auth/react";
-import zIndex from "@mui/material/styles/zIndex";
 
 const font = Josefin_Sans({
     preload: false,

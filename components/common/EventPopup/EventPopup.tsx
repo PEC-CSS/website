@@ -156,7 +156,6 @@ function DialogPopup({
                         />
                         <div className={styles.text}>
                             <div className={styles.subtitle}>
-                                {/* <h3>{subTitle}</h3> */}
                                 <div>
                                     {finalDateString(
                                         getDateString(
@@ -179,12 +178,13 @@ function DialogPopup({
                             </div>
                             <p>{venue}</p>
                             <p>{description}</p>
-                            <div style={{
-                                marginTop: "25px"
-                            }}>
-                                {!ended && <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>}
-                            </div>
                         </div>
+                    </div>
+                    <div style={{
+                        width:"100%",
+                        textAlign:"right"
+                    }}>
+                        {!ended && <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>}
                     </div>
                 </div>
             </Dialog> :
@@ -245,15 +245,6 @@ function DialogPopup({
                                 <TextField style={{ margin: "10px", width: "90%" }} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
                                 <TextField style={{ margin: "10px", width: "90%" }} label={"Participant Xp"} variant={"outlined"} value={participantXp} onChange={handleParticipantXpChange} type={'number'} ></TextField>
                             </div>
-                            <Button
-                                onClick={handleEndEvent}
-                                variant="outlined"
-                                color="warning"
-                                disabled={loading}
-                                style={{ margin: '10px', marginBottom: '20px' }}
-                            >
-                                {loading ? "Loading..." : "End Event"}
-                            </Button>
                             {
                                 participantsEmptyError && <p style={{ color: "red" }}>- Please upload a csv containing participants emails. Make sure there is at least 1 participant and the column name for email addresses contains &quot;mail&quot; as a substring</p>
                             }
@@ -264,6 +255,20 @@ function DialogPopup({
                                 contributorsEmptyError && <p style={{ color: "red" }}>- Please add at least 1 Contributor Head</p>
                             }
                         </div>
+                    </div>
+                    <div style={{
+                        width:"100%",
+                        textAlign:"right"
+                    }}>
+                        <Button
+                            onClick={handleEndEvent}
+                            variant="outlined"
+                            color="warning"
+                            disabled={loading}
+                            style={{ margin: '10px', marginBottom: '20px' }}
+                        >
+                            {loading ? "Loading..." : "End Event"}
+                        </Button>
                     </div>
                 </div>
                 <Snackbar
