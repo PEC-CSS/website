@@ -15,14 +15,15 @@ export default function PillComponent( { pill, handleDelete } : Props) {
     return <div style={{
         borderRadius:"8px",
         backgroundColor:"lightpink",
-        padding: "4px 10px",
-        margin: "3px",
+        padding: "4px 5px",
+        margin: "2px",
+        marginBottom: "5px",
         width: "min-content",
-        fontSize: "small",
+        fontSize: "12px",
         color:"purple",
         display:"flex",
         alignItems:"center",
-        height:"30px"
+        height:"25px"
     }}>
         <div style={{marginRight:"8px"}}>
             {pill.name.split(' ')[0]}

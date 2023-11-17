@@ -1,17 +1,18 @@
-import React, {ChangeEvent, useState} from 'react'
-import {Alert, Dialog, Snackbar, TextField} from '@mui/material';
+import React, { ChangeEvent, useState } from 'react'
+import { Alert, Dialog, Snackbar, TextField } from '@mui/material';
 import styles from "../../../styles/components/EventPopup.module.scss";
 import { Event } from "react-big-calendar";
 import Image from 'next/image';
-import {RxCross2} from 'react-icons/rx';
+import { RxCross2 } from 'react-icons/rx';
 import { Common } from '../../../constants/common';
-import {Button} from '@mui/material'
+import { Button } from '@mui/material'
 import AcmEventHeads from "./AcmEventHeads";
-import {Pill} from "./Pill";
-import {endEventApi} from "../../../repository/endEvent/endEventApi";
-import {useSession} from "next-auth/react";
+import { Pill } from "./Pill";
+import { endEventApi } from "../../../repository/endEvent/endEventApi";
+import { useSession } from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
-import {handleFileUpload} from "../../../util/csvToList";
+import { handleFileUpload } from "../../../util/csvToList";
+// import ReplayIcon from '@mui/icons-material/Replay';
 
 
 type Props = {
@@ -67,7 +68,7 @@ function DialogPopup({
         setParticipantXp(parseInt(e.target.value))
     }
 
-    const {data: session} = useSession();
+    const { data: session } = useSession();
 
     const token = getCookieData(session).data.token
 
@@ -91,11 +92,11 @@ function DialogPopup({
             return;
         }
 
-        const publicityList: string[] = pillsPublicity.map( (pillObject) => pillObject.email);
-        const organizerList: string[] = pillsOrganizers.map( (pillObject: Pill) => pillObject.email);
+        const publicityList: string[] = pillsPublicity.map((pillObject) => pillObject.email);
+        const organizerList: string[] = pillsOrganizers.map((pillObject: Pill) => pillObject.email);
         setLoading(true)
 
-        try{
+        try {
             await endEventApi(
                 participantsList,
                 publicityList,
@@ -108,7 +109,7 @@ function DialogPopup({
             )
             markListedEventAsEnded()
         }
-        catch (error: any){
+        catch (error: any) {
             console.log(error)
             setSnackBarError(error)
         }
@@ -146,54 +147,53 @@ function DialogPopup({
                         </div>
                     </div>
 
-                <div className={styles.content}>
-                    <Image
-                        src={imageUrl}
-                        alt={`${title} event poster`}
-                        width={200}
-                        height={200}
-                    />
-                    <div className={styles.text}>
-                        <div className={styles.subtitle}>
-                            {/* <h3>{subTitle}</h3> */}
-                            <div>
-                                {finalDateString(
-                                    getDateString(
-                                        startDate.getDate(),
-                                        startDate.getMonth(),
-                                        startDate.getFullYear()
-                                    ),
-                                    getDateString(
-                                        endDate.getDate(),
-                                        endDate.getMonth(),
-                                        endDate.getFullYear()
-                                    ),
-                                    startDate.toLocaleTimeString("en-US", {
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                        timeZone: "Asia/Kolkata",
-                                    })
-                                )}
+                    <div className={styles.content}>
+                        <Image
+                            src={imageUrl}
+                            alt={`${title} event poster`}
+                            width={200}
+                            height={200}
+                        />
+                        <div className={styles.text}>
+                            <div className={styles.subtitle}>
+                                <div>
+                                    {finalDateString(
+                                        getDateString(
+                                            startDate.getDate(),
+                                            startDate.getMonth(),
+                                            startDate.getFullYear()
+                                        ),
+                                        getDateString(
+                                            endDate.getDate(),
+                                            endDate.getMonth(),
+                                            endDate.getFullYear()
+                                        ),
+                                        startDate.toLocaleTimeString("en-US", {
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                            timeZone: "Asia/Kolkata",
+                                        })
+                                    )}
+                                </div>
                             </div>
+                            <p>{venue}</p>
+                            <p>{description}</p>
                         </div>
-                        <p>{venue}</p>
-                        <p>{description}</p>
                     </div>
-                        <div style={{
-                            width:"100%",
-                            textAlign:"right"
-                        }}>
-                            {!ended && <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>}
-                        </div>
+                    <div style={{
+                        width:"100%",
+                        textAlign:"right"
+                    }}>
+                        {!ended && <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>}
                     </div>
                 </div>
             </Dialog> :
 
             <Dialog
                 fullWidth={true}
-                maxWidth={'lg'}
+                maxWidth={'md'}
                 open={true}
-                sx={{ padding: "0", margin: "0", backdropFilter: "blur(10px)" }}
+                sx={{ padding: "0", margin: "0", backdropFilter: "blur(5px)" }}
                 PaperProps={{ sx: { borderRadius: "10px" } }}
             >
                 <div className={styles.modal}>
@@ -204,49 +204,71 @@ function DialogPopup({
                         </div>
                     </div>
 
-                    <div className={styles.content}>
-                        <Image
-                            src={imageUrl}
-                            alt={`${title} event poster`}
-                            width={200}
-                            height={200}
-                        />
-                        <div className={styles.text} >
-                            <AcmEventHeads teamTitle={"Organizing Heads"} pills={pillsOrganizers} setPills={setPillsOrganizers} setEmptyError={setContributorsEmptyError} />
-                            <AcmEventHeads teamTitle={"Publicity Heads"} pills={pillsPublicity} setPills={setPillsPublicity} setEmptyError={setPublicityEmptyError} />
-                            <form>
-                                <input
-                                    type={"file"}
-                                    name={"file"}
-                                    accept={".csv"}
-                                    onChange={handleCSVUpload}
-                                />
-                                <input
-                                    type={"reset"}
-                                    onClick={() => setParticipantsList([])}
-                                />
-                            </form>
-                            <TextField style={{margin:"10px"}} label={"Contributor Xp"} variant={"outlined"} value={contributorXp} onChange={handleContributorXpChange} type={'number'} ></TextField>
-                            <TextField style={{margin:"10px"}} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
-                            <TextField style={{margin:"10px"}} label={"Participant Xp"} variant={"outlined"} value={participantXp} onChange={handleParticipantXpChange} type={'number'} ></TextField>
-                            <Button
-                                onClick={handleEndEvent}
-                                variant="outlined"
-                                color="warning"
-                                disabled={loading}
-                            >
-                                {loading ? "Loading..." : "End Event"}
-                            </Button>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div className={styles.imageDiv} style={{ flex: '1' }}>
+                            <Image
+                                src={imageUrl}
+                                alt={`${title} event poster`}
+                                width={250}
+                                height={250}
+                            />
+                        </div>
+                        <div className={styles.text} style={{ flex: '1.5' }}>
+                            <div className={styles.flexElements}>
+                                <AcmEventHeads teamTitle={"Organizing Heads"} pills={pillsOrganizers} setPills={setPillsOrganizers} setEmptyError={setContributorsEmptyError} />
+                                <AcmEventHeads teamTitle={"Publicity Heads"} pills={pillsPublicity} setPills={setPillsPublicity} setEmptyError={setPublicityEmptyError} />
+                            </div>
+                            <div className={styles.flexElements}>
+
+                                <form>
+                                    <div className={styles.resetDiv}>
+                                        <div style={{flex: 1}}>
+                                            <label className={styles.uploadFileLabel} htmlFor="uploadFile">Choose .csv file</label>
+                                            <input
+                                                type={"file"}
+                                                name={"file"}
+                                                accept={".csv"}
+                                                onChange={handleCSVUpload}
+                                            />
+                                        </div>
+
+                                        <input
+                                            type={"reset"}
+                                            value="Clear"
+                                            onClick={() => setParticipantsList([])}
+                                        />
+                                    </div>
+                                </form>
+                                <TextField style={{ margin: "10px", width: "90%" }} label={"Contributor Xp"} variant={"outlined"} value={contributorXp} onChange={handleContributorXpChange} type={'number'} ></TextField>
+                            </div>
+                            <div className={styles.flexElements}>
+                                <TextField style={{ margin: "10px", width: "90%" }} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
+                                <TextField style={{ margin: "10px", width: "90%" }} label={"Participant Xp"} variant={"outlined"} value={participantXp} onChange={handleParticipantXpChange} type={'number'} ></TextField>
+                            </div>
                             {
-                                participantsEmptyError && <p style={{color:"red"}}>- Please upload a csv containing participants emails. Make sure there is at least 1 participant and the column name for email addresses contains &quot;mail&quot; as a substring</p>
+                                participantsEmptyError && <p style={{ color: "red" }}>- Please upload a csv containing participants emails. Make sure there is at least 1 participant and the column name for email addresses contains &quot;mail&quot; as a substring</p>
                             }
                             {
-                                publicityEmptyError && <p style={{color:"red"}}>- Please add at least 1 Publicity Head</p>
+                                publicityEmptyError && <p style={{ color: "red" }}>- Please add at least 1 Publicity Head</p>
                             }
                             {
-                                contributorsEmptyError && <p style={{color:"red"}}>- Please add at least 1 Contributor Head</p>
+                                contributorsEmptyError && <p style={{ color: "red" }}>- Please add at least 1 Contributor Head</p>
                             }
                         </div>
+                    </div>
+                    <div style={{
+                        width:"100%",
+                        textAlign:"right"
+                    }}>
+                        <Button
+                            onClick={handleEndEvent}
+                            variant="outlined"
+                            color="warning"
+                            disabled={loading}
+                            style={{ margin: '10px', marginBottom: '20px' }}
+                        >
+                            {loading ? "Loading..." : "End Event"}
+                        </Button>
                     </div>
                 </div>
                 <Snackbar

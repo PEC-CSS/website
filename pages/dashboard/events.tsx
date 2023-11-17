@@ -39,7 +39,6 @@ function Events({ designation }: { designation: string }) {
     const [currDate, setCurrDate] = useState(new Date(Date.now()));
 
     const handleSelectEvent = (event: Event) => {
-        console.log(event)
         setEventResource(event.resource);
         setActiveEvent(event);
         setShowModal(true);

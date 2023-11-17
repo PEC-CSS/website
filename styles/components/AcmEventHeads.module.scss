@@ -1,0 +1,60 @@
+// AcmEventHeads.module.scss
+.acm-event-heads-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    margin: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.text-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pills-container {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    box-shadow: #e3e3e3 0px 0px 10px 0px;
+}
+
+.pillInputDiv{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    min-height: 50px;
+    align-items: center;
+}
+
+.pillInput{
+    width: 100%;
+    font-size: 16px;
+    border: none;
+}
+.pillInput:focus{
+    border: none;
+    outline:none;
+}
+.pill {
+    background-color: #f6fafd;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    p {
+        color: grey;
+        font-size: small;
+        overflow: clip;
+        margin: 0;
+    }
+}
+.pill:Hover{
+    background-color: #0a69da;
+    color: white;
+    p {
+        color: white
+    }
+}

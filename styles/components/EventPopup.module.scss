@@ -56,6 +56,61 @@
     h2 {
         max-width: 90%;
     }
+
+    .headsFlex{
+        display: flex;
+        flex-direction: column;
+        width: 94%;
+    }
+
+    .flexElements{
+        display: flex;
+        form {
+            margin: 10px;
+            padding: 0px;
+            width: 90%;
+        }
+    }
+
+    .uploadFileLabel {
+        position: absolute;
+        font-size: 11px;
+        color: rgba(0, 0, 0, 0.6);
+        margin-top: -3.5px;
+        background-color: #fff;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 9px;
+        z-index: 1;
+        
+      }
+    .resetDiv{
+        width: 100%;
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type='file']{
+        border: none;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 15px;
+        padding-top: 20px;
+        padding-left: 10px;
+        height: 55px;
+        margin-right: 0px;
+        width: 100%;
+        cursor: pointer;
+    }
+    input[type='file']::-webkit-file-upload-button{
+        display: none;
+    }
+    input[type='reset']{
+        background-color: #fff;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        color: rgba(0, 0, 0, 0.6);
+    }
 }
 
 @media screen and (max-width: $tablet-breakpoint) {
@@ -71,6 +126,12 @@
             .text {
                 max-width: 250px;
             }
+        }
+        .imageDiv{
+            display: none;
+        }
+        .flexElements{
+            flex-direction: column;
         }
     }
 }
