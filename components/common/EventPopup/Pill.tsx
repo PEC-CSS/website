@@ -1,5 +1,4 @@
 import {RxCross1} from "react-icons/rx";
-import {Console} from "inspector";
 
 export type Pill = {
     email: string,
@@ -14,13 +13,13 @@ type Props = {
 export default function PillComponent( { pill, handleDelete } : Props) {
     return <div style={{
         borderRadius:"8px",
-        backgroundColor:"lightpink",
+        backgroundColor:"#0075FF",
         padding: "4px 5px",
         margin: "2px",
         marginBottom: "5px",
         width: "min-content",
         fontSize: "12px",
-        color:"purple",
+        color:"white",
         display:"flex",
         alignItems:"center",
         height:"25px"

@@ -180,9 +180,11 @@ function DialogPopup({
                     </div>
                     <div style={{
                         width:"100%",
-                        textAlign:"right"
+                        textAlign:"right",
                     }}>
-                        {!ended && <Button onClick={() => setShowModal(true)} variant="outlined">end event</Button>}
+                        {
+                            !ended && <button onClick={ () => setShowModal(true) }>End Event</button>
+                        }
                     </div>
                 </div>
             </Dialog> :

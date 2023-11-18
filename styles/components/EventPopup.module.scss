@@ -111,6 +111,19 @@
         margin: 5px;
         color: rgba(0, 0, 0, 0.6);
     }
+    button{
+        justify-content: center;
+        padding: 10px;
+        background-color: $acm-primary;
+        color: white;
+        border-radius: 10px;
+        &:hover {
+            color: $acm-primary;
+            border: solid 1px black;
+            background-color: white;
+            transition: all 0.5s;
+        }
+    }
 }
 
 @media screen and (max-width: $tablet-breakpoint) {
