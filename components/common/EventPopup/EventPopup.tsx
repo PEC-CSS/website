@@ -55,6 +55,7 @@ function DialogPopup({
     const [participantsEmptyError, setParticipantsEmptyError] = useState(false)
     const [contributorsEmptyError, setContributorsEmptyError] = useState(false)
     const [publicityEmptyError, setPublicityEmptyError] = useState(false)
+    const [readCsvError, setReadCsvError] = useState("");
 
     const handleContributorXpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setContributorXp(parseInt(e.target.value))
@@ -118,11 +119,14 @@ function DialogPopup({
     }
 
     const handleCSVUpload = (e: ChangeEvent<HTMLInputElement>) => {
+        setReadCsvError("");
         handleFileUpload(e).then((participantEmails) => {
             setParticipantsList(participantEmails)
             if (participantEmails.length !== 0) {
                 setParticipantsEmptyError(false)
             }
+        }).catch((ex) => {
+            setReadCsvError(ex.message);
         })
     }
 
@@ -235,7 +239,10 @@ function DialogPopup({
                                         <input
                                             type={"reset"}
                                             value="Clear"
-                                            onClick={() => setParticipantsList([])}
+                                            onClick={() => {
+                                                setParticipantsList([])
+                                                setReadCsvError("");
+                                            }}
                                         />
                                     </div>
                                 </form>
@@ -253,6 +260,9 @@ function DialogPopup({
                             }
                             {
                                 contributorsEmptyError && <p style={{ color: "red" }}>- Please add at least 1 Contributor Head</p>
+                            }
+                            {
+                                readCsvError.length > 0 && <p style={{ color: "red" }}>- {readCsvError}</p>
                             }
                         </div>
                     </div>

@@ -1,15 +1,15 @@
-import Papa from 'papaparse';
-import {ChangeEvent} from "react";
+import Papa from "papaparse";
+import { ChangeEvent } from "react";
 
 interface CsvRow {
     [key: string]: string;
 }
 
 function getEmailColumnIndex(headers: string[]): number {
-    const emailKeywords = ['mail'];
+    const emailKeywords = ["mail"];
     for (let i = 0; i < headers.length; i++) {
         const header = headers[i].toLowerCase();
-        if (emailKeywords.some(keyword => header.includes(keyword))) {
+        if (emailKeywords.some((keyword) => header.includes(keyword))) {
             return i;
         }
     }
@@ -23,21 +23,25 @@ export const getEmailsFromCSV = (csvData: string): string[] => {
     });
 
     if (results.errors.length > 0) {
-        console.error('Error parsing CSV:', results.errors);
-        return [];
+        console.error("Error parsing CSV:", results.errors);
+        throw `Error parsing CSV:', ${results.errors}`;
     }
 
     const emailColumnIndex = getEmailColumnIndex(results.meta.fields || []);
 
     if (emailColumnIndex === -1) {
-        console.error('No email column found in the CSV.');
-        return [];
+        console.error("No email column found in the CSV.");
+        throw "No email column found in the CSV.";
     }
-    const emails = results.data.map(row => row[results.meta?.fields?.[emailColumnIndex] ?? '']);
-    return emails
-}
+    const emails = results.data.map(
+        (row) => row[results.meta?.fields?.[emailColumnIndex] ?? ""]
+    );
+    return emails;
+};
 
-export const handleFileUpload = (event: ChangeEvent<HTMLInputElement>): Promise<string[]> => {
+export const handleFileUpload = (
+    event: ChangeEvent<HTMLInputElement>
+): Promise<string[]> => {
     const file = event.target.files?.[0];
 
     if (!file) {
@@ -49,19 +53,18 @@ export const handleFileUpload = (event: ChangeEvent<HTMLInputElement>): Promise<
 
         reader.onload = (e: any) => {
             const csvData = e.target.result;
-            const emails = getEmailsFromCSV(csvData);
-            resolve(emails);
+            try {
+                const emails = getEmailsFromCSV(csvData);
+                resolve(emails);
+            } catch (ex: any) {
+                reject(new Error(ex));
+            }
         };
 
         reader.onerror = () => {
-            reject(new Error('Error reading file'));
+            reject(new Error("Error reading file"));
         };
 
         reader.readAsText(file);
     });
 };
-
-
-
-
-
