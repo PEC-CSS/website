@@ -3,7 +3,6 @@ import PageLayout from "../components/layout/PageLayout";
 import {
   Calendar,
   Event,
-  dateFnsLocalizer,
   momentLocalizer,
 } from "react-big-calendar";
 import moment from "moment";
@@ -45,6 +44,7 @@ function Events() {
     setActiveEvent(event);
     setShowModal(true);
   };
+
 
   return (
     <PageLayout
