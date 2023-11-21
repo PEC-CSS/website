@@ -14,14 +14,14 @@ services:
       - acm_network
 
   backend:
-    image: 'pecacm/acm-website:latest'
+    image: 'pecacm/acm-website:v1.0.0'
     container_name: backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/acm
       SPRING_DATASOURCE_USERNAME: acmsecy
       SPRING_DATASOURCE_PASSWORD: acmheads
-      SPRING_MAIL_USERNAME: # TODO : add email here
-      SPRING_MAIL_PASSWORD: # TODO : add password here
+      SPRING_MAIL_USERNAME: hashpreetsinghjohar.btcse20@pec.edu.in # TODO : add email here
+      SPRING_MAIL_PASSWORD: Harsh2002# # TODO : add password here
     ports:
       - '8080:8080'
     volumes:
