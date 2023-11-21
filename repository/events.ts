@@ -7,7 +7,8 @@ const getEvents = async (duration: {
 }): Promise<EventResponse> => {
     try {
         const response = await fetchWrapper.get({
-            url: `v1/events?eventsFrom=${duration.startDate}&eventsTill=${duration.endDate}`,
+            // add a high pageSize since the default is 20
+            url: `v1/events?eventsFrom=${duration.startDate}&eventsTill=${duration.endDate}&pageSize=9999`,
         });
         return {
             events: [...response],
