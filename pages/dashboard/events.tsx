@@ -131,7 +131,7 @@ function Events({ designation }: { designation: string }) {
                             title={activeEvent?.title as string}
                             description={eventResource?.description as string}
                             imageUrl={`/assets/logos/${
-                                eventResource?.branch ?? "acm"
+                                eventResource?.branch.toLowerCase() ?? "acm"
                             }.png`}
                             venue={eventResource?.venue ?? ""}
                             startDate={
