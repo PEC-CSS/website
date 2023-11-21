@@ -116,8 +116,14 @@ function DialogPopup({ open, setOpen, appendEvent }: Props) {
                 setLoading(false);
                 setSuccess(true);
                 appendEvent({
-                    start: moment(eventDetails.startDate).toDate(),
-                    end: moment(eventDetails.endDate).toDate(),
+                    start: moment(eventDetails.startDate)
+                        .subtract(5, "hours")
+                        .subtract(30, "minutes")
+                        .toDate(),
+                    end: moment(eventDetails.endDate)
+                        .subtract(5, "hours")
+                        .subtract(30, "minutes")
+                        .toDate(),
                     title: eventDetails.title,
                     resource: {
                         id: json.id,
