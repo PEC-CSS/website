@@ -69,7 +69,7 @@ function DialogPopup({
 
     const { data: session } = useSession();
 
-    const token = getCookieData(session).data.token
+    const token = getCookieData(session).data?.token
 
     const markListedEventAsEnded = () => {
         const calendarEvent = listedEvents?.find((event) => event.resource.id === id) as Event
@@ -98,8 +98,8 @@ function DialogPopup({
         try {
             await endEventApi(
                 participantsList,
-                publicityList,
                 contributorsList,
+                publicityList,
                 contributorXp,
                 publicityXp,
                 participantXp,
@@ -187,7 +187,7 @@ function DialogPopup({
                         textAlign:"right",
                     }}>
                         {
-                            !ended && <button onClick={ () => setShowModal(true) }>End Event</button>
+                            token && !ended && <button onClick={ () => setShowModal(true) }>End Event</button>
                         }
                     </div>
                 </div>
