@@ -26,6 +26,7 @@ type Props = {
     handleClose: any;
     listedEvents: Event[] | undefined;
     setListedEvents: React.Dispatch<React.SetStateAction<Event[] | undefined>>;
+    designation?: string;
 };
 
 function DialogPopup({
@@ -40,7 +41,8 @@ function DialogPopup({
     id,
     ended,
     listedEvents,
-    setListedEvents
+    setListedEvents,
+    designation
 }: Props) {
     const [showModal, setShowModal] = useState(false);
     const [pillsContributor, setPillsContributor] = useState<Pill[]>([])
@@ -187,7 +189,9 @@ function DialogPopup({
                         textAlign:"right",
                     }}>
                         {
-                            token && !ended && <button onClick={ () => setShowModal(true) }>End Event</button>
+                            (designation === 'Admin' ||
+                            designation === 'Core') && token && !ended ?
+                            <button onClick={ () => setShowModal(true) }>End Event</button> : <></>
                         }
                     </div>
                 </div>
