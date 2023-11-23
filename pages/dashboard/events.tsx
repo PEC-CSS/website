@@ -144,6 +144,7 @@ function Events({ designation }: { designation: string }) {
                             }
                             listedEvents={listedEvents}
                             setListedEvents={setListedEvents}
+                            designation={designation}
                         />
                     ) : (
                         <></>
