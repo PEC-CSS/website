@@ -18,10 +18,10 @@ $max-width-calendar: 900px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 2rem 0px;
+        padding: 2rem 0;
 
         .eventButton {
-            margin: 0px 12px 8px auto;
+            margin: 0 12px 8px auto;
             padding: 12px;
             background-color: $acm-primary;
             color: white;
