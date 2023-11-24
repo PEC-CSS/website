@@ -77,7 +77,7 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
         (value) => {
             setDebouncedValue(value);
         },
-        500
+        250
     );
 
     const handleNameSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
