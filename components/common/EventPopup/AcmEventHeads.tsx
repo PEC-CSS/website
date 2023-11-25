@@ -21,6 +21,8 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
     const [showSearchResults, setShowSearchResults] = useState(true)
     const { data: session } = useSession();
     const token = getCookieData(session).data.token
+    const [cursor, setCursor] = useState(-1)
+    const [mousePointer, setMousePointer] = useState(-1)
 
     const searchUsersApi = useCallback((pattern: string) => {
         getMatchingUsersApi(pattern, token)
@@ -66,6 +68,7 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
             setNameSearchValue("")
             setDebouncedValue("")
             setSearchResult([])
+            setCursor(-1)
             setEmptyError(false)
             setPills((prevState) => {
                 return [...prevState, pill];
@@ -89,7 +92,30 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
     const handleBlur = () => {
         setTimeout ( () => {
             setShowSearchResults(false)
+            setCursor(-1)
         }, 500)
+    }
+
+    const keyboardNavigation = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            if (cursor < searchResult.length && cursor != -1) {
+                addUserToPills(searchResult[cursor])
+            }
+        }
+        if (e.key === "ArrowUp") {
+            if (cursor > 0) {
+                setCursor( cursor => cursor - 1)
+            }
+        }
+        if (e.key === "ArrowDown") {
+            if (cursor < searchResult.length - 1) {
+                setCursor( cursor => cursor + 1)
+            }
+        }
+        if (e.key === "Escape") {
+            setShowSearchResults(false)
+            setCursor(-1)
+        }
     }
 
     return (
@@ -103,26 +129,45 @@ export default function AcmEventHeads({ teamTitle, pills, setPills, setEmptyErro
                     className={styles.pillInput}
                     placeholder={`Search ${teamTitle}*`}
                     onBlur={handleBlur}
+                    onKeyDown={keyboardNavigation}
                 />
             </div>
 
             <div>
                 {
                     showSearchResults &&
-                    <div className={styles['pills-container']}>
-                        {searchResult.map((pill: Pill) =>
-                            <div
+                    <ul className={styles['pills-container']}>
+                        {searchResult.map((pill: Pill) => {
+                            const idxOfPill = searchResult.indexOf(pill)
+                            return <div
                                 onClick={() => addUserToPills(pill)}
                                 key={pill.email}
-                                className={styles['pill']}
+                                style={{
+                                    backgroundColor: cursor === idxOfPill || mousePointer === idxOfPill ? "#0a69da" : "white",
+                                    color: cursor === idxOfPill || mousePointer === idxOfPill ? "white" : "black",
+                                    padding: '10px',
+                                    margin: 0,
+                                    cursor: 'pointer'
+                                }}
+                                onMouseEnter={() => setCursor(searchResult.indexOf(pill))}
+                                onMouseLeave={() => setCursor(-1)}
                             >
                                 {pill.name}
-                                <p>
+                                <p
+                                    style={{
+                                        color: cursor === searchResult.indexOf(pill) || mousePointer === idxOfPill ? "white" : "grey",
+                                        fontSize: 'small',
+                                        overflow: 'clip',
+                                        margin: 0
+                                    }}
+                                >
                                     {pill.email}
                                 </p>
                             </div>
+                        }
+
                         )}
-                    </div>
+                    </ul>
                 }
             </div>
         </div>

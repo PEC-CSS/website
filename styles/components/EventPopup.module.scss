@@ -5,6 +5,7 @@
     padding: 10px;
     border-radius: 1rem;
     font-family: 'Josefin_Sans';
+    min-height: 350px;
 
     .content {
         word-wrap: break-word;  
@@ -123,6 +124,12 @@
             background-color: white;
             transition: all 0.5s;
         }
+    }
+    button:disabled,
+    button[disabled]{
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
     }
 }
 

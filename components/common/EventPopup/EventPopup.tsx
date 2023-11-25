@@ -1,11 +1,11 @@
 import React, { ChangeEvent, useState } from 'react'
 import { Alert, Dialog, Snackbar, TextField } from '@mui/material';
 import styles from "../../../styles/components/EventPopup.module.scss";
+import LoaderStyles from "../../../styles/components/Loader.module.scss";
 import { Event } from "react-big-calendar";
 import Image from 'next/image';
 import { RxCross2 } from 'react-icons/rx';
 import { Common } from '../../../constants/common';
-import { Button } from '@mui/material'
 import AcmEventHeads from "./AcmEventHeads";
 import { Pill } from "./Pill";
 import { endEventApi } from "../../../repository/endEvent/endEventApi";
@@ -133,172 +133,225 @@ function DialogPopup({
     }
 
     return (
-        !showModal ?
-
-            <Dialog
-                fullWidth={true}
-                maxWidth={'sm'}
-                open={true}
-                onClose={handleClose}
-                sx={{ padding: "0", margin: "0", backdropFilter: "blur(5px)" }}
-                PaperProps={{ sx: { borderRadius: "10px" } }}
-            >
-                <div className={styles.modal}>
-                    <div className={styles.modalHeading}>
-                        <h2>{title}</h2>
-                        <div className={styles.closeIcon} onClick={handleClose}>
-                            <RxCross2 size={25} color={Common.primaryColor} />
+        <>
+            {
+                loading &&
+                <Dialog
+                    fullWidth={true}
+                    maxWidth={'sm'}
+                    open={true}
+                    sx={{padding: "0", margin: "0", backdropFilter: "blur(5px)"}}
+                    PaperProps={{sx: {borderRadius: "10px"}}}
+                >
+                    <div
+                        className={styles.modal}
+                    >
+                        <div className={LoaderStyles['profile-main-loader']}>
+                            <div className={LoaderStyles["loader"]}>
+                                <svg className={LoaderStyles["circular-loader"]} viewBox="25 25 50 50">
+                                    <circle className={LoaderStyles["loader-path"]} cx="50" cy="50" r="20" fill="none"
+                                            stroke="#0075FF" strokeWidth="2"/>
+                                </svg>
+                            </div>
                         </div>
+                        <p
+                            style={{
+                                textAlign: "center",
+                                fontSize: "20px",
+                                fontWeight: "bold",
+                                marginTop: '10px'
+                            }}
+                        >
+                            Persisting your transaction
+                        </p>
                     </div>
+                </Dialog>
+            }
 
-                    <div className={styles.content}>
-                        <Image
-                            src={imageUrl}
-                            alt={`${title} event poster`}
-                            width={200}
-                            height={200}
-                        />
-                        <div className={styles.text}>
-                            <div className={styles.subtitle}>
-                                <div>
-                                    {finalDateString(
-                                        getDateString(
-                                            startDate.getDate(),
-                                            startDate.getMonth(),
-                                            startDate.getFullYear()
-                                        ),
-                                        getDateString(
-                                            endDate.getDate(),
-                                            endDate.getMonth(),
-                                            endDate.getFullYear()
-                                        ),
-                                        startDate.toLocaleTimeString("en-US", {
-                                            hour: "2-digit",
-                                            minute: "2-digit",
-                                            timeZone: "Asia/Kolkata",
-                                        })
-                                    )}
+            {!loading && (
+                !showModal ?
+
+                    <Dialog
+                        fullWidth={true}
+                        maxWidth={'sm'}
+                        open={true}
+                        onClose={handleClose}
+                        sx={{padding: "0", margin: "0", backdropFilter: "blur(5px)"}}
+                        PaperProps={{sx: {borderRadius: "10px"}}}
+                    >
+                        <div className={styles.modal}>
+                            <div className={styles.modalHeading}>
+                                <h2>{title}</h2>
+                                <div className={styles.closeIcon} onClick={handleClose}>
+                                    <RxCross2 size={25} color={Common.primaryColor}/>
                                 </div>
                             </div>
-                            <p>{venue}</p>
-                            <p>{description}</p>
-                        </div>
-                    </div>
-                    <div style={{
-                        width:"100%",
-                        textAlign:"right",
-                    }}>
-                        {
-                            (designation === 'Admin' ||
-                            designation === 'Core') && token && !ended ?
-                            <button onClick={ () => setShowModal(true) }>End Event</button> : <></>
-                        }
-                    </div>
-                </div>
-            </Dialog> :
 
-            <Dialog
-                fullWidth={true}
-                maxWidth={'md'}
-                open={true}
-                sx={{ padding: "0", margin: "0", backdropFilter: "blur(5px)" }}
-                PaperProps={{ sx: { borderRadius: "10px" } }}
-            >
-                <div className={styles.modal}>
-                    <div className={styles.modalHeading}>
-                        <h2>{title}</h2>
-                        <div className={styles.closeIcon} onClick={handleClose}>
-                            <RxCross2 size={25} color={Common.primaryColor} />
-                        </div>
-                    </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <div className={styles.imageDiv} style={{ flex: '1' }}>
-                            <Image
-                                src={imageUrl}
-                                alt={`${title} event poster`}
-                                width={250}
-                                height={250}
-                            />
-                        </div>
-                        <div className={styles.text} style={{ flex: '1.5' }}>
-                            <div className={styles.flexElements}>
-                                <AcmEventHeads teamTitle={"Contributing Heads"} pills={pillsContributor} setPills={setPillsContributor} setEmptyError={setContributorsEmptyError} />
-                                <AcmEventHeads teamTitle={"Publicity Heads"} pills={pillsPublicity} setPills={setPillsPublicity} setEmptyError={setPublicityEmptyError} />
-                            </div>
-                            <div className={styles.flexElements}>
-
-                                <form>
-                                    <div className={styles.resetDiv}>
-                                        <div style={{flex: 1}}>
-                                            <label className={styles.uploadFileLabel} htmlFor="uploadFile">Choose .csv file</label>
-                                            <input
-                                                type={"file"}
-                                                name={"file"}
-                                                accept={".csv"}
-                                                onChange={handleCSVUpload}
-                                            />
+                            <div className={styles.content}>
+                                <Image
+                                    src={imageUrl}
+                                    alt={`${title} event poster`}
+                                    width={200}
+                                    height={200}
+                                />
+                                <div className={styles.text}>
+                                    <div className={styles.subtitle}>
+                                        <div>
+                                            {finalDateString(
+                                                getDateString(
+                                                    startDate.getDate(),
+                                                    startDate.getMonth(),
+                                                    startDate.getFullYear()
+                                                ),
+                                                getDateString(
+                                                    endDate.getDate(),
+                                                    endDate.getMonth(),
+                                                    endDate.getFullYear()
+                                                ),
+                                                startDate.toLocaleTimeString("en-US", {
+                                                    hour: "2-digit",
+                                                    minute: "2-digit",
+                                                    timeZone: "Asia/Kolkata",
+                                                })
+                                            )}
                                         </div>
-
-                                        <input
-                                            type={"reset"}
-                                            value="Clear"
-                                            onClick={() => {
-                                                setParticipantsList([])
-                                                setReadCsvError("");
-                                            }}
-                                        />
                                     </div>
-                                </form>
-                                <TextField style={{ margin: "10px", width: "90%" }} label={"Contributor Xp"} variant={"outlined"} value={contributorXp} onChange={handleContributorXpChange} type={'number'} ></TextField>
+                                    <p>{venue}</p>
+                                    <p>{description}</p>
+                                </div>
                             </div>
-                            <div className={styles.flexElements}>
-                                <TextField style={{ margin: "10px", width: "90%" }} label={"Publicity Xp"} variant={"outlined"} value={publicityXp} onChange={handlePublicityXpChange} type={'number'} ></TextField>
-                                <TextField style={{ margin: "10px", width: "90%" }} label={"Participant Xp"} variant={"outlined"} value={participantXp} onChange={handleParticipantXpChange} type={'number'} ></TextField>
+                            <div style={{
+                                width: "100%",
+                                textAlign: "right",
+                            }}>
+                                {
+                                    (designation === 'Admin' ||
+                                        designation === 'Core') && token && !ended ?
+                                        <button onClick={() => setShowModal(true)}>End Event</button> : <></>
+                                }
                             </div>
-                            {
-                                participantsEmptyError && <p style={{ color: "red" }}>- Please upload a csv containing participants emails. Make sure there is at least 1 participant and the column name for email addresses contains &quot;mail&quot; as a substring</p>
-                            }
-                            {
-                                publicityEmptyError && <p style={{ color: "red" }}>- Please add at least 1 Publicity Head</p>
-                            }
-                            {
-                                contributorsEmptyError && <p style={{ color: "red" }}>- Please add at least 1 Contributor Head</p>
-                            }
-                            {
-                                readCsvError.length > 0 && <p style={{ color: "red" }}>- {readCsvError}</p>
-                            }
                         </div>
-                    </div>
-                    <div style={{
-                        width:"100%",
-                        textAlign:"right"
-                    }}>
-                        <Button
-                            onClick={handleEndEvent}
-                            variant="outlined"
-                            color="warning"
-                            disabled={loading}
-                            style={{ margin: '10px', marginBottom: '20px' }}
-                        >
-                            {loading ? "Loading..." : "End Event"}
-                        </Button>
-                    </div>
-                </div>
-                <Snackbar
-                    open={showSnackBar}
-                    autoHideDuration={2000}
-                    onClose={handleClose}
-                >
-                    <Alert
-                        onClose={handleClose}
-                        severity={snackBarError.length ? "error" : "success"}
-                        sx={{ width: "100%" }}
+                    </Dialog> :
+
+                    <Dialog
+                        fullWidth={true}
+                        maxWidth={'md'}
+                        open={true}
+                        sx={{padding: "0", margin: "0", backdropFilter: "blur(5px)"}}
+                        PaperProps={{sx: {borderRadius: "10px"}}}
                     >
-                        {snackBarError.length ? snackBarError : "Event ended successfully"}
-                    </Alert>
-                </Snackbar>
-            </Dialog>
+                        <div className={styles.modal}>
+                            <div className={styles.modalHeading}>
+                                <h2>{title}</h2>
+                                <div className={styles.closeIcon} onClick={handleClose}>
+                                    <RxCross2 size={25} color={Common.primaryColor}/>
+                                </div>
+                            </div>
+
+                            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <div className={styles.imageDiv} style={{flex: '1'}}>
+                                    <Image
+                                        src={imageUrl}
+                                        alt={`${title} event poster`}
+                                        width={250}
+                                        height={250}
+                                    />
+                                </div>
+                                <div className={styles.text} style={{flex: '1.5'}}>
+                                    <div className={styles.flexElements}>
+                                        <AcmEventHeads teamTitle={"Contributing Heads"} pills={pillsContributor}
+                                                       setPills={setPillsContributor}
+                                                       setEmptyError={setContributorsEmptyError}/>
+                                        <AcmEventHeads teamTitle={"Publicity Heads"} pills={pillsPublicity}
+                                                       setPills={setPillsPublicity}
+                                                       setEmptyError={setPublicityEmptyError}/>
+                                    </div>
+                                    <div className={styles.flexElements}>
+
+                                        <form>
+                                            <div className={styles.resetDiv}>
+                                                <div style={{flex: 1}}>
+                                                    <label className={styles.uploadFileLabel} htmlFor="uploadFile">Choose
+                                                        .csv file</label>
+                                                    <input
+                                                        type={"file"}
+                                                        name={"file"}
+                                                        accept={".csv"}
+                                                        onChange={handleCSVUpload}
+                                                    />
+                                                </div>
+
+                                                <input
+                                                    type={"reset"}
+                                                    value="Clear"
+                                                    onClick={() => {
+                                                        setParticipantsList([])
+                                                        setReadCsvError("");
+                                                    }}
+                                                />
+                                            </div>
+                                        </form>
+                                        <TextField style={{margin: "10px", width: "90%"}} label={"Contributor Xp"}
+                                                   variant={"outlined"} value={contributorXp}
+                                                   onChange={handleContributorXpChange} type={'number'}></TextField>
+                                    </div>
+                                    <div className={styles.flexElements}>
+                                        <TextField style={{margin: "10px", width: "90%"}} label={"Publicity Xp"}
+                                                   variant={"outlined"} value={publicityXp}
+                                                   onChange={handlePublicityXpChange} type={'number'}></TextField>
+                                        <TextField style={{margin: "10px", width: "90%"}} label={"Participant Xp"}
+                                                   variant={"outlined"} value={participantXp}
+                                                   onChange={handleParticipantXpChange} type={'number'}></TextField>
+                                    </div>
+                                    {
+                                        participantsEmptyError &&
+                                        <p style={{color: "red"}}>- Please upload a csv containing participants emails.
+                                            Make sure there is at least 1 participant and the column name for email addresses contains &quot;mail&quot; as a substring</p>
+                                    }
+                                    {
+                                        publicityEmptyError &&
+                                        <p style={{color: "red"}}>- Please add at least 1 Publicity Head</p>
+                                    }
+                                    {
+                                        contributorsEmptyError &&
+                                        <p style={{color: "red"}}>- Please add at least 1 Contributor Head</p>
+                                    }
+                                    {
+                                        readCsvError.length > 0 && <p style={{color: "red"}}>- {readCsvError}</p>
+                                    }
+                                </div>
+                            </div>
+                            <div style={{
+                                width: "100%",
+                                textAlign: "right"
+                            }}>
+                                <button
+                                    onClick={handleEndEvent}
+                                    color="warning"
+                                    disabled={loading}
+                                    style={{margin: '10px', marginBottom: '20px'}}
+                                >
+                                    {loading ? "Loading..." : "End Event"}
+                                </button>
+                            </div>
+                        </div>
+                    </Dialog>
+            )}
+            <Snackbar
+                open={showSnackBar}
+                autoHideDuration={2000}
+                onClose={handleClose}
+            >
+                <Alert
+                    onClose={handleClose}
+                    severity={snackBarError.length ? "error" : "success"}
+                    sx={{width: "100%"}}
+                >
+                    {snackBarError.length ? snackBarError : "Event ended successfully"}
+                </Alert>
+            </Snackbar>
+        </>
+
     )
 }
 
