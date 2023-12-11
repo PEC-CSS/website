@@ -115,6 +115,7 @@ function DialogPopup({
             setSnackBarError(error)
         }
         finally {
+            setShowModal(false);
             setShowSnackBar(true)
             setLoading(false)
         }
