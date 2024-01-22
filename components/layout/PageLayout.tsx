@@ -67,6 +67,8 @@ function PageLayout({title, children, description, heading, bannerColor, footerC
 
                 {/* TODO : Verification pending */}
                 <meta name="google-site-verification" content="wJCASasAYLy_hM-ndSessna54e0JH7VCzmg5asx1aFc" />
+
+                <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
             </Head>
             <Script src="https://www.googletagmanager.com/gtag/js?id=G-5647L00T6L" />
             <Script id="google-analytics">
