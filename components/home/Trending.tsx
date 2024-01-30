@@ -1,7 +1,7 @@
 import styles from "../../styles/components/Trending.module.scss";
 import { useEffect, useState } from "react";
-import {useSelector} from "react-redux";
-import {selectTrendingState} from "../../redux/slices/trendingSlice";
+import { useSelector } from "react-redux";
+import { selectTrendingState } from "../../redux/slices/trendingSlice";
 
 export interface TrendingCard {
     title: string;
@@ -16,14 +16,17 @@ type Props = {
 };
 
 export default function Trending({ trendingType }: Props) {
-    const trendingData = useSelector(selectTrendingState)
+    const trendingData = useSelector(selectTrendingState);
     const [trendingInfo, setTrendingInfo] = useState<TrendingCard[] | null>();
 
     useEffect(() => {
-        const filteredCards = trendingData.trendingCards.filter((trendingCard) => trendingCard.branch === trendingType || trendingType === "home");
+        const filteredCards = trendingData.trendingCards.filter(
+            (trendingCard) =>
+                trendingCard.branch === trendingType || trendingType === "home"
+        );
         setTrendingInfo(
-            filteredCards.slice( Math.max(filteredCards.length - 3, 0) )
-        )
+            filteredCards.slice(Math.max(filteredCards.length - 3, 0))
+        );
     }, [trendingData, trendingType]);
 
     return (
@@ -36,13 +39,18 @@ export default function Trending({ trendingType }: Props) {
                             className={`${styles.trending_card} ${styles.loading}`}
                         >
                             <h4 />
-                            <p /><p /><p />
+                            <p />
+                            <p />
+                            <p />
                             <p className={styles.half} />
                         </div>
                     );
                 })
             ) : trendingInfo?.length === 0 ? (
-                <p style={{textAlign: 'center'}}>Coming soon! Get ready for exciting trending content. Stay tuned! 🚀</p>
+                <p style={{ textAlign: "center" }}>
+                    Coming soon! Get ready for exciting trending content. Stay
+                    tuned! 🚀
+                </p>
             ) : (
                 trendingInfo?.map((info, index) => {
                     return (
@@ -51,7 +59,7 @@ export default function Trending({ trendingType }: Props) {
                             className={styles.trending_card}
                             style={{
                                 backgroundImage: `url(${info.image})`,
-                                backgroundSize: 'contain'
+                                backgroundSize: "contain",
                             }}
                         >
                             <h4>{info.title}</h4>
