@@ -15,8 +15,6 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import DialogPopup from "../components/common/DialogPopup/DialogPopup";
 import CustomTextField from "../components/common/CustomTextField/CustomTextField";
 import { register } from "../repository/auth";
-import { useLocalStorage } from "usehooks-ts";
-import { Common } from "../constants/common";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next";
 import getServerCookieData from "../lib/getServerCookieData";
@@ -31,11 +29,6 @@ function Register() {
         password: "",
         confirmPassword: "",
     });
-
-    const [_, setAuthorization] = useLocalStorage<string | null>(
-        Common.AUTHORIZATION,
-        null
-    );
 
     const [error, setError] = useState({
         error: false,

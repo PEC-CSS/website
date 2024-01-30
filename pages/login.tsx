@@ -9,7 +9,6 @@ import CustomTextField from "../components/common/CustomTextField/CustomTextFiel
 import DialogPopup from "../components/common/DialogPopup/DialogPopup";
 import Link from "next/link";
 import { login } from "../repository/auth";
-import { Common } from "../constants/common";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next";
 import Cookies from "universal-cookie";

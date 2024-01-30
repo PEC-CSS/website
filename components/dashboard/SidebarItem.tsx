@@ -3,8 +3,6 @@ import JSX = jsx.JSX;
 import Link from "next/link";
 import styles from "../../styles/components/SidebarItem.module.scss";
 import { useRouter } from "next/router";
-import { Common } from "../../constants/common";
-import { useLocalStorage } from "usehooks-ts";
 import logout from "../../lib/logout";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
