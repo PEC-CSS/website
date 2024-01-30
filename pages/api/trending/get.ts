@@ -53,7 +53,7 @@ export default function handler(
                         .slice(Math.max(filteredRows.length - 12, 0))
                         .map((row: GoogleSpreadsheetRow) => {
                             const image = row.get("Image");
-                            const imageUrl = `https://drive.google.com/uc?id=${getId(image)}`;
+                            const imageUrl = `https://drive.google.com/thumbnail?id=${getId(image)}`;
                             return {
                                 title: row.get("Title"),
                                 description: row.get("Description"),
