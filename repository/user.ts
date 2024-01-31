@@ -8,8 +8,6 @@ const getUser = async (authToken: string): Promise<UserResponse> => {
             token: authToken,
         });
 
-        console.log(`users me res :`, response);
-
         return {
             user: {
                 ...response,

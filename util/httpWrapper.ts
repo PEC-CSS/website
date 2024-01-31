@@ -6,6 +6,7 @@ export const fetchWrapper = {
 };
 
 async function get({ url, token = "" }: { url: string; token?: string }) {
+    console.log("Bearer: ", token);
     const requestOptions = {
         method: "GET",
         headers: {
@@ -67,7 +68,6 @@ async function _delete({ url, token }: { url: string; token?: string }) {
 async function handleResponse(response: Response) {
     return response.text().then((text) => {
         const data = text && JSON.parse(text);
-        console.log(`http response :`, data);
         if (!response.ok) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);

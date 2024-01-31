@@ -80,7 +80,10 @@ function Login() {
             const user = response.user;
             cookies.set(
                 "session-token",
-                JSON.stringify({ token: jwtToken, user })
+                JSON.stringify({ token: jwtToken, user }),
+                {
+                    path: "/",
+                }
             );
         }
         setLoading(false);
@@ -182,13 +185,13 @@ function Login() {
                                 required={true}
                             />
                         </div>
-                <Link
-                    href="/forgot-password"
-                    className={styles.link}
-                    aria-label="ForgotPassword"
-                >
-                    Forgot your password?
-                </Link>
+                        <Link
+                            href="/forgot-password"
+                            className={styles.link}
+                            aria-label="ForgotPassword"
+                        >
+                            Forgot your password?
+                        </Link>
                     </div>
                 </div>
 
