@@ -2,6 +2,7 @@ import { UserResponse } from "../types/response/userResponse";
 import { fetchWrapper } from "../util/httpWrapper";
 
 const getUser = async (authToken: string): Promise<UserResponse> => {
+    console.log(`Auth Token: ${authToken}`)
     try {
         const response = await fetchWrapper.get({
             url: "v1/user",
