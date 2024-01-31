@@ -134,8 +134,6 @@ export default MyProfile;
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const {data} = getServerCookieData(context);
     const token = data?.token;
-    
-    console.log(token);
 
     if (!token) {
         return {
