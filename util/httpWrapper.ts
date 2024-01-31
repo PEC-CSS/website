@@ -7,12 +7,13 @@ export const fetchWrapper = {
 
 async function get({ url, token = "" }: { url: string; token?: string }) {
     console.log("Bearer2: ", token);
-    console.log(`Bearer ${token}`)
+    const s = "Bearer " + token ? token : "";
+    console.log(s)
     const requestOptions = {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: s,
         },
     };
     return fetch(fetchUrl(url), requestOptions).then(handleResponse);
