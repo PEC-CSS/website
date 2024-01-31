@@ -6,7 +6,7 @@ export const fetchWrapper = {
 };
 
 async function get({ url, token = "" }: { url: string; token?: string }) {
-    console.log("Bearer: ", token);
+    console.log("Bearer2: ", token);
     console.log(`Bearer ${token}`)
     const requestOptions = {
         method: "GET",
