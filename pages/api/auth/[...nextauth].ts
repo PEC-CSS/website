@@ -21,7 +21,6 @@ const authOptions = (req: NextApiRequest, res: NextApiResponse) => {
                     url: "/v1/users",
                     token: cookies.get("session-token").token,
                 });
-                console.log(backendRes);
                 return session;
             },
 

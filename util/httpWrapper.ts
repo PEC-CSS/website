@@ -13,6 +13,7 @@ async function get({ url, token = "" }: { url: string; token?: string }) {
             Authorization: `Bearer ${token}`,
         },
     };
+    console.log(requestOptions);
     return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
@@ -67,7 +68,6 @@ async function _delete({ url, token }: { url: string; token?: string }) {
 async function handleResponse(response: Response) {
     return response.text().then((text) => {
         const data = text && JSON.parse(text);
-
         if (!response.ok) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
