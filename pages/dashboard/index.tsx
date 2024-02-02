@@ -23,7 +23,7 @@ function DashboardHome({ username, leaderboard }: any) {
                     <div className={styles.leaderboard}>
                         {leaderboard &&
                             leaderboard
-                                .slice(0, 5)
+                                // .slice(0, 5)
                                 .map((user: any, index: any) => {
                                     return (
                                         <LeaderboardItem
@@ -35,7 +35,7 @@ function DashboardHome({ username, leaderboard }: any) {
                     </div>
                 </div>
                 <div className={styles.space}></div>
-                <NextEventCard />
+                {/* <NextEventCard /> */}
             </div>
         </DashboardLayout>
     );
@@ -58,7 +58,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
 
     const leaderboard = await fetchWrapper.get({
-        url: "v1/user/leaderboard",
+        url: "v1/user/leaderboard?offset=0&pageSize=5",
         token,
     });
 

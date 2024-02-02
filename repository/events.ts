@@ -1,4 +1,5 @@
 import { EventResponse } from "../types/response/eventResponse";
+import { TransactionResponse } from "../types/response/transactionResponse";
 import { fetchWrapper } from "../util/httpWrapper";
 
 const getEvents = async (duration: {
@@ -22,4 +23,28 @@ const getEvents = async (duration: {
     }
 };
 
-export { getEvents };
+const getUserEvents = async (query: {
+    role: string;
+    pageNumber: number;
+    pageSize: number;
+    token: string;
+}): Promise<TransactionResponse> => {
+    try {
+        const response = await fetchWrapper.get({
+            url: `v1/user/events?eventRole=${query.role}&pageSize=${
+                query.pageSize
+            }&offset=${query.pageNumber * query.pageSize}`,
+            token: query.token 
+        });
+        return {
+            events: [...response],
+        };
+    } catch (error: any) {
+        return {
+            error: {
+                message: error,
+            },
+        };
+    }
+};
+export { getEvents, getUserEvents };
