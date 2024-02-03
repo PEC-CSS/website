@@ -3,12 +3,18 @@ import styles from "../../styles/pages/me.module.scss";
 import { GetServerSidePropsContext } from "next";
 import { Common } from "../../constants/common";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getUser } from "../../repository/user";
 import { User } from "../../types/user";
 import { ErrorResponse } from "../../types/response/errorResponse";
 import { Avatar } from "@mui/material";
 import getServerCookieData from "../../lib/getServerCookieData";
+import { setLoadingCards } from "../../redux/slices/trendingSlice";
+import { getUserEvents } from "../../repository/events";
+import getCookieData from "../../lib/getCookieData";
+import { useSession } from "next-auth/react";
+import { Transaction } from "../../types/transaction";
+import moment from "moment";
 
 function MyProfile({
     user,
@@ -17,7 +23,42 @@ function MyProfile({
     user: User | null;
     error: ErrorResponse | null;
 }) {
-    const [selectedTab, setSelectedTab] = useState(0);
+    const { data: session } = useSession();
+
+    const [selectedTab, setSelectedTab] = useState<
+        "Organizer" | "Participant" | "Publicity"
+    >("Organizer");
+
+    const [userEvents, setUserEvents] = useState<Transaction[]>([]);
+
+    const [eventsLoading, setEventsLoading] = useState(false);
+    const [eventsError, setEventsError] = useState(false);
+
+    const [page, setPage] = useState(0);
+
+    const fetchEvents = async (query: { pageNumber: number }) => {
+        setLoadingCards(true);
+        const events = await getUserEvents({
+            role: selectedTab.toUpperCase(),
+            pageSize: 10,
+            pageNumber: query.pageNumber,
+            token: getCookieData(session).data.token,
+        });
+        if (events.error || !events.events) {
+            setEventsError(true);
+            return;
+        }
+        setUserEvents(events.events);
+        setLoadingCards(false);
+    };
+
+    useEffect(() => {
+        fetchEvents({ pageNumber: page });
+    }, [selectedTab, page]);
+
+    useEffect(() => {
+        console.log(userEvents);
+    }, [userEvents]);
 
     if (error) {
         return (
@@ -86,42 +127,64 @@ function MyProfile({
             <div className={styles.menu}>
                 <button
                     className={`${styles.MenuButton} ${
-                        selectedTab == 0 ? styles.active : ""
+                        selectedTab == "Organizer" ? styles.active : ""
                     }`}
-                    onClick={() => setSelectedTab(0)}
+                    onClick={() => setSelectedTab("Organizer")}
                 >
-                    Events
+                    Organised Events
                 </button>
                 <button
                     className={`${styles.MenuButton} ${
-                        selectedTab == 1 ? styles.active : ""
+                        selectedTab == "Publicity" ? styles.active : ""
                     }`}
-                    onClick={() => setSelectedTab(1)}
+                    onClick={() => setSelectedTab("Publicity")}
                 >
-                    History
+                    Publicized Events
+                </button>
+                <button
+                    className={`${styles.MenuButton} ${
+                        selectedTab == "Participant" ? styles.active : ""
+                    }`}
+                    onClick={() => setSelectedTab("Participant")}
+                >
+                    Participated Events
                 </button>
             </div>
 
-            <div>
-                {selectedTab === 0 ? (
+            <div className={styles.eventDetails}>
+                {userEvents.length === 0 || eventsLoading || eventsError ? (
                     <div className={styles.cardcontainer}>
-                        <div className={styles.outtercard}>
-                            <div className={styles.card}>
-                                <div className={styles.cardcontent}>
+                        <div className={styles.card}>
+                            {!eventsLoading ? (
+                                eventsError ? (
+                                    <p>Something went wrong</p>
+                                ) : (
                                     <p>No Events Found</p>
-                                </div>
-                            </div>
+                                )
+                            ) : (
+                                <p>Loading...</p>
+                            )}
                         </div>
                     </div>
                 ) : (
-                    <div className={styles.cardcontainer}>
-                        <div className={styles.outtercard}>
-                            <div className={styles.card}>
-                                <div className={styles.cardcontent}>
-                                    <p>No History Found</p>
+                    <div className={styles.events}>
+                        {userEvents.map((e) => {
+                            return (
+                                <div key={e.id} className={styles.eventTile}>
+                                    <h3 className={styles.eventName}>
+                                        {e.name}
+                                    </h3>
+                                    <p className={styles.date}>
+                                        {moment(e?.timestamp).format(
+                                            "DD-MM-YY"
+                                        )}
+                                    </p>
+                                    <p className={styles.xp_gained}>
+                                        {e.xp_gained}
+                                    </p>
                                 </div>
-                            </div>
-                        </div>
+                            );
+                        })}
                     </div>
                 )}
             </div>
@@ -132,7 +195,7 @@ function MyProfile({
 export default MyProfile;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const {data} = getServerCookieData(context);
+    const { data } = getServerCookieData(context);
     const token = data?.token;
 
     if (!token) {
