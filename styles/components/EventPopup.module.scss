@@ -6,7 +6,7 @@
     border-radius: 1rem;
     font-family: 'Josefin_Sans';
     min-height: 350px;
-
+    overflow-x: hidden;
     .content {
         word-wrap: break-word;  
         margin-top: 20px;
@@ -22,6 +22,7 @@
         .text {
             p {
                 margin: 6px 0;
+                max-width: 310px;
             }
 
             .subtitle {
