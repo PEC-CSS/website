@@ -13,7 +13,6 @@ async function get({ url, token = "" }: { url: string; token?: string }) {
             Authorization: `Bearer ${token}`,
         },
     };
-    console.log(requestOptions);
     return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
