@@ -40,7 +40,7 @@ function MyProfile({
         setLoadingCards(true);
         const events = await getUserEvents({
             role: selectedTab.toUpperCase(),
-            pageSize: 10,
+            pageSize: 25,
             pageNumber: query.pageNumber,
             token: getCookieData(session).data.token,
         });
@@ -54,10 +54,10 @@ function MyProfile({
 
     useEffect(() => {
         fetchEvents({ pageNumber: page });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedTab, page]);
 
     useEffect(() => {
-        console.log(userEvents);
     }, [userEvents]);
 
     if (error) {
