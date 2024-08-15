@@ -1,22 +1,22 @@
 const HEADS = [
     {
-        name: "Harshpreet Singh Johar",
-        image: "/assets/images/team/heads/harshpreet.png",
-        post: "Chair",
+        name: "Ankur Gupta",
+        image: "/assets/images/team/heads/Ankur_Gupta.png",
+        post: "Chairperson",
     },
     {
-        name: "Manjot Singh Oberoi",
-        image: "/assets/images/team/heads/manjot.png",
-        post: "Vice Chair",
+        name: "Priyanka Soni",
+        image: "/assets/images/team/heads/Priyanka_Soni.png",
+        post: "Vice Chairperson",
     },
     {
-        name: "Ishwarendra Jha",
-        image: "/assets/images/team/heads/ishwarendra.png",
-        post: "Secretary/Treasurer",
+        name: "Akash Rout",
+        image: "/assets/images/team/heads/Akash_Rout.png",
+        post: "Treasurer",
     },
     {
-        name: "Kriti Mahajan",
-        image: "/assets/images/team/heads/kriti.png",
+        name: "Sparsh Singh Bhatia",
+        image: "/assets/images/team/heads/sparsh.png",
         post: "Webmaster",
     },
 ];
@@ -25,69 +25,49 @@ const folderPath = "/assets/images/team/core";
 
 const CORE = [
     {
-        name: "Abhinav Rawal",
-        image: `${folderPath}/Abhinav_Rawal.png`,
+        name: "Yashita Bansal",
+        image: `${folderPath}/Yashita_Bansal.png`,
         post: "CP Lead",
     },
     {
-        name: "Harasees Singh",
-        image: `${folderPath}/harasees_singh.png`,
-        post: "CP Co-Lead",
+        name: "Harsh Rishi Miglani",
+        image: `${folderPath}/Harsh_Rishi_Miglani.png`,
+        post: "CP Lead",
     },
     {
-        name: "Uttam Mittal",
-        image: `${folderPath}/Uttam_Mittal.png`,
+        name: "Chirag Garg",
+        image: `${folderPath}/Chirag_garg.png`,
         post: "AI Lead",
     },
     {
-        name: "Armaan Badhan",
-        image: `${folderPath}/armaan_badhan.png`,
-        post: "AI Co-Lead",
+        name: "Dhruv Goyal",
+        image: `${folderPath}/Dhruv_Goyal.png`,
+        post: "AI Lead",
     },
     {
-        name: "Vinayak Gupta",
-        image: `${folderPath}/Vinayak_Gupta.png`,
-        post: "Dev : Cloud Lead",
+        name: "Jaskeerat",
+        image: `${folderPath}/Jaskeerat.png`,
+        post: "Dev Lead",
     },
     {
-        name: "Dhruv Bansal",
-        image: `${folderPath}/Dhruv.png`,
-        post: "Dev : Web Lead",
+        name: "Ujjawal Gupta",
+        image: `${folderPath}/Ujjawal_Gupta.png`,
+        post: "Dev Lead",
     },
     {
-        name: "Jagjit Singh",
-        image: `${folderPath}/jagjit_singh.png`,
-        post: "Dev : Open Source Lead",
-    },
-    {
-        name: "Kanika Kaur",
-        image: `${folderPath}/Kanika Kaur.png`,
+        name: "Nandini Gera",
+        image: `${folderPath}/Nandini_Gera.png`,
         post: "WiT Lead",
     },
     {
-        name: "Kanisha Kaur",
-        image: `${folderPath}/Kanisha Kaur.png`,
-        post: "WiT Co-Lead",
-    },
-    {
-        name: "Sanil Gupta",
-        image: `${folderPath}/Sanil_Gupta.png`,
+        name: "Sugam Arora",
+        image: `${folderPath}/Sugam_Arora.png`,
         post: "Cyber Lead",
     },
     {
-        name: "Kavya Rishi",
-        image: `${folderPath}/kavya_rishi.png`,
-        post: "Cyber Co-Lead",
-    },
-    {
-        name: "Aayush Singh Panwar",
-        image: `${folderPath}/Aayush_Singh_Panwar.png`,
+        name: "Vishav Garg",
+        image: `${folderPath}/Vishav_Garg.png`,
         post: "Socials Lead",
-    },
-    {
-        name: "Saniya Singla",
-        image: `${folderPath}/Saniya Singla.png`,
-        post: "Socials Co-Lead",
     },
 ];
 
