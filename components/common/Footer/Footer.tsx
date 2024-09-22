@@ -42,7 +42,7 @@ const communityLinks = [
         name: "Development Web/App"
     }, {
         href: "/branches/ai",
-        name: "Machine Learning"
+        name: "Artificial Intelligence"
     }, {
         href: "/branches/cp",
         name: "Competitive Programming"

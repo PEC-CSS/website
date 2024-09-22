@@ -14,25 +14,20 @@ const BRANCHES = {
         oneLiner: "Dynamic web dev community empowering growth through workshops, hackathons, and knowledge sharing. Shape the future together! Join us!",
         leads: [
             {
-                name: "Vinayak Gupta",
-                image: `${folderPath}/Vinayak_Gupta.jpg`,
-                post: "Dev : Cloud Lead",
+                name: "Jaskeerat",
+                image: `${folderPath}/Jaskeerat.jpg`,
+                post: "Dev Lead",
             },
             {
-                name: "Dhruv Bansal",
-                image: `${folderPath}/Dhruv.jpeg`,
-                post: "Dev : Web Lead",
-            },
-            {
-                name: "Jagjit Singh",
-                image: `${folderPath}/jagjit_singh.jpeg`,
-                post: "Dev : Open Source Lead",
+                name: "Ujjawal Gupta",
+                image: `${folderPath}/Ujjawal_Gupta.jpeg`,
+                post: "Dev Lead",
             },
         ],
         
     },
     ai: {
-        name: "Machine Learning",
+        name: "Artificial Intelligence",
         whoAreWe: [
             "PEC-ACM's exclusive community, fostering AI & data science exploration. Emphasis on teamwork, hackathons, research, and conference opportunities for students' engagement and growth.",
         ],
@@ -45,14 +40,14 @@ const BRANCHES = {
         oneLiner: "Hackathons, projects, workshops empower students with AI skills, teamwork, and real-world innovation. Presenting findings, fostering collaboration.",
         leads: [
             {
-                name: "Uttam Mittal",
-                image: `${folderPath}/Uttam_Mittal.jpg`,
+                name: "Chirag Garg",
+                image: `${folderPath}/Chirag_garg.jpg`,
                 post: "AI Lead",
             },
             {
-                name: "Armaan Badhan",
-                image: `${folderPath}/armaan_badhan.jpg`,
-                post: "AI Co-Lead",
+                name: "Dhruv Goyal",
+                image: `${folderPath}/Dhruv_Goyal.jpg`,
+                post: "AI Lead",
             },
         ],
     },
@@ -70,14 +65,14 @@ const BRANCHES = {
         oneLiner: "Passionate problem solvers, excelling in contests and team challenges, driven by adrenaline and collaboration.",
         leads: [
             {
-                name: "Abhinav Rawal",
-                image: `${folderPath}/Abhinav_Rawal.jpg`,
+                name: "Yashita Bansal",
+                image: `${folderPath}/Yashita_Bansal.jpg`,
                 post: "CP Lead",
             },
             {
-                name: "Harasees Singh",
-                image: `${folderPath}/harasees_singh.jpg`,
-                post: "CP Co-Lead",
+                name: "Harsh Rishi Miglani",
+                image: `${folderPath}/Harsh_Rishi_Miglani.jpeg`,
+                post: "CP Lead",
             },
         ],
     },
@@ -94,14 +89,9 @@ const BRANCHES = {
         oneLiner: "Exploring limits, breaking barriers, and unraveling secrets. Join PEC-ACM Cyber for cybersecurity adventures.",
         leads: [
             {
-                name: "Sanil Gupta",
-                image: `${folderPath}/Sanil_Gupta.jpeg`,
+                name: "Sugam Arora",
+                image: `${folderPath}/Sugam_Arora.jpg`,
                 post: "Cyber Lead",
-            },
-            {
-                name: "Kavya Rishi",
-                image: `${folderPath}/kavya_rishi.jpeg`,
-                post: "Cyber Co-Lead",
             },
         ],
     },
@@ -118,14 +108,9 @@ const BRANCHES = {
         oneLiner: "PEC-ACM club's creative team - Engaging content, vibrant community. Unleash creativity beyond websites! Join us!",
         leads: [
             {
-                name: "Aayush Singh Panwar",
-                image: `${folderPath}/Aayush_Singh_Panwar.jpg`,
+                name: "Vishav Garg",
+                image: `${folderPath}/Vishav_Garg.jpeg`,
                 post: "Socials Lead",
-            },
-            {
-                name: "Saniya Singla",
-                image: `${folderPath}/Saniya Singla.jpg`,
-                post: "Socials Co-Lead",
             },
         ],
     },
@@ -143,14 +128,9 @@ const BRANCHES = {
         oneLiner: "Fostering female participation in tech. Empowering women to excel and shape computing's future. Inclusive community, join us!",
         leads: [
             {
-                name: "Kanika Kaur",
-                image: `${folderPath}/Kanika Kaur.jpeg`,
+                name: "Nandini Gera",
+                image: `${folderPath}/Nandini_Gera.jpeg`,
                 post: "WiT Lead",
-            },
-            {
-                name: "Kanisha Kaur",
-                image: `${folderPath}/Kanisha Kaur.jpg`,
-                post: "WiT Co-Lead",
             },
         ],
     },
