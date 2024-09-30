@@ -87,13 +87,13 @@ const DEVELOPERS = [
     },
     {
         name: "Sanil Gupta",
-        image: `${folderPath}/Sanil_Gupta.png`,
+        image: `/assets/images/team/heads/Sanil_Gupta.png`,
         post: "Backend",
         tech: getTechAssets(["spring", "supabase"]),
     },
     {
         name: "Abhinav Rawal",
-        image: `${folderPath}/Abhinav_Rawal.png`,
+        image: `/assets/images/team/heads/Abhinav_Rawal.png`,
         post: "Backend",
         tech: getTechAssets(["spring", "supabase"]),
     },
