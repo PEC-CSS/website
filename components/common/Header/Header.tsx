@@ -15,6 +15,9 @@ function Header() {
 
     function toggleMenu() {
         setMenuOpen(!menuOpen);
+        menuOpen
+            ? document.body.classList.remove("body-scroll-lock")
+            : document.body.classList.add("body-scroll-lock")
     }
 
     const router = useRouter();
@@ -41,14 +44,12 @@ function Header() {
             <div className={styles.list_items_wrapper}>
                 <Hamburger menuOpen={menuOpen} toggleMenu={toggleMenu} />
                 <div
-                    className={`${menuOpen ? styles.active : ""} ${
-                        styles.menu_modal
-                    }`}
+                    className={`${menuOpen ? styles.active : ""} ${styles.menu_modal
+                        }`}
                 >
                     <ul
-                        className={`${styles.nav_items} ${
-                            menuOpen ? styles.active : ""
-                        }`}
+                        className={`${styles.nav_items} ${menuOpen ? styles.active : ""
+                            }`}
                         role="presentation"
                     >
                         {headerItems.map((headerItem, i) => {
@@ -58,11 +59,10 @@ function Header() {
                                     <Link
                                         href={headerItem.href}
                                         aria-label={headerItem.name}
-                                        className={`${styles.nav_link} ${
-                                            isActive
-                                                ? styles.active_nav_link
-                                                : ""
-                                        }`}
+                                        className={`${styles.nav_link} ${isActive
+                                            ? styles.active_nav_link
+                                            : ""
+                                            }`}
                                     >
                                         {headerItem.name}
                                     </Link>

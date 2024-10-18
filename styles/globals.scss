@@ -4,11 +4,15 @@
   box-sizing: border-box;
 }
 
-button, a, ul, li {
+button,
+a,
+ul,
+li {
   all: unset;
 }
 
-a, button {
+a,
+button {
   cursor: pointer;
 }
 
@@ -26,6 +30,7 @@ a, button {
   height: 9px;
   width: 11px;
 }
+
 *::-webkit-scrollbar-track {
   border-radius: 4px;
   background-color: #DFE9EB;
@@ -51,4 +56,8 @@ a, button {
 
 *::-webkit-scrollbar-thumb:active {
   background-color: #9C9C9C;
+}
+
+.body-scroll-lock {
+  overflow: hidden;
 }
