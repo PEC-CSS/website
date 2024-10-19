@@ -19,10 +19,12 @@
     .logo_wrapper {
         padding: 10px 20px;
         z-index: 12;
+
         a {
             display: flex;
             align-items: center;
         }
+
         img {
             height: 60px;
             object-fit: cover;
@@ -56,9 +58,11 @@
             &.active {
                 transform: rotate(45deg);
                 z-index: 12;
+
                 .top {
                     stroke-dashoffset: -68px;
                 }
+
                 .bottom {
                     stroke-dashoffset: -68px;
                 }
@@ -103,6 +107,7 @@
                     cursor: pointer;
                     outline: none;
                     transition: 0.5s;
+
                     &:hover {
                         color: black;
                         transition: all 0.5s;
@@ -110,10 +115,12 @@
                 }
             }
         }
+
         @media screen and (max-width: $navbar-breakpoint) {
             .ham {
                 display: flex;
             }
+
             .menu_modal {
                 background: rgba(255, 255, 255, 0.95);
                 height: 100vh;
@@ -154,8 +161,7 @@
 
                 &.active {
                     transform: translate(-50%, calc(-50% + 70px));
-                    transition: transform 0.35s
-                        cubic-bezier(0.05, 1.04, 0.72, 0.98);
+                    transition: transform 0.35s cubic-bezier(0.05, 1.04, 0.72, 0.98);
                 }
             }
         }
@@ -165,5 +171,9 @@
 @media screen and (max-width: $navbar-breakpoint) {
     .navbar {
         padding: 10px 20px;
+    }
+
+    .nav_link {
+        font-size: 2rem;
     }
 }

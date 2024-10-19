@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import styles from "../../../styles/components/Header.module.scss";
 import Hamburger from "./Hamburger";
 import { useRouter } from "next/router";
@@ -7,24 +7,32 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import getCookieData from "../../../lib/getCookieData";
 
-function Header() {
+export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState("/");
+
+    const isMobile = useMediaQuery("only screen and (max-width : 900px)");
+    const router = useRouter();
+
     const { data: session } = useSession();
     const { data: cookieData } = getCookieData(session);
 
-    function toggleMenu() {
-        setMenuOpen(!menuOpen);
-        menuOpen
-            ? document.body.classList.remove("body-scroll-lock")
-            : document.body.classList.add("body-scroll-lock")
+    const toggleMenu = () => {
+        setMenuOpen(prev => !prev);
+        document.body.classList.toggle("body-scroll-lock", isMobile && !menuOpen)
     }
 
-    const router = useRouter();
 
     useEffect(() => {
         setActive(router.pathname);
-    }, [router.pathname]);
+
+        const removeScrollLock = () =>
+            document.body.classList.toggle("body-scroll-lock", isMobile && menuOpen)
+
+        window.addEventListener('resize', removeScrollLock)
+
+        return () => window.removeEventListener("resize", removeScrollLock)
+    }, [router.pathname, menuOpen, isMobile]);
 
     return (
         <nav className={styles.navbar}>
@@ -92,8 +100,6 @@ function Header() {
     );
 }
 
-export default Header;
-
 const headerItems = [
     {
         href: "/about",
@@ -112,3 +118,27 @@ const headerItems = [
         name: "Events",
     },
 ];
+
+function useMediaQuery(query: string) {
+    const subscribe = useCallback(
+        (callback: () => void) => {
+            const matchMedia = window.matchMedia(query);
+
+            matchMedia.addEventListener("change", callback);
+            return () => {
+                matchMedia.removeEventListener("change", callback);
+            };
+        },
+        [query]
+    );
+
+    const getSnapshot = () => {
+        return window.matchMedia(query).matches;
+    };
+
+    const getServerSnapshot = () => {
+        throw Error("useMediaQuery is a client-only hook");
+    };
+
+    return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
