@@ -10,36 +10,29 @@ import getCookieData from "../../../lib/getCookieData";
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState("/");
+
     const isMobile = useMediaQuery("only screen and (max-width : 900px)");
+    const router = useRouter();
+
     const { data: session } = useSession();
     const { data: cookieData } = getCookieData(session);
 
-    function toggleMenu() {
-        setMenuOpen(!menuOpen);
-        if (isMobile) {
-            menuOpen
-                ? document.body.classList.remove("body-scroll-lock")
-                : document.body.classList.add("body-scroll-lock")
-        }
+    const toggleMenu = () => {
+        setMenuOpen(prev => !prev);
+        document.body.classList.toggle("body-scroll-lock", isMobile && !menuOpen)
     }
 
-    const router = useRouter();
 
     useEffect(() => {
         setActive(router.pathname);
 
-        function removeScrollLock() {
-            if (window.innerWidth > 900) {
-                document.body.classList.remove("body-scroll-lock")
-            } else {
-                if (menuOpen) document.body.classList.add("body-scroll-lock")
-            }
-        }
+        const removeScrollLock = () =>
+            document.body.classList.toggle("body-scroll-lock", isMobile && menuOpen)
 
         window.addEventListener('resize', removeScrollLock)
 
         return () => window.removeEventListener("resize", removeScrollLock)
-    }, [router.pathname, menuOpen, window.innerWidth]);
+    }, [router.pathname, menuOpen, isMobile]);
 
     return (
         <nav className={styles.navbar}>
