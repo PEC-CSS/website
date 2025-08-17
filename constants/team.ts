@@ -76,7 +76,7 @@ const CORE = [
     },
     {
         name: "Prasuk Jain",
-        image: `${folderPath}/Prasuk.jpeg`,
+        image: `${folderPath}/prasuk.jpeg`,
         post: "Socials Lead",
     },
     {
