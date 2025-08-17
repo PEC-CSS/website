@@ -66,7 +66,7 @@ const CORE = [
     },
     {
         name: "Aryan",
-        image: `${folderPath}/aryan.png`,
+        image: `${folderPath}/aryan2.jpeg`,
         post: "Cyber Lead",
     },
     {
@@ -75,7 +75,7 @@ const CORE = [
         post: "Cyber Lead",
     },
     {
-        name: "Prasuk",
+        name: "Prasuk Jain",
         image: `${folderPath}/Prasuk.jpeg`,
         post: "Socials Lead",
     },
@@ -85,12 +85,12 @@ const CORE = [
         post: "Socials Lead",
     },
     {
-        name: "Akansha",
-        image: `${folderPath}/akansha.jpeg`,
+        name: "Akanksha Narula",
+        image: `${folderPath}/akanksha.jpeg`,
         post: "WIT Lead",
     },
     {
-        name: "Vanshika",
+        name: "Vanshika Garg",
         image: `${folderPath}/vanshika.jpeg`,
         post: "WIT Lead",
     },
