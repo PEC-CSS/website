@@ -14,15 +14,20 @@ const BRANCHES = {
         oneLiner: "Dynamic web dev community empowering growth through workshops, hackathons, and knowledge sharing. Shape the future together! Join us!",
         leads: [
             {
-                name: "Jaskeerat",
-                image: `${folderPath}/Jaskeerat.jpg`,
+                name: "Harshul",
+                image: `${folderPath}/harshul.jpeg`,
                 post: "Dev Lead",
             },
             {
-                name: "Ujjawal Gupta",
-                image: `${folderPath}/Ujjawal_Gupta.jpeg`,
+                name: "Krittika Jari",
+                image: `${folderPath}/kritika.jpeg`,
                 post: "Dev Lead",
             },
+            {
+                name : "Raghav Sharma",
+                image : `${folderPath}/raghav.jpeg`,
+                post : "Open Source Lead",
+            }
         ],
         
     },
@@ -40,13 +45,18 @@ const BRANCHES = {
         oneLiner: "Hackathons, projects, workshops empower students with AI skills, teamwork, and real-world innovation. Presenting findings, fostering collaboration.",
         leads: [
             {
-                name: "Chirag Garg",
-                image: `${folderPath}/Chirag_garg.jpg`,
+                name: "Hardik Ahuja",
+                image: `${folderPath}/hardik.jpeg`,
                 post: "AI Lead",
             },
             {
-                name: "Dhruv Goyal",
-                image: `${folderPath}/Dhruv_Goyal.jpg`,
+                name: "Arnav Vikas Garg",
+                image: `${folderPath}/arnav.jpeg`,
+                post: "AI Lead",
+            },
+            {
+                name: "Aaditya Sharma",
+                image: `${folderPath}/aaditya.jpeg`,
                 post: "AI Lead",
             },
         ],
@@ -65,13 +75,13 @@ const BRANCHES = {
         oneLiner: "Passionate problem solvers, excelling in contests and team challenges, driven by adrenaline and collaboration.",
         leads: [
             {
-                name: "Yashita Bansal",
-                image: `${folderPath}/Yashita_Bansal.jpg`,
+                name: "Chetanya Mahana",
+                image: `${folderPath}/chetanya.jpeg`,
                 post: "CP Lead",
             },
             {
-                name: "Harsh Rishi Miglani",
-                image: `${folderPath}/Harsh_Rishi_Miglani.jpeg`,
+                name: "Harshit Minhas",
+                image: `${folderPath}/harshit.jpeg`,
                 post: "CP Lead",
             },
         ],
@@ -89,8 +99,13 @@ const BRANCHES = {
         oneLiner: "Exploring limits, breaking barriers, and unraveling secrets. Join PEC-ACM Cyber for cybersecurity adventures.",
         leads: [
             {
-                name: "Sugam Arora",
-                image: `${folderPath}/Sugam_Arora.jpg`,
+                name: "Aryan",
+                image: `${folderPath}/aryan2.jpeg`,
+                post: "Cyber Lead",
+            },
+            {
+                name: "Keshav Arora",
+                image: `${folderPath}/keshav.jpeg`,
                 post: "Cyber Lead",
             },
         ],
@@ -108,8 +123,13 @@ const BRANCHES = {
         oneLiner: "PEC-ACM club's creative team - Engaging content, vibrant community. Unleash creativity beyond websites! Join us!",
         leads: [
             {
-                name: "Vishav Garg",
-                image: `${folderPath}/Vishav_Garg.jpeg`,
+                name: "Shreya Pahuja",
+                image: `${folderPath}/shreya.jpeg`,
+                post: "Socials Lead",
+            },
+            {
+                name: "Prasuk Jain",
+                image: `${folderPath}/prasuk.jpeg`,
                 post: "Socials Lead",
             },
         ],
@@ -128,8 +148,13 @@ const BRANCHES = {
         oneLiner: "Fostering female participation in tech. Empowering women to excel and shape computing's future. Inclusive community, join us!",
         leads: [
             {
-                name: "Nandini Gera",
-                image: `${folderPath}/Nandini_Gera.jpeg`,
+                name: "Akanksha Narula",
+                image: `${folderPath}/akanksha.jpeg`,
+                post: "WiT Lead",
+            },
+            {
+                name: "Vanshika Garg",
+                image: `${folderPath}/vanshika.jpeg`,
                 post: "WiT Lead",
             },
         ],
