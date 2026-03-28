@@ -46,13 +46,13 @@ function DashboardLayout({ title, children, description, heading }: Props) {
                 <link rel='manifest' href='/manifest.json' />
                 <link rel='mask-icon' href='/assets/icons/safari-pinned-tab.svg' color='#0075FF' />
                 <link rel='shortcut icon' href='/assets/icons/favicon.ico' />
-                <link rel='canonical' href='https://www.pecacm.com/' />
+                <link rel='canonical' href='https://www.pecacm.in/' />
 
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.pecacm.com/" />
+                <meta property="og:url" content="https://www.pecacm.in/" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
-                <meta property="og:image" content="https://www.pecacm.com/assets/logos/acm.png" />
+                <meta property="og:image" content="https://www.pecacm.in/assets/logos/acm.png" />
                 <meta property="og:image:type" content="image/png" />
                 <meta property="og:image:height" content="350" />
                 <meta property="og:image:width" content="350" />
