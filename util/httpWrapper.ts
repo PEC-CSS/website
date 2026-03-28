@@ -88,5 +88,5 @@ export function fetchUrl(url: string) {
 export function fetchFrontendUrl() {
     return process.env.NODE_ENV === "development"
         ? "http://localhost:3000"
-        : "https://www.pecacm.com";
+        : "https://www.pecacm.in";
 }
