@@ -5,8 +5,8 @@ const HEADS = [
         post: "Chairperson",
     },
     {
-        name: "Sambhav Jain",
-        image: "/assets/images/team/heads/Sambhav.jpeg",
+        name: "Anubhav Pandey",
+        image: "/assets/images/team/heads/anubhav.jpeg",
         post: "Vice Chairperson",
     },
     {
@@ -15,8 +15,8 @@ const HEADS = [
         post: "Treasurer",
     },
     {
-        name: "Anubhav Pandey",
-        image: "/assets/images/team/heads/anubhav.jpeg",
+        name: "Harshul Arora",
+        image: "/assets/images/team/heads/harshul.jpeg",
         post: "Webmaster",
     },
 ];
@@ -25,8 +25,8 @@ const folderPath = "/assets/images/team/core";
 
 const CORE = [
     {
-        name: "Harshit Minhas",
-        image: `${folderPath}/harshit.jpeg`,
+        name: "Sambhav Jain",
+        image: `${folderPath}/Sambhav.jpeg`,
         post: "CP Lead",
     },
     {
@@ -55,8 +55,8 @@ const CORE = [
         post: "Dev Lead",
     },
     {
-        name: "Harshul Arora",
-        image: `${folderPath}/harshul.jpeg`,
+        name: "Harshit Minhas",
+        image: `${folderPath}/harshit.jpeg`,
         post: "Dev Lead",
     },
     {
