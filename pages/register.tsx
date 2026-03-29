@@ -404,6 +404,7 @@ const branchNames: string[] = [
     "ECE",
     "EE",
     "CSEDS",
+    "MNC",
     "AI",
     "VLSI",
     "MECH",
