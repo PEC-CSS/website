@@ -2,7 +2,7 @@ import styles from "../../styles/components/Sidebar.module.scss";
 import { SocialLinks } from "../common/SocialLinks/SocialLinks";
 import { FaHome } from "react-icons/fa";
 import { MdAccountCircle, MdLogout, MdExplore } from "react-icons/md";
-import { BiCalendarEvent } from "react-icons/bi";
+import { BiCalendarEvent, BiBadgeCheck } from "react-icons/bi";
 import { AiFillTrophy, AiOutlineMenu } from "react-icons/ai";
 import { SidebarItem } from "./SidebarItem";
 import { useState } from "react";
@@ -31,6 +31,11 @@ const sidebarItems = [
         title: "Events",
         icon: <BiCalendarEvent />,
         path: "/dashboard/events",
+    },
+    {
+        title: "Certificates",
+        icon: <BiBadgeCheck />,
+        path: "/dashboard/certificates",
     },
     {
         title: "Explore",

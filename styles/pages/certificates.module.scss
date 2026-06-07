@@ -1,0 +1,268 @@
+@import "../variables.scss";
+
+.certificatesPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  gap: 1.5rem;
+
+  @media screen and (max-width: 600px) {
+    padding: 1rem;
+  }
+}
+
+.eventSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 500px;
+
+  label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: $font-primary-color;
+  }
+
+  select {
+    padding: 0.7rem 1rem;
+    border: 2px solid $acm-light;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $acm-primary;
+    }
+  }
+}
+
+.sectionCard {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: $font-primary-color;
+  }
+}
+
+.sectionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.fileInput {
+  flex: 1;
+  min-width: 200px;
+
+  input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px dashed $acm-light;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: #f8fafc;
+
+    &::file-selector-button {
+      padding: 0.4rem 1rem;
+      border: none;
+      border-radius: 8px;
+      background: $acm-primary;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 0.75rem;
+    }
+  }
+}
+
+.uploadBtn {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: $acm-primary;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.generateBtn {
+  composes: uploadBtn;
+  background: #10b981;
+}
+
+.massMailBtn {
+  composes: uploadBtn;
+  background: #8b5cf6;
+  font-size: 1rem;
+  padding: 0.7rem 2rem;
+}
+
+.dangerBtn {
+  padding: 0.35rem 0.9rem;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.downloadBtn {
+  composes: uploadBtn;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+}
+
+.actionRow {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+
+    th {
+      background: #f1f5f9;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      color: $font-secondary-color;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      color: $font-primary-color;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #f8fafc;
+    }
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  color: $font-secondary-color;
+  font-style: italic;
+}
+
+.statusMsg {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 100%;
+  max-width: 900px;
+}
+
+.success {
+  composes: statusMsg;
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.error {
+  composes: statusMsg;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.info {
+  composes: statusMsg;
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.singleForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+
+  input {
+    padding: 0.6rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 180px;
+    flex: 1;
+
+    &:focus {
+      border-color: $acm-primary;
+    }
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badgeTemplate {
+  composes: badge;
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.badgeCsv {
+  composes: badge;
+  background: #d1fae5;
+  color: #065f46;
+}
