@@ -70,7 +70,7 @@ function Certificates() {
     if (selectedEventId) fetchCertificates();
   }, [selectedEventId, fetchCertificates]);
 
-  const showStatus = (type: Status["type"], message: string) => {
+  const showStatus = (type: NonNullable<Status>["type"], message: string) => {
     setStatus({ type, message });
     setTimeout(() => setStatus(null), 5000);
   };
