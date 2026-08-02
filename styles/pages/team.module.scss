@@ -1,142 +1,159 @@
 @import "../variables";
 
 .title {
-    text-align: center;
-    margin: 20px 0;
+  text-align: center;
+  margin: 20px 0;
 }
 
 .heads {
-    .cards {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+
+  h3 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(33.333% - 2rem);
+    box-sizing: border-box;
+
+    img {
+      height: 200px;
+      width: 200px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      object-fit: cover;
     }
 
-    h3 {
-        font-size: 28px;
-        text-align: center;
+    .name {
+      font-weight: 700;
+      text-align: center;
     }
-
-    .card {
-        margin: 0 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        img {
-            height: 200px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
-
-        .name {
-            font-weight: 700;
-            text-align: center;
-        }
-    }
+  }
 }
 
 .core {
-    margin: 40px 0;
-    display: flex;
+  margin: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h3 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    max-width: 1200px;
+    width: 70%;
+    background-color: #f2f4f6;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 1rem;
 
-    h3 {
-        font-size: 28px;
-        text-align: center;
-    }
+    .card {
+      display: flex;
+      padding: 10px;
+      background: #fff;
+      align-items: center;
+      border-radius: 20px;
 
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
+      img {
+        height: 70px;
+        width: 70px;
+        border-radius: 9999px;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .data {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        max-width: 1200px;
-        width: 70%;
-        background-color: #f2f4f6;
-        border-radius: 20px;
-        padding: 0 20px;
+        margin: 0 10px;
 
-        .card {
-            display: flex;
-            max-width: 400px;
-            padding: 10px;
-            background: #fff;
-            margin: 20px 5px;
-            align-items: center;
-            border-radius: 20px;
-
-            img {
-                height: 70px;
-                width: 70px;
-                border-radius: 9999px;
-                object-fit: cover;
-            }
-
-            .data {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin: 0 10px;
-
-                .post {
-                    font-weight: 200;
-                }
-            }
+        .post {
+          font-weight: 200;
         }
+      }
     }
+  }
 }
 
 @media screen and (max-width: $navbar-breakpoint) {
-    .heads {
-        .card {
-            img {
-                height: 150px !important;
-                width: 150px !important;
-            }
-        }
+  .heads {
+    .cards {
+      gap: 1rem;
     }
 
-    .core {
-        .cards {
-            width: 90%;
-        }
+    .card img {
+      height: 150px;
+      width: 150px;
     }
+  }
+
+  .core {
+    .cards {
+      width: 90%;
+    }
+  }
 }
 
 @media screen and (max-width: $tablet-breakpoint) {
-    .heads {
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .card {
-            img {
-                height: 200px !important;
-                width: 200px !important;
-            }
-        }
+  .heads {
+    .cards {
+      gap: 1rem;
     }
 
-    .core {
-        .cards {
-            grid-template-columns: repeat(2, 1fr); 
-        }
+    .card {
+      width: calc(50% - 1rem);
+
+      img {
+        height: 200px;
+        width: 200px;
+      }
     }
+  }
+
+  .core {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .heads .card img {
-        height: 140px !important;
-        width: 140px !important;
+  .heads {
+    .card {
+      width: calc(50% - 1rem);
+
+      img {
+        height: 140px;
+        width: 140px;
+      }
     }
-    .core {
-        .cards {
-            grid-template-columns: repeat(1, 1fr); 
-            width: 90%;
-        }
+  }
+
+  .core {
+    .cards {
+      grid-template-columns: 1fr;
+      width: 90%;
     }
+  }
 }
