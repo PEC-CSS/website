@@ -3,6 +3,7 @@ export const fetchWrapper = {
     post,
     put,
     delete: _delete,
+    upload,
 };
 
 async function get({ url, token = "" }: { url: string; token?: string }) {
@@ -36,6 +37,30 @@ async function post({
     return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
+async function upload({
+    url,
+    file,
+    fieldName = "file",
+    token = "",
+}: {
+    url: string;
+    file: File;
+    fieldName?: string;
+    token?: string;
+}) {
+    const formData = new FormData();
+    formData.append(fieldName, file);
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+    };
+    return fetch(fetchUrl(url), requestOptions).then(handleResponse);
+}
+
 async function put({
     url,
     body,
@@ -64,14 +89,23 @@ async function _delete({ url, token }: { url: string; token?: string }) {
     return fetch(fetchUrl(url), requestOptions).then(handleResponse);
 }
 
+function parseResponse(text: string) {
+    if (!text) return null;
+    try {
+        return JSON.parse(text);
+    } catch {
+        return text;
+    }
+}
+
 async function handleResponse(response: Response) {
     return response.text().then((text) => {
-        const data = text && JSON.parse(text);
+        const data = parseResponse(text);
         if (!response.ok) {
-            const error = (data && data.message) || response.statusText;
+            const error =
+                (data && (data.message || data)) || response.statusText;
             return Promise.reject(error);
         }
-
         return data;
     });
 }

@@ -10,22 +10,32 @@ export async function sendMail({
     toEmail: string;
     message: string;
 }) {
+    const emailUser = process.env.NODEMAILER_EMAIL;
+    const emailPass = process.env.NODEMAILER_PW;
+
+    if (!emailUser || !emailPass) {
+        console.warn(
+            "NODEMAILER_EMAIL/NODEMAILER_PW not configured — skipping verification email to",
+            toEmail
+        );
+        return;
+    }
+
     var transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
         secure: true,
         service: "gmail",
         auth: {
-            user: process.env.NODEMAILER_EMAIL,
-            pass: process.env.NODEMAILER_PW,
+            user: emailUser,
+            pass: emailPass,
         },
     });
 
     var mailOptions = {
-        from: process.env.NODEMAILER_EMAIL,
+        from: emailUser,
         to: toEmail,
         subject: subject,
-        // text: message,
         html: convertToMail(message),
     };
 
